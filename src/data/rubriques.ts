@@ -29,6 +29,8 @@ export interface Rubrique {
   /** Une phrase, affichée sur l'accueil et la page de rubrique. */
   description: string;
   icone: IconeRubrique;
+  /** Couleur pastel de fond (cartes, en-tête de rubrique). */
+  pastel: 'ciel' | 'menthe' | 'peche' | 'lilas' | 'citron' | 'rose';
   modules: ModulePrevu[];
 }
 
@@ -38,6 +40,7 @@ export const rubriques: Rubrique[] = [
     titre: "Comprendre l'ordinateur",
     description: "Le matériel, Windows et Mac, les fichiers, le clavier et l'entretien.",
     icone: 'ordinateur',
+    pastel: 'ciel',
     modules: [
       { slug: 'materiel', titre: 'De quoi est fait un ordinateur ?' },
       { slug: 'systemes-exploitation', titre: 'Windows, macOS, Linux : à quoi sert le système ?' },
@@ -53,6 +56,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Bureautique',
     description: 'Écrire une lettre, faire un tableau, créer un PDF, imprimer et scanner.',
     icone: 'document',
+    pastel: 'citron',
     modules: [
       { slug: 'choisir-logiciel', titre: 'Quel logiciel pour écrire, compter, présenter ?' },
       { slug: 'traitement-de-texte', titre: 'Écrire et mettre en forme une lettre' },
@@ -67,6 +71,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Le smartphone',
     description: 'Les gestes, les appels, les applis, les photos et les réglages, sur Android et iPhone.',
     icone: 'smartphone',
+    pastel: 'menthe',
     modules: [
       { slug: 'premiers-pas', titre: 'Premiers pas avec son smartphone' },
       { slug: 'appels-contacts', titre: 'Téléphoner et gérer ses contacts' },
@@ -85,6 +90,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Internet et navigation',
     description: 'Comment marche Internet, le Wi-Fi, le navigateur et la recherche.',
     icone: 'globe',
+    pastel: 'lilas',
     modules: [
       { slug: 'fonctionnement', titre: 'Comment fonctionne Internet ?' },
       { slug: 'se-connecter', titre: 'Se connecter : Wi-Fi, 4G, 5G, Bluetooth' },
@@ -99,6 +105,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Communiquer',
     description: 'E-mail, SMS, WhatsApp et appels vidéo.',
     icone: 'bulle',
+    pastel: 'peche',
     modules: [
       { slug: 'e-mail', titre: 'Créer et utiliser une adresse e-mail' },
       { slug: 'pieces-jointes', titre: 'Envoyer et ouvrir une pièce jointe' },
@@ -114,6 +121,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Réseaux sociaux et vidéo',
     description: 'Comprendre les réseaux, protéger sa vie privée, YouTube et vérifier une info.',
     icone: 'video',
+    pastel: 'rose',
     modules: [
       { slug: 'comprendre', titre: 'Comprendre les réseaux sociaux' },
       { slug: 'compte-confidentialite', titre: 'Créer un compte et protéger sa vie privée' },
@@ -126,6 +134,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Démarches en ligne',
     description: "FranceConnect, papiers d'identité, santé, impôts, CAF, France Travail.",
     icone: 'tampon',
+    pastel: 'ciel',
     modules: [
       { slug: 'franceconnect', titre: 'Se connecter avec FranceConnect' },
       { slug: 'service-public', titre: 'Trouver la bonne démarche' },
@@ -144,6 +153,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Vie pratique',
     description: 'Rendez-vous, transports, achats, loisirs : le numérique au quotidien.',
     icone: 'panier',
+    pastel: 'menthe',
     modules: [
       { slug: 'rendez-vous', titre: 'Prendre rendez-vous en ligne' },
       { slug: 'voiture', titre: 'Se déplacer en voiture : GPS et stationnement' },
@@ -164,6 +174,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Argent et banque',
     description: 'Banque en ligne, paiement sans risque, abonnements et forfaits.',
     icone: 'carte',
+    pastel: 'citron',
     modules: [
       { slug: 'banque-en-ligne', titre: 'Gérer ses comptes en ligne' },
       { slug: 'payer-en-ligne', titre: 'Payer en ligne sans risque' },
@@ -177,6 +188,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Sécurité et confiance',
     description: 'Mots de passe, arnaques, faux sites et que faire si l’on est victime.',
     icone: 'bouclier',
+    pastel: 'lilas',
     modules: [
       { slug: 'mots-de-passe', titre: 'Créer de bons mots de passe' },
       { slug: 'gestionnaire-mots-de-passe', titre: 'Utiliser un gestionnaire de mots de passe' },
@@ -195,6 +207,7 @@ export const rubriques: Rubrique[] = [
     titre: 'Intelligence artificielle',
     description: "Ce qu'est l'IA, comment s'en servir et ses limites.",
     icone: 'etincelle',
+    pastel: 'rose',
     modules: [
       { slug: 'comprendre', titre: "Comprendre l'intelligence artificielle" },
       { slug: 'ecrire', titre: 'Se faire aider pour écrire' },
@@ -208,6 +221,7 @@ export const rubriques: Rubrique[] = [
     titre: "J'ai un problème",
     description: 'Dépannage par symptôme, du plus simple au plus avancé.',
     icone: 'cle',
+    pastel: 'peche',
     modules: [
       { slug: 'pas-de-son', titre: "Je n'ai plus de son" },
       { slug: 'plus-internet', titre: "Je n'ai plus Internet" },
