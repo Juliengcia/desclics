@@ -15,11 +15,15 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [ ] Mac : majuscule accentuée (É) via Verr. Maj + appui long sur E — à tester sur un vrai Mac (source Apple ne précise que l'appui long).
 - [ ] Mac : € = Option + $ sur clavier français — confirmé par des sources secondaires seulement.
 - [ ] Liens externes (rapports/liens-externes.txt) : le réseau du poste de développement bloque support.apple.com et support.microsoft.com ; vérifier à la main que les pages citées existent en français.
+- [ ] Frise des connectiques : dates RJ11 et RJ45 données en décennies ; USB (1996) et USB-C (2014) à confirmer sur les sites de l'USB-IF. Sources actuelles : Wikipédia.
+- [ ] Windows 11 : libellés « Recommandations de nettoyage » et « Applications installées » à revoir à chaque mise à jour majeure (captures réelles à faire).
+- [ ] Captures réelles (Playwright impossible pour Windows/macOS) : à défaut, illustrations SVG de l'écran Windows Update et du Gestionnaire des tâches à prévoir.
 - [ ] Adresse France Services utilisée sur l'accueil (france-services.gouv.fr) à confirmer.
 
 ## Prochaines étapes
 
-- [ ] Étape 5 : rédaction rubrique par rubrique (ordre proposé : Smartphone, Sécurité, Communiquer, Démarches…).
+- [x] Rubrique 1 « Comprendre l'ordinateur » (7 modules).
+- [ ] Étape 5 suite : ordre proposé Smartphone, Sécurité, Communiquer, Démarches, Internet, Argent, Vie pratique, Bureautique, Réseaux sociaux, IA, J'ai un problème.
 - [ ] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques), sources à vérifier.
 - [ ] Parcours « Je viens de… » (4 parcours) dès que leurs modules existent.
 - [ ] Version FALC des pages clés (démarches, arnaques, premiers pas smartphone).

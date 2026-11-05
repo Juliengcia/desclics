@@ -11,6 +11,8 @@ export const jeVeux: { libelle: string; module: string; ancre?: string }[] = [
   { libelle: 'prendre rendez-vous chez le médecin', module: 'vie-pratique/rendez-vous' },
   { libelle: 'déclarer mes impôts', module: 'demarches/impots' },
   { libelle: 'retrouver un fichier', module: 'ordinateur/fichiers-dossiers' },
+  { libelle: 'débloquer un logiciel figé', module: 'ordinateur/ordinateur-bloque', ancre: 'windows' },
+  { libelle: 'brancher mon ordinateur sur la télé', module: 'ordinateur/connectiques', ancre: 'ecran' },
   { libelle: 'copier-coller un texte', module: 'ordinateur/clavier-raccourcis', ancre: 'copier-coller' },
   { libelle: 'taper @ ou €', module: 'ordinateur/clavier-raccourcis', ancre: 'caracteres-speciaux' },
   { libelle: 'faire une capture d’écran', module: 'ordinateur/clavier-raccourcis', ancre: 'raccourcis-windows' },
