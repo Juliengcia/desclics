@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trois pistes d'identité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root { --page:#F2F2F0; --ink:#1A1A1A; --muted:#555; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --page:#0E0F11; --ink:#EDEDED; --muted:#A8A8A8; } }
+  :root[data-theme="dark"] { --page:#0E0F11; --ink:#EDEDED; --muted:#A8A8A8; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--page); color:var(--ink); font:18px/1.6 Inter, system-ui, sans-serif; }
+  main { max-width:1280px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { font-size:2rem; margin:0 0 .25rem; }
+  .intro { color:var(--muted); margin:0 0 2rem; max-width:60ch; }
+  .piste { border-radius:16px; overflow:hidden; margin-bottom:40px; border:1px solid rgba(127,127,127,.3); }
+  .piste > header { padding:20px 24px; background:var(--page); }
+  .piste > header h2 { margin:0; font-size:1.4rem; }
+  .piste > header p { margin:.25rem 0 0; color:var(--muted); }
+  .modes { display:grid; grid-template-columns:1fr; }
+  @media (min-width:900px) { .modes { grid-template-columns:1fr 1fr; } }
+  .mode { padding:28px 24px; background:var(--bg); color:var(--txt); }
+  .mode .tag { font:600 .8rem/1 Inter, sans-serif; text-transform:uppercase; letter-spacing:.08em; color:var(--soft); margin-bottom:20px; }
+  .brand { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+  .brand svg { width:52px; height:52px; flex:none; }
+  .brand .name { font-family:var(--title); font-weight:700; font-size:1.7rem; line-height:1; color:var(--txt); }
+  .mock-h1 { font-family:var(--title); font-weight:700; font-size:1.9rem; line-height:1.2; margin:0 0 .5rem; }
+  .mock-p { font-family:var(--body); font-size:18px; margin:0 0 1rem; max-width:52ch; }
+  .mock-p a { color:var(--acc); text-decoration-thickness:2px; text-underline-offset:3px; }
+  .btn { display:inline-flex; align-items:center; min-height:48px; padding:0 22px; border-radius:10px; background:var(--acc); color:var(--onacc); font:700 18px var(--body); border:0; }
+  .def { margin-top:20px; border-left:4px solid var(--acc); background:var(--surf); padding:12px 16px; border-radius:0 8px 8px 0; font-family:var(--body); }
+  .def b { color:var(--acc); }
+  .swatches { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .sw { font:500 .78rem/1.3 Inter, sans-serif; }
+  .sw i { display:block; width:64px; height:40px; border-radius:6px; border:1px solid rgba(127,127,127,.4); margin-bottom:4px; }
+  .details { padding:16px 24px 24px; background:var(--page); display:grid; gap:8px 32px; grid-template-columns:1fr; }
+  @media (min-width:900px) { .details { grid-template-columns:repeat(3,1fr); } }
+  .details h3 { font-size:1rem; margin:.5rem 0 .25rem; }
+  .details p { margin:0; color:var(--muted); font-size:.95rem; }
+  .warn { color:#B00020; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .warn { color:#FF8A80; } }
+  :root[data-theme="dark"] .warn { color:#FF8A80; }
+  /* Piste A */
+  .a { --title:'Atkinson Hyperlegible', sans-serif; --body:'Atkinson Hyperlegible', sans-serif; }
+  .a .light { --bg:#FFFFFF; --txt:#1A1A1A; --acc:#1F4FA3; --onacc:#FFFFFF; --surf:#F4F6FA; --soft:#5A6270; }
+  .a .dark  { --bg:#12161D; --txt:#EDEFF3; --acc:#8FB4FF; --onacc:#12161D; --surf:#1C222C; --soft:#9AA3B2; }
+  /* Piste B */
+  .b { --title:'Source Serif 4', Georgia, serif; --body:Inter, sans-serif; }
+  .b .light { --bg:#FBFAF7; --txt:#1C1B19; --acc:#1E6B52; --onacc:#FFFFFF; --surf:#F1EFE8; --soft:#5F5C55; }
+  .b .dark  { --bg:#151815; --txt:#ECEAE4; --acc:#7FD1B0; --onacc:#151815; --surf:#1F231F; --soft:#A3A39B; }
+  /* Piste C */
+  .c { --title:Inter, sans-serif; --body:Inter, sans-serif; }
+  .c .light { --bg:#FFFFFF; --txt:#1A1A1A; --acc:#B4430B; --onacc:#FFFFFF; --surf:#FBF3EE; --soft:#635A53; }
+  .c .dark  { --bg:#17130F; --txt:#F1ECE7; --acc:#FFA06B; --onacc:#17130F; --surf:#231C16; --soft:#A89C92; }
+  .c .brand .name { letter-spacing:-.02em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Trois pistes d'identité</h1>
+  <p class="intro">Chaque piste est montrée en mode clair et en mode sombre, avec un extrait de page type. Tous les contrastes texte et accent respectent le niveau AA (4,5:1 minimum).</p>
+
+  <!-- PISTE A -->
+  <section class="piste a" aria-labelledby="ta">
+    <header><h2 id="ta">Piste A — Clair &amp; Net</h2><p>Recommandée. Jeu de mots sur « net » (Internet) et sur la promesse du ton : clair, net, précis.</p></header>
+    <div class="modes">
+      <div class="mode light">
+        <div class="tag">Mode clair</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="2" y="2" width="48" height="48" rx="12" fill="none" stroke="#1F4FA3" stroke-width="3"/><path d="M14 20h24M14 32h24" stroke="#1F4FA3" stroke-width="4" stroke-linecap="round"/></svg>
+          <span class="name">Clair &amp; Net</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#1F4FA3"></i>#1F4FA3</div><div class="sw"><i style="background:#FFFFFF"></i>#FFFFFF</div><div class="sw"><i style="background:#F4F6FA"></i>#F4F6FA</div><div class="sw"><i style="background:#1A1A1A"></i>#1A1A1A</div></div>
+      </div>
+      <div class="mode dark">
+        <div class="tag">Mode sombre</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="2" y="2" width="48" height="48" rx="12" fill="none" stroke="#8FB4FF" stroke-width="3"/><path d="M14 20h24M14 32h24" stroke="#8FB4FF" stroke-width="4" stroke-linecap="round"/></svg>
+          <span class="name">Clair &amp; Net</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#8FB4FF"></i>#8FB4FF</div><div class="sw"><i style="background:#12161D"></i>#12161D</div><div class="sw"><i style="background:#1C222C"></i>#1C222C</div><div class="sw"><i style="background:#EDEFF3"></i>#EDEFF3</div></div>
+      </div>
+    </div>
+    <div class="details">
+      <div><h3>Logo</h3><p>Le signe « égal » dans un cadre arrondi : deux traits nets, l'idée d'équivalence (le jargon traduit en français clair). Lisible dès 16 px.</p></div>
+      <div><h3>Typographie</h3><p>Atkinson Hyperlegible (licence libre OFL), conçue par le Braille Institute pour distinguer chaque lettre : I/l/1, O/0.</p></div>
+      <div><h3>Couleur et contrastes</h3><p>Bleu ardoise. Accent sur blanc 7,8:1 ; sombre 8,8:1 ; texte 17,4:1.</p></div>
+    </div>
+  </section>
+
+  <!-- PISTE B -->
+  <section class="piste b" aria-labelledby="tb">
+    <header><h2 id="tb">Piste B — La Notice</h2><p>Éditorial, rassurant. Le mot que tout le monde connaît pour « mode d'emploi », sans infantiliser.</p></header>
+    <div class="modes">
+      <div class="mode light">
+        <div class="tag">Mode clair</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M12 4h20l10 10v34H12z" fill="none" stroke="#1E6B52" stroke-width="3" stroke-linejoin="round"/><path d="M32 4v10h10" fill="none" stroke="#1E6B52" stroke-width="3" stroke-linejoin="round"/><path d="M19 26h16M19 33h16M19 40h10" stroke="#1E6B52" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="name">La Notice</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#1E6B52"></i>#1E6B52</div><div class="sw"><i style="background:#FBFAF7"></i>#FBFAF7</div><div class="sw"><i style="background:#F1EFE8"></i>#F1EFE8</div><div class="sw"><i style="background:#1C1B19"></i>#1C1B19</div></div>
+      </div>
+      <div class="mode dark">
+        <div class="tag">Mode sombre</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M12 4h20l10 10v34H12z" fill="none" stroke="#7FD1B0" stroke-width="3" stroke-linejoin="round"/><path d="M32 4v10h10" fill="none" stroke="#7FD1B0" stroke-width="3" stroke-linejoin="round"/><path d="M19 26h16M19 33h16M19 40h10" stroke="#7FD1B0" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="name">La Notice</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#7FD1B0"></i>#7FD1B0</div><div class="sw"><i style="background:#151815"></i>#151815</div><div class="sw"><i style="background:#1F231F"></i>#1F231F</div><div class="sw"><i style="background:#ECEAE4"></i>#ECEAE4</div></div>
+      </div>
+    </div>
+    <div class="details">
+      <div><h3>Logo</h3><p>Une feuille au coin plié, trois lignes de texte : la notice, la fiche Bristol. Sobre, au trait.</p></div>
+      <div><h3>Typographie</h3><p>Titres en Source Serif 4 (ton éditorial, type presse), texte courant en Inter. Deux licences libres OFL.</p></div>
+      <div><h3>Couleur et contrastes</h3><p>Vert sapin sur papier crème. Accent 6,1:1 ; sombre 9,9:1 ; texte 16,5:1.</p></div>
+    </div>
+  </section>
+
+  <!-- PISTE C -->
+  <section class="piste c" aria-labelledby="tc">
+    <header><h2 id="tc">Piste C — Desclics</h2><p>Le nom du dépôt actuel : « des clics » et « déclic ». Chaleureux, mais <strong class="warn">risque de confusion</strong> (voir plus bas).</p></header>
+    <div class="modes">
+      <div class="mode light">
+        <div class="tag">Mode clair</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M18 14l20 12-9 2 5 10-4 2-5-10-7 6z" fill="none" stroke="#B4430B" stroke-width="3" stroke-linejoin="round"/><path d="M10 8l4 4M6 18h5M18 4v5" stroke="#B4430B" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="name">Desclics</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#B4430B"></i>#B4430B</div><div class="sw"><i style="background:#FFFFFF"></i>#FFFFFF</div><div class="sw"><i style="background:#FBF3EE"></i>#FBF3EE</div><div class="sw"><i style="background:#1A1A1A"></i>#1A1A1A</div></div>
+      </div>
+      <div class="mode dark">
+        <div class="tag">Mode sombre</div>
+        <div class="brand">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M18 14l20 12-9 2 5 10-4 2-5-10-7 6z" fill="none" stroke="#FFA06B" stroke-width="3" stroke-linejoin="round"/><path d="M10 8l4 4M6 18h5M18 4v5" stroke="#FFA06B" stroke-width="3" stroke-linecap="round"/></svg>
+          <span class="name">Desclics</span>
+        </div>
+        <p class="mock-h1">Comment raccrocher un appel ?</p>
+        <p class="mock-p">Pendant un appel, l'écran affiche un gros bouton rouge. <a href="#">Voir les étapes sur Android et iPhone</a>.</p>
+        <span class="btn">Commencer</span>
+        <div class="def"><b>Définition.</b> Une application est un programme installé sur le téléphone.</div>
+        <div class="swatches"><div class="sw"><i style="background:#FFA06B"></i>#FFA06B</div><div class="sw"><i style="background:#17130F"></i>#17130F</div><div class="sw"><i style="background:#231C16"></i>#231C16</div><div class="sw"><i style="background:#F1ECE7"></i>#F1ECE7</div></div>
+      </div>
+    </div>
+    <div class="details">
+      <div><h3>Logo</h3><p>Un pointeur de souris et trois traits d'étincelle : le clic et le déclic.</p></div>
+      <div><h3>Typographie</h3><p>Inter seule, en graisses 400 à 700 : style « support Apple », très neutre.</p></div>
+      <div><h3>Couleur et contrastes</h3><p>Terre cuite. Accent 5,6:1 ; sombre 9,2:1 ; texte 17,4:1. <span class="warn">Proche de « DéClics Numériques » (Diversidays), « Les Bons Clics », « Premiers Clics ».</span></p></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
