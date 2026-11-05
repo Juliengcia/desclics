@@ -14,6 +14,12 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'mot-de-passe', terme: 'Mot de passe', definition: "Suite de caractères secrète qui protège un compte. Il en faut un différent pour chaque compte important.", variantes: ['mots de passe', 'mdp', 'code secret'], voir: 'securite/mots-de-passe' },
+  { id: 'phrase-de-passe', terme: 'Phrase de passe', definition: "Mot de passe long fait de plusieurs mots choisis au hasard, plus facile à retenir et difficile à deviner.", variantes: ['phrases de passe'], voir: 'securite/mots-de-passe' },
+  { id: 'gestionnaire-mots-de-passe', terme: 'Gestionnaire de mots de passe', definition: "Coffre-fort numérique qui retient tous vos mots de passe. Vous n'avez plus qu'un seul mot de passe maître à retenir.", variantes: ['gestionnaire de mots de passe', 'coffre-fort de mots de passe', 'bitwarden', 'keepass', 'keepassxc'], voir: 'securite/gestionnaire-mots-de-passe' },
+  { id: 'dark-pattern', terme: 'Dark pattern', definition: "Piège d'interface conçu pour vous faire cliquer là où le site le souhaite : bouton « Refuser » caché, case pré-cochée, compte à rebours.", variantes: ['dark patterns', 'interface trompeuse'], voir: 'securite/cookies-publicites' },
+  { id: 'prise-en-main-distance', terme: 'Prise en main à distance', definition: "Logiciel (TeamViewer, AnyDesk…) qui permet à quelqu'un de contrôler votre ordinateur depuis chez lui. Utile avec un proche, dangereux avec un inconnu.", variantes: ['contrôle à distance', 'teamviewer', 'anydesk', 'assistance à distance'], voir: 'securite/assistance-distance' },
+  { id: 'opposition', terme: 'Opposition (bancaire)', definition: "Blocage d'une carte bancaire demandé à la banque en cas de perte, de vol ou de fraude. La carte devient inutilisable.", variantes: ['faire opposition'], voir: 'securite/victime' },
   { id: 'carte-sim', terme: 'Carte SIM', definition: "Petite puce fournie par l'opérateur, glissée dans le téléphone. Elle porte votre numéro et votre abonnement.", variantes: ['sim', 'carte sim'], voir: 'smartphone/changer-telephone' },
   { id: 'esim', terme: 'eSIM', definition: "Carte SIM intégrée au téléphone, sans puce à glisser. On l'active avec un QR code ou l'appli de l'opérateur.", variantes: ['e-sim'], voir: 'smartphone/changer-telephone' },
   { id: 'imei', terme: 'IMEI', definition: "Numéro unique de 15 chiffres qui identifie un téléphone. On l'affiche en tapant *#06#. Il sert à bloquer un téléphone volé.", voir: 'smartphone/telephone-perdu' },

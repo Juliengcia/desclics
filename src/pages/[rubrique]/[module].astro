@@ -259,3 +259,16 @@ const jsonld = [{
   const det = document.querySelector<HTMLDetailsElement>('[data-sommaire]');
   if (det && matchMedia('(max-width: 1023px)').matches) det.open = false;
 </script>
+<style is:global>
+  .simu-liste { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
+  .simu-message { border: 1px solid var(--trait); border-radius: 18px; padding: 1rem 1.1rem; background: var(--fond); }
+  .simu-entete { margin: 0 0 .35rem; font-size: .95rem; color: var(--texte-doux); }
+  .simu-texte { margin: 0 0 .75rem; padding: .75rem 1rem; border-radius: 14px; background: var(--surface-2); }
+  .simu-boutons { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .simu-boutons [aria-pressed='true'] { background: var(--accent); color: var(--sur-accent); }
+  .simu-retour { margin-top: .75rem; padding: .75rem 1rem; border-radius: 14px; font-size: 1rem; }
+  .simu-retour.ok { background: var(--astuce-fond); }
+  .simu-retour.ko { background: var(--attention-fond); }
+  .simu-retour p { margin: 0 0 .35rem; }
+  .simu-retour ul { margin: 0; padding-left: 1.2rem; }
+</style>

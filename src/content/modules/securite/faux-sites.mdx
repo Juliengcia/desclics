@@ -1,0 +1,94 @@
+---
+identifiant: faux-sites
+titre: Repérer un faux site
+rubrique: securite
+resume: Reconnaître une adresse imitée, un faux site administratif payant ou une boutique fantôme, et vérifier un site avant de payer.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - lire l'adresse d'un site pour repérer une imitation ;
+  - reconnaître les faux sites administratifs payants ;
+  - repérer une boutique fantôme ;
+  - vérifier un site avant de payer.
+motsCles: [faux site, site frauduleux, adresse imitée, site officiel, gouv.fr, boutique en ligne arnaque, vérifier un site, avis]
+titreSeo: "Comment reconnaître un faux site internet ?"
+metaDescription: "Adresse imitée, faux site administratif payant, boutique fantôme : comment reconnaître un faux site et le vérifier avant de payer ou de donner ses informations."
+bristol:
+  - "Lire l'adresse en entier : le nom juste avant .fr ou .com est le vrai site"
+  - "Démarches de l'État : adresses en .gouv.fr, gratuites"
+  - "Le cadenas ne prouve PAS qu'un site est honnête"
+  - "Boutique : mentions légales, avis extérieurs, prix trop bas = méfiance"
+  - "Signaler un faux site : internet-signalement.gouv.fr"
+sources:
+  - titre: "Phishing (hameçonnage) : soyez vigilant sur les informations que vous communiquez"
+    url: https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/phishing-hameconnage-soyez-vigilant-sur-les-informations-que-vous
+    editeur: DGCCRF
+  - titre: Service-Public.fr
+    url: https://www.service-public.gouv.fr/
+    editeur: Direction de l'information légale et administrative
+  - titre: Plateforme de signalement Pharos
+    url: https://www.internet-signalement.gouv.fr/
+    editeur: Ministère de l'Intérieur
+verifieLe: 2026-11-05
+pourAidant:
+  - "Les faux sites administratifs apparaissent souvent en premier dans les résultats, marqués « Sponsorisé » : montrez cette mention."
+  - "Faites prendre l'habitude de passer par service-public.fr pour toute démarche : il renvoie vers le bon site officiel."
+liesA: [internet/adresse-web, securite/arnaques, vie-pratique/acheter-en-ligne]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment lire l'adresse d'un site ? \{#adresse\}
+
+L'<Terme id="url">adresse</Terme> d'un site s'affiche en haut du navigateur. Le **vrai nom du site** est le mot placé juste avant **.fr**, **.com** ou **.gouv.fr**.
+
+<TableauComparatif
+  legende="Vraies et fausses adresses (exemples)"
+  colonnes={['Adresse', 'Vrai site ?', 'Pourquoi']}
+  lignes={[
+    ['www.impots.gouv.fr', 'Oui', 'Se termine par impots.gouv.fr'],
+    ['impots.gouv.fr.remboursement-dossier.com', 'Non', 'Le vrai nom est « remboursement-dossier.com »'],
+    ['www.ameli-fr.info', 'Non', 'Ce n’est pas ameli.fr'],
+    ['www.amaz0n.fr', 'Non', 'Un zéro remplace la lettre o'],
+  ]}
+/>
+
+<Attention>
+Le petit **cadenas** dans la barre d'adresse signifie seulement que la connexion est chiffrée. Les faux sites en ont aussi un : il ne prouve pas que le site est honnête.
+</Attention>
+
+## Comment reconnaître un faux site administratif ? \{#administratif\}
+
+Des sites privés font payer des démarches **gratuites** (acte de naissance, carte grise, extrait de casier judiciaire), parfois très cher.
+
+<Etapes titre="Trouver le bon site officiel">
+1. Commencez toujours par **service-public.gouv.fr** (ou service-public.fr).
+2. Cherchez votre démarche : le site vous renvoie vers le service officiel.
+3. Vérifiez que l'adresse finit par **.gouv.fr** (ou .fr pour ameli.fr, caf.fr, francetravail.fr).
+4. Méfiez-vous des résultats marqués **Sponsorisé** ou **Annonce** dans le moteur de recherche.
+</Etapes>
+
+## Comment repérer une boutique fantôme ? \{#boutique\}
+
+Signes d'alerte : prix très inférieurs au marché, site créé récemment, pas de **mentions légales** ni d'adresse en France ou en Europe, fautes d'orthographe, paiement uniquement par virement ou par carte cadeau, compte à rebours insistant.
+
+<Etapes titre="Vérifier une boutique avant de payer">
+1. Cherchez le nom du site suivi de « avis » ou « arnaque » dans un moteur de recherche.
+2. Lisez les **mentions légales** et les **conditions générales de vente** : société, adresse, numéro d'immatriculation.
+3. Payez par carte bancaire (contestable) ou par un service de paiement reconnu, jamais par virement ou carte cadeau.
+</Etapes>
+
+## Comment signaler un faux site ? \{#signaler\}
+
+Signalez-le sur **internet-signalement.gouv.fr** (plateforme Pharos du ministère de l'Intérieur). Si vous avez payé : voir « J'ai été victime : que faire ? ».

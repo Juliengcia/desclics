@@ -1,0 +1,95 @@
+---
+identifiant: double-authentification
+titre: La double authentification
+rubrique: securite
+resume: Une seconde vérification en plus du mot de passe (code SMS, validation dans une appli) pour que personne ne puisse entrer dans vos comptes avec votre seul mot de passe.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - comprendre le principe de la double authentification ;
+  - connaître les différentes méthodes (SMS, appli, clé) ;
+  - l'activer sur ses comptes importants ;
+  - garder ses codes de secours.
+motsCles: [double authentification, authentification à deux facteurs, 2FA, validation en deux étapes, code SMS, codes de secours, sécurité compte]
+titreSeo: "Double authentification : c'est quoi, comment l'activer ?"
+metaDescription: "La double authentification protège vos comptes même si votre mot de passe est volé. Le principe, les méthodes (SMS, appli) et comment l'activer pas à pas."
+bristol:
+  - "Mot de passe + une seconde preuve (code SMS, appli, empreinte)"
+  - "À activer en priorité : messagerie, compte Google ou Apple, réseaux sociaux"
+  - "Réglage : Sécurité → Validation en deux étapes / Authentification à deux facteurs"
+  - "Noter les codes de secours et les ranger à la maison"
+  - "Ne jamais donner un code reçu à quelqu'un qui vous le demande"
+sources:
+  - titre: Pourquoi et comment bien gérer ses mots de passe ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/mots-de-passe
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Les 10 règles de base pour la sécurité numérique
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/les-10-regles-de-base-pour-la-securite-numerique
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Recommandations relatives à l'authentification multifacteur et aux mots de passe
+    url: https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-authentification_multifacteur_et_mots_de_passe.pdf
+    editeur: ANSSI
+verifieLe: 2026-11-05
+pourAidant:
+  - "La règle d'or à répéter : un code reçu par SMS ne se donne jamais, à personne, même à un « conseiller »."
+  - "Si le numéro de téléphone change, il faut mettre à jour la double authentification avant de résilier l'ancienne ligne."
+liesA: [securite/mots-de-passe, securite/gestionnaire-mots-de-passe, securite/arnaques]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que la double authentification ? \{#principe\}
+
+<Definition terme="double authentification">
+La <Terme id="double-authentification">double authentification</Terme> demande deux preuves pour entrer dans un compte : ce que vous **savez** (le mot de passe) et ce que vous **avez** (votre téléphone).
+</Definition>
+
+**À quoi ça sert.** Même si un pirate vole votre mot de passe, il ne peut pas entrer : il lui manque votre téléphone. Cybermalveillance.gouv.fr recommande de l'activer partout où c'est proposé.
+
+Votre banque l'utilise déjà : c'est la validation d'un paiement dans l'appli bancaire.
+
+## Quelles sont les méthodes ? \{#methodes\}
+
+<TableauComparatif
+  legende="Les secondes preuves possibles"
+  colonnes={['Méthode', 'Comment ça marche', 'Niveau']}
+  lignes={[
+    ['Code par SMS', 'Un code à 6 chiffres arrive par SMS', 'Bien, simple'],
+    ['Validation dans une appli', 'Une notification « C’est bien vous ? » à accepter', 'Très bien'],
+    ['Appli d’authentification', 'Une appli affiche un code qui change toutes les 30 secondes', 'Très bien'],
+    ['Clé de sécurité', 'Petite clé USB à brancher ou approcher', 'Excellent, plus technique'],
+  ]}
+/>
+
+## Comment l'activer ? \{#activer\}
+
+<Etapes titre="Activer la double authentification (méthode générale)">
+1. Connectez-vous au compte, puis ouvrez **Paramètres** ou **Mon compte**.
+2. Cherchez la rubrique **Sécurité** (ou Connexion et sécurité).
+3. Touchez **Validation en deux étapes**, **Authentification à deux facteurs** ou **Double authentification**.
+4. Choisissez la méthode (SMS ou appli), puis suivez les instructions.
+5. Enregistrez les **codes de secours** proposés.
+</Etapes>
+
+<ARetenir>
+Commencez par votre **messagerie e-mail** et votre **compte Google ou Apple** : ils permettent de récupérer tous les autres comptes.
+</ARetenir>
+
+## À quoi servent les codes de secours ? \{#codes-secours\}
+
+Si vous perdez votre téléphone, les codes de secours permettent de vous connecter quand même. Imprimez-les ou recopiez-les, et rangez-les à la maison.
+
+<Attention>
+Un code de validation reçu par SMS ne se communique **jamais**, ni par téléphone, ni par message, même à quelqu'un qui se présente comme votre banque, la police ou un service client. Le demander est la marque d'une arnaque.
+</Attention>

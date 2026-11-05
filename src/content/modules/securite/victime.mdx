@@ -1,0 +1,96 @@
+---
+identifiant: victime
+titre: "J'ai été victime : que faire ?"
+rubrique: securite
+resume: "Les premiers gestes après une arnaque ou un piratage, dans l'ordre : bloquer la carte, changer ses mots de passe, garder les preuves, se faire aider et porter plainte."
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - réagir vite après un paiement ou un code donné à un escroc ;
+  - faire opposition et contester une opération ;
+  - sécuriser ses comptes ;
+  - trouver de l'aide et porter plainte.
+motsCles: [victime arnaque, escroquerie, opposition carte, piratage, 17Cyber, plainte, Thésée, Perceval, Info Escroqueries, remboursement]
+titreSeo: "Victime d'une arnaque en ligne : que faire en premier ?"
+metaDescription: "Victime d'une arnaque ou d'un piratage ? Les gestes dans l'ordre : opposition bancaire, mots de passe, preuves, 17Cyber, plainte. Les numéros utiles et gratuits."
+bristol:
+  - "1. Appeler sa banque : opposition sur la carte, signaler les opérations"
+  - "2. Changer ses mots de passe (messagerie d'abord)"
+  - "3. Garder les preuves : captures d'écran, messages, relevés"
+  - "4. Se faire aider : 17cyber.gouv.fr (24 h/24)"
+  - "5. Porter plainte : commissariat, gendarmerie ou en ligne"
+  - "Info Escroqueries : 0 805 805 817 (gratuit)"
+sources:
+  - titre: "17Cyber, mon assistance en ligne"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/17cyber-mon-assistance-en-ligne
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Victime de cybermalveillance ? Rendez-vous sur 17Cyber.gouv.fr
+    url: https://www.interieur.gouv.fr/actualites/actualites-du-ministere/victime-de-cybermalveillance-rendez-vous-sur-17cybergouvfr
+    editeur: Ministère de l'Intérieur
+  - titre: "Arnaque au QR code : comment la reconnaître et que faire ?"
+    url: https://www.economie.gouv.fr/particuliers/numerique-et-cybersecurite/arnaque-au-qr-code-ou-quishing-comment-la-reconnaitre-et-que-faire
+    editeur: Ministère de l'Économie
+  - titre: Comment faire face à l'arnaque au faux support technique ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/arnaques-au-faux-support-technique
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+falc: true
+pourAidant:
+  - "Déculpabilisez : la honte retarde l'appel à la banque, et chaque heure compte."
+  - "Aidez à faire les captures d'écran avant de supprimer les messages."
+liesA: [securite/arnaques, securite/mots-de-passe, argent/banque-en-ligne]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Que faire dans la première heure ? \{#premiers-gestes\}
+
+<Etapes titre="Les gestes urgents, dans l'ordre">
+1. **Appelez votre banque** (numéro au dos de la carte ou dans l'appli) : faites <Terme id="opposition">opposition</Terme> sur la carte et signalez les opérations frauduleuses. En dehors des heures d'ouverture, le numéro d'opposition fonctionne 24 h/24.
+2. **Changez vos mots de passe**, en commençant par la messagerie e-mail, puis la banque et les comptes concernés.
+3. **Coupez le contact** : ne répondez plus à l'escroc, raccrochez s'il rappelle.
+4. **Gardez les preuves** : captures d'écran des messages, numéros, adresses de sites, relevés bancaires.
+</Etapes>
+
+<Attention>
+Méfiez-vous des personnes qui vous recontactent en promettant de récupérer votre argent contre paiement : c'est une deuxième arnaque, très fréquente.
+</Attention>
+
+## Comment se faire aider ? \{#aide\}
+
+<TableauComparatif
+  legende="Les services officiels et gratuits"
+  colonnes={['Service', 'Pour quoi', 'Contact']}
+  lignes={[
+    ['17Cyber', 'Diagnostic, conseils, échange avec un policier ou un gendarme, 24 h/24', '17cyber.gouv.fr'],
+    ['Info Escroqueries', 'Conseils par téléphone', '0 805 805 817 (gratuit)'],
+    ['33700', 'Signaler un SMS ou un appel frauduleux', 'Transférer le SMS au 33700'],
+    ['Pharos', 'Signaler un site ou un contenu illicite', 'internet-signalement.gouv.fr'],
+  ]}
+/>
+
+## Faut-il porter plainte ? \{#plainte\}
+
+Oui, même si vous n'avez pas perdu d'argent. La plainte est souvent demandée par la banque.
+
+- **Au commissariat ou à la gendarmerie**, avec vos preuves.
+- **En ligne**, pour certaines escroqueries sur Internet, via le service de plainte en ligne proposé par 17Cyber.
+- **Carte bancaire utilisée à votre insu** (carte toujours en votre possession) : déclarez les opérations sur le service **Perceval**, accessible depuis service-public.gouv.fr.
+
+## Si quelqu'un a pris le contrôle de mon ordinateur ? \{#controle\}
+
+1. Débranchez Internet (Wi-Fi coupé, câble retiré).
+2. Désinstallez le logiciel de prise en main à distance installé (AnyDesk, TeamViewer…).
+3. Changez tous vos mots de passe depuis un autre appareil.
+4. Faites vérifier l'ordinateur par un professionnel référencé sur **cybermalveillance.gouv.fr**.
