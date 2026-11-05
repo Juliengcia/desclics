@@ -1,0 +1,123 @@
+---
+identifiant: changer-telephone
+titre: Changer de téléphone, le vendre ou le donner
+rubrique: smartphone
+resume: Sauvegarder ses données, tout transférer vers le nouveau téléphone, retirer son compte, réinitialiser l'ancien et le vendre, le donner ou le recycler.
+duree: 8
+niveau: Intermédiaire
+objectifs:
+  - sauvegarder avant de changer de téléphone ;
+  - transférer ses données vers le nouveau ;
+  - retirer son compte et réinitialiser l'ancien ;
+  - gérer la carte SIM ou l'eSIM ;
+  - vendre, donner ou recycler l'ancien.
+motsCles: [nouveau téléphone, transférer données, Smart Switch, Démarrage rapide, réinitialiser, vendre téléphone, carte SIM, eSIM, recycler]
+titreSeo: "Changer de téléphone : transférer, réinitialiser, vendre"
+metaDescription: "Comment transférer ses données vers un nouveau téléphone, retirer son compte, réinitialiser l'ancien avant de le vendre ou le donner, et que faire de la carte SIM."
+bristol:
+  - "Avant tout : sauvegarde complète (Google ou iCloud)"
+  - "Transfert : Smart Switch (Samsung) · Démarrage rapide (iPhone)"
+  - "Avant de vendre : retirer le compte Google / se déconnecter du compte Apple, puis réinitialiser"
+  - "Samsung : Paramètres → Gestion globale → Réinitialisation → Réinitialiser toutes les données"
+  - "iPhone : Réglages → Général → Transférer ou réinitialiser → Effacer contenu et réglages"
+  - "Retirer la carte SIM et la carte mémoire"
+sources:
+  - titre: Procédure à suivre avant de vendre, de céder ou d'échanger votre iPhone ou iPad
+    url: https://support.apple.com/fr-fr/109511
+    editeur: Apple
+  - titre: Verrouillage d'activation pour l'iPhone et l'iPad
+    url: https://support.apple.com/fr-fr/108794
+    editeur: Apple
+  - titre: Comment supprimer toutes les informations personnelles de mon appareil Galaxy ?
+    url: https://www.samsung.com/fr/support/mobile-devices/how-do-i-delete-all-of-my-personal-information-from-my-device/
+    editeur: Samsung
+  - titre: Comment réinitialiser mon smartphone et restaurer les paramètres d'usine ?
+    url: https://www.samsung.com/fr/support/mobile-devices/comment-reinitialiser-mon-smartphone-tablette-ou-restaurer-les-parametres-d-usine/
+    editeur: Samsung
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Ne réinitialisez jamais l'ancien téléphone avant d'avoir vérifié que tout est bien sur le nouveau (photos, contacts, WhatsApp)."
+  - "WhatsApp a sa propre sauvegarde : faites-la avant le changement (voir le module WhatsApp)."
+liesA: [smartphone/photos, smartphone/compte-google-apple, communiquer/whatsapp]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Que sauvegarder avant de changer ? \{#sauvegarder\}
+
+<Etapes>
+1. Vérifiez la <Terme id="sauvegarde">sauvegarde</Terme> de votre compte : **Paramètres → Google → Sauvegarde** (Android) ou **Réglages → votre nom → iCloud → Sauvegarde iCloud** (iPhone). Lancez-en une.
+2. Vérifiez que vos **photos** sont sauvegardées (Google Photos ou Photos iCloud).
+3. Dans **WhatsApp**, faites une sauvegarde des discussions : Paramètres → Discussions → Sauvegarde.
+4. Notez les mots de passe de votre compte Google ou Apple, et de vos applis importantes (banque).
+</Etapes>
+
+## Comment transférer vers le nouveau téléphone ? \{#transferer\}
+
+<TableauComparatif
+  legende="Les outils de transfert"
+  colonnes={['De… vers…', 'Outil', 'Comment']}
+  lignes={[
+    ['Android vers Samsung', 'Smart Switch', 'Proposé à la mise en route, par câble ou sans fil'],
+    ['iPhone vers iPhone', 'Démarrage rapide', 'Poser les deux iPhone côte à côte à la mise en route'],
+    ['Android vers iPhone', 'Appli « Migrer vers iOS »', 'À installer sur l’Android, suivre les instructions'],
+    ['iPhone vers Android', 'Outil de transfert de la marque', 'Proposé à la mise en route du nouvel Android'],
+  ]}
+/>
+
+<Astuce>
+Gardez les deux téléphones branchés et en Wi-Fi pendant le transfert. Il peut durer une heure ou plus.
+</Astuce>
+
+## Comment préparer l'ancien téléphone ? \{#reinitialiser\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Retirer le compte et réinitialiser (Samsung)">
+1. Ouvrez **Paramètres → Comptes et sauvegarde → Gestion des comptes**.
+2. Touchez votre compte Google, puis **Supprimer le compte**. Répétez pour chaque compte (Samsung compris).
+3. Ouvrez **Paramètres → Gestion globale → Réinitialisation**.
+4. Touchez **Réinitialiser toutes les données**, puis confirmez.
+5. Retirez la **carte mémoire** : elle n'est pas effacée par la réinitialisation.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Se déconnecter et effacer (iPhone)">
+1. Ouvrez **Réglages**, touchez votre nom, puis **Déconnexion**. Saisissez le mot de passe du compte Apple.
+2. Ouvrez **Réglages → Général → Transférer ou réinitialiser l'iPhone**.
+3. Touchez **Effacer contenu et réglages**.
+4. À la fin, l'écran de bienvenue (« Bonjour ») s'affiche : le téléphone est prêt pour son nouveau propriétaire.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+Sans ces étapes, le téléphone reste lié à votre compte : le nouveau propriétaire ne pourra pas l'utiliser (verrouillage d'activation), et vos données pourraient être récupérées.
+</Attention>
+
+## Que faire de la carte SIM ? \{#sim\}
+
+- **Carte SIM** classique : retirez-la avec l'outil fourni (ou un trombone) et glissez-la dans le nouveau téléphone, si le format est le même.
+- **eSIM** (sans carte) : demandez le transfert à votre opérateur, ou suivez l'assistant du nouveau téléphone.
+
+## Vendre, donner ou recycler ? \{#vendre\}
+
+- **Vendre** : sites d'occasion, reprise en magasin ou chez l'opérateur. Indiquez l'état honnêtement.
+- **Donner** : à un proche ou à une association de réemploi.
+- **Recycler** : déposez-le dans un point de collecte (magasins d'électronique, opérateurs, déchetterie). Ne le jetez jamais à la poubelle : la batterie est dangereuse.

@@ -1,0 +1,133 @@
+---
+identifiant: reglages
+titre: "Régler son téléphone : notifications, batterie, son"
+rubrique: smartphone
+resume: Calmer les notifications, activer « Ne pas déranger », faire durer la batterie, régler sonnerie et luminosité, et installer les mises à jour du téléphone.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - limiter les notifications d'une application ;
+  - utiliser le mode « Ne pas déranger » ;
+  - faire durer la batterie ;
+  - régler sonnerie, vibreur et luminosité ;
+  - mettre à jour le téléphone.
+motsCles: [réglages, paramètres, notifications, ne pas déranger, batterie, économie d'énergie, sonnerie, luminosité, mise à jour téléphone]
+titreSeo: "Régler notifications, batterie et son sur son téléphone"
+metaDescription: "Trop de notifications, batterie qui se vide, sonnerie trop faible ? Les réglages utiles d'un téléphone Android ou iPhone, expliqués pas à pas."
+bristol:
+  - "Notifications d'une appli : Paramètres → Notifications (Android) · Réglages → Notifications (iPhone)"
+  - "Ne pas déranger : réglages rapides → Ne pas déranger (Android) · Concentration (iPhone)"
+  - "Batterie : mode économie d'énergie, luminosité automatique"
+  - "Mise à jour : Paramètres → Mise à jour du logiciel (Samsung) · Réglages → Général → Mise à jour logicielle (iPhone)"
+sources:
+  - titre: Guide d'utilisation de l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/welcome/ios
+    editeur: Apple
+  - titre: Mettre à jour votre iPhone ou iPad
+    url: https://support.apple.com/fr-fr/118575
+    editeur: Apple
+  - titre: Aide Android
+    url: https://support.google.com/android/?hl=fr
+    editeur: Google
+  - titre: Assistance smartphones Galaxy
+    url: https://www.samsung.com/fr/support/mobile-devices/
+    editeur: Samsung
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Sur Samsung, les menus varient selon la version (One UI). Si un intitulé manque, utilisez la loupe en haut des Paramètres et tapez le mot (« batterie », « police »)."
+  - "Le mode Ne pas déranger peut laisser passer les favoris : c'est rassurant pour qui attend un appel d'un proche."
+liesA: [smartphone/premiers-pas, smartphone/applications, depannage/batterie]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment calmer les notifications ? \{#notifications\}
+
+<Definition terme="notification">
+Une <Terme id="notification">notification</Terme> est un message qu'une appli affiche en haut de l'écran, avec parfois un son.
+</Definition>
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Couper les notifications d'une appli (Android)">
+1. Ouvrez **Paramètres**, puis **Notifications**.
+2. Touchez **Notifications des applications**.
+3. Désactivez l'interrupteur de l'appli trop bavarde.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Couper les notifications d'une appli (iPhone)">
+1. Ouvrez **Réglages**, puis **Notifications**.
+2. Touchez l'appli dans la liste.
+3. Désactivez **Autoriser les notifications**.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Astuce>
+Gardez les notifications de vos messageries, de votre banque et des services officiels : elles peuvent être importantes.
+</Astuce>
+
+## Comment ne pas être dérangé la nuit ? \{#ne-pas-deranger\}
+
+- **Android** : ouvrez les réglages rapides et touchez **Ne pas déranger**. Dans Paramètres → Notifications → Ne pas déranger, vous pouvez programmer des horaires et autoriser certains contacts.
+- **iPhone** : ouvrez le centre de contrôle, touchez **Concentration**, puis **Ne pas déranger**. Dans Réglages → Concentration, vous pouvez autoriser des personnes.
+
+## Comment faire durer la batterie ? \{#batterie\}
+
+<Etapes>
+1. Activez la **luminosité automatique** ou baissez la luminosité.
+2. Activez le **mode économie d'énergie** (Android) ou **mode Économie d'énergie** (iPhone), dans les réglages rapides ou dans Batterie.
+3. Fermez la localisation et le Bluetooth quand vous ne vous en servez pas.
+4. Regardez dans **Batterie** quelles applis consomment le plus.
+</Etapes>
+
+<Attention>
+Utilisez un chargeur et un câble en bon état, de préférence ceux d'origine ou de marques reconnues. Ne laissez pas le téléphone charger sous un oreiller.
+</Attention>
+
+## Comment régler sonnerie, vibreur et luminosité ? \{#son-ecran\}
+
+- **Volume** : boutons sur la tranche. Le curseur qui apparaît règle la sonnerie ou le son des vidéos.
+- **Sonnerie** : Paramètres → Sons et vibrations (Android) ; Réglages → Sons et vibrations (iPhone).
+- **Mode silencieux** : réglages rapides (Android) ; bouton latéral ou bouton Action sur la tranche gauche (iPhone).
+- **Luminosité** : curseur des réglages rapides ou du centre de contrôle.
+
+## Comment mettre à jour le téléphone ? \{#mise-a-jour\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Mettre à jour un Samsung">
+1. Ouvrez **Paramètres**, puis **Mise à jour du logiciel**.
+2. Touchez **Télécharger et installer**.
+3. Laissez le téléphone en Wi-Fi et en charge pendant l'installation.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Mettre à jour un iPhone">
+1. Ouvrez **Réglages**, puis **Général**.
+2. Touchez **Mise à jour logicielle**.
+3. Touchez **Mettre à jour maintenant**, en Wi-Fi et en charge.
+</Etapes>
+
+</Onglet>
+</Onglets>

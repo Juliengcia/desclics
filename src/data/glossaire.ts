@@ -14,6 +14,15 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'carte-sim', terme: 'Carte SIM', definition: "Petite puce fournie par l'opérateur, glissée dans le téléphone. Elle porte votre numéro et votre abonnement.", variantes: ['sim', 'carte sim'], voir: 'smartphone/changer-telephone' },
+  { id: 'esim', terme: 'eSIM', definition: "Carte SIM intégrée au téléphone, sans puce à glisser. On l'active avec un QR code ou l'appli de l'opérateur.", variantes: ['e-sim'], voir: 'smartphone/changer-telephone' },
+  { id: 'imei', terme: 'IMEI', definition: "Numéro unique de 15 chiffres qui identifie un téléphone. On l'affiche en tapant *#06#. Il sert à bloquer un téléphone volé.", voir: 'smartphone/telephone-perdu' },
+  { id: 'notification', terme: 'Notification', definition: "Message qu'une application affiche en haut de l'écran pour vous prévenir : nouveau SMS, rappel, alerte.", variantes: ['notifications', 'notif'], voir: 'smartphone/reglages' },
+  { id: 'magasin-applications', terme: "Magasin d'applications", definition: "Application officielle pour installer d'autres applications : Play Store sur Android, App Store sur iPhone.", variantes: ['play store', 'app store', 'google play', 'store'], voir: 'smartphone/applications' },
+  { id: 'localisation', terme: 'Localisation', definition: "Fonction qui permet au téléphone de savoir où il se trouve (GPS). Utile pour les cartes et pour retrouver un téléphone perdu.", variantes: ['gps', 'géolocalisation'], voir: 'smartphone/telephone-perdu' },
+  { id: 'sauvegarde', terme: 'Sauvegarde', definition: "Copie de vos données (photos, contacts) gardée ailleurs, par exemple dans le cloud, pour les retrouver si l'appareil est perdu.", variantes: ['sauvegarder', 'backup'], voir: 'smartphone/photos' },
+  { id: 'android', terme: 'Android', definition: "Système des smartphones de la plupart des marques (Samsung, Xiaomi, Google…), conçu par Google.", voir: 'smartphone/premiers-pas' },
+  { id: 'ios', terme: 'iOS', definition: "Système des iPhone, conçu par Apple.", variantes: ['iphone'], voir: 'smartphone/premiers-pas' },
   { id: 'adaptateur', terme: 'Adaptateur', definition: "Petit câble ou boîtier qui relie deux prises de formes différentes, par exemple USB-C vers HDMI.", variantes: ['adaptateurs', 'dongle'], voir: 'ordinateur/connectiques' },
   { id: 'antivirus', terme: 'Antivirus', definition: "Logiciel qui repère et bloque les programmes malveillants (virus). Windows et macOS en intègrent un.", variantes: ['antivirus', 'anti-virus'], voir: 'ordinateur/entretien' },
   { id: 'corbeille', terme: 'Corbeille', definition: "Dossier où vont les fichiers supprimés. On peut encore les récupérer tant que la corbeille n'est pas vidée.", variantes: ['poubelle'], voir: 'ordinateur/fichiers-dossiers' },
