@@ -1,0 +1,106 @@
+---
+identifiant: appels-video
+titre: Faire un appel vidéo
+rubrique: communiquer
+resume: Choisir la bonne appli, appeler un proche en vidéo, rejoindre une réunion avec un lien (Zoom, Teams), régler micro et caméra et régler les problèmes courants.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - choisir l'appli d'appel vidéo adaptée ;
+  - appeler un proche en vidéo ;
+  - rejoindre une réunion à partir d'un lien ;
+  - couper et rallumer micro et caméra ;
+  - régler les problèmes de son et d'image.
+motsCles: [appel vidéo, visio, WhatsApp vidéo, FaceTime, Zoom, Teams, rejoindre une réunion, lien, micro, caméra, téléconsultation]
+titreSeo: "Faire un appel vidéo : WhatsApp, FaceTime, Zoom, Teams"
+metaDescription: "Appeler un proche en vidéo, rejoindre une réunion Zoom ou Teams avec un lien, couper le micro, régler la caméra : l'appel vidéo expliqué pas à pas."
+bristol:
+  - "Famille : WhatsApp (tous téléphones) ou FaceTime (entre appareils Apple)"
+  - "Réunion reçue par lien : toucher le lien, autoriser micro et caméra, « Rejoindre »"
+  - "Micro barré = on ne vous entend pas · Caméra barrée = on ne vous voit pas"
+  - "Pas de son : volume, puis micro autorisé dans les réglages de l'appli"
+sources:
+  - titre: Pages d'aide WhatsApp
+    url: https://faq.whatsapp.com/?locale=fr_FR
+    editeur: WhatsApp
+  - titre: Passer et recevoir des appels FaceTime sur l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/iphbfd1fc7d6/ios
+    editeur: Apple
+  - titre: Rejoindre une réunion Zoom
+    url: https://support.zoom.com/hc/fr/article?id=zm_kb&sysparm_article=KB0060732
+    editeur: Zoom
+  - titre: Rejoindre une réunion dans Microsoft Teams
+    url: https://support.microsoft.com/fr-fr/office/rejoindre-une-r%C3%A9union-dans-microsoft-teams-1613bb53-f3fa-431e-85a9-d6a91e3468c9
+    editeur: Microsoft
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Faites un premier essai la veille d'un rendez-vous important (téléconsultation, entretien)."
+  - "Tenir le téléphone à bout de bras fatigue : un support ou une pile de livres change tout."
+liesA: [communiquer/whatsapp, vie-pratique/rendez-vous, depannage/pas-de-son]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quelle appli choisir ? \{#choisir\}
+
+<TableauComparatif
+  legende="Les applis d'appel vidéo courantes"
+  colonnes={['Appli', 'Pour qui', 'À savoir']}
+  lignes={[
+    ['WhatsApp', 'Famille et amis, tous téléphones', 'Il faut le numéro de la personne'],
+    ['FaceTime', 'Entre iPhone, iPad et Mac', 'Déjà installé sur les appareils Apple'],
+    ['Zoom', 'Réunions, cours, associations', 'On rejoint souvent par un lien, sans compte'],
+    ['Microsoft Teams', 'Réunions professionnelles, entretiens', 'Rejoindre par lien possible dans le navigateur'],
+  ]}
+/>
+
+## Comment appeler un proche en vidéo ? \{#proche\}
+
+- **WhatsApp** : ouvrez la discussion, touchez la **caméra** en haut.
+- **FaceTime** : ouvrez l'appli FaceTime, touchez **Nouveau FaceTime**, choisissez le contact, touchez **FaceTime** (caméra verte).
+
+## Comment rejoindre une réunion avec un lien ? \{#lien\}
+
+<Etapes>
+1. Ouvrez l'e-mail ou le SMS d'invitation et touchez le **lien** de la réunion.
+2. Si l'appli est proposée, installez-la depuis le magasin officiel ; sur ordinateur, vous pouvez souvent **rejoindre depuis le navigateur**.
+3. Tapez votre nom, puis **autorisez le micro et la caméra** quand ils sont demandés.
+4. Touchez **Rejoindre**. Vous attendez parfois dans une « salle d'attente » que l'organisateur vous admette.
+</Etapes>
+
+## Comment gérer micro et caméra ? \{#micro-camera\}
+
+En bas de l'écran (ou en haut selon l'appli) :
+
+- **Micro barré** : les autres ne vous entendent pas. Touchez-le pour parler.
+- **Caméra barrée** : les autres ne vous voient pas.
+- **Bouton rouge** : quitter l'appel.
+
+<Astuce>
+Placez la lumière face à vous (une fenêtre devant, pas derrière), et l'écran à hauteur des yeux.
+</Astuce>
+
+## Que faire en cas de problème ? \{#problemes\}
+
+<TableauComparatif
+  legende="Problèmes courants"
+  colonnes={['Problème', 'Solution']}
+  lignes={[
+    ['On ne m’entend pas', 'Micro barré ? Sinon, autoriser le micro : Réglages du téléphone → l’appli → Micro'],
+    ['Je n’entends rien', 'Monter le volume, vérifier qu’un casque Bluetooth n’est pas connecté'],
+    ['On ne me voit pas', 'Caméra barrée ? Autoriser la caméra dans les réglages de l’appli'],
+    ['Image figée, son haché', 'Se rapprocher de la box, couper la caméra, fermer les autres applis'],
+  ]}
+/>

@@ -1,0 +1,115 @@
+---
+identifiant: arnaques
+titre: Reconnaître une arnaque
+rubrique: securite
+resume: Les arnaques les plus courantes par SMS, e-mail et téléphone, les signes qui doivent alerter, les bons réflexes, et un simulateur pour s'entraîner.
+duree: 9
+niveau: Premiers pas
+objectifs:
+  - reconnaître un faux SMS ou un faux e-mail ;
+  - repérer un faux appel de banque ou de conseiller ;
+  - connaître les signes communs à toutes les arnaques ;
+  - adopter les bons réflexes et signaler.
+motsCles: [arnaque, hameçonnage, phishing, faux SMS, faux e-mail, faux conseiller bancaire, colis, carte Vitale, "33700", escroquerie]
+titreSeo: "Faux SMS, faux e-mail, faux appel : reconnaître une arnaque"
+metaDescription: "Comment reconnaître un faux SMS, un faux e-mail ou un faux conseiller bancaire ? Les signes qui alertent, les bons réflexes et un simulateur pour s'entraîner."
+bristol:
+  - "Urgence + lien + demande d'argent ou de code = arnaque"
+  - "Ne jamais cliquer : aller soi-même sur le site ou l'appli officielle"
+  - "Ne jamais donner un code reçu par SMS, ni valider une opération qu'on n'a pas faite"
+  - "Faux conseiller bancaire : raccrocher, rappeler le numéro au dos de sa carte"
+  - "Signaler un SMS : le transférer au 33700"
+  - "Doute : Info Escroqueries 0 805 805 817 (gratuit)"
+sources:
+  - titre: "Arnaques par message électronique : comment identifier et déjouer l'hameçonnage ?"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/arnaques-par-message-electronique-comment-identifier-et-dejouer-lhameconnage
+    editeur: Cybermalveillance.gouv.fr
+  - titre: "Smishing : comment réagir face aux SMS frauduleux de livraison de colis ?"
+    url: https://www.economie.gouv.fr/particuliers/numerique-et-cybersecurite/smishing-comment-reagir-face-aux-sms-frauduleux-de-livraison-de-colis
+    editeur: Ministère de l'Économie
+  - titre: "Opérations bancaires à distance : comment vous protéger des fraudes ?"
+    url: https://www.economie.gouv.fr/particuliers/mes-droits-conso/eviter-les-arnaques/operations-bancaires-distance-comment-vous-proteger-des-fraudes
+    editeur: Ministère de l'Économie
+  - titre: Les cybermalveillances les plus fréquentes
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/cybersecurite-les-cybermalveillances-les-plus-frequentes
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+falc: true
+pourAidant:
+  - "La honte empêche souvent d'en parler : rappelez que ces arnaques sont fabriquées par des professionnels et que tout le monde peut s'y laisser prendre."
+  - "Faites faire le simulateur ensemble, en lisant les indices à voix haute."
+liesA: [securite/victime, securite/faux-sites, smartphone/qr-code]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+import SimulateurArnaques from '../../../components/ateliers/SimulateurArnaques.tsx';
+
+## Comment reconnaître un faux SMS ou un faux e-mail ? \{#faux-messages\}
+
+<Definition terme="hameçonnage">
+L'<Terme id="hameconnage">hameçonnage</Terme> (phishing) est un faux message qui imite une banque, l'Assurance Maladie, un transporteur ou les impôts, pour vous faire cliquer sur un lien et voler vos codes ou votre carte bancaire.
+</Definition>
+
+Les plus fréquents : colis en attente avec frais à payer, remboursement de l'Assurance Maladie ou des impôts, carte Vitale à renouveler, amende impayée, compte bancaire bloqué, « Coucou maman, j'ai changé de numéro ».
+
+<Etapes titre="Les vérifications avant de cliquer">
+1. **Qui envoie ?** Un numéro de portable ordinaire, ou une adresse e-mail qui ne finit pas par le nom officiel (ameli.fr, impots.gouv.fr).
+2. **Que demande-t-on ?** Payer de petits frais, « mettre à jour » vos informations, saisir vos codes.
+3. **Y a-t-il une urgence ?** « Sous 24 h », « dernier rappel », « compte suspendu ».
+4. **Où mène le lien ?** Sans cliquer, regardez l'adresse : orthographe bizarre, .com ou .info au lieu de .gouv.fr.
+</Etapes>
+
+<ARetenir>
+En cas de doute, ne cliquez pas. Ouvrez vous-même l'appli officielle ou tapez l'adresse du site connu.
+</ARetenir>
+
+## Comment reconnaître un faux appel ? \{#faux-appels\}
+
+Le **faux conseiller bancaire** appelle, parfois avec le vrai numéro de la banque affiché. Il annonce une opération suspecte et vous demande de « sécuriser » votre compte : donner un code reçu par SMS, valider une opération dans l'appli, faire un virement vers un « compte sécurisé », ou remettre votre carte à un coursier.
+
+<Attention>
+Votre banque ne vous demandera **jamais** un code reçu par SMS, de valider une opération que vous n'avez pas faite, de faire un virement « de sécurité » ou de remettre votre carte. Raccrochez, puis rappelez le numéro inscrit au dos de votre carte.
+</Attention>
+
+D'autres faux appels se présentent comme la police, un service de l'État, un fournisseur d'énergie ou le « support technique » de Microsoft.
+
+## Quels signes doivent toujours alerter ? \{#signes\}
+
+<TableauComparatif
+  legende="Les signes communs aux arnaques"
+  colonnes={['Signe', 'Exemple']}
+  lignes={[
+    ['L’urgence', '« Sous 24 h », « votre compte va être bloqué »'],
+    ['La peur ou l’appât du gain', 'Amende majorée, remboursement inattendu, gros lot'],
+    ['Une demande inhabituelle', 'Code SMS, coordonnées bancaires, carte, virement'],
+    ['Un lien ou une pièce jointe', 'Lien raccourci, adresse mal écrite, fichier à ouvrir'],
+    ['Le secret', '« N’en parlez pas à votre conseiller »'],
+  ]}
+/>
+
+## Comment s'entraîner ? \{#simulateur\}
+
+<SimulateurArnaques client:visible />
+
+## Comment signaler une arnaque ? \{#signaler\}
+
+- **SMS frauduleux** : transférez-le gratuitement au **33700**, puis supprimez-le.
+- **Site frauduleux** : signalez-le sur **internet-signalement.gouv.fr** (Pharos).
+- **Besoin de conseil** : appelez **Info Escroqueries** au **0 805 805 817** (gratuit).
+- **Vous avez cliqué ou payé** : voir « J'ai été victime : que faire ? ».
+
+<Quiz questions={[
+  { question: 'Un SMS vous demande 1,99 € de frais pour un colis. Que faire ?', choix: ['Payer, c’est peu', 'Ne pas cliquer et le transférer au 33700', 'Répondre STOP'], bonne: 1, explication: 'C’est l’arnaque au faux colis : les petits frais servent à voler la carte bancaire.' },
+  { question: 'Votre « conseiller » vous demande le code reçu par SMS. Que faire ?', choix: ['Le lui donner', 'Raccrocher et rappeler le numéro au dos de la carte'], bonne: 1, explication: 'La banque ne demande jamais ce code.' },
+]} />

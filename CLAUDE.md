@@ -9,7 +9,7 @@
 - **Public de référence : Jacqueline, 50 ans.** Elle a du mal avec son téléphone (ouvrir WhatsApp, raccrocher) et sait seulement utiliser un traitement de texte. Elle veut comprendre, pas être infantilisée. Pour chaque page : « Comprend-elle du premier coup ? La trouve-t-elle sans aide ? »
 - **Ton** : clair, net, précis, adulte, **vouvoiement**. Une idée par phrase. Pas de blabla, pas d'émoji décoratif, pas de chiffres inutiles. Chaque terme technique est expliqué en une ligne la première fois et relié au glossaire (`<Terme id="…">`).
 - **Pas de** points, badges, mascotte, compte utilisateur, traceur ni publicité.
-- **Identité** : nom Desclics, logo pointeur + étincelle, accent bleu `#2440C8` (sombre `#9DB0FF`), fond papier crème, Inter (titres) + Atkinson Hyperlegible Next (texte, 18 px minimum). Références visuelles dans `refs/` : grands titres serrés, étiquettes en pilule, cartes arrondies, touches de peinture douce (bleu, vert, orange) en décor seulement.
+- **Identité (v2)** : nom Desclics, logo pointeur + étincelle. **Deux typos** : Bricolage Grotesque (titres, interface) + Atkinson Hyperlegible Next (texte, 18 px minimum). Accent unique bleu `#2440C8` (sombre `#9DB0FF`) pour liens et boutons. **Pastels** (ciel, menthe, pêche, lilas, citron, rose) en fonds seulement, un par rubrique (`pastel` dans `rubriques.ts`). Fond blanc cassé `#F6F6F3`. Références dans `refs/` (01 à 09) : titres serrés avec deuxième partie en ton doux (`.ton-doux`), surtitre à pastille (`.etiquette`), boutons en pilule, cartes plates avec pastille ronde (`.carte`, `.pastille`), carte sombre mise en avant (`.carte--sombre`), séparateurs hachurés (`.hachures`), bande à filets verticaux (`.bande`), navigation en pilule.
 
 ## 2. Nomenclature (stricte, identique partout)
 

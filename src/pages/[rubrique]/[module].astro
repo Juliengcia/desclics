@@ -35,7 +35,7 @@ const jsonld = [{
     <FilAriane miettes={[{ titre: m.rubrique.titre, chemin: m.rubrique.slug }, { titre: d.titre }]} />
 
     <header class="module-entete">
-      <p class="etiquette"><Icone nom={m.rubrique.icone} /> {m.rubrique.titre}</p>
+      <p class="etiquette">{m.rubrique.titre}</p>
       <h1>{d.titre}</h1>
       <p class="chapo">{d.resume}</p>
       <ul class="module-meta" aria-label="Informations sur ce module">
@@ -43,7 +43,7 @@ const jsonld = [{
         <li><Icone nom="niveau" taille={20} /> Niveau : {d.niveau}</li>
         <li><Icone nom="coche" taille={20} /> Vérifié le <time datetime={d.verifieLe.toISOString().slice(0, 10)}>{dateFr(d.verifieLe)}</time></li>
       </ul>
-      <div class="module-objectifs">
+      <div class:list={["module-objectifs", `pastel-${m.rubrique.pastel}`]}>
         <p class="objectifs-titre">Dans ce module, vous allez apprendre à :</p>
         <ul>{d.objectifs.map((o) => <li>{o}</li>)}</ul>
       </div>
@@ -107,7 +107,7 @@ const jsonld = [{
   .module-entete h1 { margin-top: 1rem; }
   .module-meta { list-style: none; padding: 0; margin: 1.25rem 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font: 550 1rem var(--police-titre); color: var(--texte-doux); }
   .module-meta li { display: inline-flex; align-items: center; gap: .4rem; }
-  .module-objectifs { background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 1rem 1.25rem; }
+  .module-objectifs { background: var(--pastel, var(--surface)); border-radius: 20px; padding: 1.25rem 1.5rem; }
   .objectifs-titre { font: 650 1.05rem var(--police-titre); margin: 0 0 .4rem; }
   .module-objectifs ul { margin: 0; padding-left: 1.2rem; }
   .mode-simple-note { display: none; }
@@ -259,3 +259,16 @@ const jsonld = [{
   const det = document.querySelector<HTMLDetailsElement>('[data-sommaire]');
   if (det && matchMedia('(max-width: 1023px)').matches) det.open = false;
 </script>
+<style is:global>
+  .simu-liste { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
+  .simu-message { border: 1px solid var(--trait); border-radius: 18px; padding: 1rem 1.1rem; background: var(--fond); }
+  .simu-entete { margin: 0 0 .35rem; font-size: .95rem; color: var(--texte-doux); }
+  .simu-texte { margin: 0 0 .75rem; padding: .75rem 1rem; border-radius: 14px; background: var(--surface-2); }
+  .simu-boutons { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .simu-boutons [aria-pressed='true'] { background: var(--accent); color: var(--sur-accent); }
+  .simu-retour { margin-top: .75rem; padding: .75rem 1rem; border-radius: 14px; font-size: 1rem; }
+  .simu-retour.ok { background: var(--astuce-fond); }
+  .simu-retour.ko { background: var(--attention-fond); }
+  .simu-retour p { margin: 0 0 .35rem; }
+  .simu-retour ul { margin: 0; padding-left: 1.2rem; }
+</style>

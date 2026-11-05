@@ -1,0 +1,76 @@
+---
+identifiant: assistance-distance
+titre: "Assistance à distance : quand c'est dangereux"
+rubrique: securite
+resume: Les logiciels de prise en main à distance permettent à un proche de vous dépanner, mais servent aussi aux escrocs. Les règles pour s'en servir sans risque.
+duree: 5
+niveau: Intermédiaire
+objectifs:
+  - comprendre la prise en main à distance ;
+  - reconnaître l'arnaque au faux support technique ;
+  - n'autoriser qu'une personne de confiance ;
+  - réagir si un inconnu a pris le contrôle.
+motsCles: [assistance à distance, prise en main à distance, TeamViewer, AnyDesk, faux support technique, arnaque Microsoft, dépannage informatique]
+titreSeo: "TeamViewer, AnyDesk : les dangers de l'accès à distance"
+metaDescription: "Laisser quelqu'un contrôler son ordinateur à distance : utile avec un proche, dangereux avec un inconnu. L'arnaque au faux support technique et les règles d'or."
+bristol:
+  - "Microsoft, Apple ou votre banque ne vous appellent jamais pour prendre la main sur votre ordinateur"
+  - "N'installer TeamViewer ou AnyDesk qu'à la demande d'une personne que vous connaissez"
+  - "Ne jamais donner le code d'accès à quelqu'un qui vous a contacté"
+  - "Rester devant l'écran pendant tout le dépannage"
+  - "Inconnu connecté : couper Internet, désinstaller le logiciel, changer ses mots de passe"
+sources:
+  - titre: Comment faire face à l'arnaque au faux support technique ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/arnaques-au-faux-support-technique
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+pourAidant:
+  - "Si vous dépannez un proche à distance, convenez d'un mot ou d'un rituel (« je t'appelle d'abord sur ton fixe ») qu'un escroc ne connaîtra pas."
+liesA: [ordinateur/ordinateur-bloque, securite/victime, securite/arnaques]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que la prise en main à distance ? \{#definition\}
+
+<Definition terme="prise en main à distance">
+Un logiciel de <Terme id="prise-en-main-distance">prise en main à distance</Terme> (TeamViewer, AnyDesk…) permet à quelqu'un de voir votre écran et de contrôler votre ordinateur depuis chez lui.
+</Definition>
+
+**À quoi ça sert.** Un proche ou un dépanneur que vous avez choisi peut régler un problème sans se déplacer.
+
+## Comment fonctionne l'arnaque au faux support technique ? \{#arnaque\}
+
+Une fenêtre bloque votre écran avec une alarme : « Virus détecté, appelez Microsoft au… ». Ou quelqu'un vous appelle en se présentant comme un technicien. Le faux technicien vous fait installer un logiciel de prise en main, puis il demande un paiement, vole vos mots de passe ou accède à votre banque. Cybermalveillance.gouv.fr indique que cette arnaque vise surtout les personnes âgées.
+
+<Attention>
+Microsoft, Apple, votre fournisseur d'accès ou votre banque ne vous appellent **jamais** spontanément pour prendre le contrôle de votre ordinateur, et n'affichent pas de numéro à appeler dans une alerte du navigateur.
+</Attention>
+
+## Quelles sont les règles d'or ? \{#regles\}
+
+<Etapes>
+1. N'installez un logiciel de prise en main que si **vous** avez demandé de l'aide à une personne que vous connaissez.
+2. Ne donnez jamais l'identifiant ou le code d'accès à quelqu'un qui vous a contacté de lui-même.
+3. Restez devant l'écran pendant toute l'intervention, et fermez l'appli bancaire.
+4. À la fin, fermez la session et, si vous n'en avez plus besoin, désinstallez le logiciel.
+</Etapes>
+
+## Que faire si un inconnu a pris le contrôle ? \{#reagir\}
+
+1. Coupez Internet (Wi-Fi désactivé ou box débranchée).
+2. Désinstallez le logiciel de prise en main.
+3. Changez tous vos mots de passe depuis un autre appareil.
+4. Si vous avez donné des informations bancaires : appelez votre banque pour faire opposition.
+5. Faites-vous aider sur **17cyber.gouv.fr** et portez plainte.

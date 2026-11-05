@@ -1,0 +1,133 @@
+---
+identifiant: compte-google-apple
+titre: Compte Google et compte Apple
+rubrique: smartphone
+resume: À quoi sert le compte Google ou le compte Apple de votre téléphone, comment le créer, le protéger et retrouver son mot de passe.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - comprendre pourquoi le téléphone demande un compte ;
+  - créer un compte Google ou un compte Apple ;
+  - savoir ce que ce compte sauvegarde ;
+  - retrouver un mot de passe oublié ;
+  - garder ce compte pour soi.
+motsCles: [compte Google, compte Apple, identifiant Apple, Gmail, mot de passe oublié, Play Store, App Store, iCloud]
+titreSeo: "Compte Google ou compte Apple : à quoi ça sert ?"
+metaDescription: "Pourquoi votre téléphone demande un compte Google ou un compte Apple, comment le créer, le protéger et retrouver un mot de passe oublié, expliqué simplement."
+bristol:
+  - "Android → compte Google · iPhone → compte Apple (ex-identifiant Apple)"
+  - "Il sert à installer des applis, sauvegarder contacts et photos, retrouver un téléphone perdu"
+  - "Notez l'adresse e-mail et le mot de passe dans un endroit sûr à la maison"
+  - "Mot de passe oublié : g.co/recover (Google) · iforgot.apple.com (Apple)"
+  - "Ne le partagez pas, même en famille : chacun son compte"
+sources:
+  - titre: Créer un compte Apple
+    url: https://support.apple.com/fr-fr/108647
+    editeur: Apple
+  - titre: Si vous avez oublié le mot de passe de votre compte Apple
+    url: https://support.apple.com/fr-fr/102656
+    editeur: Apple
+  - titre: Créer un compte Google
+    url: https://support.google.com/accounts/answer/27441?hl=fr
+    editeur: Google
+  - titre: Ajouter ou supprimer un compte sur Android
+    url: https://support.google.com/android/answer/7664951?hl=fr
+    editeur: Google
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Beaucoup ont plusieurs comptes Google créés à chaque nouveau téléphone sans le savoir. Retrouvez lequel est utilisé : Paramètres → Comptes."
+  - "Le compte est souvent créé par un vendeur ou un proche : vérifiez que la personne en connaît bien le mot de passe."
+  - "Apple a renommé « identifiant Apple » en « compte Apple » : les deux désignent la même chose."
+liesA: [smartphone/applications, smartphone/photos, securite/mots-de-passe]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## À quoi sert ce compte ? \{#role\}
+
+<Definition terme="compte Google / compte Apple">
+C'est votre identité sur le téléphone : une adresse e-mail et un mot de passe. Android utilise un **compte Google**, l'iPhone un **compte Apple** (appelé autrefois « identifiant Apple »).
+</Definition>
+
+**À quoi ça sert.**
+
+- installer des applications depuis le <Terme id="magasin-applications">magasin d'applications</Terme> ;
+- faire une <Terme id="sauvegarde">sauvegarde</Terme> des contacts, photos et réglages ;
+- retrouver ou bloquer le téléphone s'il est perdu ;
+- tout récupérer sur un nouveau téléphone.
+
+## Comment créer ce compte ? \{#creer\}
+
+Le téléphone propose de créer le compte à la première mise en route. Si ce n'est pas fait :
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Créer un compte Google">
+1. Ouvrez **Paramètres**, puis **Comptes et sauvegarde** (ou **Comptes**).
+2. Touchez **Gestion des comptes**, puis **Ajouter un compte**, puis **Google**.
+3. Touchez **Créer un compte**, puis **Pour moi**.
+4. Suivez les étapes : nom, date de naissance, adresse Gmail choisie, mot de passe.
+5. Ajoutez votre numéro de téléphone : il servira à récupérer le compte.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Créer un compte Apple">
+1. Ouvrez **Réglages**.
+2. Touchez **Se connecter** en haut, puis **Vous n'avez pas de compte ?** (ou **Créer un compte Apple**).
+3. Indiquez votre nom, date de naissance et adresse e-mail.
+4. Choisissez un mot de passe, puis vérifiez votre numéro de téléphone avec le code reçu par SMS.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<ARetenir>
+Notez l'adresse e-mail et le mot de passe du compte sur papier, rangé à la maison. Sans eux, vous risquez de perdre photos et contacts en changeant de téléphone.
+</ARetenir>
+
+## Comment savoir quel compte est utilisé ? \{#verifier\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+Ouvrez **Paramètres → Comptes et sauvegarde → Gestion des comptes** : l'adresse Gmail affichée sous « Google » est votre compte.
+
+</Onglet>
+<Onglet appareil="iphone">
+
+Ouvrez **Réglages** : votre nom s'affiche tout en haut. Touchez-le pour voir l'adresse e-mail du compte.
+
+</Onglet>
+</Onglets>
+
+## Que faire en cas de mot de passe oublié ? \{#mot-de-passe\}
+
+<Etapes titre="Récupérer son compte">
+1. Depuis un ordinateur ou un autre appareil, allez sur **g.co/recover** (Google) ou **iforgot.apple.com** (Apple). Tapez l'adresse vous-même.
+2. Indiquez l'adresse e-mail ou le numéro de téléphone du compte.
+3. Recevez un code par SMS ou validez sur un appareil déjà connecté.
+4. Choisissez un nouveau mot de passe, et notez-le.
+</Etapes>
+
+<Attention>
+Personne de chez Google ou Apple ne vous appellera pour vous demander votre mot de passe ou un code reçu par SMS. Un tel appel est une arnaque.
+</Attention>
+
+## Peut-on partager son compte ? \{#partage\}
+
+Non. Chacun doit avoir son compte : partager le compte mélange les contacts, les photos et les messages, et permet à l'autre de localiser ou d'effacer votre téléphone. Pour partager des achats en famille, Google et Apple proposent un **partage familial**.

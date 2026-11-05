@@ -17,8 +17,8 @@ const prevus = modules.filter((m) => !m.publie);
 <Base titre={rubrique.titre} description={`${rubrique.description} Explications claires, étape par étape, sur Desclics.`}>
   <div class="conteneur">
     <FilAriane miettes={[{ titre: rubrique.titre }]} />
-    <header class="rubrique-entete">
-      <span class="rubrique-icone"><Icone nom={rubrique.icone} taille={32} /></span>
+    <header class:list={["rubrique-entete carte", `pastel-${rubrique.pastel}`]}>
+      <span class="pastille"><Icone nom={rubrique.icone} /></span>
       <h1>{rubrique.titre}</h1>
       <p class="chapo">{rubrique.description}</p>
     </header>
@@ -28,7 +28,7 @@ const prevus = modules.filter((m) => !m.publie);
         <h2 id="dispo">Modules disponibles</h2>
         <ol class="grille grille--2 liste-modules">
           {publies.map((m) => (
-            <li class="carte carte-lien">
+            <li class="carte carte--blanche carte-lien">
               <h3><a href={lien(m.chemin)}>{m.titre}</a></h3>
               <p>{m.entree!.data.resume}</p>
               <p class="meta"><Icone nom="horloge" taille={18} /> {m.entree!.data.duree} min · {m.entree!.data.niveau}</p>
@@ -50,8 +50,9 @@ const prevus = modules.filter((m) => !m.publie);
   </div>
 </Base>
 <style>
-  .rubrique-entete { padding: .5rem 0 2rem; }
-  .rubrique-icone { display: inline-flex; padding: .7rem; border-radius: 14px; background: var(--accent-pale); color: var(--accent); margin-bottom: 1rem; }
+  .rubrique-entete { padding: 2rem; margin-bottom: 2.5rem; }
+  .rubrique-entete h1 { margin-top: 1.5rem; }
+  .rubrique-entete .chapo { color: var(--texte) !important; margin-bottom: 0; }
   .liste-modules { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
   .liste-modules h3 { font-size: 1.25rem; margin-bottom: .4rem; }
   .liste-modules h3 a { color: var(--texte); text-decoration: none; }
