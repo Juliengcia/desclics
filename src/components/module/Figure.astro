@@ -1,0 +1,34 @@
+---
+/**
+ * Visuel : schéma, capture annotée ou illustration (SVG en ligne dans le slot).
+ * - alt : texte alternatif complet (décrit tout ce que montre l'image).
+ * - annotations : légende numérotée (les numéros figurent sur l'image).
+ * - date : mois de réalisation (AAAA-MM), affiché et suivi dans CAPTURES.md.
+ * - nature : « schema » | « capture » | « illustration » (interface recréée, simplifiée).
+ */
+interface Props { alt: string; legende: string; date: string; annotations?: string[]; nature?: 'schema' | 'capture' | 'illustration'; id?: string }
+const { alt, legende, date, annotations = [], nature = 'schema', id } = Astro.props;
+const mois = new Date(`${date}-01`).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+const natureTexte = { schema: 'Schéma', capture: "Capture d'écran", illustration: 'Illustration simplifiée' }[nature];
+---
+<figure class="figure" id={id}>
+  <div class="figure-image" tabindex="0" role="region" aria-label={`${natureTexte} (fait défiler sur petit écran)`}><div role="img" aria-label={alt}><slot /></div></div>
+  <figcaption>
+    <p class="figure-legende">{legende}</p>
+    {annotations.length > 0 && <ol class="figure-annotations">{annotations.map((a) => <li set:html={a} />)}</ol>}
+    <p class="figure-date">{natureTexte} · réalisé en {mois}</p>
+  </figcaption>
+</figure>
+<style>
+  .figure { margin: 1.75rem 0; border: 1px solid var(--trait); border-radius: var(--rayon-grand); background: var(--surface); overflow: hidden; }
+  .figure-image { padding: 1.25rem; background: var(--surface-2); overflow-x: auto; }
+  /* Sur petit écran, un schéma détaillé garde une taille lisible et défile dans son cadre. */
+  .figure-image :global(svg.schema-large) { min-width: 600px; }
+  .figure-image :global(svg) { width: 100%; height: auto; max-height: 26rem; }
+  figcaption { padding: 1rem 1.25rem 1.1rem; font-size: 1rem; }
+  .figure-legende { font-weight: 700; margin: 0 0 .5rem; }
+  .figure-annotations { margin: 0 0 .5rem; padding-left: 2.2rem; }
+  .figure-annotations :global(li) { padding: .1rem 0; }
+  .figure-annotations :global(li::marker) { font-weight: 700; color: var(--accent); }
+  .figure-date { margin: 0; color: var(--texte-doux); font-size: .9rem; }
+</style>

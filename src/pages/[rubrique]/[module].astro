@@ -1,0 +1,261 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import Icone from '../../components/Icone.astro';
+import FicheBristol from '../../components/module/FicheBristol.astro';
+import { modulesPublies, voisins, trouverModule, type EntreeModule } from '../../lib/navigation';
+import { lien } from '../../lib/chemins';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const publies = await modulesPublies();
+  return publies.map((m) => ({ params: { rubrique: m.rubrique.slug, module: m.slug }, props: { m } }));
+}
+const { m } = Astro.props as { m: EntreeModule };
+const entree = m.entree!;
+const d = entree.data;
+const { Content, headings } = await render(entree);
+const chapitres = headings.filter((h) => h.depth === 2);
+const { precedent, suivant } = await voisins(m.chemin);
+const lies = (await Promise.all(d.liesA.map((c) => trouverModule(c)))).filter((x): x is EntreeModule => Boolean(x?.publie));
+const dateFr = (x: Date) => x.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const url = new URL(lien(m.chemin), Astro.site).href;
+
+const jsonld = [{
+  '@context': 'https://schema.org', '@type': 'Article', headline: d.titre, description: d.metaDescription,
+  inLanguage: 'fr-FR', dateModified: d.verifieLe.toISOString().slice(0, 10), url,
+  author: { '@type': 'Organization', name: site.nom }, publisher: { '@type': 'Organization', name: site.nom },
+  keywords: d.motsCles.join(', '), timeRequired: `PT${d.duree}M`, educationalLevel: d.niveau,
+  isAccessibleForFree: true, about: d.objectifs,
+}];
+---
+<Base titre={d.titreSeo} description={d.metaDescription} type="article" jsonld={jsonld}>
+  <article class="module conteneur" data-module={m.chemin}>
+    <FilAriane miettes={[{ titre: m.rubrique.titre, chemin: m.rubrique.slug }, { titre: d.titre }]} />
+
+    <header class="module-entete">
+      <p class="etiquette"><Icone nom={m.rubrique.icone} /> {m.rubrique.titre}</p>
+      <h1>{d.titre}</h1>
+      <p class="chapo">{d.resume}</p>
+      <ul class="module-meta" aria-label="Informations sur ce module">
+        <li><Icone nom="horloge" taille={20} /> Lecture : {d.duree} minutes</li>
+        <li><Icone nom="niveau" taille={20} /> Niveau : {d.niveau}</li>
+        <li><Icone nom="coche" taille={20} /> Vérifié le <time datetime={d.verifieLe.toISOString().slice(0, 10)}>{dateFr(d.verifieLe)}</time></li>
+      </ul>
+      <div class="module-objectifs">
+        <p class="objectifs-titre">Dans ce module, vous allez apprendre à :</p>
+        <ul>{d.objectifs.map((o) => <li>{o}</li>)}</ul>
+      </div>
+      <p class="mode-simple-note" role="note">Mode « lecture simple » activé : seules les définitions et les étapes s'affichent. Vous pouvez le désactiver dans le panneau Accessibilité.</p>
+    </header>
+
+    <div class="module-grille">
+      <nav class="sommaire" aria-labelledby="sommaire-titre">
+        <details class="sommaire-details" open data-sommaire>
+          <summary id="sommaire-titre">Sommaire <span class="sommaire-compte">{chapitres.length} chapitres</span></summary>
+          <ol>
+            {chapitres.map((h) => (
+              <li><a href={`#${h.slug}`} data-lien-chapitre={h.slug}><span class="sommaire-coche" aria-hidden="true"></span><span>{h.text}</span><span class="visually-hidden" data-etat-chapitre></span></a></li>
+            ))}
+            <li><a href="#fiche-bristol"><span class="sommaire-coche" aria-hidden="true"></span><span>Fiche Bristol</span></a></li>
+          </ol>
+        </details>
+      </nav>
+
+      <div class="module-contenu">
+        <Content />
+
+        {d.pourAidant.length > 0 && (
+          <aside class="pour-aidant" aria-labelledby="aidant-titre">
+            <h2 id="aidant-titre"><Icone nom="aidant" /> Pour l'aidant</h2>
+            <p>Les points où l'on bloque souvent :</p>
+            <ul>{d.pourAidant.map((p) => <li set:html={p} />)}</ul>
+          </aside>
+        )}
+
+        <FicheBristol titre={d.titre} lignes={d.bristol} adresse={url.replace(/^https?:\/\//, '')} />
+
+        {lies.length > 0 && (
+          <section aria-labelledby="lies-titre" class="modules-lies ne-pas-imprimer">
+            <h2 id="lies-titre">Pour aller plus loin</h2>
+            <ul class="grille grille--2">
+              {lies.map((l) => <li class="carte carte-lien"><a href={lien(l.chemin)}>{l.titre}</a><p>{l.entree!.data.resume}</p></li>)}
+            </ul>
+          </section>
+        )}
+
+        <section class="sources" aria-labelledby="sources-titre">
+          <h2 id="sources-titre">Sources</h2>
+          <ul>
+            {d.sources.map((s) => <li><a href={s.url} rel="noopener">{s.titre}</a> — {s.editeur}</li>)}
+          </ul>
+          <p class="sources-date">Informations vérifiées le {dateFr(d.verifieLe)}. Une erreur ? Signalez-la sur <a href={`${site.depot}/issues`} rel="noopener">la page des remarques du projet</a>.</p>
+        </section>
+
+        <nav class="navigation-modules" aria-label="Module précédent et suivant">
+          {precedent ? <a class="nav-mod nav-mod--prec" href={lien(precedent.chemin)}><span class="nav-mod-sens"><Icone nom="fleche-gauche" taille={18} /> Module précédent</span><span>{precedent.titre}</span></a> : <span></span>}
+          {suivant && <a class="nav-mod nav-mod--suiv" href={lien(suivant.chemin)}><span class="nav-mod-sens">Module suivant <Icone nom="fleche" taille={18} /></span><span>{suivant.titre}</span></a>}
+        </nav>
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .module-entete { max-width: 52rem; padding-bottom: 1.5rem; }
+  .module-entete h1 { margin-top: 1rem; }
+  .module-meta { list-style: none; padding: 0; margin: 1.25rem 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font: 550 1rem var(--police-titre); color: var(--texte-doux); }
+  .module-meta li { display: inline-flex; align-items: center; gap: .4rem; }
+  .module-objectifs { background: var(--surface); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 1rem 1.25rem; }
+  .objectifs-titre { font: 650 1.05rem var(--police-titre); margin: 0 0 .4rem; }
+  .module-objectifs ul { margin: 0; padding-left: 1.2rem; }
+  .mode-simple-note { display: none; }
+  :global(:root[data-simple='oui']) .mode-simple-note { display: block; margin-top: 1rem; padding: .75rem 1rem; border-radius: 12px; background: var(--accent-pale); font-size: 1rem; }
+
+  .module-grille { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 1024px) { .module-grille { grid-template-columns: 17rem minmax(0, 1fr); gap: 3.5rem; } }
+  .sommaire { font-size: 1rem; }
+  @media (min-width: 1024px) { .sommaire { position: sticky; top: 5.5rem; align-self: start; max-height: calc(100vh - 7rem); overflow-y: auto; } }
+  .sommaire-details { border: 1px solid var(--trait); border-radius: var(--rayon); background: var(--surface); padding: .25rem .75rem .5rem; }
+  @media (min-width: 1024px) { .sommaire-details { border: 0; background: none; padding: 0; } }
+  summary { font: 700 1rem var(--police-titre); min-height: var(--cible); display: flex; align-items: center; gap: .5rem; cursor: pointer; }
+  .sommaire-compte { font-weight: 400; color: var(--texte-doux); }
+  .sommaire ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--trait); }
+  .sommaire li a { display: flex; gap: .55rem; align-items: baseline; padding: .45rem .5rem .45rem .9rem; margin-left: -2px; border-left: 2px solid transparent; color: var(--texte-doux); text-decoration: none; line-height: 1.35; }
+  .sommaire li a:hover { color: var(--accent); text-decoration: underline; }
+  .sommaire li a[aria-current='true'] { border-left-color: var(--accent); color: var(--texte); font-weight: 650; }
+  .sommaire-coche { flex: none; width: .7rem; height: .7rem; border-radius: 50%; border: 2px solid var(--bordure); transform: translateY(.05rem); }
+  .sommaire li a.lu .sommaire-coche { background: var(--accent); border-color: var(--accent); }
+
+  .module-contenu { max-width: var(--largeur-texte); min-width: 0; }
+  .module-contenu :global(.chapitre) { padding-top: 1.5rem; margin-bottom: 1rem; }
+  .module-contenu :global(.chapitre + .chapitre) { border-top: 1px solid var(--trait); }
+  .module-contenu :global(h2) { scroll-margin-top: 6rem; }
+  .module-contenu :global(h3) { margin-top: 1.75rem; }
+  .module-contenu :global(ul), .module-contenu :global(ol) { padding-left: 1.4rem; }
+  .module-contenu :global(li) { margin-bottom: .35rem; }
+  .module-contenu :global(.bouton-ecouter) { margin: -.25rem 0 1rem; min-height: 40px; font-size: .95rem; padding: .25rem .9rem; border-width: 1px; }
+
+  /* Mode « lecture simple » : seulement définitions et étapes */
+  :global(:root[data-simple='oui']) .module-contenu :global(.chapitre > :not(h2):not(.definition):not(.bloc-etapes):not(.onglets)) { display: none; }
+  :global(:root[data-simple='oui']) .module-contenu :global(.onglet > :not(.bloc-etapes):not(.onglet-titre)) { display: none; }
+  :global(:root[data-simple='oui']) :is(.module-objectifs, .pour-aidant, .modules-lies) { display: none; }
+
+  .pour-aidant { margin: 2.5rem 0; padding: 1.25rem 1.5rem; border-radius: var(--rayon-grand); border: 2px dashed var(--bordure); }
+  .pour-aidant h2 { display: flex; align-items: center; gap: .5rem; font-size: 1.35rem; }
+  .modules-lies ul { list-style: none; padding: 0; }
+  .modules-lies li a { font: 650 1.1rem var(--police-titre); color: var(--texte); text-decoration: none; }
+  .modules-lies li:hover a { text-decoration: underline; }
+  .modules-lies li p { margin: .35rem 0 0; color: var(--texte-doux); font-size: 1rem; }
+  .sources { margin-top: 2.5rem; font-size: 1rem; }
+  .sources h2 { font-size: 1.35rem; }
+  .sources-date { color: var(--texte-doux); }
+  .navigation-modules { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 2.5rem; }
+  @media (min-width: 640px) { .navigation-modules { grid-template-columns: 1fr 1fr; } }
+  .nav-mod { display: grid; gap: .25rem; padding: 1rem 1.25rem; border: 1px solid var(--bordure); border-radius: var(--rayon); text-decoration: none; color: var(--texte); background: var(--surface); }
+  .nav-mod:hover { border-color: var(--accent); }
+  .nav-mod > span:last-child { font: 650 1.05rem var(--police-titre); color: var(--accent); }
+  .nav-mod-sens { display: inline-flex; align-items: center; gap: .35rem; font-size: .95rem; color: var(--texte-doux); }
+  .nav-mod--suiv { text-align: right; justify-items: end; grid-column: -2; }
+</style>
+
+<style is:global>
+  /* Ateliers interactifs (composants React) */
+  .atelier { margin: 1.75rem 0; padding: 1.25rem 1.25rem 1.5rem; border: 2px solid var(--accent); border-radius: var(--rayon-grand); background: var(--surface); }
+  .atelier-type { font: 700 .85rem var(--police-titre); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0 0 .75rem; }
+  .atelier-consignes { padding-left: 1.4rem; }
+  .atelier-consignes li.fait { color: var(--texte-doux); }
+  .atelier-consignes .ok { color: var(--astuce-texte); font-weight: 700; }
+  .atelier-zones { display: grid; gap: 1rem; grid-template-columns: 1fr; margin: 1rem 0; }
+  @media (min-width: 640px) { .atelier-zones { grid-template-columns: 1fr 1fr; } }
+  .atelier-zone { display: grid; gap: .4rem; font: 650 1rem var(--police-titre); }
+  .atelier-zone textarea, .testeur-zone {
+    width: 100%; min-height: 7rem; padding: .75rem; border: 2px solid var(--bordure); border-radius: 12px;
+    background: var(--fond); color: var(--texte); font: 1.05rem/1.5 var(--police-texte); resize: vertical;
+  }
+  .atelier-zone textarea::selection { background: var(--accent); color: var(--sur-accent); }
+  .testeur-zone { display: grid; place-items: center; min-height: 8rem; font-size: 1.5rem; cursor: text; }
+  .testeur-vide { color: var(--texte-doux); font-size: 1.1rem; }
+  .testeur-combi kbd { font-size: 1.4rem; }
+  .atelier-message { font-weight: 650; min-height: 1.6em; color: var(--astuce-texte); }
+  .atelier-note { font-size: .95rem; color: var(--texte-doux); margin: 0; }
+</style>
+
+<script>
+  /* Bouton « Écouter » par chapitre, chapitre courant dans le sommaire, progression locale. */
+  const article = document.querySelector<HTMLElement>('[data-module]');
+  const chemin = article?.dataset.module ?? '';
+  const CLE = 'desclics-progression';
+  const lus = new Set<string>((() => { try { return JSON.parse(localStorage.getItem(CLE) || '{}')[chemin] ?? []; } catch { return []; } })());
+  function sauver() {
+    try {
+      const tout = JSON.parse(localStorage.getItem(CLE) || '{}');
+      tout[chemin] = [...lus];
+      localStorage.setItem(CLE, JSON.stringify(tout));
+    } catch { /* stockage indisponible */ }
+  }
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('.module-contenu .chapitre[data-chapitre]'));
+  const liens = new Map(Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-lien-chapitre]')).map((a) => [a.dataset.lienChapitre!, a]));
+  function marquer(id: string) {
+    const a = liens.get(id);
+    if (!a) return;
+    a.classList.add('lu');
+    const etat = a.querySelector('[data-etat-chapitre]');
+    if (etat) etat.textContent = ' (lu)';
+  }
+  lus.forEach(marquer);
+
+  if ('speechSynthesis' in window) {
+    for (const s of sections) {
+      const h2 = s.querySelector('h2');
+      if (!h2) continue;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'bouton bouton--secondaire bouton-ecouter ne-pas-imprimer';
+      b.dataset.ecouter = s.id;
+      b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg> Écouter<span class="visually-hidden"> le chapitre « ${h2.textContent} »</span>`;
+      h2.after(b);
+      b.addEventListener('click', async () => {
+        const synth = window.speechSynthesis;
+        if (b.getAttribute('aria-pressed') === 'true') { synth.cancel(); b.setAttribute('aria-pressed', 'false'); return; }
+        document.querySelectorAll('.bouton-ecouter').forEach((x) => x.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        const clone = s.cloneNode(true) as HTMLElement;
+        clone.querySelectorAll('button, .visually-hidden, [aria-hidden=true], .atelier, [hidden]').forEach((n) => n.remove());
+        const texte = (clone.textContent ?? '').replace(/\s+/g, ' ').trim();
+        synth.cancel();
+        const prefs = (() => { try { return JSON.parse(localStorage.getItem('desclics-prefs') || '{}'); } catch { return {}; } })();
+        const voix = synth.getVoices().filter((v) => v.lang.toLowerCase().startsWith('fr'));
+        const choisie = voix.find((v) => v.name === prefs.voix) ?? voix[0];
+        const morceaux = texte.match(/[^.!?:]+[.!?:]?/g) ?? [texte];
+        morceaux.forEach((m, i) => {
+          const u = new SpeechSynthesisUtterance(m.trim());
+          u.lang = 'fr-FR'; u.rate = Number(prefs.vitesse ?? 1);
+          if (choisie) u.voice = choisie;
+          if (i === morceaux.length - 1) u.onend = () => b.setAttribute('aria-pressed', 'false');
+          synth.speak(u);
+        });
+      });
+    }
+  }
+
+  // Chapitre courant (sommaire) et chapitres lus (dépassés à l'écran).
+  const obs = new IntersectionObserver((entrees) => {
+    for (const e of entrees) {
+      const id = (e.target as HTMLElement).dataset.chapitre!;
+      if (e.isIntersecting) {
+        liens.forEach((a) => a.removeAttribute('aria-current'));
+        liens.get(id)?.setAttribute('aria-current', 'true');
+      } else if (e.boundingClientRect.top < 0 && !lus.has(id)) {
+        lus.add(id); marquer(id); sauver();
+      }
+    }
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach((s) => obs.observe(s));
+
+  // Sur mobile, le sommaire est replié par défaut pour ne pas pousser le texte trop bas.
+  const det = document.querySelector<HTMLDetailsElement>('[data-sommaire]');
+  if (det && matchMedia('(max-width: 1023px)').matches) det.open = false;
+</script>

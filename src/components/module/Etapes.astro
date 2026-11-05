@@ -1,0 +1,21 @@
+---
+/** « Comment faire » : liste d'étapes numérotées, bien espacées. Contenu : une liste Markdown numérotée. */
+interface Props { titre?: string }
+const { titre = 'Comment faire' } = Astro.props;
+---
+<div class="bloc-etapes" role="group" aria-label={titre}>
+  <p class="etapes-titre">{titre}</p>
+  <slot />
+</div>
+<style>
+  .bloc-etapes { margin: 1.5rem 0; padding: 1.1rem 1.25rem .5rem; border: 1px solid var(--trait); border-radius: var(--rayon); background: var(--surface); }
+  .etapes-titre { font: 700 .95rem var(--police-titre); text-transform: uppercase; letter-spacing: .06em; color: var(--texte-doux); margin: 0 0 .75rem; }
+  .bloc-etapes :global(ol) { list-style: none; counter-reset: etape; padding: 0; margin: 0; }
+  .bloc-etapes :global(ol > li) { counter-increment: etape; position: relative; padding: 0 0 1rem 3rem; min-height: 2.2rem; }
+  .bloc-etapes :global(ol > li::before) {
+    content: counter(etape); position: absolute; left: 0; top: -.1rem;
+    width: 2.1rem; height: 2.1rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--accent); color: var(--sur-accent); font: 700 1rem var(--police-titre);
+  }
+  .bloc-etapes :global(ol > li > p) { margin: 0 0 .4rem; }
+</style>

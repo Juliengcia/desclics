@@ -1,0 +1,291 @@
+---
+identifiant: clavier-raccourcis
+titre: Le clavier et les raccourcis
+rubrique: ordinateur
+resume: Connaître les touches utiles, taper @ ou €, copier-coller et gagner du temps avec quelques raccourcis, sur Windows et sur Mac.
+duree: 9
+niveau: Premiers pas
+objectifs:
+  - reconnaître les touches spéciales du clavier ;
+  - taper @, €, et les majuscules accentuées comme É ;
+  - copier, couper et coller un texte ;
+  - utiliser les raccourcis les plus utiles sur Windows, sur Mac et dans le navigateur.
+motsCles: [clavier, raccourci clavier, copier coller, arobase, Ctrl, Alt Gr, majuscule accentuée, capture d'écran]
+titreSeo: "Raccourcis clavier : copier-coller, @, € et plus"
+metaDescription: "Comment copier-coller, taper @ ou € et faire une capture d'écran au clavier ? Les touches et raccourcis utiles sur Windows et Mac, expliqués pas à pas."
+bristol:
+  - "Copier : <kbd>Ctrl</kbd> + <kbd>C</kbd> · Coller : <kbd>Ctrl</kbd> + <kbd>V</kbd> · Couper : <kbd>Ctrl</kbd> + <kbd>X</kbd>"
+  - "Tout sélectionner : <kbd>Ctrl</kbd> + <kbd>A</kbd> · Annuler : <kbd>Ctrl</kbd> + <kbd>Z</kbd>"
+  - "Sur Mac : même chose avec <kbd>⌘</kbd> à la place de <kbd>Ctrl</kbd>"
+  - "@ sur Windows : <kbd>Alt Gr</kbd> + <kbd>à</kbd> · € : <kbd>Alt Gr</kbd> + <kbd>E</kbd>"
+  - "Capture d'écran Windows : <kbd>⊞</kbd> + <kbd>Maj</kbd> + <kbd>S</kbd> · Mac : <kbd>Maj</kbd> + <kbd>⌘</kbd> + <kbd>5</kbd>"
+  - "Rouvrir un onglet fermé par erreur : <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>T</kbd>"
+sources:
+  - titre: Les raccourcis clavier dans Windows
+    url: https://support.microsoft.com/fr-fr/accessibility/windows/keyboard-shortcuts-in-windows
+    editeur: Microsoft
+  - titre: Utilisation du Presse-papiers
+    url: https://support.microsoft.com/fr-fr/windows/apps/using-the-clipboard
+    editeur: Microsoft
+  - titre: Raccourcis clavier Mac
+    url: https://support.apple.com/fr-fr/102650
+    editeur: Apple
+  - titre: Forcer une app à quitter sur Mac
+    url: https://support.apple.com/fr-fr/102586
+    editeur: Apple
+  - titre: Saisir des caractères accentués sur Mac
+    url: https://support.apple.com/fr-fr/guide/mac-help/mh27474/mac
+    editeur: Apple
+  - titre: Raccourcis clavier dans Chrome
+    url: https://support.google.com/chrome/answer/157179?hl=fr
+    editeur: Google
+verifieLe: 2026-11-05
+appareils: [windows, mac]
+pourAidant:
+  - "Le mot « maintenir » : faites appuyer <strong>et garder le doigt</strong> sur la première touche, puis appuyer brièvement sur la seconde. Beaucoup appuient sur les deux l'une après l'autre."
+  - "Le presse-papiers est invisible : montrez qu'il faut <strong>coller</strong> pour voir ce qui a été copié."
+  - "Verr. Maj activé par erreur fait écrire EN MAJUSCULES et fait échouer les mots de passe : montrez le voyant lumineux."
+  - "Sur un ordinateur portable sans pavé numérique, les codes Alt (Alt + 0201) ne marchent pas : passez par la méthode de copier-coller depuis le glossaire ou un document."
+liesA: []
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+import SchemaClavier from '../../../components/schemas/SchemaClavier.astro';
+import AtelierCopierColler from '../../../components/ateliers/AtelierCopierColler.tsx';
+import TesteurTouches from '../../../components/ateliers/TesteurTouches.tsx';
+
+## Quelles sont les touches spéciales du clavier ? \{#touches-speciales\}
+
+<Definition terme="touche spéciale">
+Une touche spéciale n'écrit pas de lettre. Elle donne un ordre à l'ordinateur ou change ce que font les autres touches.
+</Definition>
+
+**À quoi ça sert.** Effacer, passer à la ligne, écrire en majuscules, et surtout faire des <Terme id="raccourci-clavier">raccourcis clavier</Terme> : une combinaison de touches qui remplace plusieurs clics.
+
+<Figure
+  alt="Schéma d'un clavier d'ordinateur français. Onze touches sont repérées par un numéro : en haut à gauche Échap (1) ; sur le bord gauche, de haut en bas, Tab (2), Verr. Maj (3), Maj (4) ; sur la rangée du bas, de gauche à droite, Ctrl (5), la touche Windows (6), Alt (7), la barre d'espace (8) et Alt Gr (9) ; sur le bord droit, Entrée (10) et, au-dessus, Retour arrière (11)."
+  legende="Les touches spéciales d'un clavier d'ordinateur Windows (disposition AZERTY)"
+  date="2026-11"
+  annotations={[
+    '<strong>Échap</strong> : annule ou ferme une fenêtre.',
+    "<strong>Tab</strong> : passe à la case suivante d'un formulaire.",
+    "<strong>Verr. Maj</strong> : bloque l'écriture en MAJUSCULES. Rappuyez pour débloquer.",
+    "<strong>Maj</strong> (flèche vers le haut) : maintenue, donne une majuscule ou le symbole du haut d'une touche.",
+    '<strong>Ctrl</strong> : sert aux raccourcis.',
+    '<strong>Touche Windows</strong> : ouvre le menu Démarrer.',
+    '<strong>Alt</strong> : sert à certains raccourcis.',
+    '<strong>Barre d’espace</strong> : met une espace entre deux mots.',
+    "<strong>Alt Gr</strong> : maintenue, donne le troisième symbole d'une touche, comme @ ou €.",
+    '<strong>Entrée</strong> : valide ou passe à la ligne.',
+    '<strong>Retour arrière</strong> : efface le caractère à gauche du curseur.',
+  ]}
+>
+  <SchemaClavier />
+</Figure>
+
+Sur un Mac, deux touches changent de nom :
+
+- <Touches k="⌘" /> **Commande** (<Terme id="commande">cmd</Terme>) remplace <Touches k="Ctrl" /> pour presque tous les raccourcis ;
+- <Touches k="⌥" /> **Option** (<Terme id="option">alt</Terme>) remplace <Touches k="Alt Gr" /> pour les symboles.
+
+<Astuce>
+Un raccourci s'écrit avec un « + » : <Touches k="Ctrl+C" />. Cela veut dire : **maintenez** <Touches k="Ctrl" /> enfoncée, appuyez sur <Touches k="C" />, puis relâchez les deux.
+</Astuce>
+
+## Comment taper @, € ou une majuscule accentuée ? \{#caracteres-speciaux\}
+
+Certains caractères sont imprimés en petit, en bas à droite d'une touche. On les obtient en maintenant une touche spéciale.
+
+<Onglets appareils={['windows', 'mac']} libelle="Choisir le système de votre ordinateur">
+<Onglet appareil="windows">
+
+<TableauComparatif
+  legende="Caractères spéciaux sur un clavier Windows français"
+  colonnes={['Caractère', 'Combinaison']}
+  lignes={[
+    ['@ (arobase)', '<kbd>Alt Gr</kbd> + <kbd>à</kbd> (touche du 0)'],
+    ['€ (euro)', '<kbd>Alt Gr</kbd> + <kbd>E</kbd>'],
+    ['# (dièse)', '<kbd>Alt Gr</kbd> + <kbd>"</kbd> (touche du 3)'],
+    ['É (E majuscule accent aigu)', '<kbd>Alt</kbd> + <kbd>0201</kbd> sur le pavé numérique'],
+    ['À (A majuscule accent grave)', '<kbd>Alt</kbd> + <kbd>0192</kbd> sur le pavé numérique'],
+    ['Ç (C cédille majuscule)', '<kbd>Alt</kbd> + <kbd>0199</kbd> sur le pavé numérique'],
+  ]}
+/>
+
+<Etapes titre="Comment taper É avec un code Alt">
+1. Vérifiez que le voyant **Verr. Num** de votre clavier est allumé. Sinon, appuyez sur la touche Verr. Num.
+2. Maintenez la touche <Touches k="Alt" /> enfoncée.
+3. Tapez **0201** sur le <Terme id="pave-numerique">pavé numérique</Terme>, à droite du clavier.
+4. Relâchez <Touches k="Alt" /> : le É apparaît.
+</Etapes>
+
+<Attention>
+Les codes Alt ne marchent qu'avec le pavé numérique. Les chiffres de la rangée du haut ne fonctionnent pas. Sans pavé numérique (ordinateur portable), copiez le caractère depuis un autre texte, puis collez-le.
+</Attention>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<TableauComparatif
+  legende="Caractères spéciaux sur un clavier Mac français"
+  colonnes={['Caractère', 'Combinaison']}
+  lignes={[
+    ['@ (arobase)', 'Touche <kbd>@</kbd>, en haut à gauche du clavier'],
+    ['€ (euro)', '<kbd>⌥ Option</kbd> + <kbd>$</kbd>'],
+    ['Lettre accentuée (é, è, ê, ë…)', 'Maintenez la touche de la lettre : un menu des accents apparaît'],
+  ]}
+/>
+
+<Etapes titre="Comment choisir un accent sur Mac">
+1. Placez le <Terme id="curseur">curseur</Terme> là où vous voulez écrire.
+2. Maintenez la touche de la lettre, par exemple <Touches k="E" />, sans relâcher.
+3. Un petit menu apparaît avec les variantes : é, è, ê, ë…
+4. Cliquez sur la bonne, ou tapez le chiffre affiché dessous.
+5. Pour une majuscule accentuée comme É, faites la même chose après avoir activé <Touches k="Verr. Maj" />.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<ARetenir>
+Sur Windows, <Touches k="Alt Gr" /> donne les symboles imprimés en bas à droite des touches. Sur Mac, c'est <Touches k="⌥" /> Option.
+</ARetenir>
+
+## Comment copier, couper et coller un texte ? \{#copier-coller\}
+
+<Definition terme="copier-coller">
+Copier, c'est dupliquer un texte ou une image pour le placer ailleurs, sans le retaper. L'original ne bouge pas.
+</Definition>
+
+**À quoi ça sert.** Recopier un numéro de dossier, une adresse, un lien, un passage d'e-mail dans un formulaire ou un document.
+
+Ce que vous copiez part dans le <Terme id="presse-papiers">presse-papiers</Terme> : une mémoire invisible de l'ordinateur. Il ne garde qu'un seul élément : une nouvelle copie remplace la précédente.
+
+<TableauComparatif
+  legende="Les cinq raccourcis de base"
+  colonnes={['Action', 'Windows', 'Mac']}
+  lignes={[
+    ['Tout sélectionner', '<kbd>Ctrl</kbd> + <kbd>A</kbd>', '<kbd>⌘</kbd> + <kbd>A</kbd>'],
+    ['Copier', '<kbd>Ctrl</kbd> + <kbd>C</kbd>', '<kbd>⌘</kbd> + <kbd>C</kbd>'],
+    ['Couper (déplacer)', '<kbd>Ctrl</kbd> + <kbd>X</kbd>', '<kbd>⌘</kbd> + <kbd>X</kbd>'],
+    ['Coller', '<kbd>Ctrl</kbd> + <kbd>V</kbd>', '<kbd>⌘</kbd> + <kbd>V</kbd>'],
+    ['Annuler la dernière action', '<kbd>Ctrl</kbd> + <kbd>Z</kbd>', '<kbd>⌘</kbd> + <kbd>Z</kbd>'],
+  ]}
+/>
+
+<Etapes>
+1. <Terme id="selectionner">Sélectionnez</Terme> le texte : cliquez au début, maintenez le bouton de la souris, glissez jusqu'à la fin, relâchez. Le texte apparaît surligné.
+2. Copiez avec <Touches k="Ctrl+C" /> (Mac : <Touches k="⌘+C" />).
+3. Cliquez à l'endroit où vous voulez placer le texte.
+4. Collez avec <Touches k="Ctrl+V" /> (Mac : <Touches k="⌘+V" />).
+</Etapes>
+
+Essayez ici, sans risque :
+
+<AtelierCopierColler client:visible />
+
+<Astuce>
+Une erreur ? <Touches k="Ctrl+Z" /> annule la dernière action. Vous pouvez l'utiliser plusieurs fois de suite.
+</Astuce>
+
+<Attention>
+**Couper** retire le texte de son emplacement. Tant que vous ne l'avez pas collé, il n'existe que dans le presse-papiers : si vous copiez autre chose entre-temps, il est perdu. Préférez **copier**, puis effacez l'original une fois le collage réussi.
+</Attention>
+
+## Quels raccourcis connaître sur Windows ? \{#raccourcis-windows\}
+
+Quelques raccourcis font gagner beaucoup de temps. La touche <Touches k="⊞" /> est la touche Windows, entre <Touches k="Ctrl" /> et <Touches k="Alt" />.
+
+<TableauComparatif
+  legende="Raccourcis utiles sur Windows"
+  colonnes={['Je veux…', 'Raccourci']}
+  lignes={[
+    ['Passer d’une fenêtre ouverte à une autre', '<kbd>Alt</kbd> + <kbd>Tab</kbd>'],
+    ['Voir le bureau (tout réduire)', '<kbd>⊞</kbd> + <kbd>D</kbd>'],
+    ['Ouvrir l’Explorateur de fichiers', '<kbd>⊞</kbd> + <kbd>E</kbd>'],
+    ['Verrouiller l’ordinateur quand je m’absente', '<kbd>⊞</kbd> + <kbd>L</kbd>'],
+    ['Faire une capture d’une partie de l’écran', '<kbd>⊞</kbd> + <kbd>Maj</kbd> + <kbd>S</kbd>'],
+    ['Retrouver mes dernières copies', '<kbd>⊞</kbd> + <kbd>V</kbd>'],
+    ['Fermer le logiciel ouvert', '<kbd>Alt</kbd> + <kbd>F4</kbd>'],
+  ]}
+/>
+
+<Etapes titre="Comment faire une capture d'écran sur Windows">
+1. Appuyez sur <Touches k="⊞+Maj+S" />. L'écran s'assombrit.
+2. Avec la souris, tracez un rectangle autour de la zone à garder.
+3. Relâchez : l'image est copiée dans le presse-papiers.
+4. Collez-la avec <Touches k="Ctrl+V" /> dans un e-mail ou un document.
+</Etapes>
+
+<Astuce>
+<Touches k="⊞+V" /> ouvre l'historique du presse-papiers, qui garde vos dernières copies. Il n'est pas activé au départ : la première fois, Windows propose de l'activer. Il s'efface à chaque redémarrage.
+</Astuce>
+
+## Quels raccourcis utiliser dans le navigateur ? \{#raccourcis-navigateur\}
+
+Le <Terme id="navigateur">navigateur</Terme> est le logiciel qui affiche les sites web. Ces raccourcis marchent dans Chrome, Edge et Firefox. Sur Mac, remplacez <Touches k="Ctrl" /> par <Touches k="⌘" />.
+
+<TableauComparatif
+  legende="Raccourcis du navigateur"
+  colonnes={['Je veux…', 'Raccourci']}
+  lignes={[
+    ['Ouvrir un nouvel onglet', '<kbd>Ctrl</kbd> + <kbd>T</kbd>'],
+    ['Fermer l’onglet', '<kbd>Ctrl</kbd> + <kbd>W</kbd>'],
+    ['Rouvrir l’onglet fermé par erreur', '<kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>T</kbd>'],
+    ['Chercher un mot dans la page', '<kbd>Ctrl</kbd> + <kbd>F</kbd>'],
+    ['Agrandir le texte de la page', '<kbd>Ctrl</kbd> + <kbd>+</kbd>'],
+    ['Réduire / revenir à la taille normale', '<kbd>Ctrl</kbd> + <kbd>-</kbd> / <kbd>Ctrl</kbd> + <kbd>0</kbd>'],
+    ['Imprimer la page', '<kbd>Ctrl</kbd> + <kbd>P</kbd>'],
+    ['Recharger la page', '<kbd>F5</kbd>'],
+  ]}
+/>
+
+<Astuce>
+<Touches k="Ctrl+F" /> est très utile sur les longues pages administratives : tapez un mot, le navigateur le surligne partout dans la page.
+</Astuce>
+
+## Quels sont les équivalents sur Mac ? \{#raccourcis-mac\}
+
+Sur Mac, la plupart des raccourcis utilisent la touche <Touches k="⌘" /> **Commande**, de chaque côté de la barre d'espace.
+
+<TableauComparatif
+  legende="Raccourcis utiles sur Mac"
+  colonnes={['Je veux…', 'Raccourci']}
+  lignes={[
+    ['Passer d’une application à une autre', '<kbd>⌘</kbd> + <kbd>Tab</kbd>'],
+    ['Chercher un fichier ou une application (Spotlight)', '<kbd>⌘</kbd> + <kbd>Espace</kbd>'],
+    ['Fermer la fenêtre', '<kbd>⌘</kbd> + <kbd>W</kbd>'],
+    ['Quitter l’application', '<kbd>⌘</kbd> + <kbd>Q</kbd>'],
+    ['Forcer à quitter une application bloquée', '<kbd>⌥</kbd> + <kbd>⌘</kbd> + <kbd>Échap</kbd>'],
+    ['Capturer tout l’écran', '<kbd>Maj</kbd> + <kbd>⌘</kbd> + <kbd>3</kbd>'],
+    ['Capturer une partie de l’écran', '<kbd>Maj</kbd> + <kbd>⌘</kbd> + <kbd>4</kbd>'],
+    ['Ouvrir les options de capture', '<kbd>Maj</kbd> + <kbd>⌘</kbd> + <kbd>5</kbd>'],
+  ]}
+/>
+
+<Attention>
+Sur Mac, fermer la fenêtre (<Touches k="⌘+W" />) ne quitte pas toujours l'application : elle reste ouverte en arrière-plan. Pour la quitter vraiment, utilisez <Touches k="⌘+Q" />.
+</Attention>
+
+## Comment savoir sur quelle touche j'appuie ? \{#testeur\}
+
+Le testeur ci-dessous affiche en clair la touche ou la combinaison appuyée, et à quoi elle sert. Utile pour repérer <Touches k="Alt Gr" />, <Touches k="Verr. Maj" /> ou la touche Windows.
+
+<TesteurTouches client:visible />
+
+<Quiz questions={[
+  { question: 'Que fait Ctrl + C ?', choix: ['Il colle le texte', 'Il copie la sélection', 'Il ferme la fenêtre'], bonne: 1, explication: 'Ctrl + C copie ; Ctrl + V colle.' },
+  { question: 'Sur Mac, quelle touche remplace Ctrl dans les raccourcis ?', choix: ['⌥ Option', 'Maj', '⌘ Commande'], bonne: 2, explication: 'La touche ⌘ Commande se trouve de chaque côté de la barre d’espace.' },
+  { question: 'Comment taper @ sur un clavier Windows français ?', choix: ['Alt Gr + à', 'Maj + 2', 'Ctrl + A'], bonne: 0, explication: 'Le @ est imprimé en bas à droite de la touche à (le 0) : on l’obtient avec Alt Gr.' },
+  { question: 'J’ai fermé un onglet par erreur. Que faire ?', choix: ['Ctrl + Z', 'Ctrl + Maj + T', 'F5'], bonne: 1, explication: 'Ctrl + Maj + T rouvre les onglets fermés, dans l’ordre inverse.' },
+]} />

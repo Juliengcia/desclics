@@ -1,0 +1,14 @@
+---
+interface Props { appareil: 'windows' | 'mac' | 'android' | 'iphone' }
+const noms = { windows: 'Sur Windows', mac: 'Sur Mac', android: 'Sur Android', iphone: 'Sur iPhone' };
+const { appareil } = Astro.props;
+---
+<div class="onglet" data-onglet={appareil}>
+  <p class="onglet-titre">{noms[appareil]}</p>
+  <slot />
+</div>
+<style>
+  .onglet { padding-top: .75rem; }
+  .onglet:focus-visible { outline-offset: 6px; }
+  .onglet-titre { font: 700 1.05rem var(--police-titre); margin: 0 0 .5rem; }
+</style>

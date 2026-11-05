@@ -1,0 +1,13 @@
+---
+/**
+ * Raccourci clavier. Exemple : <Touches k="Ctrl+Alt+Suppr" />
+ * Lu « Ctrl plus Alt plus Suppr » par les lecteurs d'écran.
+ */
+interface Props { k: string }
+const touches = Astro.props.k.split('+').map((t) => t.trim()).filter(Boolean);
+---
+<span class="touches" role="text" aria-label={touches.join(' plus ')}>{touches.map((t, i) => <>{i > 0 && <span aria-hidden="true" class="plus">+</span>}<kbd aria-hidden="true">{t}</kbd></>)}</span>
+<style>
+  .touches { white-space: nowrap; display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .2em; }
+  .plus { color: var(--texte-doux); font-size: .9em; }
+</style>

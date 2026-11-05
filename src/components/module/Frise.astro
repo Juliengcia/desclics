@@ -1,0 +1,23 @@
+---
+/** Frise chronologique. evenements : [{ date: '1980', titre: 'Péritel', texte: '…' }] */
+interface Props { legende: string; evenements: { date: string; titre: string; texte: string }[] }
+const { legende, evenements } = Astro.props;
+---
+<figure class="frise">
+  <figcaption>{legende}</figcaption>
+  <ol>
+    {evenements.map((e) => (
+      <li><span class="frise-date">{e.date}</span><span class="frise-titre">{e.titre}</span><span class="frise-texte">{e.texte}</span></li>
+    ))}
+  </ol>
+</figure>
+<style>
+  .frise { margin: 1.75rem 0; }
+  figcaption { font: 700 1.05rem var(--police-titre); margin-bottom: 1rem; }
+  ol { list-style: none; margin: 0; padding: 0 0 0 1.5rem; border-left: 3px solid var(--accent); }
+  li { position: relative; padding: 0 0 1.25rem 1rem; display: grid; }
+  li::before { content: ''; position: absolute; left: -1.5rem; top: .35rem; width: 1rem; height: 1rem; margin-left: -6.5px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+  .frise-date { font: 700 .95rem var(--police-titre); color: var(--accent); }
+  .frise-titre { font: 650 1.1rem var(--police-titre); }
+  .frise-texte { color: var(--texte-doux); font-size: 1rem; }
+</style>

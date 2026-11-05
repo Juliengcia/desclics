@@ -1,0 +1,29 @@
+---
+/** Encadré commun : définition, attention, astuce, à retenir. */
+import Icone from '../Icone.astro';
+interface Props { type: 'definition' | 'attention' | 'astuce' | 'retenir'; titre?: string }
+const { type, titre } = Astro.props;
+const reglages = {
+  definition: { libelle: 'Définition', icone: 'livre' },
+  attention: { libelle: 'Attention', icone: 'attention' },
+  astuce: { libelle: 'Astuce', icone: 'ampoule' },
+  retenir: { libelle: 'À retenir', icone: 'epingle' },
+}[type];
+---
+<aside class:list={['encadre', `encadre--${type}`, type === 'definition' && 'definition']} aria-label={titre ? `${reglages.libelle} : ${titre}` : reglages.libelle}>
+  <p class="encadre-titre"><Icone nom={reglages.icone} taille={20} /> {reglages.libelle}{titre && <span> · {titre}</span>}</p>
+  <div class="encadre-corps"><slot /></div>
+</aside>
+<style>
+  .encadre { margin: 1.5rem 0; padding: 1rem 1.25rem 1.1rem; border-radius: var(--rayon); border: 1px solid var(--trait); border-left-width: 5px; background: var(--surface); }
+  .encadre-titre { display: flex; align-items: center; gap: .45rem; margin: 0 0 .35rem; font: 700 .95rem var(--police-titre); text-transform: uppercase; letter-spacing: .06em; }
+  .encadre-titre span { text-transform: none; letter-spacing: 0; font-weight: 600; }
+  .encadre-corps :global(> :last-child) { margin-bottom: 0; }
+  .encadre--definition { border-left-color: var(--accent); background: var(--accent-pale); }
+  .encadre--definition .encadre-titre { color: var(--accent); }
+  .encadre--attention { border-left-color: var(--attention-texte); background: var(--attention-fond); }
+  .encadre--attention .encadre-titre { color: var(--attention-texte); }
+  .encadre--astuce { border-left-color: var(--astuce-texte); background: var(--astuce-fond); }
+  .encadre--astuce .encadre-titre { color: var(--astuce-texte); }
+  .encadre--retenir { border-left-color: var(--texte); }
+</style>

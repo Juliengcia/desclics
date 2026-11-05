@@ -1,0 +1,45 @@
+---
+/**
+ * Petit quiz facultatif de vérification. Pas de score enregistré, pas de points.
+ * questions : [{ question, choix: [...], bonne: index, explication }]
+ */
+interface Question { question: string; choix: string[]; bonne: number; explication: string }
+interface Props { questions: Question[] }
+const { questions } = Astro.props;
+const uid = `quiz-${Math.random().toString(36).slice(2, 8)}`;
+---
+<section class="quiz ne-pas-imprimer" aria-labelledby={`${uid}-titre`} data-quiz>
+  <h2 id={`${uid}-titre`} class="quiz-titre">Vérifier ce que j'ai compris <span>(facultatif)</span></h2>
+  {questions.map((q, i) => (
+    <fieldset class="quiz-question" data-bonne={q.bonne}>
+      <legend>{i + 1}. {q.question}</legend>
+      {q.choix.map((c, j) => (
+        <label class="quiz-choix"><input type="radio" name={`${uid}-${i}`} value={j} /> <span>{c}</span></label>
+      ))}
+      <p class="quiz-retour" role="status" aria-live="polite" data-explication={q.explication}></p>
+    </fieldset>
+  ))}
+</section>
+<style>
+  .quiz { margin: 2.5rem 0; padding: 1.5rem; border-radius: var(--rayon-grand); background: var(--surface); border: 1px solid var(--trait); }
+  .quiz-titre span { font-weight: 400; color: var(--texte-doux); font-size: .7em; }
+  .quiz-question { border: 0; padding: 0; margin: 0 0 1.5rem; }
+  legend { font: 650 1.1rem var(--police-titre); margin-bottom: .6rem; padding: 0; }
+  .quiz-choix { display: flex; align-items: center; gap: .75rem; min-height: var(--cible); padding: .4rem .9rem; margin-bottom: .4rem; border: 1px solid var(--bordure); border-radius: 12px; cursor: pointer; }
+  .quiz-choix:has(input:checked) { border: 2px solid var(--accent); }
+  .quiz-choix input { width: 1.3rem; height: 1.3rem; accent-color: var(--accent); flex: none; }
+  .quiz-retour { margin: .5rem 0 0; font-weight: 600; }
+  .quiz-retour.ok { color: var(--astuce-texte); }
+  .quiz-retour.ko { color: var(--attention-texte); }
+</style>
+<script>
+  document.querySelectorAll<HTMLFieldSetElement>('[data-quiz] fieldset').forEach((f) => {
+    const retour = f.querySelector<HTMLElement>('.quiz-retour')!;
+    f.addEventListener('change', (e) => {
+      const v = Number((e.target as HTMLInputElement).value);
+      const ok = v === Number(f.dataset.bonne);
+      retour.className = `quiz-retour ${ok ? 'ok' : 'ko'}`;
+      retour.textContent = `${ok ? 'Exact.' : 'Pas tout à fait.'} ${retour.dataset.explication}`;
+    });
+  });
+</script>

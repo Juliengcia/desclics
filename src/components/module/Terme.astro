@@ -1,0 +1,13 @@
+---
+/** Lien vers la définition du glossaire. Exemple : <Terme id="presse-papiers">presse-papiers</Terme> */
+import { glossaire } from '../../data/glossaire';
+import { lien } from '../../lib/chemins';
+interface Props { id: string }
+const t = glossaire.find((g) => g.id === Astro.props.id);
+if (!t) throw new Error(`Terme absent du glossaire : « ${Astro.props.id} ». Ajoutez-le dans src/data/glossaire.ts.`);
+---
+<a class="terme" href={lien(`glossaire#${t.id}`)} title={t.definition}><slot /></a>
+<style>
+  .terme { color: inherit; text-decoration-style: dotted; text-decoration-color: var(--accent); }
+  .terme:hover { color: var(--accent); }
+</style>

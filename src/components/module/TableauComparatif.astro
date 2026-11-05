@@ -1,0 +1,24 @@
+---
+/**
+ * Tableau comparatif accessible. Sur mobile, chaque ligne devient une fiche.
+ * <TableauComparatif legende="..." colonnes={['Action','Windows','Mac']} lignes={[['Copier','Ctrl + C','⌘ + C']]} />
+ * La première colonne sert d'en-tête de ligne.
+ */
+interface Props { legende: string; colonnes: string[]; lignes: string[][] }
+const { legende, colonnes, lignes } = Astro.props;
+---
+<div class="tableau-defilant" role="region" aria-label={legende} tabindex="0">
+  <table class="empilable">
+    <caption>{legende}</caption>
+    <thead><tr>{colonnes.map((c) => <th scope="col">{c}</th>)}</tr></thead>
+    <tbody>
+      {lignes.map((l) => (
+        <tr>
+          {l.map((cellule, i) => i === 0
+            ? <th scope="row" set:html={cellule} />
+            : <td data-label={colonnes[i]} set:html={cellule} />)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
