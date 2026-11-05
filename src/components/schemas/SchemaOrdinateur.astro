@@ -1,0 +1,41 @@
+---
+/** Schéma : un ordinateur fixe et un portable, éléments numérotés. */
+---
+<svg class="schema-ordi schema-large" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <!-- Ordinateur fixe -->
+  <g class="trait">
+    <rect x="30" y="30" width="250" height="160" rx="10" />
+    <rect x="44" y="44" width="222" height="132" rx="4" class="ecran" />
+    <path d="M140 190v28M110 222h60" />
+    <rect x="300" y="40" width="70" height="180" rx="8" />
+    <circle cx="335" cy="70" r="7" />
+    <path d="M314 100h42M314 112h42" />
+    <rect x="40" y="245" width="240" height="44" rx="8" />
+    <path d="M58 260h204M58 274h204" class="fin" />
+    <rect x="300" y="248" width="34" height="50" rx="17" />
+    <path d="M317 248v16" />
+  </g>
+  <!-- Portable -->
+  <g class="trait">
+    <rect x="450" y="60" width="270" height="165" rx="10" />
+    <rect x="464" y="74" width="242" height="137" rx="4" class="ecran" />
+    <path d="M420 245h330l-20 30H440z" />
+    <rect x="550" y="252" width="70" height="16" rx="3" class="fin" />
+  </g>
+  {[
+    [140, 108, 1], [335, 150, 2], [160, 267, 3], [317, 280, 4], [585, 142, 5], [585, 260, 6],
+  ].map(([x, y, n]) => (
+    <g class="badge"><circle cx={x} cy={y} r="15" /><text x={x} y={y + 5.5} text-anchor="middle">{n}</text></g>
+  ))}
+  <text x="205" y="320" text-anchor="middle" class="legende">Ordinateur fixe</text>
+  <text x="585" y="320" text-anchor="middle" class="legende">Ordinateur portable</text>
+</svg>
+<style>
+  .schema-ordi { font-family: var(--police-titre); }
+  .trait rect, .trait path, .trait circle { fill: var(--surface); stroke: var(--texte-doux); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .trait .ecran { fill: var(--accent-pale); }
+  .trait .fin { stroke-width: 2; fill: none; }
+  .badge circle { fill: var(--accent); }
+  .badge text { fill: var(--sur-accent); font-weight: 700; font-size: 16px; }
+  .legende { fill: var(--texte); font-size: 17px; font-weight: 600; }
+</style>

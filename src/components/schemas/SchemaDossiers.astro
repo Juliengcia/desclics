@@ -1,0 +1,40 @@
+---
+/** Schéma : arborescence de dossiers et fichiers, comme dans l'Explorateur ou le Finder. */
+const lignes: [number, 'dossier' | 'fichier', string, number?][] = [
+  [0, 'dossier', 'Documents', 1],
+  [1, 'dossier', 'Impôts'],
+  [2, 'fichier', 'avis-impot-2026.pdf', 2],
+  [1, 'dossier', 'Santé'],
+  [2, 'fichier', 'ordonnance-mars.pdf'],
+  [1, 'fichier', 'lettre-banque.docx', 3],
+  [0, 'dossier', 'Téléchargements', 4],
+  [0, 'dossier', 'Images'],
+  [1, 'fichier', 'vacances-01.jpg', 5],
+];
+---
+<svg class="schema-dossiers schema-large" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  {lignes.map(([niv, type, nom, n], i) => {
+    const x = 40 + niv * 48, y = 30 + i * 40;
+    return (
+      <g>
+        {niv > 0 && <path class="lien" d={`M${x - 26} ${y - 22}v${22}h18`} />}
+        {type === 'dossier'
+          ? <path class="dossier" d={`M${x} ${y - 10}h12l4 4h16v18h-32z`} />
+          : <path class="fichier" d={`M${x + 4} ${y - 12}h16l6 6v22h-22z`} />}
+        <text x={x + 42} y={y + 5} class:list={['nom', `nom--${type}`]}>{nom}</text>
+        {n && <g class="badge"><circle cx="590" cy={y} r="14" /><text x="590" y={y + 5} text-anchor="middle">{n}</text><path class="repere" d={`M${x + 42 + nom.length * (type === "dossier" ? 10.5 : 9.5) + 12} ${y}H572`} /></g>}
+      </g>
+    );
+  })}
+</svg>
+<style>
+  .schema-dossiers { font-family: var(--police-titre); }
+  .lien { fill: none; stroke: var(--bordure); stroke-width: 2; }
+  .dossier { fill: var(--accent-pale); stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; }
+  .fichier { fill: var(--surface); stroke: var(--texte-doux); stroke-width: 2.5; stroke-linejoin: round; }
+  .nom { fill: var(--texte); font-size: 17px; }
+  .nom--dossier { font-weight: 700; }
+  .badge circle { fill: var(--accent); }
+  .badge text { fill: var(--sur-accent); font-weight: 700; font-size: 14px; }
+  .repere { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; }
+</style>
