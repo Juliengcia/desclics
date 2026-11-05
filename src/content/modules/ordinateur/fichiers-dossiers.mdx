@@ -1,0 +1,171 @@
+---
+identifiant: fichiers-dossiers
+titre: Ranger et retrouver ses fichiers
+rubrique: ordinateur
+resume: Comprendre fichiers et dossiers, ranger ses documents, retrouver un fichier téléchargé ou perdu, et récupérer ce qui a été supprimé par erreur.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - distinguer fichier, dossier et extension ;
+  - ouvrir l'Explorateur de fichiers ou le Finder ;
+  - créer, renommer et déplacer un dossier ou un fichier ;
+  - retrouver un fichier téléchargé ou perdu ;
+  - récupérer un fichier dans la corbeille.
+motsCles: [fichier, dossier, Explorateur de fichiers, Finder, Téléchargements, corbeille, extension, renommer, retrouver un fichier]
+titreSeo: "Retrouver un fichier perdu ou téléchargé sur l'ordinateur"
+metaDescription: "Où est passé mon fichier ? Fichiers, dossiers, Téléchargements et corbeille expliqués : ranger ses documents et retrouver un fichier sur Windows ou Mac."
+bristol:
+  - "Un fichier = un document · un dossier = une chemise qui range des fichiers"
+  - "Ouvrir ses fichiers : <kbd>⊞</kbd> + <kbd>E</kbd> (Windows) · icône Finder (Mac)"
+  - "Ce qui vient d'Internet est dans le dossier <strong>Téléchargements</strong>"
+  - "Renommer : clic droit sur le fichier → Renommer"
+  - "Fichier supprimé par erreur : ouvrir la Corbeille → clic droit → Restaurer (Remettre sur Mac)"
+  - "Nommer clairement : quoi-qui-date (ex. facture-edf-2026-10)"
+sources:
+  - titre: Les raccourcis clavier dans Windows
+    url: https://support.microsoft.com/fr-fr/accessibility/windows/keyboard-shortcuts-in-windows
+    editeur: Microsoft
+  - titre: Libérer de l'espace disque dans Windows
+    url: https://support.microsoft.com/fr-fr/windows/experience/storage-filemanagement/free-up-drive-space-in-windows
+    editeur: Microsoft
+  - titre: Raccourcis clavier Mac
+    url: https://support.apple.com/fr-fr/102650
+    editeur: Apple
+verifieLe: 2026-11-05
+appareils: [windows, mac]
+pourAidant:
+  - "Le dossier Téléchargements est le premier endroit où chercher : beaucoup de « fichiers perdus » y sont."
+  - "Faites renommer un fichier dès son téléchargement : « document(3).pdf » ne dit rien un mois plus tard."
+  - "Supprimer ne libère pas de place tant que la corbeille n'est pas vidée, mais vider la corbeille est définitif : vérifiez ensemble avant."
+liesA: [ordinateur/clavier-raccourcis, ordinateur/entretien, ordinateur/systemes-exploitation]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+import SchemaDossiers from '../../../components/schemas/SchemaDossiers.astro';
+
+## Quelle différence entre un fichier et un dossier ? \{#fichier-dossier\}
+
+<Definition terme="fichier et dossier">
+Un <Terme id="fichier">fichier</Terme> est un document enregistré : une lettre, une photo, un PDF. Un <Terme id="dossier">dossier</Terme> est un rangement qui contient des fichiers, ou d'autres dossiers, comme une chemise cartonnée.
+</Definition>
+
+<Figure
+  alt="Schéma d'un rangement de dossiers et de fichiers, en arbre. Le dossier Documents (1) contient le dossier Impôts, qui contient le fichier avis-impot-2026.pdf (2), le dossier Santé avec un fichier d'ordonnance, et le fichier lettre-banque.docx (3). Plus bas, le dossier Téléchargements (4), puis le dossier Images, qui contient le fichier vacances-01.jpg (5)."
+  legende="Des dossiers rangés les uns dans les autres, comme dans un classeur"
+  date="2026-11"
+  annotations={[
+    "<strong>Documents</strong> : le dossier prévu pour vos papiers. Rangez-y des sous-dossiers par thème.",
+    "Un fichier <strong>PDF</strong>, rangé dans le sous-dossier Impôts.",
+    "Un fichier de traitement de texte (<strong>.docx</strong>).",
+    "<strong>Téléchargements</strong> : ce qui vient d'Internet arrive ici.",
+    "Une photo (<strong>.jpg</strong>) dans le dossier Images.",
+  ]}
+>
+  <SchemaDossiers />
+</Figure>
+
+La fin du nom, après le point, s'appelle l'<Terme id="extension">extension</Terme> : elle indique le type de fichier. **.pdf** pour un PDF, **.jpg** pour une photo, **.docx** pour un document Word.
+
+## Où voir mes fichiers ? \{#explorateur\}
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Ouvrir l'Explorateur de fichiers">
+1. Cliquez sur l'icône en forme de **dossier jaune** dans la barre des tâches, ou appuyez sur <Touches k="⊞+E" />.
+2. À gauche, cliquez sur **Documents**, **Téléchargements** ou **Images**.
+3. Double-cliquez sur un dossier pour l'ouvrir, puis sur un fichier pour l'afficher.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Ouvrir le Finder">
+1. Cliquez sur l'icône du **Finder** (un visage bleu et blanc), à gauche du Dock.
+2. Dans la colonne de gauche, cliquez sur **Documents**, **Téléchargements** ou **Images**.
+3. Double-cliquez sur un dossier pour l'ouvrir, puis sur un fichier pour l'afficher.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+Le <Terme id="explorateur-fichiers">Explorateur de fichiers</Terme> (Windows) et le <Terme id="finder">Finder</Terme> (Mac) font la même chose : ils montrent ce que contient l'ordinateur.
+
+## Comment créer, renommer et déplacer ? \{#ranger\}
+
+<Etapes titre="Créer un dossier">
+1. Ouvrez le dossier dans lequel vous voulez le créer, par exemple Documents.
+2. Faites un clic droit dans un espace vide, puis choisissez **Nouveau → Dossier** (Windows) ou **Nouveau dossier** (Mac).
+3. Tapez son nom, puis appuyez sur <Touches k="Entrée" />.
+</Etapes>
+
+<Etapes titre="Renommer un fichier ou un dossier">
+1. Faites un clic droit sur le fichier.
+2. Choisissez **Renommer**.
+3. Tapez le nouveau nom, sans toucher à l'extension (.pdf, .jpg…), puis <Touches k="Entrée" />.
+</Etapes>
+
+Pour **déplacer** un fichier, cliquez dessus, maintenez le bouton de la souris, faites-le glisser sur le dossier voulu, puis relâchez.
+
+<Astuce>
+Nommez vos fichiers avec trois éléments : quoi, qui, quand. Par exemple **facture-electricite-2026-10.pdf**. Vous le retrouverez sans l'ouvrir.
+</Astuce>
+
+## Où est le fichier que je viens de télécharger ? \{#telechargements\}
+
+Quand vous <Terme id="telecharger">téléchargez</Terme> un fichier (une pièce jointe, une attestation), il arrive presque toujours dans le dossier **Téléchargements**.
+
+<Etapes titre="Retrouver un fichier téléchargé">
+1. Ouvrez l'Explorateur de fichiers ou le Finder.
+2. Cliquez sur **Téléchargements** à gauche.
+3. Le fichier le plus récent est en général en haut. Sinon, cliquez sur l'en-tête **Date de modification** pour trier.
+4. Rangez-le aussitôt dans le bon dossier, avec un nom clair.
+</Etapes>
+
+<Astuce>
+Dans le navigateur, <Touches k="Ctrl+J" /> affiche la liste des téléchargements récents.
+</Astuce>
+
+## Comment retrouver un fichier perdu ? \{#rechercher\}
+
+<Etapes titre="Chercher un fichier par son nom">
+1. Ouvrez l'Explorateur de fichiers ou le Finder.
+2. Cliquez dans la case de recherche, en haut à droite.
+3. Tapez un mot du nom du fichier, par exemple « facture ».
+4. Attendez quelques secondes : les fichiers correspondants s'affichent.
+</Etapes>
+
+<Astuce>
+Sur Mac, <Touches k="⌘+Espace" /> ouvre Spotlight : tapez un mot, il cherche dans tout le Mac.
+</Astuce>
+
+## Comment récupérer un fichier supprimé ? \{#corbeille\}
+
+Un fichier supprimé va d'abord dans la <Terme id="corbeille">corbeille</Terme>. Tant qu'elle n'est pas vidée, il est récupérable.
+
+<Etapes titre="Restaurer un fichier depuis la corbeille">
+1. Double-cliquez sur la **Corbeille** : sur le bureau (Windows) ou à droite du Dock (Mac).
+2. Faites un clic droit sur le fichier.
+3. Choisissez **Restaurer** (Windows) ou **Remettre** (Mac). Il retourne à sa place d'origine.
+</Etapes>
+
+<Attention>
+**Vider la corbeille** efface définitivement les fichiers. Vérifiez son contenu avant. Les fichiers supprimés d'une clé USB, eux, ne passent souvent pas par la corbeille.
+</Attention>
+
+<Quiz questions={[
+  { question: 'J’ai téléchargé une attestation, où la trouver ?', choix: ['Dans Documents', 'Dans Téléchargements', 'Dans la corbeille'], bonne: 1, explication: 'Les fichiers venus d’Internet arrivent dans Téléchargements.' },
+  { question: 'Que veut dire « .pdf » à la fin d’un nom de fichier ?', choix: ['Le type de fichier', 'La date', 'Le dossier'], bonne: 0, explication: 'C’est l’extension : elle indique le type de fichier.' },
+  { question: 'Un fichier est dans la corbeille. Est-il perdu ?', choix: ['Oui, définitivement', 'Non, tant que la corbeille n’est pas vidée'], bonne: 1, explication: 'Clic droit, puis Restaurer (Windows) ou Remettre (Mac).' },
+]} />

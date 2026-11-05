@@ -1,0 +1,151 @@
+---
+identifiant: connectiques
+titre: "Brancher ses appareils : les prises et câbles"
+rubrique: ordinateur
+resume: Reconnaître les prises d'un ordinateur ou d'une télévision, savoir lequel utiliser pour brancher un écran, une clé ou un chargeur, et choisir le bon adaptateur.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - reconnaître les prises USB, USB-C, HDMI, DisplayPort, VGA, RJ45 et jack ;
+  - situer les prises dans le temps, des plus anciennes aux plus récentes ;
+  - brancher un ordinateur sur un écran ou une télévision ;
+  - choisir un câble USB-C ou un adaptateur adapté.
+motsCles: [connectique, prise, câble, USB, USB-C, HDMI, DisplayPort, VGA, DVI, RJ45, Péritel, adaptateur, brancher écran]
+titreSeo: "USB, USB-C, HDMI : reconnaître les prises et câbles"
+metaDescription: "Quelle prise pour brancher un écran, une clé ou un chargeur ? USB, USB-C, HDMI, DisplayPort, VGA, RJ45 : les reconnaître, les dater et choisir un adaptateur."
+bristol:
+  - "USB-A : rectangle, pour clés, souris, imprimantes"
+  - "USB-C : petit ovale réversible, pour charger, transférer et parfois afficher"
+  - "HDMI : image + son vers télé ou écran"
+  - "RJ45 : câble réseau entre la box et l'ordinateur"
+  - "Ordinateur sur la télé : câble HDMI, puis choisir l'entrée HDMI avec la télécommande (Source / Input)"
+  - "Avant d'acheter un adaptateur : noter les deux prises à relier"
+sources:
+  - titre: Universal Serial Bus
+    url: https://fr.wikipedia.org/wiki/Universal_Serial_Bus
+    editeur: Wikipédia
+  - titre: USB-C
+    url: https://fr.wikipedia.org/wiki/USB-C
+    editeur: Wikipédia
+  - titre: High-Definition Multimedia Interface
+    url: https://fr.wikipedia.org/wiki/High-Definition_Multimedia_Interface
+    editeur: Wikipédia
+  - titre: DisplayPort
+    url: https://fr.wikipedia.org/wiki/DisplayPort
+    editeur: Wikipédia
+  - titre: Video Graphics Array
+    url: https://fr.wikipedia.org/wiki/Video_Graphics_Array
+    editeur: Wikipédia
+  - titre: Péritel
+    url: https://fr.wikipedia.org/wiki/P%C3%A9ritel
+    editeur: Wikipédia
+verifieLe: 2026-11-05
+pourAidant:
+  - "Faites regarder la prise de près, à la lumière : la forme suffit presque toujours à la reconnaître."
+  - "Après avoir branché la télé, l'image n'apparaît pas toute seule : il faut choisir l'entrée HDMI avec la télécommande."
+  - "Un câble USB-C qui charge ne transfère pas forcément l'image : en cas d'échec, essayez un autre câble avant de conclure que l'appareil est en panne."
+liesA: [ordinateur/materiel, ordinateur/entretien]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+import SchemaPrises from '../../../components/schemas/SchemaPrises.astro';
+
+## Comment reconnaître une prise ? \{#reconnaitre\}
+
+<Definition terme="prise (ou port)">
+Une prise, aussi appelée port, est l'emplacement où l'on branche un câble. Chaque forme correspond à un usage : courant, image, son, réseau ou données.
+</Definition>
+
+<Figure
+  alt="Schéma de huit prises vues de face. En haut, de gauche à droite : USB-A, un rectangle avec une languette (1) ; USB-C, un petit ovale (2) ; HDMI, un trapèze aux coins coupés en bas (3) ; DisplayPort, un rectangle avec un seul coin coupé (4). En bas : VGA, un trapèze avec quinze petits trous sur trois rangées, ici simplifiés (5) ; RJ45, une prise carrée avec une encoche, comme une grosse prise de téléphone (6) ; jack audio, un petit rond (7) ; Péritel, une large prise plate avec un coin coupé (8)."
+  legende="Les prises les plus courantes, vues de face"
+  date="2026-11"
+  annotations={[
+    "<strong>USB-A</strong> : clés USB, souris, claviers, imprimantes.",
+    "<strong>USB-C</strong> : chargeurs, téléphones récents, ordinateurs récents. Elle se branche dans les deux sens.",
+    "<strong>HDMI</strong> : image et son vers une télévision ou un écran.",
+    "<strong>DisplayPort</strong> : image vers un écran d'ordinateur.",
+    "<strong>VGA</strong> : image seule, sur les anciens écrans et projecteurs. Souvent bleue.",
+    "<strong>RJ45</strong> : câble réseau (Ethernet) entre la box et l'ordinateur.",
+    "<strong>Jack</strong> : casque, écouteurs ou enceintes.",
+    "<strong>Péritel</strong> : anciennes télévisions et magnétoscopes.",
+  ]}
+>
+  <SchemaPrises />
+</Figure>
+
+## D'où viennent toutes ces prises ? \{#frise\}
+
+Les prises se sont succédé. Les anciennes restent présentes sur le matériel plus âgé, d'où l'utilité des <Terme id="adaptateur">adaptateurs</Terme>.
+
+<Frise
+  legende="Des plus anciennes aux plus récentes"
+  evenements={[
+    { date: 'Années 1970', titre: 'RJ11', texte: 'La petite prise du téléphone fixe, encore utilisée pour certaines lignes.' },
+    { date: 'Fin des années 1970', titre: 'Péritel', texte: 'Créée en France pour relier télévision, magnétoscope et décodeur.' },
+    { date: '1987', titre: 'VGA', texte: 'Prise d’image des écrans d’ordinateur pendant vingt ans.' },
+    { date: 'Années 1990', titre: 'RJ45', texte: 'Le câble réseau (Ethernet), toujours utilisé entre la box et l’ordinateur.' },
+    { date: '1996', titre: 'USB', texte: 'Une seule prise pour brancher souris, clavier, imprimante, puis clés USB.' },
+    { date: '1999', titre: 'DVI', texte: 'Image numérique vers les premiers écrans plats.' },
+    { date: '2002', titre: 'HDMI', texte: 'Image et son dans un seul câble : la prise des télévisions actuelles.' },
+    { date: '2006', titre: 'DisplayPort', texte: 'Prise d’image pensée pour les écrans d’ordinateur.' },
+    { date: '2014', titre: 'USB-C', texte: 'Une prise réversible pour charger, transférer et afficher.' },
+  ]}
+/>
+
+## Comment brancher l'ordinateur sur une télévision ou un écran ? \{#ecran\}
+
+<Etapes titre="Afficher l'ordinateur sur la télévision">
+1. Repérez une prise **HDMI** sur l'ordinateur et sur la télévision. Sur un ordinateur récent, ce peut être une prise **USB-C** : il faut alors un adaptateur USB-C vers HDMI.
+2. Branchez le câble HDMI entre les deux, appareils allumés ou éteints.
+3. Avec la télécommande, appuyez sur **Source** ou **Input**, puis choisissez l'entrée HDMI utilisée (HDMI 1, HDMI 2…).
+4. Si l'image n'apparaît pas sur Windows, appuyez sur <Touches k="⊞+P" /> et choisissez **Dupliquer**.
+</Etapes>
+
+<Astuce>
+Les numéros des entrées HDMI sont écrits à côté des prises, à l'arrière de la télévision. Notez celui que vous utilisez.
+</Astuce>
+
+## Tous les câbles USB-C se valent-ils ? \{#usb-c\}
+
+Non. Les prises sont identiques, mais pas les câbles.
+
+<TableauComparatif
+  legende="Ce que peut faire un câble USB-C, selon le modèle"
+  colonnes={['Usage', 'Câble de base', 'Câble complet']}
+  lignes={[
+    ['Charger un téléphone', 'Oui', 'Oui'],
+    ['Charger vite un ordinateur portable', 'Pas toujours', 'Oui'],
+    ['Transférer des fichiers rapidement', 'Lentement', 'Oui'],
+    ['Afficher l’image sur un écran', 'Souvent non', 'Oui, si l’appareil le permet'],
+  ]}
+/>
+
+<Attention>
+Un câble USB-C qui charge votre téléphone peut refuser d'afficher l'image ou de charger un ordinateur. Pour un écran ou un ordinateur portable, regardez la description du câble : vidéo, puissance de charge (en watts) et vitesse.
+</Attention>
+
+## Comment choisir un adaptateur ? \{#adaptateur\}
+
+<Etapes titre="Acheter le bon adaptateur">
+1. Notez la prise de départ, par exemple USB-C sur l'ordinateur.
+2. Notez la prise d'arrivée, par exemple HDMI sur la télévision.
+3. Cherchez un adaptateur « USB-C vers HDMI », dans ce sens-là.
+4. Pour brancher plusieurs choses, un **hub** (multiprise) USB-C regroupe HDMI, USB-A et charge.
+</Etapes>
+
+<Quiz questions={[
+  { question: 'Quelle prise transporte l’image et le son vers une télévision ?', choix: ['RJ45', 'HDMI', 'Jack'], bonne: 1, explication: 'Le HDMI transporte image et son.' },
+  { question: 'J’ai branché le câble HDMI mais la télé reste noire. Que faire ?', choix: ['Changer de télé', 'Choisir l’entrée HDMI avec la touche Source de la télécommande', 'Débrancher la box'], bonne: 1, explication: 'La télévision doit afficher la bonne entrée.' },
+]} />

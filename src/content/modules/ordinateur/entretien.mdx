@@ -1,0 +1,209 @@
+---
+identifiant: entretien
+titre: "Entretenir son ordinateur : mises à jour et place"
+rubrique: ordinateur
+resume: Installer les mises à jour, libérer de la place, désinstaller ce qui ne sert plus et garder un antivirus à jour, sur Windows et sur Mac.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - comprendre pourquoi installer les mises à jour sans tarder ;
+  - lancer les mises à jour sur Windows et sur Mac ;
+  - voir la place libre et en libérer ;
+  - désinstaller un logiciel ;
+  - savoir quel antivirus utiliser.
+motsCles: [mise à jour, Windows Update, macOS, espace disque, stockage plein, libérer de la place, désinstaller, antivirus, Microsoft Defender]
+titreSeo: "Mettre à jour son ordinateur et libérer de la place"
+metaDescription: "Comment mettre à jour Windows ou un Mac, libérer de l'espace disque et désinstaller un logiciel ? Les gestes d'entretien expliqués étape par étape."
+bristol:
+  - "Mises à jour Windows : Paramètres → Windows Update → Rechercher les mises à jour"
+  - "Mises à jour Mac : Réglages Système → Général → Mise à jour de logiciels"
+  - "Place libre Windows : Paramètres → Système → Stockage"
+  - "Place libre Mac : Réglages Système → Général → Stockage"
+  - "Supprimer ne libère la place qu'une fois la corbeille vidée"
+  - "Un seul antivirus à la fois, mis à jour automatiquement"
+sources:
+  - titre: "Windows Update : FAQ"
+    url: https://support.microsoft.com/fr-fr/windows/windows-update-faq-8a903416-6f45-0718-f5c7-375e92dddeb2
+    editeur: Microsoft
+  - titre: Libérer de l'espace disque dans Windows
+    url: https://support.microsoft.com/fr-fr/windows/experience/storage-filemanagement/free-up-drive-space-in-windows
+    editeur: Microsoft
+  - titre: Gérer l'espace disque avec l'Assistant Stockage
+    url: https://support.microsoft.com/fr-fr/windows/experience/storage-filemanagement/manage-drive-space-with-storage-sense
+    editeur: Microsoft
+  - titre: Mettre à jour macOS sur votre Mac
+    url: https://support.apple.com/fr-fr/108382
+    editeur: Apple
+  - titre: Libérer de l'espace de stockage sur Mac
+    url: https://support.apple.com/fr-fr/102624
+    editeur: Apple
+  - titre: Les antivirus
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/antivirus
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+appareils: [windows, mac]
+pourAidant:
+  - "La peur de « casser quelque chose » fait repousser les mises à jour pendant des mois. Rassurez : c'est le meilleur geste de sécurité."
+  - "Sur un portable, branchez le chargeur avant une grosse mise à jour : une coupure en plein milieu peut poser problème."
+  - "Avant de vider la corbeille ou de désinstaller, vérifiez ensemble qu'aucun document personnel n'y est."
+liesA: [ordinateur/materiel, ordinateur/fichiers-dossiers, ordinateur/systemes-exploitation]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Pourquoi installer les mises à jour ? \{#pourquoi\}
+
+<Definition terme="mise à jour">
+Une <Terme id="mise-a-jour">mise à jour</Terme> est une nouvelle version d'un logiciel ou du système. Elle corrige des erreurs et, surtout, bouche des failles de sécurité.
+</Definition>
+
+**À quoi ça sert.** Les pirates exploitent les failles connues. Un ordinateur à jour les ferme dès qu'elles sont corrigées. C'est le geste de sécurité le plus efficace, et il est gratuit.
+
+<ARetenir>
+Installez les mises à jour dès qu'elles sont proposées, sur l'ordinateur comme sur le téléphone. Laissez les mises à jour automatiques activées.
+</ARetenir>
+
+## Comment lancer les mises à jour ? \{#lancer\}
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Mettre à jour Windows 11">
+1. Cliquez sur **Démarrer**, puis sur **Paramètres** (la roue crantée).
+2. Cliquez sur **Windows Update**, en bas de la colonne de gauche.
+3. Cliquez sur **Rechercher les mises à jour**.
+4. Laissez le téléchargement et l'installation se faire.
+5. Si Windows le demande, cliquez sur **Redémarrer maintenant**, ou choisissez une heure avec **Planifier le redémarrage**.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Mettre à jour un Mac">
+1. Ouvrez le menu **Pomme**, puis **Réglages Système**.
+2. Cliquez sur **Général**, dans la colonne de gauche.
+3. Cliquez sur **Mise à jour de logiciels**.
+4. Si une mise à jour est proposée, cliquez sur **Mettre à jour maintenant**.
+5. Sur un portable, branchez le chargeur pendant l'installation.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+N'éteignez jamais l'ordinateur pendant l'installation d'une mise à jour, même si elle semble longue. Attendez le message de fin.
+</Attention>
+
+## Comment voir la place libre ? \{#place\}
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Voir l'espace de stockage sur Windows">
+1. Ouvrez **Paramètres**.
+2. Cliquez sur **Système**, puis sur **Stockage**.
+3. Une barre montre la place utilisée et la place libre, par catégorie.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Voir l'espace de stockage sur Mac">
+1. Ouvrez le menu **Pomme**, puis **Réglages Système**.
+2. Cliquez sur **Général**, puis sur **Stockage**.
+3. Une barre montre la place utilisée et la place libre, par catégorie.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+## Comment libérer de la place ? \{#liberer\}
+
+Commencez par ce qui ne vous coûte rien : fichiers temporaires, téléchargements anciens, corbeille.
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Libérer de la place sur Windows">
+1. Dans **Paramètres → Système → Stockage**, ouvrez **Recommandations de nettoyage**.
+2. Cochez les **fichiers temporaires** et les fichiers que vous reconnaissez comme inutiles.
+3. Cliquez sur **Nettoyer** pour chaque section.
+4. Pour automatiser : activez l'**Assistant Stockage**. Il supprime les fichiers temporaires et vide la corbeille après un délai. Il ne touche au dossier Téléchargements que si vous le réglez ainsi.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Libérer de la place sur Mac">
+1. Dans **Réglages Système → Général → Stockage**, lisez les **recommandations** proposées.
+2. Ouvrez le dossier **Téléchargements** dans le Finder et supprimez ce dont vous n'avez plus besoin.
+3. Videz la **Corbeille** : l'espace n'est libéré qu'à ce moment-là.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+Ne supprimez jamais un fichier ou un dossier système que vous ne reconnaissez pas, et ne « nettoyez » pas avec un logiciel miracle trouvé sur Internet : beaucoup sont inutiles, certains sont malveillants.
+</Attention>
+
+<Astuce>
+Les photos et vidéos prennent le plus de place. Copiez-les sur un disque dur externe ou dans le <Terme id="cloud">cloud</Terme> avant de les supprimer de l'ordinateur.
+</Astuce>
+
+## Comment désinstaller un logiciel ? \{#desinstaller\}
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Désinstaller sur Windows">
+1. Ouvrez **Paramètres**, puis **Applications**, puis **Applications installées**.
+2. Trouvez le logiciel dans la liste.
+3. Cliquez sur les trois points **…** à droite, puis sur **Désinstaller**.
+4. Confirmez.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Désinstaller sur Mac">
+1. Ouvrez le **Finder**, puis le dossier **Applications**.
+2. Faites glisser l'app vers la **Corbeille**, dans le Dock.
+3. Videz la Corbeille.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+## Faut-il installer un antivirus ? \{#antivirus\}
+
+<Definition terme="antivirus">
+Un <Terme id="antivirus">antivirus</Terme> est un logiciel qui repère et bloque les programmes malveillants.
+</Definition>
+
+Windows comprend déjà un antivirus, **Microsoft Defender**, visible dans l'application **Sécurité Windows**. Il est activé par défaut. Si vous en installez un autre, Defender se met en retrait.
+
+<ARetenir>
+Les règles de Cybermalveillance.gouv.fr : un seul antivirus à la fois (deux se gênent), mis à jour automatiquement. Aucun antivirus n'est efficace à 100 % : la prudence reste indispensable (pièces jointes, liens, téléchargements).
+</ARetenir>
+
+<Attention>
+Une fenêtre qui vous presse d'acheter un antivirus ou annonce des « virus détectés » pendant que vous naviguez est presque toujours une publicité trompeuse ou une arnaque. Fermez-la.
+</Attention>
+
+<Quiz questions={[
+  { question: 'Où lance-t-on les mises à jour sur Windows 11 ?', choix: ['Paramètres → Windows Update', 'Dans le navigateur', 'Dans la corbeille'], bonne: 0, explication: 'Paramètres → Windows Update → Rechercher les mises à jour.' },
+  { question: 'J’ai supprimé des fichiers mais la place ne change pas. Pourquoi ?', choix: ['La corbeille n’est pas vidée', 'L’ordinateur est en panne', 'Il faut acheter de la mémoire'], bonne: 0, explication: 'La place n’est libérée qu’une fois la corbeille vidée.' },
+  { question: 'Combien d’antivirus installer en même temps ?', choix: ['Un seul', 'Deux pour être sûr', 'Trois'], bonne: 0, explication: 'Deux antivirus se gênent et protègent moins bien.' },
+]} />
