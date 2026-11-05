@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Entete from '../components/Entete.astro';
+import Pied from '../components/Pied.astro';
+import Recherche from '../components/Recherche.astro';
+import PanneauAccessibilite from '../components/PanneauAccessibilite.astro';
+import Icone from '../components/Icone.astro';
+import { site } from '../data/site';
+import { lien } from '../lib/chemins';
+
+interface Props {
+  titre: string;           // balise <title> (< 60 caractères)
+  description: string;     // méta-description (~150 caractères)
+  type?: 'website' | 'article';
+  jsonld?: Record<string, unknown>[];
+  indexer?: boolean;       // false : exclure de la recherche interne
+}
+const { titre, description, type = 'website', jsonld = [], indexer = true } = Astro.props;
+const titreComplet = titre === site.nom ? `${site.nom} — ${site.accroche}` : `${titre} | ${site.nom}`;
+const canonique = new URL(Astro.url.pathname, Astro.site).href;
+const imageOg = new URL(lien('og-image.png'), Astro.site).href;
+---
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{titreComplet}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonique} />
+  <link rel="icon" href={lien('favicon.svg')} type="image/svg+xml" />
+  <link rel="manifest" href={lien('manifest.webmanifest')} />
+  <link rel="sitemap" href={lien('sitemap-index.xml')} />
+  <meta name="theme-color" content="#F5F2EA" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content={type} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content={site.nom} />
+  <meta property="og:title" content={titre} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonique} />
+  <meta property="og:image" content={imageOg} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+  <!-- Applique les réglages enregistrés avant l'affichage (évite le clignotement). -->
+  <script is:inline>
+    (function () {
+      var d = document.documentElement, p = {};
+      try { p = JSON.parse(localStorage.getItem('desclics-prefs') || '{}'); } catch (e) {}
+      if (p.theme) d.setAttribute('data-theme', p.theme);
+      var sombre = p.theme ? p.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      d.setAttribute('data-theme-effectif', sombre ? 'dark' : 'light');
+      if (sombre) d.classList.add('sombre-systeme');
+      ['contraste', 'dyslexie', 'curseur', 'animations', 'simple', 'regle', 'loupe'].forEach(function (k) { if (p[k]) d.setAttribute('data-' + k, p[k]); });
+      if (p.taille) { d.style.setProperty('--echelle-texte', p.taille); if (Number(p.taille) >= 1.5) d.setAttribute('data-grand-texte', ''); }
+      if (p.appareil) d.setAttribute('data-appareil', p.appareil);
+    })();
+  </script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+  <Entete />
+  <main id="contenu" tabindex="-1" data-pagefind-body={indexer ? '' : undefined}>
+    <slot />
+  </main>
+  <Pied />
+
+  <dialog id="dialogue-recherche" class="dialogue-recherche" aria-label="Recherche">
+    <div class="dialogue-recherche-entete">
+      <h2 class="visually-hidden">Recherche</h2>
+      <button type="button" class="bouton-icone" data-ferme-dialogue><Icone nom="fermer" /><span>Fermer</span></button>
+    </div>
+    <Recherche id="recherche-dialogue" enPage />
+  </dialog>
+  <PanneauAccessibilite />
+
+  <script>
+    import '../scripts/site';
+  </script>
+</body>
+</html>
+
+<style is:global>
+  .lien-evitement {
+    position: absolute; left: 1rem; top: -100px; z-index: 100;
+    background: var(--accent); color: var(--sur-accent); padding: .75rem 1.25rem; border-radius: 0 0 12px 12px;
+    font: 650 1.05rem var(--police-titre);
+  }
+  .lien-evitement:focus { top: 0; color: var(--sur-accent); }
+  main:focus { outline: none; }
+  .dialogue-recherche {
+    width: min(46rem, calc(100% - 2rem)); max-width: 100%; max-height: min(85dvh, 52rem); margin: 8vh auto auto;
+    border: 1px solid var(--trait); border-radius: var(--rayon-grand); padding: 1rem 1.25rem 1.5rem;
+    background: var(--fond); color: var(--texte); box-shadow: var(--ombre);
+  }
+  .dialogue-recherche::backdrop { background: rgb(0 0 0 / .45); }
+  .dialogue-recherche-entete { display: flex; justify-content: flex-end; }
+  @media (max-width: 639px) { .dialogue-recherche { margin: 0; width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; } }
+</style>

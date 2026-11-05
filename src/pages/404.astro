@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Recherche from '../components/Recherche.astro';
+import { lien } from '../lib/chemins';
+---
+<Base titre="Page introuvable" description="Cette page n'existe pas ou a été déplacée. Utilisez la recherche ou le plan du site pour trouver l'explication voulue." indexer={false}>
+  <div class="conteneur" style="max-width: 46rem; padding-top: 3rem">
+    <h1>Cette page est introuvable</h1>
+    <p class="chapo">L'adresse est peut-être mal tapée, ou la page a été déplacée.</p>
+    <Recherche id="recherche-404" enPage />
+    <p style="margin-top:2rem"><a href={lien()}>Revenir à l'accueil</a> · <a href={lien('plan-du-site')}>Plan du site</a></p>
+  </div>
+</Base>

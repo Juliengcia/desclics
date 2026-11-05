@@ -1,0 +1,115 @@
+---
+import Icone from './Icone.astro';
+const interrupteurs = [
+  { cle: 'contraste', valeur: 'eleve', titre: 'Contraste élevé', aide: 'Noir et blanc, sans couleurs douces.' },
+  { cle: 'dyslexie', valeur: 'oui', titre: 'Espacement pour la dyslexie', aide: 'Plus d’espace entre les lettres, les mots et les lignes.' },
+  { cle: 'regle', valeur: 'oui', titre: 'Règle de lecture', aide: 'Une bande suit la souris pour garder la ligne.' },
+  { cle: 'loupe', valeur: 'oui', titre: 'Loupe', aide: 'Le texte survolé s’affiche en très grand en bas de l’écran.' },
+  { cle: 'curseur', valeur: 'grand', titre: 'Grand curseur', aide: 'Une flèche de souris plus grande.' },
+  { cle: 'animations', valeur: 'non', titre: 'Réduire les animations', aide: 'Supprime les mouvements et défilements animés.' },
+  { cle: 'simple', valeur: 'oui', titre: 'Lecture simple', aide: 'N’affiche que les définitions et les étapes.' },
+];
+---
+<dialog id="panneau-a11y" class="panneau-a11y" aria-labelledby="a11y-titre">
+  <div class="a11y-entete">
+    <h2 id="a11y-titre">Accessibilité</h2>
+    <button type="button" class="bouton-icone" data-ferme-dialogue><Icone nom="fermer" /><span class="visually-hidden">Fermer le panneau</span></button>
+  </div>
+  <p class="a11y-intro">Vos réglages sont gardés sur cet appareil uniquement.</p>
+
+  <section aria-labelledby="a11y-taille">
+    <h3 id="a11y-taille">Taille du texte</h3>
+    <div class="a11y-taille" role="group" aria-labelledby="a11y-taille">
+      <button type="button" class="bouton-icone a11y-moins" data-taille="-1"><span aria-hidden="true">A−</span><span class="visually-hidden">Réduire le texte</span></button>
+      <output class="a11y-valeur" data-taille-valeur aria-live="polite">100 %</output>
+      <button type="button" class="bouton-icone a11y-plus" data-taille="1"><span aria-hidden="true">A+</span><span class="visually-hidden">Agrandir le texte</span></button>
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y-appareil">
+    <h3 id="a11y-appareil">Mon appareil</h3>
+    <p class="a11y-aide" id="a11y-appareil-aide">Les explications s'affichent pour cet appareil quand il y a des différences.</p>
+    <div class="a11y-appareils" role="radiogroup" aria-labelledby="a11y-appareil" aria-describedby="a11y-appareil-aide">
+      {[['windows', 'Ordinateur Windows'], ['mac', 'Mac'], ['android', 'Android'], ['iphone', 'iPhone']].map(([v, t]) => (
+        <label class="a11y-choix"><input type="radio" name="appareil" value={v} data-choix-appareil /> <span>{t}</span></label>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y-affichage">
+    <h3 id="a11y-affichage">Affichage</h3>
+    <ul class="a11y-liste">
+      {interrupteurs.map((i) => (
+        <li>
+          <button type="button" role="switch" aria-checked="false" class="a11y-switch" data-pref={i.cle} data-valeur={i.valeur} aria-describedby={`aide-${i.cle}`}>
+            <span class="a11y-switch-texte">{i.titre}</span>
+            <span class="a11y-switch-piste" aria-hidden="true"><span></span></span>
+          </button>
+          <p class="a11y-aide" id={`aide-${i.cle}`}>{i.aide}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="a11y-voix" data-voix-section>
+    <h3 id="a11y-voix">Lecture à voix haute</h3>
+    <p class="a11y-aide" data-voix-indispo hidden>Votre navigateur ne propose pas de lecture à voix haute.</p>
+    <div data-voix-controles>
+      <label class="a11y-champ">Voix
+        <select data-voix-choix><option value="">Voix française par défaut</option></select>
+      </label>
+      <label class="a11y-champ">Vitesse : <output data-vitesse-valeur>1</output>
+        <input type="range" min="0.6" max="1.6" step="0.1" value="1" data-voix-vitesse />
+      </label>
+      <div class="a11y-boutons">
+        <button type="button" class="bouton" data-lire-page><Icone nom="hautparleur" /> Lire la page</button>
+        <button type="button" class="bouton bouton--secondaire" data-lire-stop><Icone nom="stop" /> Arrêter</button>
+      </div>
+      <p class="a11y-aide">Sur une page de module, chaque chapitre a aussi son bouton « Écouter ».</p>
+    </div>
+  </section>
+
+  <button type="button" class="bouton bouton--secondaire a11y-reinit" data-a11y-reinit>Tout remettre par défaut</button>
+</dialog>
+
+<div class="regle-lecture" aria-hidden="true" hidden></div>
+<div class="loupe-bulle" aria-hidden="true" hidden></div>
+
+<style>
+  .panneau-a11y {
+    margin: 0 0 0 auto; height: 100%; max-height: 100dvh; width: min(28rem, 100%); max-width: 100%;
+    border: 0; border-left: 1px solid var(--trait); padding: 1.25rem 1.25rem 2rem;
+    background: var(--fond); color: var(--texte); overflow-y: auto;
+  }
+  .panneau-a11y::backdrop { background: rgb(0 0 0 / .45); }
+  .a11y-entete { display: flex; align-items: center; justify-content: space-between; }
+  .a11y-entete h2 { margin: 0; font-size: 1.6rem; }
+  .a11y-intro { color: var(--texte-doux); font-size: 1rem; }
+  section { border-top: 1px solid var(--trait); padding: 1rem 0 .5rem; }
+  h3 { font-size: 1.1rem; margin-bottom: .6rem; }
+  .a11y-taille { display: flex; align-items: center; gap: .75rem; }
+  .a11y-taille .bouton-icone { border: 2px solid var(--bordure); font-size: 1.15rem; min-width: 56px; }
+  .a11y-valeur { font: 650 1.2rem var(--police-titre); min-width: 4.5ch; text-align: center; }
+  .a11y-appareils { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .a11y-choix { display: flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .25rem .75rem; border: 1px solid var(--bordure); border-radius: 12px; cursor: pointer; font-size: 1rem; }
+  .a11y-choix:has(input:checked) { border: 2px solid var(--accent); background: var(--accent-pale); }
+  .a11y-choix input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
+  .a11y-liste { list-style: none; margin: 0; padding: 0; }
+  .a11y-liste li { margin-bottom: .5rem; }
+  .a11y-switch { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--cible); padding: .25rem 0; background: none; border: 0; cursor: pointer; text-align: left; font: 600 1.05rem var(--police-titre); color: var(--texte); }
+  .a11y-switch-piste { flex: none; width: 52px; height: 30px; border-radius: 999px; background: var(--surface-2); border: 2px solid var(--bordure); position: relative; }
+  .a11y-switch-piste span { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--texte-doux); transition: transform .15s; }
+  .a11y-switch[aria-checked='true'] .a11y-switch-piste { background: var(--accent); border-color: var(--accent); }
+  .a11y-switch[aria-checked='true'] .a11y-switch-piste span { transform: translateX(22px); background: var(--sur-accent); }
+  .a11y-aide { margin: 0 0 .5rem; font-size: .95rem; color: var(--texte-doux); }
+  .a11y-champ { display: block; font: 600 1rem var(--police-titre); margin-bottom: .75rem; }
+  .a11y-champ select, .a11y-champ input[type='range'] { display: block; width: 100%; margin-top: .35rem; min-height: var(--cible); font: 1rem var(--police-texte); accent-color: var(--accent); }
+  .a11y-champ select { padding: .5rem; border: 2px solid var(--bordure); border-radius: 10px; background: var(--surface); color: var(--texte); }
+  .a11y-boutons { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+  .a11y-reinit { margin-top: 1rem; width: 100%; }
+  .regle-lecture { position: fixed; left: 0; right: 0; height: 2.6em; pointer-events: none; z-index: 90;
+    box-shadow: 0 0 0 100vmax rgb(0 0 0 / .35); border-block: 2px solid var(--accent); }
+  .loupe-bulle { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 95; pointer-events: none;
+    background: var(--surface); color: var(--texte); border: 3px solid var(--accent); border-radius: 16px;
+    padding: 1rem 1.25rem; font: 600 2rem/1.35 var(--police-texte); box-shadow: var(--ombre); max-height: 40vh; overflow: hidden; }
+</style>

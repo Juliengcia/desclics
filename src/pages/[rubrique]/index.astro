@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import Icone from '../../components/Icone.astro';
+import { rubriques, type Rubrique } from '../../data/rubriques';
+import { modulesDeRubrique } from '../../lib/navigation';
+import { lien } from '../../lib/chemins';
+
+export function getStaticPaths() {
+  return rubriques.map((r) => ({ params: { rubrique: r.slug }, props: { rubrique: r } }));
+}
+const { rubrique } = Astro.props as { rubrique: Rubrique };
+const modules = await modulesDeRubrique(rubrique.slug);
+const publies = modules.filter((m) => m.publie);
+const prevus = modules.filter((m) => !m.publie);
+---
+<Base titre={rubrique.titre} description={`${rubrique.description} Explications claires, étape par étape, sur Desclics.`}>
+  <div class="conteneur">
+    <FilAriane miettes={[{ titre: rubrique.titre }]} />
+    <header class="rubrique-entete">
+      <span class="rubrique-icone"><Icone nom={rubrique.icone} taille={32} /></span>
+      <h1>{rubrique.titre}</h1>
+      <p class="chapo">{rubrique.description}</p>
+    </header>
+
+    {publies.length > 0 && (
+      <section aria-labelledby="dispo">
+        <h2 id="dispo">Modules disponibles</h2>
+        <ol class="grille grille--2 liste-modules">
+          {publies.map((m) => (
+            <li class="carte carte-lien">
+              <h3><a href={lien(m.chemin)}>{m.titre}</a></h3>
+              <p>{m.entree!.data.resume}</p>
+              <p class="meta"><Icone nom="horloge" taille={18} /> {m.entree!.data.duree} min · {m.entree!.data.niveau}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {prevus.length > 0 && (
+      <section aria-labelledby="prepa" class="bloc-prepa">
+        <h2 id="prepa">En préparation</h2>
+        <p>Ces modules sont en cours de rédaction et de vérification.</p>
+        <ul class="liste-prevus">
+          {prevus.map((m) => <li>{m.titre}</li>)}
+        </ul>
+      </section>
+    )}
+  </div>
+</Base>
+<style>
+  .rubrique-entete { padding: .5rem 0 2rem; }
+  .rubrique-icone { display: inline-flex; padding: .7rem; border-radius: 14px; background: var(--accent-pale); color: var(--accent); margin-bottom: 1rem; }
+  .liste-modules { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
+  .liste-modules h3 { font-size: 1.25rem; margin-bottom: .4rem; }
+  .liste-modules h3 a { color: var(--texte); text-decoration: none; }
+  .liste-modules li:hover h3 a { text-decoration: underline; }
+  .liste-modules p { color: var(--texte-doux); margin: 0 0 .5rem; font-size: 1rem; }
+  .meta { display: flex; align-items: center; gap: .4rem; font: 600 .95rem var(--police-titre); }
+  .bloc-prepa { border-top: 1px solid var(--trait); padding-top: 1.5rem; }
+  .bloc-prepa p { color: var(--texte-doux); }
+  .liste-prevus { columns: 2 18rem; column-gap: 2rem; color: var(--texte-doux); padding-left: 1.2rem; }
+  .liste-prevus li { padding: .2rem 0; break-inside: avoid; }
+</style>

@@ -1,0 +1,9 @@
+---
+/** Logo Desclics : pointeur et étincelle (le clic, le déclic). */
+interface Props { taille?: number }
+const { taille = 36 } = Astro.props;
+---
+<svg class="logo-signe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width={taille} height={taille} aria-hidden="true" focusable="false">
+  <path d="M18 14l20 12-9 2 5 10-4 2-5-10-7 6z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M10 8l4 4M6 18h5M18 4v5" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

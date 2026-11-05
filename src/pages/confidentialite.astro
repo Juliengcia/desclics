@@ -1,0 +1,25 @@
+---
+import PageTexte from '../layouts/PageTexte.astro';
+import { site } from '../data/site';
+---
+<PageTexte titre="Confidentialité et données personnelles" description="Desclics ne dépose aucun cookie, ne suit pas ses lecteurs et ne demande aucun compte. Ce que le site garde, uniquement sur votre appareil." majLe="2026-11-05">
+  <h2>En bref</h2>
+  <ul>
+    <li>Aucun compte, aucun formulaire d'inscription.</li>
+    <li>Aucun cookie, aucun traceur publicitaire, aucune mesure d'audience pour le moment.</li>
+    <li>Les polices de caractères et la recherche sont hébergées sur le site lui-même : aucune requête vers Google ou un autre service.</li>
+  </ul>
+  <h2>Ce qui est gardé sur votre appareil</h2>
+  <p>Pour votre confort, le site enregistre dans votre navigateur (stockage local), et nulle part ailleurs :</p>
+  <ul>
+    <li>vos réglages d'affichage et d'accessibilité, et l'appareil choisi (Windows, Mac, Android, iPhone) ;</li>
+    <li>les chapitres déjà lus, pour les cocher dans le sommaire.</li>
+  </ul>
+  <p>Ces informations ne sont jamais envoyées. Pour les effacer : bouton « Tout remettre par défaut » du panneau Accessibilité, ou effacement des données du site dans votre navigateur.</p>
+  <h2>Recherche à la voix et lecture à voix haute</h2>
+  <p>La lecture à voix haute utilise la synthèse vocale de votre appareil. La recherche à la voix utilise la reconnaissance vocale de votre navigateur : selon le navigateur, votre voix peut être transmise à son éditeur (Google pour Chrome, Apple pour Safari) pour être transcrite. Vous pouvez toujours taper votre recherche au clavier.</p>
+  <h2>Hébergement</h2>
+  <p>Le site est hébergé par GitHub Pages. Comme tout hébergeur, GitHub peut enregistrer des journaux techniques (adresse IP) pour la sécurité du service.</p>
+  <h2>Vos droits</h2>
+  <p>Le site ne collecte pas de données personnelles. Pour toute question : <a href={`${site.depot}/issues`} rel="noopener">page des remarques du projet</a>. Vous pouvez aussi saisir la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.</p>
+</PageTexte>

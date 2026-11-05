@@ -1,0 +1,174 @@
+---
+import Logo from './Logo.astro';
+import Icone from './Icone.astro';
+import { rubriques } from '../data/rubriques';
+import { modulesPublies } from '../lib/navigation';
+import { lien } from '../lib/chemins';
+import { site } from '../data/site';
+
+const publies = await modulesPublies();
+const parRubrique = new Map(rubriques.map((r) => [r.slug, publies.filter((m) => m.rubrique.slug === r.slug)]));
+const actuel = Astro.url.pathname;
+---
+<header class="site-entete">
+  <div class="conteneur entete-barre">
+    <a class="entete-logo" href={lien()} aria-label={`${site.nom}, accueil`}>
+      <Logo />
+      <span class="entete-nom">{site.nom}</span>
+    </a>
+
+    <nav class="nav-principale" aria-label="Menu principal">
+      <ul class="nav-liste">
+        <li>
+          <button class="nav-bouton" type="button" aria-expanded="false" aria-controls="mega-menu" data-ouvre="mega-menu">
+            Rubriques <Icone nom="chevron" taille={18} class="chevron" />
+          </button>
+        </li>
+        <li><a class="nav-lien" href={lien('depannage')} aria-current={actuel.includes('/depannage/') ? 'page' : undefined}>J'ai un problème</a></li>
+        <li><a class="nav-lien" href={lien('glossaire')} aria-current={actuel.includes('/glossaire/') ? 'page' : undefined}>Glossaire</a></li>
+      </ul>
+    </nav>
+
+    <div class="entete-outils">
+      <a class="bouton-icone" href={lien('recherche')} data-ouvre-recherche aria-label="Rechercher">
+        <Icone nom="recherche" /><span class="outil-texte">Rechercher</span>
+      </a>
+      <button class="bouton-icone" type="button" data-ouvre-a11y aria-controls="panneau-a11y" aria-expanded="false">
+        <Icone nom="accessibilite" /><span class="outil-texte">Accessibilité</span>
+      </button>
+      <button class="bouton-icone" type="button" data-bascule-theme aria-pressed="false">
+        <Icone nom="lune" class="icone-lune" /><Icone nom="soleil" class="icone-soleil" />
+        <span class="visually-hidden" data-theme-libelle>Mode sombre</span>
+      </button>
+      <button class="bouton-icone bouton-menu-mobile" type="button" aria-expanded="false" aria-controls="menu-mobile" data-ouvre="menu-mobile">
+        <Icone nom="menu" /><span class="outil-texte-mobile">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Méga-menu (ordinateur et tablette) -->
+  <div id="mega-menu" class="mega-menu" hidden>
+    <div class="conteneur">
+      <ul class="mega-grille">
+        {rubriques.map((r) => {
+          const mods = parRubrique.get(r.slug) ?? [];
+          return (
+            <li class="mega-rubrique">
+              <a class="mega-titre" href={lien(r.slug)}>
+                <Icone nom={r.icone} /> <span>{r.titre}</span>
+              </a>
+              {mods.length > 0 ? (
+                <ul class="mega-modules">
+                  {mods.map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
+                </ul>
+              ) : (
+                <p class="mega-vide">Modules en préparation</p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      <p class="mega-pied"><a href={lien('plan-du-site')}>Voir le plan complet du site</a></p>
+    </div>
+  </div>
+
+  <!-- Menu mobile repliable -->
+  <div id="menu-mobile" class="menu-mobile" hidden>
+    <nav aria-label="Menu principal (mobile)" class="conteneur">
+      <ul class="menu-mobile-liste">
+        {rubriques.map((r, i) => {
+          const mods = parRubrique.get(r.slug) ?? [];
+          return (
+            <li>
+              <div class="menu-mobile-ligne">
+                <a href={lien(r.slug)}><Icone nom={r.icone} /> {r.titre}</a>
+                {mods.length > 0 && (
+                  <button type="button" class="bouton-icone" aria-expanded="false" aria-controls={`mm-${i}`} data-ouvre={`mm-${i}`}>
+                    <Icone nom="chevron" class="chevron" /><span class="visually-hidden">Modules de « {r.titre} »</span>
+                  </button>
+                )}
+              </div>
+              {mods.length > 0 && (
+                <ul id={`mm-${i}`} class="menu-mobile-modules" hidden>
+                  {mods.map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+        <li class="menu-mobile-sep"><a href={lien('glossaire')}>Glossaire</a></li>
+        <li><a href={lien('plan-du-site')}>Plan du site</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-entete {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--fond) 92%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--trait);
+  }
+  .entete-barre { display: flex; align-items: center; gap: .5rem; min-height: 4.25rem; }
+  .entete-logo { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent); text-decoration: none; min-height: var(--cible); margin-right: auto; }
+  .entete-nom { font: 700 1.45rem/1 var(--police-titre); letter-spacing: -.03em; color: var(--texte); }
+  .nav-principale { display: none; }
+  .nav-liste { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+  .nav-bouton, .nav-lien {
+    display: inline-flex; align-items: center; gap: .35rem; min-height: var(--cible); padding: 0 .9rem;
+    border-radius: 10px; border: 0; background: none; color: var(--texte); cursor: pointer;
+    font: 550 1.05rem var(--police-titre); text-decoration: none;
+  }
+  .nav-bouton:hover, .nav-lien:hover { background: var(--surface-2); color: var(--texte); }
+  .nav-lien[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .4em; }
+  [aria-expanded='true'] > :global(.chevron) { transform: rotate(180deg); }
+  :global(.chevron) { transition: transform .15s; }
+  .entete-outils { display: flex; align-items: center; gap: .15rem; }
+  .outil-texte { display: none; }
+  .outil-texte-mobile { font-size: .95rem; }
+  :global(.icone-soleil) { display: none; }
+  :global(:root[data-theme-effectif='dark'] .icone-soleil) { display: block; }
+  :global(:root[data-theme-effectif='dark'] .icone-lune) { display: none; }
+
+  @media (min-width: 1024px) {
+    .nav-principale { display: block; margin-right: auto; margin-left: 1.5rem; }
+    .entete-logo { margin-right: 0; }
+    .bouton-menu-mobile { display: none; }
+    .outil-texte { display: inline; }
+  }
+  @media (max-width: 479px) { .entete-nom { font-size: 1.25rem; } .outil-texte-mobile { display: none; } }
+
+  .mega-menu { border-top: 1px solid var(--trait); background: var(--fond); max-height: calc(100vh - 4.25rem); overflow-y: auto; box-shadow: var(--ombre); }
+  .mega-grille { list-style: none; margin: 0; padding: 1.5rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem; }
+  .mega-titre { display: flex; align-items: center; gap: .5rem; font: 650 1.05rem var(--police-titre); color: var(--texte); text-decoration: none; min-height: 44px; }
+  .mega-titre :global(svg) { color: var(--accent); flex: none; }
+  .mega-titre:hover span { text-decoration: underline; }
+  .mega-modules { list-style: none; margin: .25rem 0 0; padding: 0 0 0 2rem; font-size: 1rem; }
+  .mega-modules a { display: block; padding: .3rem 0; color: var(--texte-doux); text-decoration: none; }
+  .mega-modules a:hover { color: var(--accent); text-decoration: underline; }
+  .mega-vide { margin: .1rem 0 0 2rem; font-size: .95rem; color: var(--texte-doux); }
+  .mega-pied { border-top: 1px solid var(--trait); padding: 1rem 0 1.25rem; margin: 0; }
+
+  .menu-mobile { border-top: 1px solid var(--trait); background: var(--fond); max-height: calc(100vh - 4.25rem); overflow-y: auto; }
+  .menu-mobile-liste { list-style: none; margin: 0; padding: .5rem 0 1.5rem; }
+  .menu-mobile-liste > li { border-bottom: 1px solid var(--trait); }
+  .menu-mobile-ligne { display: flex; align-items: center; justify-content: space-between; }
+  .menu-mobile-liste a { display: flex; align-items: center; gap: .6rem; min-height: 52px; color: var(--texte); text-decoration: none; font: 550 1.05rem var(--police-titre); flex: 1; }
+  .menu-mobile-liste a :global(svg) { color: var(--accent); }
+  .menu-mobile-modules { list-style: none; padding: 0 0 .5rem 2.1rem; margin: 0; }
+  .menu-mobile-modules a { font: 400 1rem var(--police-texte); min-height: 44px; color: var(--texte-doux); }
+  .menu-mobile-sep { margin-top: .75rem; }
+  @media (min-width: 1024px) { :global(:root:not([data-grand-texte])) .menu-mobile { display: none !important; } }
+  @media (max-width: 1023px) { .mega-menu { display: none !important; } }
+  /* Texte agrandi (≥ 150 %) : l'en-tête passe en version compacte, comme sur mobile. */
+  .entete-barre { flex-wrap: wrap; }
+  .entete-outils { flex-wrap: wrap; justify-content: flex-end; }
+  :global(:root[data-grand-texte]) .nav-principale, :global(:root[data-grand-texte]) .outil-texte, :global(:root[data-grand-texte]) .outil-texte-mobile { display: none; }
+  :global(:root[data-grand-texte]) .bouton-menu-mobile { display: inline-flex; }
+  :global(:root[data-grand-texte]) .mega-menu { display: none !important; }
+  :global(:root[data-grand-texte]) .menu-mobile { display: block; }
+  :global(:root[data-grand-texte]) .menu-mobile[hidden] { display: none !important; }
+  :global(:root[data-grand-texte]) .entete-nom { font-size: 1.1rem; }
+  @media (max-width: 1279px) { .mega-grille { grid-template-columns: repeat(3, 1fr); } }
+</style>

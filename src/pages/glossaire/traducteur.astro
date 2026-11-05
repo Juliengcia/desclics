@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import { glossaire } from '../../data/glossaire';
+import { lien } from '../../lib/chemins';
+const donnees = glossaire.map((t) => ({ id: t.id, terme: t.terme, definition: t.definition, formes: [t.terme, ...(t.variantes ?? [])] }));
+---
+<Base titre="Traducteur de jargon informatique" description="Collez une phrase pleine de mots techniques : le traducteur de jargon repère chaque terme et l'explique simplement, avec un lien vers le glossaire.">
+  <div class="conteneur traducteur">
+    <FilAriane miettes={[{ titre: 'Glossaire', chemin: 'glossaire' }, { titre: 'Traducteur de jargon' }]} />
+    <h1>Traducteur de jargon</h1>
+    <p class="chapo">Collez une phrase que vous ne comprenez pas (un message d'erreur, un e-mail, une notice). Le traducteur repère les mots techniques et les explique.</p>
+    <form onsubmit="return false" class="trad-form">
+      <label for="trad-texte">Votre phrase</label>
+      <textarea id="trad-texte" rows="4" placeholder="Exemple : Copiez l'URL dans votre navigateur puis téléchargez le PDF en pièce jointe."></textarea>
+    </form>
+    <div id="trad-resultat" role="region" aria-live="polite" aria-label="Mots expliqués"></div>
+    <noscript><p>Le traducteur a besoin de JavaScript. Consultez directement le <a href={lien('glossaire')}>glossaire</a>.</p></noscript>
+  </div>
+</Base>
+<script is:inline define:vars={{ donnees, base: lien('glossaire') }}>
+  const zone = document.getElementById('trad-texte');
+  const sortie = document.getElementById('trad-resultat');
+  const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’']/g, "'");
+  function analyser() {
+    const texte = ' ' + norm(zone.value).replace(/[^a-z0-9@'⌘⌥.\- ]+/g, ' ') + ' ';
+    const trouves = donnees.filter((t) => t.formes.some((f) => {
+      const n = norm(f).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return new RegExp(`(^|[^a-z0-9])${n}([^a-z0-9]|$)`).test(texte);
+    }));
+    sortie.textContent = '';
+    if (!zone.value.trim()) return;
+    const h = document.createElement('h2');
+    h.textContent = trouves.length ? `${trouves.length} mot${trouves.length > 1 ? 's' : ''} expliqué${trouves.length > 1 ? 's' : ''}` : 'Aucun mot du glossaire repéré';
+    sortie.append(h);
+    if (!trouves.length) {
+      const p = document.createElement('p');
+      p.textContent = 'Essayez avec une autre phrase, ou parcourez le glossaire complet.';
+      sortie.append(p);
+      return;
+    }
+    const dl = document.createElement('dl');
+    for (const t of trouves) {
+      const dt = document.createElement('dt');
+      const a = document.createElement('a');
+      a.href = `${base}#${t.id}`; a.textContent = t.terme;
+      dt.append(a);
+      const dd = document.createElement('dd');
+      dd.textContent = t.definition;
+      dl.append(dt, dd);
+    }
+    sortie.append(dl);
+  }
+  let minuteur;
+  zone.addEventListener('input', () => { clearTimeout(minuteur); minuteur = setTimeout(analyser, 250); });
+</script>
+<style>
+  .traducteur { max-width: 52rem; }
+  .trad-form label { display: block; font: 650 1.1rem var(--police-titre); margin-bottom: .5rem; }
+  textarea { width: 100%; padding: 1rem; font: 1.1rem/1.5 var(--police-texte); border: 2px solid var(--bordure); border-radius: 14px; background: var(--surface); color: var(--texte); }
+  #trad-resultat :global(h2) { margin-top: 2rem; font-size: 1.4rem; }
+  #trad-resultat :global(dt) { font: 650 1.15rem var(--police-titre); margin-top: 1rem; }
+  #trad-resultat :global(dd) { margin: .25rem 0 0; }
+</style>

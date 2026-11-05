@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import Icone from '../components/Icone.astro';
+import Recherche from '../components/Recherche.astro';
+import { rubriques } from '../data/rubriques';
+import { jeVeux } from '../data/je-veux';
+import { nouveautes } from '../data/nouveautes';
+import { site } from '../data/site';
+import { tousLesModules } from '../lib/navigation';
+import { lien } from '../lib/chemins';
+
+const modules = await tousLesModules();
+const publies = new Set(modules.filter((m) => m.publie).map((m) => m.chemin));
+const entrees = jeVeux.filter((e) => publies.has(e.module));
+const compte = (slug: string) => modules.filter((m) => m.rubrique.slug === slug && m.publie).length;
+const dateFr = (d: string) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const jsonld = [{
+  '@context': 'https://schema.org', '@type': 'WebSite', name: site.nom, inLanguage: 'fr-FR',
+  url: new URL(lien(), Astro.site).href,
+  potentialAction: { '@type': 'SearchAction', target: `${new URL(lien('recherche'), Astro.site).href}?q={q}`, 'query-input': 'required name=q' },
+}];
+---
+<Base titre={site.nom} description={site.description} jsonld={jsonld}>
+  <section class="accueil-hero">
+    <div class="peinture" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="conteneur hero-grille">
+      <div class="hero-texte">
+        <p class="etiquette"><Icone nom="etincelle" /> Gratuit, sans compte, sans publicité</p>
+        <h1>Le numérique, expliqué clairement.</h1>
+        <p class="chapo">Ordinateur, smartphone, démarches, arnaques : des réponses précises, étape par étape, en français simple.</p>
+        <div class="hero-recherche">
+          <Recherche id="recherche-accueil" enPage />
+        </div>
+      </div>
+
+      <aside class="hero-fiche carte" aria-label="Exemple de fiche">
+        <p class="fiche-surtitre">Fiche Bristol · Clavier</p>
+        <p class="fiche-titre">Copier-coller un texte</p>
+        <ol>
+          <li><span>Sélectionner</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>A</kbd></span></li>
+          <li><span>Copier</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>C</kbd></span></li>
+          <li><span>Coller</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>V</kbd></span></li>
+        </ol>
+        <p class="fiche-note">Sur Mac, remplacez Ctrl par <kbd>⌘</kbd>.</p>
+      </aside>
+    </div>
+  </section>
+
+  {entrees.length > 0 && (
+    <section class="conteneur bloc" aria-labelledby="titre-je-veux">
+      <h2 id="titre-je-veux">Je veux…</h2>
+      <ul class="je-veux">
+        {entrees.map((e) => (
+          <li><a href={lien(`${e.module}${e.ancre ? `#${e.ancre}` : ''}`)}><span>{e.libelle}</span><Icone nom="fleche" /></a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="conteneur bloc" aria-labelledby="titre-rubriques">
+    <p class="etiquette">12 rubriques</p>
+    <h2 id="titre-rubriques">Tout ce qu'il faut savoir, rangé par thème</h2>
+    <ul class="grille grille--3 rubriques">
+      {rubriques.map((r) => (
+        <li class="carte carte-lien rubrique-carte">
+          <span class="rubrique-icone"><Icone nom={r.icone} taille={28} /></span>
+          <h3><a href={lien(r.slug)}>{r.titre}</a></h3>
+          <p>{r.description}</p>
+          <p class="rubrique-compte">{compte(r.slug) > 0 ? `${compte(r.slug)} module${compte(r.slug) > 1 ? 's' : ''} disponible${compte(r.slug) > 1 ? 's' : ''}` : 'En préparation'}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="conteneur bloc grille grille--2" aria-label="Aide et nouveautés">
+    <div class="carte encart-aide">
+      <h2>Besoin d'une aide en personne ?</h2>
+      <p>Des conseillers numériques et les espaces France Services accompagnent gratuitement près de chez vous.</p>
+      <p><a href="https://www.france-services.gouv.fr/" rel="noopener">Trouver un espace France Services</a></p>
+    </div>
+    <div class="carte">
+      <h2>Quoi de neuf ?</h2>
+      <ul class="nouveautes">
+        {nouveautes.slice(0, 4).map((n) => (
+          <li><time datetime={n.date}>{dateFr(n.date)}</time> {n.lien ? <a href={lien(n.lien)}>{n.texte}</a> : n.texte}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .accueil-hero { position: relative; overflow: hidden; padding: 3rem 0 3.5rem; border-bottom: 1px solid var(--trait); }
+  .hero-grille { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 1024px) { .accueil-hero { padding: 5rem 0; } .hero-grille { grid-template-columns: 1.35fr 1fr; gap: 4rem; } }
+  .hero-texte h1 { margin-top: 1.25rem; max-width: 14ch; }
+  .hero-recherche { margin-top: 1.75rem; max-width: 38rem; }
+  .hero-recherche :global(.recherche-label) { font-size: 1.05rem; }
+  .hero-fiche { background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(8px); max-width: 26rem; justify-self: center; width: 100%; }
+  .fiche-surtitre { font: 600 .8rem var(--police-titre); text-transform: uppercase; letter-spacing: .08em; color: var(--texte-doux); margin: 0 0 .25rem; }
+  .fiche-titre { font: 650 1.4rem var(--police-titre); letter-spacing: -.02em; margin: 0 0 1rem; }
+  .hero-fiche ol { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .5rem; counter-reset: e; }
+  .hero-fiche li { counter-increment: e; display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem .9rem; border: 1px solid var(--trait); border-radius: 12px; background: var(--surface); }
+  .hero-fiche li > span:first-child::before { content: counter(e) '. '; font-weight: 700; color: var(--accent); }
+  .touches { white-space: nowrap; }
+  .fiche-note { margin: 0; font-size: 1rem; color: var(--texte-doux); }
+
+  .bloc { padding-top: 3.5rem; }
+  .je-veux { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+  .je-veux a {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .5rem 1rem;
+    border: 1px solid var(--bordure); border-radius: 999px; background: var(--surface);
+    color: var(--texte); text-decoration: none; font: 550 1.05rem var(--police-titre);
+  }
+  .je-veux a:hover { border-color: var(--accent); color: var(--accent); }
+  .je-veux a :global(svg) { width: 1.1em; height: 1.1em; color: var(--accent); }
+  .rubriques { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+  .rubrique-carte h3 { font-size: 1.25rem; margin: .75rem 0 .35rem; }
+  .rubrique-carte h3 a { color: var(--texte); text-decoration: none; }
+  .rubrique-carte:hover h3 a { text-decoration: underline; }
+  .rubrique-carte p { margin: 0; color: var(--texte-doux); font-size: 1rem; }
+  .rubrique-icone { display: inline-flex; padding: .6rem; border-radius: 12px; background: var(--accent-pale); color: var(--accent); }
+  .rubrique-compte { margin-top: .75rem !important; font: 600 .9rem var(--police-titre) !important; }
+  .encart-aide { background: var(--accent-pale); }
+  .nouveautes { list-style: none; padding: 0; margin: 0; }
+  .nouveautes li { padding: .5rem 0; border-top: 1px solid var(--trait); }
+  .nouveautes time { display: block; font: 600 .9rem var(--police-titre); color: var(--texte-doux); }
+  h2 { font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem); }
+</style>

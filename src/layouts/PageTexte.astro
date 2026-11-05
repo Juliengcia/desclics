@@ -1,0 +1,19 @@
+---
+import Base from './Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+interface Props { titre: string; description: string; majLe: string }
+const { titre, description, majLe } = Astro.props;
+---
+<Base titre={titre} description={description}>
+  <div class="conteneur page-texte">
+    <FilAriane miettes={[{ titre }]} />
+    <h1>{titre}</h1>
+    <slot />
+    <p class="maj">Mise à jour : <time datetime={majLe}>{new Date(majLe).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time></p>
+  </div>
+</Base>
+<style>
+  .page-texte { max-width: calc(var(--largeur-texte) + 2 * var(--gouttiere)); }
+  .page-texte :global(h2) { margin-top: 2rem; font-size: 1.5rem; }
+  .maj { margin-top: 2.5rem; color: var(--texte-doux); font-size: 1rem; }
+</style>

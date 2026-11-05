@@ -1,0 +1,30 @@
+---
+import PageTexte from '../layouts/PageTexte.astro';
+import { site } from '../data/site';
+import { lien } from '../lib/chemins';
+---
+<PageTexte titre="Déclaration d'accessibilité" description="Déclaration d'accessibilité du site Desclics : état de conformité au RGAA 4, contenus non accessibles, contact et voies de recours." majLe="2026-11-05">
+  <p>{site.nom} s'engage à rendre son site accessible, conformément au référentiel général d'amélioration de l'accessibilité (RGAA 4) et aux règles WCAG 2.2 de niveau AA.</p>
+  <h2>État de conformité</h2>
+  <p>Le site est <strong>non conforme</strong> au RGAA 4 : aucun audit complet n'a encore été réalisé. Des contrôles automatiques (axe-core) sont faits à chaque modification ; ils ne remplacent pas un audit.</p>
+  <h2>Ce qui est déjà en place</h2>
+  <ul>
+    <li>Navigation complète au clavier, lien d'évitement et focus visible.</li>
+    <li>Contrastes de couleurs de niveau AA au minimum, en mode clair et en mode sombre.</li>
+    <li>Texte agrandissable jusqu'à 200 % sans défilement horizontal.</li>
+    <li>Panneau Accessibilité : taille du texte, contraste élevé, espacement pour la dyslexie, règle de lecture, loupe, grand curseur, réduction des animations, lecture simple, lecture à voix haute.</li>
+    <li>Schémas avec texte alternatif complet et légende numérotée.</li>
+  </ul>
+  <h2>Contenus non accessibles connus</h2>
+  <ul>
+    <li>Les ateliers interactifs (copier-coller, testeur de touches) demandent un clavier physique.</li>
+    <li>La recherche à la voix n'est disponible que dans certains navigateurs.</li>
+  </ul>
+  <h2>Établissement de cette déclaration</h2>
+  <p>Déclaration établie le 5 novembre 2026. Technologies utilisées : HTML, CSS, JavaScript. Outils : axe-core, Playwright.</p>
+  <h2>Retour et contact</h2>
+  <p>Si vous n'arrivez pas à accéder à un contenu, signalez-le sur la <a href={`${site.depot}/issues`} rel="noopener">page des remarques du projet</a> : nous vous proposerons une alternative.</p>
+  <h2>Voies de recours</h2>
+  <p>Si vous n'obtenez pas de réponse satisfaisante, vous pouvez saisir le <a href="https://formulaire.defenseurdesdroits.fr/" rel="noopener">Défenseur des droits</a> ou contacter son délégué dans votre région.</p>
+  <p><a href={lien('plan-du-site')}>Plan du site</a></p>
+</PageTexte>

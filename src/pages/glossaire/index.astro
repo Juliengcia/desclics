@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import { glossaire } from '../../data/glossaire';
+import { lien } from '../../lib/chemins';
+import { trouverModule } from '../../lib/navigation';
+
+const tries = [...glossaire].sort((a, b) => a.terme.localeCompare(b.terme, 'fr', { sensitivity: 'base' }));
+const lettres = [...new Set(tries.map((t) => t.terme[0].normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase()))];
+const voirs = new Map(await Promise.all(tries.filter((t) => t.voir).map(async (t) => [t.id, await trouverModule(t.voir!)] as const)));
+const url = new URL(lien('glossaire'), Astro.site).href;
+const jsonld = [{
+  '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Glossaire du numérique — Desclics', url, inLanguage: 'fr-FR',
+  hasDefinedTerm: tries.map((t) => ({ '@type': 'DefinedTerm', name: t.terme, description: t.definition, url: `${url}#${t.id}` })),
+}];
+---
+<Base titre="Glossaire du numérique" description="Les mots du numérique expliqués simplement, en une ou deux phrases : application, navigateur, presse-papiers, cookie, Wi-Fi, PDF et bien d'autres." jsonld={jsonld}>
+  <div class="conteneur">
+    <FilAriane miettes={[{ titre: 'Glossaire' }]} />
+    <h1>Glossaire du numérique</h1>
+    <p class="chapo">Chaque mot technique du site, expliqué en une ou deux phrases. Vous avez une phrase pleine de jargon ? Essayez le <a href={lien('glossaire/traducteur')}>traducteur de jargon</a>.</p>
+    <nav aria-label="Lettres du glossaire" class="lettres">
+      <ul>{lettres.map((l) => <li><a href={`#lettre-${l}`}>{l}</a></li>)}</ul>
+    </nav>
+    {lettres.map((l) => (
+      <section aria-labelledby={`lettre-${l}`} class="groupe">
+        <h2 id={`lettre-${l}`}>{l}</h2>
+        <div class="termes">
+          {tries.filter((t) => t.terme[0].normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase() === l).map((t) => {
+            const v = voirs.get(t.id);
+            return (
+              <div class="terme" id={t.id}>
+                <h3>{t.terme}</h3>
+                <div class="def">
+                  <p>{t.definition}</p>
+                  {v?.publie && <p class="voir">Pour aller plus loin : <a href={lien(v.chemin)}>{v.titre}</a></p>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+<style>
+  .lettres ul { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 1.5rem 0 2rem; }
+  .lettres a { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--bordure); border-radius: 12px; font: 650 1.1rem var(--police-titre); text-decoration: none; background: var(--surface); }
+  .lettres a:hover { border-color: var(--accent); }
+  .groupe { border-top: 1px solid var(--trait); padding-top: 1rem; max-width: var(--largeur-texte); }
+  .terme { padding: .75rem 0 .5rem; scroll-margin-top: 6rem; }
+  .terme:target { background: var(--accent-pale); border-radius: 12px; padding-inline: 1rem; }
+  .terme h3 { margin: 0 0 .25rem; font-size: 1.25rem; }
+  .def p { margin: 0 0 .4rem; }
+  .voir { font-size: 1rem; color: var(--texte-doux); }
+</style>

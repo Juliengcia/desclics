@@ -1,0 +1,16 @@
+---
+import PageTexte from '../layouts/PageTexte.astro';
+import { site } from '../data/site';
+---
+<PageTexte titre="Mentions légales" description="Mentions légales du site Desclics : éditeur, hébergeur, propriété intellectuelle, exactitude des contenus et moyen de contact." majLe="2026-11-05">
+  <h2>Éditeur</h2>
+  <p>Le site {site.nom} est édité à titre non commercial par un particulier.</p>
+  <p><strong>Identité et adresse de contact de l'éditeur : à compléter avant la mise en ligne publique.</strong></p>
+  <p>Contact : <a href={`${site.depot}/issues`} rel="noopener">page des remarques du projet</a>.</p>
+  <h2>Hébergeur</h2>
+  <p>GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+  <h2>Contenus et marques</h2>
+  <p>Les textes, schémas et illustrations sont produits pour ce site. Les noms de produits et de services cités (Windows, Mac, Chrome…) appartiennent à leurs propriétaires et ne servent qu'à les identifier. {site.nom} n'est lié à aucun d'eux.</p>
+  <h2>Exactitude</h2>
+  <p>Chaque module indique ses sources et sa date de vérification. Les applications et les démarches changent souvent : en cas de doute, la source officielle fait foi.</p>
+</PageTexte>
