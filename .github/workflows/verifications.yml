@@ -1,0 +1,44 @@
+# Vérifications automatiques à chaque envoi sur une branche et à chaque demande de fusion.
+# Construction, liens internes, accessibilité (axe-core), responsive. Un échec bloque la fusion.
+name: Vérifications
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Installer le navigateur de test
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Construire le site
+        run: npm run build
+      - name: Liens internes et ancres
+        run: npm run check:liens
+      - name: Accessibilité (axe-core, WCAG 2.2 AA)
+        run: npm run check:a11y
+      - name: Responsive (360 à 1920 px, texte à 200 %)
+        run: CAPTURES=1 npm run check:responsive
+      - name: Aperçu téléchargeable (site construit + captures)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apercu-${{ github.run_number }}
+          path: |
+            dist
+            rapports
+          retention-days: 14
