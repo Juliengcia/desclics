@@ -14,6 +14,10 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'cci', terme: 'Cc et Cci', definition: "Cc (copie) envoie l'e-mail à d'autres personnes, visibles de tous. Cci (copie cachée) l'envoie sans que les destinataires voient les autres adresses.", variantes: ['cc', 'copie cachée', 'copie carbone', 'bcc'], voir: 'communiquer/e-mail' },
+  { id: 'redirection', terme: 'Redirection (e-mail)', definition: "Réglage qui fait suivre automatiquement les e-mails reçus sur une adresse vers une autre adresse.", variantes: ['transfert automatique', 'faire suivre'], voir: 'communiquer/changer-adresse-e-mail' },
+  { id: 'rcs', terme: 'RCS', definition: "Version moderne du SMS : photos de bonne qualité, « en train d'écrire », accusés de lecture, via Internet. Il dépend de l'opérateur.", variantes: ['chat rcs'], voir: 'communiquer/sms' },
+  { id: 'imessage', terme: 'iMessage', definition: "Messagerie d'Apple entre appareils Apple, via Internet. Les messages s'affichent dans des bulles bleues.", voir: 'communiquer/sms' },
   { id: 'mot-de-passe', terme: 'Mot de passe', definition: "Suite de caractères secrète qui protège un compte. Il en faut un différent pour chaque compte important.", variantes: ['mots de passe', 'mdp', 'code secret'], voir: 'securite/mots-de-passe' },
   { id: 'phrase-de-passe', terme: 'Phrase de passe', definition: "Mot de passe long fait de plusieurs mots choisis au hasard, plus facile à retenir et difficile à deviner.", variantes: ['phrases de passe'], voir: 'securite/mots-de-passe' },
   { id: 'gestionnaire-mots-de-passe', terme: 'Gestionnaire de mots de passe', definition: "Coffre-fort numérique qui retient tous vos mots de passe. Vous n'avez plus qu'un seul mot de passe maître à retenir.", variantes: ['gestionnaire de mots de passe', 'coffre-fort de mots de passe', 'bitwarden', 'keepass', 'keepassxc'], voir: 'securite/gestionnaire-mots-de-passe' },
