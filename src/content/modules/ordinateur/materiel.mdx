@@ -1,0 +1,166 @@
+---
+identifiant: materiel
+titre: De quoi est fait un ordinateur ?
+rubrique: ordinateur
+resume: Les éléments d'un ordinateur, la différence entre mémoire et stockage, et comment l'allumer, le mettre en veille ou l'éteindre proprement.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - reconnaître les éléments d'un ordinateur fixe et d'un portable ;
+  - comprendre la différence entre mémoire vive et stockage ;
+  - allumer, mettre en veille et éteindre correctement ;
+  - savoir quoi regarder avant d'acheter un ordinateur.
+motsCles: [ordinateur, matériel, mémoire vive, RAM, stockage, SSD, disque dur, processeur, veille, éteindre]
+titreSeo: "Ordinateur : mémoire, stockage, veille, comment ça marche"
+metaDescription: "De quoi est fait un ordinateur ? Écran, clavier, processeur, mémoire vive et stockage expliqués simplement, et comment l'éteindre ou le mettre en veille."
+bristol:
+  - "Mémoire vive (RAM) : la table de travail, vidée à l'extinction"
+  - "Stockage (SSD ou disque dur) : l'armoire où restent vos fichiers"
+  - "Éteindre Windows : Démarrer → bouton Marche/Arrêt → Arrêter"
+  - "Éteindre un Mac : menu Pomme → Éteindre"
+  - "Ordinateur figé : maintenir le bouton d'alimentation 10 secondes, en dernier recours"
+  - "Acheter : regardez le stockage SSD, la mémoire vive et la durée des mises à jour"
+sources:
+  - titre: Arrêter, mettre en veille ou mettre en veille prolongée votre PC
+    url: https://support.microsoft.com/fr-fr/windows/experience/power-battery/shut-down-sleep-or-hibernate-your-pc
+    editeur: Microsoft
+  - titre: Éteindre ou redémarrer votre Mac
+    url: https://support.apple.com/fr-fr/guide/mac-help/mchlp2522/mac
+    editeur: Apple
+  - titre: Caractéristiques techniques et configuration requise pour Windows 11
+    url: https://www.microsoft.com/fr-fr/windows/windows-11-specifications
+    editeur: Microsoft
+verifieLe: 2026-11-05
+appareils: [windows, mac]
+pourAidant:
+  - "La confusion la plus fréquente : « mémoire » pour parler de la place libre. Utilisez l'image de la table de travail (mémoire vive) et de l'armoire (stockage)."
+  - "Beaucoup éteignent en débranchant ou en maintenant le bouton. Montrez l'arrêt par le menu, et réservez le bouton aux blocages."
+  - "Sur un portable, refermer l'écran met en veille : ce n'est pas éteindre. La batterie continue de s'user doucement."
+liesA: [ordinateur/systemes-exploitation, ordinateur/entretien, ordinateur/connectiques]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+import SchemaOrdinateur from '../../../components/schemas/SchemaOrdinateur.astro';
+
+## Quels sont les éléments d'un ordinateur ? \{#elements\}
+
+<Definition terme="ordinateur">
+Un ordinateur est une machine qui enregistre, calcule et affiche des informations. On s'en sert avec un clavier et une souris, ou un pavé tactile.
+</Definition>
+
+Il en existe deux grandes familles : l'**ordinateur fixe**, posé sur un bureau, et l'**ordinateur portable**, qui réunit tout dans un boîtier qui se replie.
+
+<Figure
+  alt="Schéma d'un ordinateur fixe et d'un ordinateur portable. À gauche, l'ordinateur fixe : l'écran (1), le boîtier appelé unité centrale (2), le clavier (3) et la souris (4). À droite, le portable : l'écran intégré (5) et, sous le clavier, le pavé tactile (6)."
+  legende="Ordinateur fixe et ordinateur portable"
+  date="2026-11"
+  annotations={[
+    "<strong>Écran</strong> : affiche les images.",
+    "<strong>Unité centrale</strong> : le boîtier qui contient les pièces principales. Le bouton d'allumage s'y trouve.",
+    "<strong>Clavier</strong> : pour écrire et donner des ordres.",
+    "<strong>Souris</strong> : pour déplacer la flèche à l'écran et cliquer.",
+    "<strong>Écran du portable</strong> : il se replie sur le clavier.",
+    "<strong>Pavé tactile</strong> : remplace la souris. On y glisse un doigt pour déplacer la flèche.",
+  ]}
+>
+  <SchemaOrdinateur />
+</Figure>
+
+<Astuce>
+Sur un pavé tactile, un appui léger vaut un clic. Deux doigts posés ensemble, puis glissés vers le haut ou le bas, font défiler la page.
+</Astuce>
+
+## Que contient l'ordinateur ? \{#composants\}
+
+À l'intérieur, trois pièces comptent pour vous :
+
+- le <Terme id="processeur">processeur</Terme> : il fait les calculs. Il décide en grande partie de la rapidité ;
+- la <Terme id="memoire-vive">mémoire vive</Terme> (ou RAM) : elle sert pendant que vous travaillez ;
+- le **stockage** (<Terme id="ssd">SSD</Terme> ou <Terme id="disque-dur">disque dur</Terme>) : il garde vos fichiers, même ordinateur éteint.
+
+Ces quantités se mesurent en <Terme id="gigaoctet">gigaoctets</Terme> (Go). Par exemple : 8 Go de mémoire vive, 512 Go de stockage.
+
+## Quelle différence entre mémoire et stockage ? \{#memoire-stockage\}
+
+<Definition terme="mémoire vive et stockage">
+La mémoire vive est la table de travail : on y pose ce dont on se sert maintenant. Le stockage est l'armoire : on y range ce que l'on veut garder.
+</Definition>
+
+**À quoi ça sert de le savoir.** Quand l'ordinateur ralentit avec beaucoup de fenêtres ouvertes, c'est la table qui est encombrée (mémoire vive). Quand il refuse d'enregistrer un fichier, c'est l'armoire qui est pleine (stockage).
+
+<TableauComparatif
+  legende="Mémoire vive et stockage"
+  colonnes={['', 'Mémoire vive (RAM)', 'Stockage (SSD, disque dur)']}
+  lignes={[
+    ['Rôle', 'Travailler maintenant', 'Garder les fichiers'],
+    ['À l’extinction', 'Elle se vide', 'Tout reste'],
+    ['Si elle manque', 'L’ordinateur ralentit', 'Impossible d’enregistrer'],
+    ['Taille courante', '8 à 16 Go', '256 Go à 1 To'],
+  ]}
+/>
+
+<ARetenir>
+Un document non enregistré n'existe que dans la mémoire vive. Si l'ordinateur s'éteint, il est perdu. Enregistrez souvent.
+</ARetenir>
+
+## Comment allumer, mettre en veille et éteindre ? \{#allumer-eteindre\}
+
+La **veille** met l'ordinateur en pause : l'écran s'éteint, tout reste ouvert, il redémarre en quelques secondes. **Éteindre** ferme tout. Éteignez au moins de temps en temps : cela permet d'installer les <Terme id="mise-a-jour">mises à jour</Terme>.
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Éteindre un ordinateur Windows">
+1. Cliquez sur le bouton **Démarrer** (le logo Windows), en bas de l'écran.
+2. Cliquez sur le bouton **Marche/Arrêt** (un rond barré d'un trait).
+3. Choisissez **Arrêter**. Pour une pause, choisissez **Mettre en veille**.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Éteindre un Mac">
+1. Cliquez sur le menu **Pomme**, en haut à gauche de l'écran.
+2. Choisissez **Éteindre**. Pour une pause, choisissez **Suspendre l'activité** (la veille).
+3. Sur un portable, attendez que le Mac soit éteint avant de refermer l'écran.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+Ne débranchez pas un ordinateur fixe allumé pour l'éteindre. Si l'ordinateur est complètement figé, maintenez le bouton d'alimentation enfoncé une dizaine de secondes : c'est le dernier recours, car le travail non enregistré est perdu.
+</Attention>
+
+## Quel ordinateur choisir ? \{#choisir\}
+
+Vous n'avez pas besoin d'un ordinateur puissant pour Internet, les e-mails, les démarches et les documents. Regardez surtout ces points :
+
+<Etapes titre="Ce qu'il faut vérifier avant d'acheter">
+1. **Le stockage est un SSD** : l'ordinateur démarre et répond beaucoup plus vite.
+2. **La mémoire vive** : au moins 8 Go pour un usage confortable.
+3. **Le système** : un ordinateur Windows neuf doit être vendu avec Windows 11, qui demande au minimum 4 Go de mémoire et 64 Go de stockage.
+4. **Les prises** : au moins une prise USB, et une prise pour brancher un écran si besoin.
+5. **Le poids et l'autonomie**, si vous voulez le transporter.
+</Etapes>
+
+<Attention>
+Méfiez-vous des ordinateurs d'occasion très bon marché encore sous Windows 10 : Microsoft ne publie plus de mises à jour de sécurité gratuites pour ce système depuis le 14 octobre 2025.
+</Attention>
+
+<Quiz questions={[
+  { question: 'Je ne peux plus enregistrer de photos : qu’est-ce qui est plein ?', choix: ['La mémoire vive', 'Le stockage', 'Le processeur'], bonne: 1, explication: 'Le stockage garde les fichiers ; quand il est plein, on ne peut plus enregistrer.' },
+  { question: 'Que fait la mise en veille ?', choix: ['Elle éteint tout', 'Elle met l’ordinateur en pause, tout reste ouvert', 'Elle supprime les fichiers'], bonne: 1, explication: 'La veille éteint l’écran et garde le travail ouvert.' },
+  { question: 'Quand faut-il maintenir le bouton d’alimentation ?', choix: ['Pour éteindre tous les soirs', 'Seulement si l’ordinateur est complètement bloqué', 'Pour le mettre en veille'], bonne: 1, explication: 'C’est le dernier recours : le travail non enregistré est perdu.' },
+]} />

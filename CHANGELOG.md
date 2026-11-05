@@ -4,6 +4,8 @@ Chaque modification, datée, la plus récente en haut.
 
 ## 2026-11-05
 
+- **Rubrique « Comprendre l'ordinateur » terminée** (7 modules) : ajout de « De quoi est fait un ordinateur ? », « Windows, macOS, Linux », « Ranger et retrouver ses fichiers », « Mon ordinateur est bloqué », « Brancher ses appareils », « Entretenir son ordinateur ». 3 schémas (ordinateur, dossiers, prises), une frise, 16 mots ajoutés au glossaire (57 au total), 2 entrées « Je veux… ».
+- Mise en ligne sur GitHub Pages (https://juliengcia.github.io/desclics/).
 - **Module modèle** : « Le clavier et les raccourcis » (rubrique Comprendre l'ordinateur) : 7 chapitres, schéma annoté du clavier, onglets Windows / Mac, atelier copier-coller, testeur de touches, quiz facultatif, fiche Bristol, sources datées.
 - **Socle technique** : Astro 5 (site statique, MDX), React pour les ateliers seulement, schéma de métadonnées obligatoires, organisation générée depuis `src/data/rubriques.ts` (12 rubriques, 89 modules prévus).
 - **Navigation** : en-tête avec méga-menu, menu mobile repliable, fil d'Ariane, sommaire de chapitres, module précédent / suivant, plan du site, page 404.

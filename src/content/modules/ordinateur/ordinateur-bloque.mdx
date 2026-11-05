@@ -1,0 +1,151 @@
+---
+identifiant: ordinateur-bloque
+titre: Mon ordinateur est bloqué
+rubrique: ordinateur
+resume: Que faire quand un logiciel ne répond plus ou que l'écran se fige, du geste le plus simple au redémarrage forcé, sur Windows et sur Mac.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - savoir attendre ou agir face à un logiciel figé ;
+  - fermer de force un logiciel bloqué sur Windows et sur Mac ;
+  - redémarrer un ordinateur complètement figé ;
+  - savoir quand demander de l'aide.
+motsCles: [ordinateur bloqué, ne répond pas, écran figé, Ctrl Alt Suppr, gestionnaire des tâches, forcer à quitter, redémarrer]
+titreSeo: "Ordinateur bloqué, logiciel qui ne répond pas : que faire ?"
+metaDescription: "Votre ordinateur ou un logiciel ne répond plus ? Les gestes dans l'ordre : attendre, Gestionnaire des tâches, Forcer à quitter sur Mac, redémarrage forcé."
+bristol:
+  - "D'abord : attendre une minute sans cliquer partout"
+  - "Windows : <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>Échap</kbd> → Gestionnaire des tâches → Fin de tâche"
+  - "Mac : <kbd>⌥</kbd> + <kbd>⌘</kbd> + <kbd>Échap</kbd> → choisir l'app → Forcer à quitter"
+  - "Tout est figé : <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Suppr</kbd> → bouton Marche/Arrêt → Redémarrer"
+  - "Dernier recours : maintenir le bouton d'alimentation environ 10 secondes"
+  - "Un message vous demande d'appeler un numéro ? C'est une arnaque"
+sources:
+  - titre: Les raccourcis clavier dans Windows
+    url: https://support.microsoft.com/fr-fr/accessibility/windows/keyboard-shortcuts-in-windows
+    editeur: Microsoft
+  - titre: Arrêter, mettre en veille ou mettre en veille prolongée votre PC
+    url: https://support.microsoft.com/fr-fr/windows/experience/power-battery/shut-down-sleep-or-hibernate-your-pc
+    editeur: Microsoft
+  - titre: Forcer la fermeture d'une app sur Mac
+    url: https://support.apple.com/fr-fr/102586
+    editeur: Apple
+  - titre: Comment faire face à l'arnaque au faux support technique ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/arnaques-au-faux-support-technique
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+appareils: [windows, mac]
+pourAidant:
+  - "Le réflexe de cliquer partout aggrave souvent le blocage : chaque clic s'ajoute à la file d'attente."
+  - "Rassurez : forcer la fermeture d'un logiciel n'abîme pas l'ordinateur. Seul le travail non enregistré dans ce logiciel est perdu."
+  - "Une fausse alerte plein écran avec un numéro à appeler est une arnaque fréquente : faites fermer le navigateur, jamais appeler."
+liesA: [ordinateur/clavier-raccourcis, ordinateur/entretien, ordinateur/materiel]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Faut-il attendre ou agir ? \{#attendre\}
+
+Un logiciel qui « ne répond pas » est souvent simplement occupé : il ouvre un gros fichier ou installe une mise à jour.
+
+<Etapes titre="Les premiers gestes">
+1. Attendez une minute, sans cliquer. Chaque clic s'ajoute à la file d'attente.
+2. Regardez si la souris bouge encore. Si oui, seul un logiciel est bloqué : passez au chapitre suivant.
+3. Si rien ne bouge du tout, ni souris ni clavier, passez au chapitre « Tout est figé ».
+</Etapes>
+
+<Attention>
+Une fenêtre qui affiche « Votre ordinateur est infecté, appelez ce numéro » n'est pas un message de Windows ni d'Apple. C'est une arnaque au faux support technique. N'appelez jamais : fermez le navigateur (voir plus bas).
+</Attention>
+
+## Comment fermer un logiciel bloqué sur Windows ? \{#windows\}
+
+<Definition terme="Gestionnaire des tâches">
+Le <Terme id="gestionnaire-taches">Gestionnaire des tâches</Terme> est un outil de Windows qui liste les logiciels ouverts. Il permet de fermer de force celui qui ne répond plus.
+</Definition>
+
+<Etapes titre="Forcer la fermeture d'un logiciel sur Windows">
+1. Appuyez ensemble sur <Touches k="Ctrl+Maj+Échap" />. Le Gestionnaire des tâches s'ouvre.
+2. Dans l'onglet **Processus**, repérez le logiciel bloqué. Il est souvent marqué « Ne répond pas ».
+3. Cliquez dessus une fois pour le sélectionner.
+4. Cliquez sur **Fin de tâche**. Le logiciel se ferme.
+5. Rouvrez-le normalement.
+</Etapes>
+
+<Astuce>
+Si <Touches k="Ctrl+Maj+Échap" /> ne fait rien, essayez <Touches k="Ctrl+Alt+Suppr" />, puis choisissez **Gestionnaire des tâches** dans l'écran bleu qui s'affiche.
+</Astuce>
+
+## Comment fermer une app bloquée sur Mac ? \{#mac\}
+
+<Etapes titre="Forcer à quitter sur Mac">
+1. Appuyez ensemble sur <Touches k="⌥+⌘+Échap" />. La fenêtre « Forcer à quitter » s'ouvre.
+2. Cliquez sur l'app bloquée. Elle est souvent marquée « (ne répond pas) ».
+3. Cliquez sur **Forcer à quitter**.
+4. Rouvrez l'app normalement.
+</Etapes>
+
+<Astuce>
+Vous pouvez aussi passer par le menu **Pomme**, en haut à gauche, puis **Forcer à quitter**.
+</Astuce>
+
+## Que faire si tout est figé ? \{#redemarrer\}
+
+Si ni la souris ni le clavier ne répondent, il faut redémarrer.
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+<Etapes titre="Redémarrer un PC figé">
+1. Appuyez sur <Touches k="Ctrl+Alt+Suppr" />.
+2. Si un écran bleu s'affiche, cliquez sur le bouton **Marche/Arrêt**, en bas à droite, puis **Redémarrer**.
+3. Si rien ne s'affiche après une minute : maintenez le bouton d'alimentation de l'ordinateur enfoncé environ 10 secondes, jusqu'à l'extinction.
+4. Attendez quelques secondes, puis rallumez.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="mac">
+
+<Etapes titre="Redémarrer un Mac figé">
+1. Essayez d'abord le menu **Pomme → Redémarrer**.
+2. Si rien ne répond : maintenez le bouton d'alimentation (ou Touch ID) enfoncé environ 10 secondes, jusqu'à l'extinction.
+3. Attendez quelques secondes, puis rallumez.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+L'arrêt forcé par le bouton d'alimentation fait perdre le travail non enregistré. Il ne doit pas devenir une habitude : utilisez-le seulement quand plus rien ne répond.
+</Attention>
+
+## Comment fermer une fausse alerte dans le navigateur ? \{#fausse-alerte\}
+
+Certaines pages piégées s'affichent en plein écran, avec une sirène, et empêchent de fermer le navigateur.
+
+<Etapes titre="Se débarrasser d'une fausse alerte">
+1. N'appelez pas le numéro et ne cliquez pas dans la page.
+2. Appuyez sur <Touches k="Échap" /> pour sortir du plein écran, puis fermez l'onglet.
+3. Si la page bloque tout, fermez de force le navigateur (Gestionnaire des tâches ou Forcer à quitter, voir plus haut).
+4. Au redémarrage du navigateur, refusez de « restaurer les onglets ».
+</Etapes>
+
+## Quand demander de l'aide ? \{#aide\}
+
+Demandez de l'aide si l'ordinateur se bloque plusieurs fois par jour, s'il ne démarre plus, ou s'il affiche un écran d'erreur à chaque démarrage. Les conseillers numériques et les espaces France Services aident gratuitement.
+
+<Quiz questions={[
+  { question: 'Sur Windows, quel raccourci ouvre directement le Gestionnaire des tâches ?', choix: ['Ctrl + Maj + Échap', 'Ctrl + C', 'Alt + Tab'], bonne: 0, explication: 'Ctrl + Maj + Échap ouvre le Gestionnaire des tâches.' },
+  { question: 'Une page affiche « Virus détecté, appelez ce numéro ». Que faire ?', choix: ['Appeler vite', 'Fermer le navigateur sans appeler', 'Donner l’accès à distance'], bonne: 1, explication: 'C’est une arnaque au faux support technique.' },
+]} />
