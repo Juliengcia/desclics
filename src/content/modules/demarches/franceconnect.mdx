@@ -1,0 +1,95 @@
+---
+identifiant: franceconnect
+titre: Se connecter avec FranceConnect
+rubrique: demarches
+resume: FranceConnect permet d'entrer sur des centaines de sites publics avec un compte que vous avez déjà, comme celui des impôts ou d'ameli. Comment s'en servir et que faire en cas de problème.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - comprendre le principe de FranceConnect ;
+  - connaître les comptes utilisables ;
+  - se connecter pas à pas ;
+  - savoir ce qu'est FranceConnect+ ;
+  - régler les problèmes fréquents.
+motsCles: [FranceConnect, FranceConnect+, se connecter, impots.gouv, ameli, Identité Numérique La Poste, France Identité, démarches en ligne]
+titreSeo: "FranceConnect : comment se connecter, pas à pas"
+metaDescription: "FranceConnect permet d'accéder aux sites publics avec votre compte impots.gouv ou ameli. Les comptes acceptés, la connexion pas à pas et les problèmes fréquents."
+bristol:
+  - "Bouton bleu « S'identifier avec FranceConnect » sur les sites publics"
+  - "Comptes acceptés : impots.gouv.fr, ameli.fr, Identité Numérique La Poste, MSA, France Identité…"
+  - "Choisir le compte, puis saisir SES identifiants de ce compte"
+  - "FranceConnect+ (démarches sensibles) : La Poste ou France Identité"
+  - "FranceConnect ne demande jamais vos codes par e-mail ou SMS"
+sources:
+  - titre: FranceConnect
+    url: https://www.franceconnect.gouv.fr/
+    editeur: FranceConnect (État)
+  - titre: Comment utiliser FranceConnect ?
+    url: https://aide.franceconnect.gouv.fr/faq/comprendre-franceconnect/fonctionnement-franceconnect/
+    editeur: FranceConnect (État)
+verifieLe: 2026-11-05
+falc: true
+pourAidant:
+  - "Le plus simple est souvent le compte impots.gouv.fr : numéro fiscal (sur l'avis d'impôt) et mot de passe."
+  - "FranceConnect n'est pas un compte en soi : il « emprunte » un compte existant. Beaucoup cherchent à « créer un compte FranceConnect »."
+liesA: [demarches/service-public, demarches/france-identite, demarches/impots]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que FranceConnect ? \{#definition\}
+
+<Definition terme="FranceConnect">
+<Terme id="franceconnect">FranceConnect</Terme> est un bouton de connexion de l'État. Il vous permet d'entrer sur un site public avec un compte que vous possédez déjà, sans créer de nouvel identifiant.
+</Definition>
+
+**À quoi ça sert.** Un seul compte suffit pour de nombreux sites : ANTS, CAF, retraite, France Travail, service-public…
+
+## Quels comptes peut-on utiliser ? \{#comptes\}
+
+<TableauComparatif
+  legende="Comptes acceptés par FranceConnect (vérifiés en novembre 2026)"
+  colonnes={['Compte', 'Identifiant']}
+  lignes={[
+    ['impots.gouv.fr', 'Numéro fiscal (13 chiffres) et mot de passe'],
+    ['ameli.fr', 'Numéro de sécurité sociale et mot de passe'],
+    ['L’Identité Numérique La Poste', 'Appli et code personnel'],
+    ['MSA', 'Identifiants de l’espace privé MSA'],
+    ['France Identité', 'Appli avec la carte d’identité au format carte bancaire'],
+  ]}
+/>
+
+## Comment se connecter ? \{#connexion\}
+
+<Etapes>
+1. Sur le site de la démarche, touchez le bouton bleu **S'identifier avec FranceConnect**.
+2. Choisissez le compte que vous avez, par exemple **impots.gouv.fr**.
+3. Vous arrivez sur la page de ce site : saisissez **ses** identifiants (numéro fiscal et mot de passe des impôts).
+4. Vérifiez vos informations, puis touchez **Continuer**.
+5. Vous revenez sur le site de départ, connecté.
+</Etapes>
+
+## Qu'est-ce que FranceConnect+ ? \{#plus\}
+
+Pour les démarches **sensibles** (procuration de vote en ligne, certaines démarches de santé ou d'argent), FranceConnect+ demande une sécurité renforcée. Seuls **L'Identité Numérique La Poste** et **France Identité** sont acceptés.
+
+## Que faire en cas de problème ? \{#problemes\}
+
+- **Mot de passe oublié** : utilisez le lien « mot de passe oublié » du compte choisi (impôts, ameli), pas celui de FranceConnect.
+- **Informations différentes** (nom d'usage, accent) : le site peut refuser ; essayez un autre compte.
+- **Besoin d'aide** : les espaces France Services accompagnent gratuitement.
+
+<Attention>
+FranceConnect ne vous envoie jamais d'e-mail ou de SMS demandant vos identifiants. Commencez toujours la démarche en tapant vous-même l'adresse du site officiel.
+</Attention>
