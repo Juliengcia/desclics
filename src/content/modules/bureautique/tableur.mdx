@@ -1,0 +1,92 @@
+---
+identifiant: tableur
+titre: Faire un tableau ou un budget
+rubrique: bureautique
+resume: Comprendre cellules, lignes et colonnes, saisir des données, additionner avec la fonction SOMME, trier, mettre en forme et imprimer un tableau sur une page.
+duree: 8
+niveau: Intermédiaire
+objectifs:
+  - se repérer dans un tableur ;
+  - saisir et ajuster des données ;
+  - additionner une colonne ;
+  - trier et mettre en forme ;
+  - imprimer un tableau sur une page.
+motsCles: [tableur, Excel, LibreOffice Calc, Google Sheets, cellule, colonne, ligne, SOMME, budget, trier, imprimer tableau]
+titreSeo: "Faire un budget sur Excel ou Calc : le guide débutant"
+metaDescription: "Faire un budget sur Excel, LibreOffice Calc ou Google Sheets : cellules, saisie, fonction SOMME, tri, mise en forme et impression sur une page, pas à pas."
+bristol:
+  - "Cellule = case (ex. B3) · colonne = lettre · ligne = chiffre"
+  - "Toute formule commence par ="
+  - "Additionner : =SOMME(B2:B10) ou bouton Σ"
+  - "Trier : sélectionner, puis Données → Trier"
+  - "Imprimer sur une page : Mise en page → Ajuster à 1 page"
+sources:
+  - titre: Aide et formation Excel
+    url: https://support.microsoft.com/fr-fr/excel
+    editeur: Microsoft
+  - titre: Aide LibreOffice Calc
+    url: https://help.libreoffice.org/latest/fr/text/scalc/main0000.html
+    editeur: The Document Foundation
+  - titre: Aide Google Sheets
+    url: https://support.google.com/docs/topic/9054603?hl=fr
+    editeur: Google
+verifieLe: 2026-11-09
+pourAidant:
+  - "Le signe = au début d'une formule est l'oubli le plus fréquent."
+liesA: [bureautique/choisir-logiciel, bureautique/imprimer-scanner, argent/banque-en-ligne]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment se repérer dans un tableur ? \{#reperes\}
+
+<Definition terme="tableur">
+Un <Terme id="tableur">tableur</Terme> est un grand quadrillage. Chaque case est une <Terme id="cellule">cellule</Terme>, nommée par sa colonne (lettre) et sa ligne (chiffre) : **B3** est en colonne B, ligne 3.
+</Definition>
+
+## Comment saisir des données ? \{#saisir\}
+
+<Etapes titre="Commencer un budget">
+1. Cliquez en **A1** et tapez « Dépense ». En **B1**, tapez « Montant ».
+2. En dessous, une dépense par ligne : « Loyer » en A2, son montant en B2, etc.
+3. Appuyez sur <Touches k="Entrée" /> pour descendre, <Touches k="Tab" /> pour aller à droite.
+4. Pour élargir une colonne trop étroite, double-cliquez sur le trait entre deux lettres de colonnes.
+</Etapes>
+
+## Comment additionner une colonne ? \{#somme\}
+
+<Etapes>
+1. Cliquez sous la dernière valeur, par exemple en **B10**.
+2. Tapez **=SOMME(B2:B9)** puis <Touches k="Entrée" />. Ou cliquez sur le bouton **Σ** (Somme automatique).
+3. Le total s'affiche, et se met à jour si vous changez un montant.
+</Etapes>
+
+<ARetenir>
+Toute formule commence par le signe **=**. B2:B9 veut dire « de B2 à B9 ».
+</ARetenir>
+
+## Comment trier et mettre en forme ? \{#trier\}
+
+- **Trier** : sélectionnez le tableau, puis **Données → Trier**, choisissez la colonne et l'ordre (croissant ou décroissant).
+- **Format monétaire** : sélectionnez les montants, puis le bouton **€** (ou Format → Nombre → Monétaire).
+- **Bordures et couleur** : boutons Bordures et Remplissage, pour rendre le tableau lisible.
+
+## Comment imprimer un tableau sur une page ? \{#imprimer\}
+
+<Etapes>
+1. Sélectionnez la zone à imprimer.
+2. Ouvrez **Fichier → Imprimer**.
+3. Dans les réglages, choisissez **Ajuster la feuille à une page** (Excel) ou **Mise à l'échelle → Ajuster à la page** (Calc, Sheets).
+4. Vérifiez l'aperçu, puis imprimez.
+</Etapes>

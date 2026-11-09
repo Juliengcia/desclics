@@ -14,6 +14,10 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'traitement-de-texte', terme: 'Traitement de texte', definition: "Logiciel pour écrire et mettre en forme des documents : Word, LibreOffice Writer, Google Docs.", variantes: ['word', 'writer', 'google docs'], voir: 'bureautique/traitement-de-texte' },
+  { id: 'tableur', terme: 'Tableur', definition: "Logiciel de tableaux et de calculs : Excel, LibreOffice Calc, Google Sheets.", variantes: ['excel', 'calc', 'google sheets'], voir: 'bureautique/tableur' },
+  { id: 'cellule', terme: 'Cellule', definition: "Case d'un tableau de tableur, repérée par sa colonne (lettre) et sa ligne (chiffre), par exemple B3.", variantes: ['cellules'], voir: 'bureautique/tableur' },
+  { id: 'scanner', terme: 'Scanner', definition: "Transformer un document papier en fichier (image ou PDF), avec une imprimante multifonction ou le téléphone.", variantes: ['scanner un document', 'numériser', 'scan'], voir: 'bureautique/imprimer-scanner' },
   { id: 'rib', terme: 'RIB et IBAN', definition: "Le RIB (relevé d'identité bancaire) donne les coordonnées de votre compte. L'IBAN, qui commence par FR76, est le numéro à communiquer pour recevoir un virement.", variantes: ['iban', 'relevé d\'identité bancaire'], voir: 'argent/banque-en-ligne' },
   { id: 'virement', terme: 'Virement', definition: "Transfert d'argent d'un compte bancaire vers un autre, à partir de l'IBAN du destinataire.", variantes: ['virements', 'virement instantané'], voir: 'argent/banque-en-ligne' },
   { id: '3d-secure', terme: '3D Secure', definition: "Vérification demandée par la banque lors d'un paiement en ligne : validation dans l'appli bancaire ou code reçu par SMS.", variantes: ['3ds', 'authentification forte'], voir: 'argent/payer-en-ligne' },
