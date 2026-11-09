@@ -1,0 +1,89 @@
+---
+identifiant: occasion
+titre: "Acheter et vendre d'occasion"
+rubrique: vie-pratique
+resume: Acheter ou vendre entre particuliers sur une plateforme (Vinted, Leboncoin…), publier une annonce, payer et envoyer en sécurité, et déjouer les arnaques fréquentes.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - choisir une plateforme d'occasion ;
+  - publier une annonce ;
+  - acheter en sécurité ;
+  - payer et envoyer par la plateforme ;
+  - reconnaître les arnaques.
+motsCles: [occasion, Vinted, Leboncoin, vendre entre particuliers, annonce, paiement sécurisé, envoi, arnaque, faux lien de paiement]
+titreSeo: "Vendre et acheter d'occasion sans se faire arnaquer"
+metaDescription: "Acheter et vendre entre particuliers (Vinted, Leboncoin) : publier une annonce, payer et envoyer en sécurité, et reconnaître les arnaques aux faux liens."
+bristol:
+  - "Toujours payer et discuter DANS la plateforme"
+  - "Refuser de continuer sur WhatsApp ou par SMS"
+  - "Vendeur : jamais de lien « pour recevoir l'argent » à ouvrir, jamais de coordonnées bancaires sur un lien"
+  - "Remise en main propre : lieu public, vérifier l'objet avant de payer"
+  - "Arnaque : opposition bancaire, signaler l'annonce, porter plainte"
+sources:
+  - titre: "Sites de vente entre particuliers : 20 conseils pour éviter les arnaques"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/conseils-sites-vente-particuliers
+    editeur: Cybermalveillance.gouv.fr
+  - titre: "Arnaques sur les places de marché en ligne : comment les éviter ?"
+    url: https://www.economie.gouv.fr/particuliers/mes-droits-conso/eviter-les-arnaques/arnaques-sur-les-places-de-marche-en-ligne-marketplaces-comment-les-eviter
+    editeur: Ministère de l'Économie
+verifieLe: 2026-11-09
+pourAidant:
+  - "L'arnaque la plus courante vise les vendeurs : un « acheteur » envoie un lien pour « recevoir le paiement ». Répétez : pour recevoir de l'argent, on ne donne jamais sa carte."
+liesA: [securite/arnaques, argent/payer-en-ligne, demarches/la-poste]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quelle plateforme choisir ? \{#plateformes\}
+
+<TableauComparatif
+  legende="Plateformes d'occasion (exemples)"
+  colonnes={['Plateforme', 'Pour quoi', 'Paiement']}
+  lignes={[
+    ['Vinted', 'Vêtements, accessoires, objets', 'Dans l’appli, envoi par transporteur'],
+    ['Leboncoin', 'Tout : meubles, voitures, objets, immobilier', 'Paiement sécurisé proposé, ou en main propre'],
+    ['Ressourceries, Emmaüs', 'Dons et achats solidaires', 'En boutique'],
+  ]}
+/>
+
+## Comment publier une annonce ? \{#vendre\}
+
+<Etapes>
+1. Prenez **plusieurs photos** nettes, à la lumière du jour, sous plusieurs angles, en montrant les défauts.
+2. Rédigez un **titre précis** (marque, modèle, taille) et une description honnête de l'état.
+3. Fixez un **prix** après avoir regardé des annonces similaires.
+4. Choisissez le mode : envoi par la plateforme ou remise en main propre.
+</Etapes>
+
+## Comment acheter en sécurité ? \{#acheter\}
+
+<Etapes>
+1. Lisez les **avis** et l'ancienneté du vendeur.
+2. Posez vos questions **par la messagerie de la plateforme**.
+3. **Payez par la plateforme** (paiement sécurisé) : l'argent n'est versé au vendeur qu'après votre confirmation de réception.
+4. En main propre : rendez-vous dans un lieu public, vérifiez l'objet avant de payer.
+</Etapes>
+
+## Quelles sont les arnaques fréquentes ? \{#arnaques\}
+
+<Attention>
+- **Le faux lien de paiement** : un « acheteur » vous envoie un lien (par SMS, e-mail, WhatsApp) pour « recevoir l'argent » ou « confirmer la vente ». Le site demande votre carte bancaire : c'est un vol. Pour recevoir de l'argent, on ne saisit jamais sa carte.
+- **La sortie de plateforme** : on vous propose de continuer sur WhatsApp ou de payer par virement direct. Refusez.
+- **Le faux conseiller** : un complice vous appelle en se présentant comme la plateforme ou votre banque. Raccrochez.
+</Attention>
+
+## Que faire en cas d'arnaque ? \{#victime\}
+
+Faites opposition auprès de votre banque si vous avez donné vos coordonnées, signalez l'annonce et le profil à la plateforme, puis portez plainte. Voir « J'ai été victime : que faire ? ».

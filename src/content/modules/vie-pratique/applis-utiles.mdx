@@ -1,0 +1,94 @@
+---
+identifiant: applis-utiles
+titre: Les applis utiles au quotidien
+rubrique: vie-pratique
+resume: Une sélection commentée d'applications officielles et pratiques, rangées par besoin - démarches, santé, argent, déplacements, sécurité, vie quotidienne.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - découvrir les applis officielles utiles ;
+  - savoir lesquelles installer selon ses besoins ;
+  - vérifier qu'une appli est la bonne avant de l'installer.
+motsCles: [applis utiles, applications officielles, ameli, impots.gouv, France Identité, Carte Vitale, SNCF Connect, Google Maps, appli banque, liste applis]
+titreSeo: "Les applis utiles au quotidien : sélection par besoin"
+metaDescription: "Une sélection commentée d'applis officielles et pratiques pour les démarches, la santé, l'argent, les déplacements et la sécurité, rangées par besoin."
+bristol:
+  - "Installer seulement depuis le Play Store ou l'App Store, en vérifiant l'éditeur"
+  - "Démarches : impots.gouv, France Identité, Caf - Mon Compte"
+  - "Santé : ameli, Carte Vitale, Mon espace santé"
+  - "Argent : l'appli officielle de sa banque"
+  - "Ne pas tout installer : seulement ce dont on a vraiment besoin"
+sources:
+  - titre: Service-Public.fr
+    url: https://www.service-public.gouv.fr/
+    editeur: Direction de l'information légale et administrative
+  - titre: Protéger ses appareils mobiles
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+pourAidant:
+  - "Mieux vaut cinq applis maîtrisées que trente installées : partez des besoins réels de la personne."
+liesA: [smartphone/applications, demarches/service-public, securite/faux-sites]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment utiliser cette liste ? \{#methode\}
+
+Les applis citées sont des **exemples** reconnus, rangés par besoin. Installez uniquement celles qui vous servent, depuis le magasin officiel, en vérifiant l'**éditeur** (voir « Installer, mettre à jour et supprimer une appli »).
+
+## Pour les démarches \{#demarches\}
+
+<TableauComparatif
+  legende="Applis officielles de l'administration"
+  colonnes={['Appli', 'Éditeur', 'Pour quoi']}
+  lignes={[
+    ['impots.gouv', 'DGFiP', 'Payer, consulter ses avis, déclarer un changement'],
+    ['France Identité', 'Ministère de l’Intérieur', 'Carte d’identité sur le téléphone'],
+    ['Caf - Mon Compte', 'CNAF', 'Déclarations et paiements CAF'],
+    ['Mon espace - France Travail', 'France Travail', 'Actualisation, offres'],
+  ]}
+/>
+
+## Pour la santé \{#sante\}
+
+<TableauComparatif
+  legende="Applis de santé"
+  colonnes={['Appli', 'Pour quoi']}
+  lignes={[
+    ['ameli', 'Remboursements, attestations, échanges avec la caisse'],
+    ['Carte Vitale', 'Carte Vitale sur le téléphone'],
+    ['Mon espace santé', 'Ordonnances, résultats, carnet de vaccination'],
+    ['Plateforme de rendez-vous', 'Prendre rendez-vous chez un praticien'],
+  ]}
+/>
+
+## Pour l'argent et les déplacements \{#argent-deplacements\}
+
+- **L'appli officielle de votre banque** : comptes, virements, validation des paiements.
+- **Google Maps / Waze / Plans** : itinéraires.
+- **SNCF Connect** : billets de train.
+- **L'appli des transports de votre ville** : tickets et horaires.
+
+## Pour la vie quotidienne et la sécurité \{#quotidien\}
+
+- **WhatsApp** : messages et appels vidéo avec les proches.
+- **Un gestionnaire de mots de passe** (voir le module dédié).
+- **Une appli de traduction** : Google Traduction, Traduire.
+- **L'appli de votre médiathèque** : livres et presse gratuits.
+- **Radio France** : radio et podcasts.
+
+<Attention>
+Méfiez-vous des applis « nettoyeur », « booster de batterie » ou « antivirus miracle » : elles sont souvent inutiles et remplies de publicités, parfois malveillantes.
+</Attention>

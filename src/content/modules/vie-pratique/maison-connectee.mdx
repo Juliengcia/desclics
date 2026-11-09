@@ -1,0 +1,87 @@
+---
+identifiant: maison-connectee
+titre: Maison connectée et assistants vocaux
+rubrique: vie-pratique
+resume: Ce que sont les objets connectés et les assistants vocaux, les usages vraiment utiles (rappels, éclairage, téléassistance), et comment protéger sa vie privée.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - comprendre ce qu'est un objet connecté ;
+  - savoir à quoi sert un assistant vocal ;
+  - repérer les usages utiles ;
+  - protéger sa vie privée.
+motsCles: [maison connectée, objet connecté, assistant vocal, enceinte connectée, Alexa, Google Assistant, Siri, domotique, vie privée, micro]
+titreSeo: "Assistants vocaux et maison connectée : utile ou pas ?"
+metaDescription: "Objets connectés et assistants vocaux (Alexa, Google, Siri) : à quoi ils servent vraiment, les usages utiles et comment protéger sa vie privée."
+bristol:
+  - "Objet connecté : appareil relié à Internet, commandé par appli ou à la voix"
+  - "Assistant vocal : on parle, il répond ou agit (« Quel temps fera-t-il ? »)"
+  - "Utile : rappels, minuteur, appel mains libres, lumières, radio"
+  - "Vie privée : bouton de coupure du micro, effacer l'historique vocal dans l'appli"
+  - "Changer le mot de passe par défaut, faire les mises à jour"
+sources:
+  - titre: Assistants vocaux, recommandations
+    url: https://www.cnil.fr/fr/assistants-vocaux
+    editeur: CNIL
+  - titre: Protéger ses appareils mobiles
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+pourAidant:
+  - "Pour une personne isolée, l'appel à voix haute (« Appelle Marie ») est souvent l'usage le plus précieux."
+liesA: [intelligence-artificielle/comprendre, securite/mots-de-passe, ordinateur/entretien]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'un objet connecté ? \{#definition\}
+
+<Definition terme="objet connecté">
+Un objet connecté est un appareil relié à Internet, qu'on commande depuis une appli ou à la voix : ampoule, prise, thermostat, caméra, sonnette, enceinte.
+</Definition>
+
+## À quoi sert un assistant vocal ? \{#assistant\}
+
+Un assistant vocal (Alexa d'Amazon, Assistant Google, Siri d'Apple) répond quand on l'appelle par son nom : « Ok Google, quel temps fera-t-il demain ? ». Il est présent dans les téléphones et dans des **enceintes connectées**.
+
+<TableauComparatif
+  legende="Usages utiles au quotidien"
+  colonnes={['Usage', 'Exemple de phrase']}
+  lignes={[
+    ['Rappel', '« Rappelle-moi de prendre mon médicament à 8 h »'],
+    ['Minuteur', '« Minuteur 10 minutes »'],
+    ['Appel mains libres', '« Appelle Marie »'],
+    ['Radio, musique', '« Mets France Inter »'],
+    ['Lumières, prises', '« Allume la lampe du salon »'],
+  ]}
+/>
+
+## Comment l'installer ? \{#installer\}
+
+<Etapes>
+1. Branchez l'enceinte et installez l'appli indiquée sur la boîte, sur votre téléphone.
+2. Suivez l'appli : connexion au Wi-Fi, création ou connexion au compte.
+3. Ajoutez les objets compatibles (ampoules, prises) depuis l'appli.
+</Etapes>
+
+## Comment protéger sa vie privée ? \{#vie-privee\}
+
+L'assistant écoute en permanence pour repérer son mot d'appel, puis envoie la demande sur Internet.
+
+<Etapes>
+1. Utilisez le **bouton de coupure du micro** quand vous voulez être tranquille.
+2. Dans l'appli, consultez et **effacez l'historique vocal**, et désactivez l'utilisation des enregistrements pour « améliorer le service » si proposé.
+3. Changez les **mots de passe par défaut** des objets (caméras, box) et installez les **mises à jour**.
+4. Évitez les caméras connectées dans les pièces intimes.
+</Etapes>

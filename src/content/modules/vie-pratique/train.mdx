@@ -1,0 +1,93 @@
+---
+identifiant: train
+titre: Voyager en train
+rubrique: vie-pratique
+resume: Réserver un billet sur SNCF Connect, le garder sur son téléphone, choisir une carte de réduction, et échanger ou se faire rembourser un billet.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - réserver un billet de train en ligne ;
+  - présenter son billet sur le téléphone ;
+  - savoir si une carte de réduction est intéressante ;
+  - échanger ou se faire rembourser.
+motsCles: [train, SNCF Connect, billet de train, e-billet, carte Avantage, carte Avantage Senior, échanger billet, rembourser billet, TGV INOUI, OUIGO, TER]
+titreSeo: "Réserver un billet de train en ligne et l'échanger"
+metaDescription: "Réserver un billet sur SNCF Connect, le garder sur son téléphone, choisir une carte Avantage et échanger ou se faire rembourser un billet : le guide."
+bristol:
+  - "Site et appli officiels : SNCF Connect"
+  - "Billet : dans l'appli (onglet Voyages) ou en PDF, à montrer au contrôleur"
+  - "Carte Avantage Senior (60 ans et plus) ou Adulte : réductions sur TGV INOUI et Intercités"
+  - "Avec carte Avantage : échange et remboursement gratuits jusqu'à 7 jours avant (tarifs flexibles)"
+  - "Lire les conditions du tarif avant de payer (certains billets ne sont ni échangeables ni remboursables)"
+sources:
+  - titre: "Conditions d'échange, d'annulation et de remboursement d'un billet de train"
+    url: https://www.sncf-connect.com/aide/conditions-d-echange-d-annulation-et-de-remboursement-de-mon-billet-de-train
+    editeur: SNCF Connect
+  - titre: "L'offre pour les Seniors"
+    url: https://www.sncf-connect.com/aide/l-offre-pour-les-seniors
+    editeur: SNCF Connect
+  - titre: Cartes Avantage
+    url: https://www.sncf-connect.com/bons-plans/cartes-avantage
+    editeur: SNCF Connect
+verifieLe: 2026-11-09
+pourAidant:
+  - "Les conditions changent selon le train (TGV INOUI, OUIGO, TER) et le tarif : faites lire l'encadré « conditions » avant le paiement."
+  - "Une capture d'écran du billet sert de secours si le téléphone n'a pas de réseau dans le train."
+liesA: [vie-pratique/transports, argent/payer-en-ligne, vie-pratique/voiture]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment réserver un billet ? \{#reserver\}
+
+<Etapes>
+1. Ouvrez l'appli ou le site **SNCF Connect** (site officiel : sncf-connect.com).
+2. Indiquez la **gare de départ**, la **gare d'arrivée**, la **date** et le nombre de voyageurs.
+3. Ajoutez votre **carte de réduction** si vous en avez une.
+4. Comparez les trains (horaires, durée, prix) et lisez les **conditions** du tarif.
+5. Choisissez votre place si proposé, puis payez.
+</Etapes>
+
+## Comment garder son billet sur le téléphone ? \{#billet\}
+
+Le billet apparaît dans l'appli, onglet **Voyages**, avec un **QR code** que le contrôleur scanne. Il arrive aussi par e-mail en PDF.
+
+<Astuce>
+Faites une **capture d'écran** du QR code avant le départ : elle sert de secours si le réseau manque dans le train. Le billet électronique peut aussi être réimprimé.
+</Astuce>
+
+## Une carte de réduction est-elle utile ? \{#cartes\}
+
+<TableauComparatif
+  legende="Cartes Avantage (vérifiées en novembre 2026)"
+  colonnes={['Carte', 'Pour qui', 'Atout']}
+  lignes={[
+    ['Avantage Senior', '60 ans et plus', 'Réductions sur TGV INOUI et Intercités, échange souple'],
+    ['Avantage Adulte', '27 à 59 ans', 'Réductions, notamment le week-end ou avec un aller-retour'],
+  ]}
+/>
+
+La carte coûte environ 49 € par an : elle devient rentable dès quelques allers-retours. Vérifiez le prix et les conditions sur SNCF Connect.
+
+## Comment échanger ou se faire rembourser ? \{#echanger\}
+
+<Etapes>
+1. Dans l'appli, ouvrez **Voyages**, puis le billet concerné.
+2. Touchez **Échanger** ou **Annuler** : l'appli indique les frais éventuels avant de confirmer.
+3. Le remboursement revient sur le moyen de paiement utilisé.
+</Etapes>
+
+<Attention>
+Les conditions dépendent du tarif : avec une carte Avantage, l'échange et le remboursement sont gratuits jusqu'à 7 jours avant le départ, puis avec une retenue. Certains billets (tarifs non flexibles, OUIGO) sont peu ou pas échangeables. Lisez les conditions avant d'acheter.
+</Attention>
