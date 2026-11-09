@@ -1,0 +1,102 @@
+---
+identifiant: paiement-telephone
+titre: Payer avec son téléphone
+rubrique: argent
+resume: Payer sans contact avec son téléphone grâce à Google Pay, Apple Pay ou Samsung Wallet - ajouter sa carte, payer en magasin et comprendre la sécurité.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - comprendre le paiement sans contact par téléphone ;
+  - ajouter sa carte bancaire au portefeuille du téléphone ;
+  - payer en magasin ;
+  - connaître les règles de sécurité.
+motsCles: [paiement mobile, payer avec son téléphone, Apple Pay, Google Pay, Google Wallet, Samsung Wallet, sans contact, NFC, portefeuille]
+titreSeo: "Payer avec son téléphone : Apple Pay, Google Pay"
+metaDescription: "Payer en magasin avec son téléphone : ajouter sa carte dans Google Wallet, Apple Pay ou Samsung Wallet, payer sans contact et comprendre la sécurité."
+bristol:
+  - "Android : Google Wallet ou Samsung Wallet · iPhone : Cartes (Apple Pay)"
+  - "Ajouter la carte : ouvrir l'appli portefeuille → + → photographier la carte → valider avec la banque"
+  - "Payer : déverrouiller, approcher le téléphone du terminal"
+  - "Le commerçant ne reçoit pas votre vrai numéro de carte"
+  - "Téléphone perdu : le bloquer à distance (voir « Téléphone perdu ou volé »)"
+sources:
+  - titre: Google Wallet, aide
+    url: https://support.google.com/wallet/?hl=fr
+    editeur: Google
+  - titre: Configurer Apple Pay
+    url: https://support.apple.com/fr-fr/108398
+    editeur: Apple
+  - titre: Samsung Wallet
+    url: https://www.samsung.com/fr/apps/samsung-wallet/
+    editeur: Samsung
+verifieLe: 2026-11-09
+appareils: [android, iphone]
+pourAidant:
+  - "Toutes les banques ne proposent pas tous les portefeuilles : vérifiez dans l'appli de la banque, rubrique carte."
+liesA: [argent/payer-en-ligne, smartphone/telephone-perdu, argent/banque-en-ligne]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment fonctionne le paiement par téléphone ? \{#principe\}
+
+<Definition terme="paiement sans contact">
+Le <Terme id="sans-contact">paiement sans contact</Terme> consiste à approcher la carte, ou ici le téléphone, du terminal de paiement. Le téléphone utilise une puce **NFC**.
+</Definition>
+
+Votre carte bancaire est enregistrée dans une appli « portefeuille ». Le commerçant reçoit un numéro de remplacement, pas votre vrai numéro de carte, et chaque paiement est validé par votre empreinte, votre visage ou votre code.
+
+## Comment ajouter sa carte ? \{#ajouter\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Google Wallet ou Samsung Wallet">
+1. Ouvrez **Google Wallet** (ou **Samsung Wallet** sur Samsung).
+2. Touchez **Ajouter** ou **+**, puis **Carte de paiement**.
+3. Photographiez la carte ou saisissez ses informations.
+4. Validez avec votre banque (code SMS ou appli bancaire).
+5. Activez le **NFC** si demandé (réglages rapides).
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Apple Pay">
+1. Ouvrez l'appli **Cartes** (anciennement Wallet).
+2. Touchez **+**, puis **Carte de crédit ou de débit**.
+3. Photographiez la carte, vérifiez les informations.
+4. Validez avec votre banque (code SMS ou appli bancaire).
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Astuce>
+Beaucoup d'applis bancaires proposent un bouton **Ajouter à Google Wallet** ou **Ajouter à Apple Pay** dans la page de la carte : c'est souvent le plus simple.
+</Astuce>
+
+## Comment payer en magasin ? \{#payer\}
+
+1. Quand le terminal affiche le montant, déverrouillez le téléphone (ou appuyez deux fois sur le bouton latéral sur iPhone).
+2. Approchez le haut du téléphone du terminal.
+3. Attendez la vibration ou le signal « Terminé ».
+
+## Est-ce sûr ? \{#securite\}
+
+Oui, au moins autant qu'une carte : le vrai numéro de carte n'est pas transmis, et le paiement exige le déverrouillage du téléphone.
+
+<Attention>
+Si le téléphone est perdu ou volé, bloquez-le à distance et supprimez la carte du portefeuille depuis votre compte Google ou Apple. Prévenez votre banque si nécessaire.
+</Attention>

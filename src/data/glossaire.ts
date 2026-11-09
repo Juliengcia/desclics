@@ -14,6 +14,11 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'rib', terme: 'RIB et IBAN', definition: "Le RIB (relevé d'identité bancaire) donne les coordonnées de votre compte. L'IBAN, qui commence par FR76, est le numéro à communiquer pour recevoir un virement.", variantes: ['iban', 'relevé d\'identité bancaire'], voir: 'argent/banque-en-ligne' },
+  { id: 'virement', terme: 'Virement', definition: "Transfert d'argent d'un compte bancaire vers un autre, à partir de l'IBAN du destinataire.", variantes: ['virements', 'virement instantané'], voir: 'argent/banque-en-ligne' },
+  { id: '3d-secure', terme: '3D Secure', definition: "Vérification demandée par la banque lors d'un paiement en ligne : validation dans l'appli bancaire ou code reçu par SMS.", variantes: ['3ds', 'authentification forte'], voir: 'argent/payer-en-ligne' },
+  { id: 'sans-contact', terme: 'Paiement sans contact', definition: "Paiement en approchant la carte ou le téléphone du terminal, sans l'insérer.", variantes: ['sans contact', 'nfc'], voir: 'argent/paiement-telephone' },
+  { id: 'rio', terme: 'RIO', definition: "Relevé d'identité opérateur : code qui permet de garder son numéro de mobile en changeant d'opérateur. On l'obtient en appelant le 3179.", variantes: ['code rio', 'portabilité'], voir: 'argent/forfait-operateur' },
   { id: 'adresse-ip', terme: 'Adresse IP', definition: "Numéro qui identifie un appareil ou une box sur Internet, comme une adresse postale pour les données.", variantes: ['ip'], voir: 'internet/fonctionnement' },
   { id: 'dns', terme: 'DNS', definition: "Annuaire d'Internet : il traduit un nom de site (impots.gouv.fr) en adresse IP que les machines comprennent.", voir: 'internet/fonctionnement' },
   { id: 'fournisseur-acces', terme: "Fournisseur d'accès à Internet", definition: "Opérateur qui vous relie à Internet (Orange, SFR, Bouygues Telecom, Free…), avec une box ou un forfait mobile.", variantes: ['fai', 'opérateur'], voir: 'internet/fonctionnement' },
