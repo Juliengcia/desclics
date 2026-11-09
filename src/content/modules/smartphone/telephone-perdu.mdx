@@ -1,0 +1,110 @@
+---
+identifiant: telephone-perdu
+titre: Téléphone perdu ou volé
+rubrique: smartphone
+resume: Activer la localisation avant qu'il ne soit trop tard, puis, en cas de perte ou de vol, localiser, verrouiller, faire suspendre la ligne et porter plainte.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - activer dès maintenant la localisation du téléphone ;
+  - noter le numéro IMEI ;
+  - localiser, faire sonner, verrouiller ou effacer à distance ;
+  - faire suspendre la ligne et porter plainte en cas de vol.
+motsCles: [téléphone perdu, téléphone volé, localiser, Localiser mon appareil, iCloud, IMEI, suspendre ligne, plainte, bloquer téléphone]
+titreSeo: "Téléphone perdu ou volé : que faire, dans quel ordre ?"
+metaDescription: "Téléphone perdu ou volé ? Le localiser, le verrouiller à distance, faire suspendre la ligne, bloquer l'IMEI et porter plainte : les étapes dans l'ordre."
+bristol:
+  - "Avant : activer Localiser et noter l'IMEI (taper *#06#)"
+  - "Localiser : android.com/find (Android) · icloud.com/find (iPhone)"
+  - "Suspendre la ligne : appeler son opérateur ou passer par l'espace client"
+  - "Vol : plainte au commissariat ou à la gendarmerie, avec l'IMEI"
+  - "Changer ensuite le mot de passe de sa messagerie et de ses comptes"
+sources:
+  - titre: Vol d'un téléphone portable
+    url: https://www.service-public.gouv.fr/particuliers/vosdroits/F34123
+    editeur: Service-Public.fr
+  - titre: Perte d'un téléphone portable
+    url: https://www.service-public.gouv.fr/particuliers/vosdroits/F19066
+    editeur: Service-Public.fr
+  - titre: Protéger ses appareils mobiles
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Que faire si vous égarez votre téléphone ?
+    url: https://www.android.com/intl/fr_fr/articles/telephone-perdu-que-faire/
+    editeur: Google
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+falc: true
+pourAidant:
+  - "Faites activer la localisation et noter l'IMEI dès la première séance : après la perte, il est trop tard."
+  - "Pour localiser, il faut le mot de passe du compte Google ou Apple : vérifiez qu'il est connu."
+liesA: [smartphone/compte-google-apple, securite/mots-de-passe, smartphone/changer-telephone]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Que faire dès maintenant, avant toute perte ? \{#avant\}
+
+<Etapes titre="Deux précautions de cinq minutes">
+1. Activez la **localisation de l'appareil** : sur Android, **Paramètres → Google → Localiser mon appareil** ; sur iPhone, **Réglages → votre nom → Localiser → Localiser mon iPhone**.
+2. Notez votre numéro <Terme id="imei">IMEI</Terme> : ouvrez l'appli Téléphone, tapez **\*#06#**. Recopiez les 15 chiffres sur papier, à la maison.
+</Etapes>
+
+<ARetenir>
+L'IMEI se trouve aussi sur la boîte du téléphone et souvent dans l'espace client de votre opérateur.
+</ARetenir>
+
+## Comment localiser ou faire sonner le téléphone ? \{#localiser\}
+
+<Definition terme="localisation">
+La <Terme id="localisation">localisation</Terme> permet de voir sur une carte où se trouve le téléphone, s'il est allumé et connecté.
+</Definition>
+
+<Etapes titre="Localiser depuis un autre appareil">
+1. Sur un ordinateur ou le téléphone d'un proche, allez sur **android.com/find** (Android) ou **icloud.com/find** (iPhone). Tapez l'adresse vous-même.
+2. Connectez-vous avec votre compte Google ou votre compte Apple.
+3. La carte affiche le téléphone. Touchez **Faire sonner** s'il est sans doute chez vous : il sonne même en silencieux.
+</Etapes>
+
+## Comment le verrouiller ou l'effacer à distance ? \{#verrouiller\}
+
+Depuis la même page :
+
+- **Sécuriser l'appareil** (Android) ou **Marquer comme perdu** (iPhone) : le téléphone se verrouille et peut afficher un message avec un numéro où vous joindre.
+- **Effacer l'appareil** : toutes les données sont supprimées. À faire seulement si vous pensez ne pas le récupérer : ensuite, il ne sera plus localisable.
+
+## Comment faire suspendre la ligne ? \{#ligne\}
+
+<Etapes>
+1. Appelez le service client de votre opérateur, ou passez par votre **espace client**, rubrique perte ou vol.
+2. Demandez la **suspension de la ligne** : la carte SIM est désactivée.
+3. Notez l'IMEI que l'opérateur vous communique, s'il ne l'est pas déjà.
+4. Demandez une nouvelle carte SIM pour garder votre numéro.
+</Etapes>
+
+<Attention>
+Les appels et achats faits avec votre ligne avant votre déclaration à l'opérateur restent à votre charge. Appelez au plus vite.
+</Attention>
+
+## Faut-il porter plainte ? \{#plainte\}
+
+- **En cas de vol** : oui. Portez plainte au commissariat ou à la gendarmerie le plus tôt possible, en donnant l'IMEI. Les forces de l'ordre demandent alors le blocage du téléphone, qui devient inutilisable sur les réseaux.
+- **En cas de perte** : pas de plainte nécessaire. Faites suspendre la ligne.
+- **Assurance** : si le téléphone est assuré, prévenez l'assureur et donnez-lui l'IMEI.
+
+<Etapes titre="Ensuite, protégez vos comptes">
+1. Changez le mot de passe de votre messagerie e-mail et de votre compte Google ou Apple.
+2. Prévenez votre banque si l'appli bancaire était installée.
+3. Méfiez-vous des SMS « Votre téléphone a été retrouvé » : c'est une arnaque fréquente pour voler vos codes.
+</Etapes>

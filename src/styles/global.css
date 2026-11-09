@@ -4,19 +4,25 @@
    Toutes les couleurs sont des variables : clair, sombre, contraste élevé.
    ========================================================================== */
 
-@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/bricolage-grotesque/standard.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
 
 /* ---------- Jetons de couleur : mode clair (par défaut) ---------- */
 :root {
   color-scheme: light;
-  --fond: #F5F2EA;          /* papier crème */
+  --fond: #F6F6F3;          /* blanc cassé neutre */
   --surface: #FFFFFF;
-  --surface-2: #EBE6D9;
+  --surface-2: #ECEDEF;     /* cartes grises (réf. 05) */
   --texte: #16181D;
-  --texte-doux: #4A4F5A;
-  --bordure: #8A8577;       /* 3:1 sur le fond (composants d'interface) */
-  --trait: #DDD7C9;         /* séparateurs décoratifs */
+  --texte-doux: #565B66;
+  --bordure: #868A93;       /* 3:1 sur le fond (composants d'interface) */
+  --trait: #DCDDE0;         /* séparateurs décoratifs */
+  --teinte: #D7ECF4;        /* bleu ciel pâle des pastilles (réf. 05, 06) */
+  /* Pastels (fonds doux, jamais pour le texte ni les liens) — contrastes AA vérifiés */
+  --p-ciel: #D7ECF4; --p-menthe: #D9F0E1; --p-peche: #FBE3D3; --p-lilas: #E6E0F7; --p-citron: #F1F5C8; --p-rose: #F8DCE4;
+  --carte-sombre: #17191E;  /* carte mise en avant (réf. 05) */
+  --sur-carte-sombre: #F2F3F5;
+  --sur-carte-sombre-doux: #A9AEB8;
   --accent: #2440C8;        /* 7,1:1 sur le fond */
   --accent-survol: #1A2F96;
   --sur-accent: #FFFFFF;
@@ -34,7 +40,7 @@
   --peinture-4: #F2B8C6;
 
   /* Typographie */
-  --police-titre: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --police-titre: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
   --police-texte: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible', system-ui, sans-serif;
   --taille-base: 1.125rem;  /* 18 px */
   --echelle-texte: 1;       /* modifié par le panneau d'accessibilité */
@@ -55,13 +61,18 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --fond: #101216;
-    --surface: #1A1D24;
-    --surface-2: #232731;
+    --fond: #0F1013;
+    --surface: #1B1D22;
+    --surface-2: #23262C;
     --texte: #ECEDEF;
     --texte-doux: #B4B8C2;
-    --bordure: #5C6270;
-    --trait: #2B303A;
+    --bordure: #5E636E;
+    --trait: #2B2E35;
+    --teinte: #1C2A35;
+    --p-ciel: #1C2A35; --p-menthe: #1A2E23; --p-peche: #36261C; --p-lilas: #262238; --p-citron: #2C2F17; --p-rose: #36202A;
+    --carte-sombre: #ECEDEF;
+    --sur-carte-sombre: #16181D;
+    --sur-carte-sombre-doux: #4A4F5A;
     --accent: #9DB0FF;
     --accent-survol: #C3CEFF;
     --sur-accent: #101216;
@@ -80,13 +91,18 @@
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --fond: #101216;
-  --surface: #1A1D24;
-  --surface-2: #232731;
+  --fond: #0F1013;
+  --surface: #1B1D22;
+  --surface-2: #23262C;
   --texte: #ECEDEF;
   --texte-doux: #B4B8C2;
-  --bordure: #5C6270;
-  --trait: #2B303A;
+  --bordure: #5E636E;
+  --trait: #2B2E35;
+    --teinte: #1C2A35;
+    --p-ciel: #1C2A35; --p-menthe: #1A2E23; --p-peche: #36261C; --p-lilas: #262238; --p-citron: #2C2F17; --p-rose: #36202A;
+    --carte-sombre: #ECEDEF;
+    --sur-carte-sombre: #16181D;
+    --sur-carte-sombre-doux: #4A4F5A;
   --accent: #9DB0FF;
   --accent-survol: #C3CEFF;
   --sur-accent: #101216;
@@ -249,8 +265,8 @@ abbr[title] { text-decoration: underline dotted; }
 .bouton-icone {
   display: inline-flex; align-items: center; justify-content: center; gap: .4em;
   min-width: var(--cible); min-height: var(--cible); padding: 0 .75em;
-  border-radius: 12px; border: 1px solid transparent; background: transparent; color: var(--texte);
-  font: 600 1rem var(--police-titre); cursor: pointer; text-decoration: none;
+  border-radius: 999px; border: 1px solid transparent; background: transparent; color: var(--texte);
+  font: 500 1rem var(--police-titre); cursor: pointer; text-decoration: none;
 }
 .bouton-icone:hover { background: var(--surface-2); }
 .bouton-icone svg { width: 1.4rem; height: 1.4rem; flex: none; }
@@ -324,3 +340,65 @@ fieldset { min-width: 0; }
 legend { max-width: 100%; white-space: normal; }
 .bouton { max-width: 100%; flex-wrap: wrap; text-align: center; }
 :root[data-grand-texte] :is(p, li, span, a, label, legend, td, th, h1, h2, h3, summary, button) { overflow-wrap: anywhere; min-width: 0; }
+
+/* ==========================================================================
+   Direction artistique v2 (références 05 à 09) :
+   titres Bricolage Grotesque serrés, deuxième partie en ton doux, surtitre à pastille,
+   boutons en pilule, cartes grises plates avec pastille ronde, carte sombre mise en avant,
+   séparateurs hachurés, bande d'informations à filets verticaux.
+   ========================================================================== */
+h1, h2, h3 { font-weight: 600; font-variation-settings: 'wdth' 92; }
+h1 { letter-spacing: -0.04em; line-height: 1.04; }
+h2 { letter-spacing: -0.03em; }
+.ton-doux { color: var(--texte-doux); }
+
+/* Surtitre à pastille (réf. 06) */
+.etiquette { border: 0; background: none; padding: 0; text-transform: none; letter-spacing: 0; font-size: .95rem; font-weight: 500; color: var(--texte-doux); }
+.etiquette::before { content: ''; width: .6rem; height: .6rem; border-radius: 50%; background: var(--accent); flex: none; }
+.etiquette svg { display: none; }
+
+/* Boutons en pilule (réf. 05, 06, 08) */
+.bouton { border-radius: 999px; padding-inline: 1.5rem; }
+.bouton-fleche { width: 56px; height: 56px; border-radius: 999px; display: inline-grid; place-items: center; background: var(--surface-2); color: var(--texte); }
+
+/* Cartes plates grises (réf. 05) */
+.carte { background: var(--surface-2); border: 1px solid transparent; box-shadow: none; border-radius: 24px; padding: 1.75rem; }
+.carte--blanche { background: var(--surface); border-color: var(--trait); }
+.carte--sombre { background: var(--carte-sombre); color: var(--sur-carte-sombre); }
+.carte--sombre :is(h2, h3, a) { color: var(--sur-carte-sombre) !important; }
+.carte--sombre p { color: var(--sur-carte-sombre-doux) !important; }
+.carte--sombre .pastille { background: var(--surface); color: var(--accent); }
+.pastille { display: inline-grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--teinte); color: var(--accent); flex: none; }
+.pastille svg { width: 1.6rem; height: 1.6rem; }
+:root[data-contraste="eleve"] .carte--sombre { background: var(--fond); color: var(--texte); }
+:root[data-contraste="eleve"] .carte--sombre :is(h2, h3, a, p) { color: var(--texte) !important; }
+
+/* Séparateur hachuré (réf. 07) */
+.hachures { height: 1.75rem; border-block: 1px solid var(--trait); margin: 3.5rem 0 0;
+  background: repeating-linear-gradient(-55deg, transparent 0 9px, var(--trait) 9px 10px); }
+:root[data-contraste="eleve"] .hachures { background: none; border-color: var(--texte); height: 0; }
+
+/* En-tête de section : titre à gauche, action à droite (réf. 05) */
+.entete-section { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 2rem; }
+.entete-section h2 { margin-bottom: .35rem; }
+.entete-section p { margin: 0; color: var(--texte-doux); max-width: 40rem; }
+
+/* Bande d'informations à filets verticaux (réf. 09) */
+.bande { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--bordure); border-radius: 0; }
+@media (min-width: 768px) { .bande { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.bande > li { padding: 1.5rem 1rem; text-align: center; border-left: 1px solid var(--bordure); }
+.bande > li:nth-child(2n + 1) { border-left: 0; }
+@media (min-width: 768px) { .bande > li:nth-child(2n + 1) { border-left: 1px solid var(--bordure); } .bande > li:first-child { border-left: 0; } }
+@media (max-width: 767px) { .bande > li:nth-child(n + 3) { border-top: 1px solid var(--bordure); } }
+.bande strong { display: block; font: 600 clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem)/1.1 var(--police-titre); letter-spacing: -0.03em; }
+.bande span { display: block; margin-top: .35rem; font: 500 .85rem var(--police-titre); text-transform: uppercase; letter-spacing: .1em; color: var(--texte-doux); }
+:root[data-grand-texte] .bande { grid-template-columns: minmax(0, 1fr) !important; }
+:root[data-grand-texte] .bande > li { border-left: 0 !important; border-top: 1px solid var(--bordure); }
+
+/* Pastels par rubrique */
+.pastel-ciel { --pastel: var(--p-ciel); } .pastel-menthe { --pastel: var(--p-menthe); } .pastel-peche { --pastel: var(--p-peche); }
+.pastel-lilas { --pastel: var(--p-lilas); } .pastel-citron { --pastel: var(--p-citron); } .pastel-rose { --pastel: var(--p-rose); }
+.carte[class*="pastel-"] { background: var(--pastel); }
+.carte[class*="pastel-"] .pastille { background: var(--surface); }
+.carte[class*="pastel-"] p { color: var(--texte-doux); }
+:root[data-contraste="eleve"] .carte[class*="pastel-"] { background: var(--fond); }

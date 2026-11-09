@@ -1,0 +1,115 @@
+---
+identifiant: sante
+titre: "Santé : Ameli, carte Vitale, Mon espace santé"
+rubrique: demarches
+resume: Créer son compte ameli, installer l'appli carte Vitale, retrouver ordonnances et résultats dans Mon espace santé, et consulter un médecin en vidéo.
+duree: 9
+niveau: Intermédiaire
+objectifs:
+  - créer et utiliser son compte ameli ;
+  - installer et activer l'appli carte Vitale ;
+  - retrouver ses documents dans Mon espace santé ;
+  - connaître les conditions de la téléconsultation.
+motsCles: [ameli, compte ameli, carte Vitale, appli carte Vitale, Mon espace santé, ordonnance, résultats d'analyse, téléconsultation, remboursement, attestation de droits]
+titreSeo: "Ameli, appli carte Vitale, Mon espace santé : le guide"
+metaDescription: "Créer son compte ameli, activer l'appli carte Vitale, retrouver ordonnances et résultats dans Mon espace santé et consulter en vidéo : le guide pas à pas."
+bristol:
+  - "ameli.fr : remboursements, attestation de droits, changer d'adresse ou de RIB"
+  - "Appli carte Vitale : à activer avec France Identité ou par une vérification vidéo"
+  - "Mon espace santé : ordonnances, comptes rendus, résultats, vaccinations"
+  - "Téléconsultation remboursée sous conditions (médecin proche, alternance avec des consultations en cabinet)"
+  - "L'Assurance Maladie ne demande jamais vos coordonnées bancaires par e-mail ou SMS"
+sources:
+  - titre: "Création de votre compte ameli et connexion : mode d'emploi"
+    url: https://www.ameli.fr/assure/remboursements/suivre-remboursements/se-connecter-compte-ameli
+    editeur: Assurance Maladie
+  - titre: "Appli carte Vitale : installer et activer l'application"
+    url: https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/carte-vitale/carte-vitale-application/appli-carte-vitale-installer-et-activer-l-application-sur-son-smartphone
+    editeur: Assurance Maladie
+  - titre: La téléconsultation
+    url: https://www.ameli.fr/assure/remboursements/rembourse/consultations-telemedecine/telemedecine/teleconsultation
+    editeur: Assurance Maladie
+  - titre: "Comment activer la carte Vitale sur son téléphone ?"
+    url: https://www.info.gouv.fr/actualite/comment-activer-la-carte-vitale-sur-son-telephone
+    editeur: Gouvernement
+  - titre: Mon espace santé
+    url: https://www.monespacesante.fr/
+    editeur: Assurance Maladie et ministère de la Santé
+verifieLe: 2026-11-09
+falc: true
+pourAidant:
+  - "Le numéro de sécurité sociale (13 chiffres + clé) est sur la carte Vitale : gardez-la à portée de main pour créer le compte."
+  - "L'appli carte Vitale ne remplace pas encore partout la carte physique : gardez les deux."
+liesA: [demarches/france-identite, vie-pratique/rendez-vous, securite/arnaques]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## À quoi sert le compte ameli ? \{#ameli\}
+
+<Definition terme="compte ameli">
+Le compte ameli est votre espace personnel sur le site de l'Assurance Maladie, **ameli.fr**, et dans son appli.
+</Definition>
+
+**À quoi ça sert.** Suivre vos remboursements, télécharger une **attestation de droits**, déclarer un changement d'adresse ou de coordonnées bancaires, commander une carte Vitale, échanger avec votre caisse.
+
+<Etapes titre="Créer son compte ameli">
+1. Allez sur **ameli.fr**, rubrique **Compte ameli**, puis **Créer mon compte**. Ou passez par **FranceConnect**.
+2. Saisissez votre **numéro de sécurité sociale** (sur la carte Vitale) et votre code postal.
+3. Suivez les étapes : un code provisoire vous est envoyé, ou vous vous identifiez avec les informations de votre carte Vitale et de votre RIB.
+4. Choisissez votre mot de passe.
+</Etapes>
+
+## Comment installer l'appli carte Vitale ? \{#carte-vitale\}
+
+<Definition terme="appli carte Vitale">
+L'appli carte Vitale est la version numérique de la carte, sur le téléphone. Depuis novembre 2025, tous les assurés peuvent l'activer.
+</Definition>
+
+<Etapes>
+1. Installez **Carte Vitale** (éditeur : Caisse nationale de l'Assurance Maladie) depuis le magasin d'applications.
+2. Ouvrez-la et suivez l'activation : avec l'appli **France Identité** si vous l'avez, sinon par une vérification avec une courte vidéo de votre visage et de votre pièce d'identité.
+3. L'activation est validée en quelques minutes, parfois jusqu'à 48 heures.
+4. Chez le médecin ou à la pharmacie, présentez le QR code de l'appli ou approchez le téléphone du lecteur.
+</Etapes>
+
+## Qu'est-ce que Mon espace santé ? \{#mon-espace-sante\}
+
+<Definition terme="Mon espace santé">
+Mon espace santé est un carnet de santé numérique gratuit et sécurisé, ouvert à chaque assuré.
+</Definition>
+
+On y trouve les **ordonnances**, les **comptes rendus** d'hospitalisation, les **résultats d'analyses** et de radiologie, les **vaccinations**, déposés par les professionnels de santé, et une messagerie sécurisée avec eux.
+
+<Etapes titre="Activer et consulter Mon espace santé">
+1. Allez sur **monespacesante.fr** ou installez l'appli **Mon espace santé**.
+2. Connectez-vous avec vos identifiants ameli ou FranceConnect.
+3. Ouvrez **Documents** pour retrouver ordonnances et résultats.
+</Etapes>
+
+<Astuce>
+Un document attendu n'y est pas ? Demandez au médecin ou au laboratoire s'il l'a bien envoyé dans votre Mon espace santé : ce n'est pas toujours automatique.
+</Astuce>
+
+## Comment se passe une téléconsultation ? \{#teleconsultation\}
+
+Une téléconsultation est une consultation en vidéo avec un médecin. Prenez rendez-vous (sur une plateforme ou auprès du cabinet), puis rejoignez l'appel par le lien reçu, avec votre carte Vitale ou votre appli à portée de main.
+
+<Attention>
+Pour être remboursée, la téléconsultation doit respecter des conditions : en général avec un médecin proche de chez vous, en alternance avec des consultations en cabinet, sauf exceptions (par exemple sans médecin traitant disponible). Vérifiez sur ameli.fr avant de payer une plateforme.
+</Attention>
+
+<Attention>
+L'Assurance Maladie ne vous demande jamais vos coordonnées bancaires, ni de « mettre à jour » votre carte Vitale par e-mail ou SMS. Ces messages sont des arnaques.
+</Attention>

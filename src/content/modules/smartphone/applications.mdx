@@ -1,0 +1,147 @@
+---
+identifiant: applications
+titre: Installer, mettre à jour et supprimer une appli
+rubrique: smartphone
+resume: Trouver la bonne application dans le Play Store ou l'App Store, l'installer, gérer ses autorisations, la mettre à jour et la désinstaller.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - installer une application depuis le magasin officiel ;
+  - reconnaître la vraie application d'un service ;
+  - comprendre et régler les autorisations ;
+  - mettre à jour et désinstaller une application.
+motsCles: [application, appli, installer, Play Store, App Store, autorisations, désinstaller, mise à jour, fausse application]
+titreSeo: "Installer ou supprimer une appli sur Android et iPhone"
+metaDescription: "Comment installer une appli depuis le Play Store ou l'App Store, reconnaître la vraie, régler les autorisations, la mettre à jour ou la supprimer, pas à pas."
+bristol:
+  - "Installer seulement depuis le Play Store (Android) ou l'App Store (iPhone)"
+  - "Vérifier l'éditeur sous le nom de l'appli (ex. « Assurance Maladie » pour ameli)"
+  - "Autorisations : n'accepter que ce qui a un rapport avec l'appli"
+  - "Supprimer : appui long sur l'icône → Désinstaller (Android) ou Supprimer l'app (iPhone)"
+  - "Laisser les mises à jour automatiques activées"
+sources:
+  - titre: Télécharger des applications sur votre appareil Android
+    url: https://support.google.com/googleplay/answer/113409?hl=fr
+    editeur: Google
+  - titre: Supprimer des apps sur l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/iph248b543ca/ios
+    editeur: Apple
+  - titre: Protéger ses appareils mobiles
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Les publicités en tête des résultats du magasin ressemblent à de vrais résultats : faites vérifier le nom de l'éditeur."
+  - "Le mot de passe demandé à l'installation est celui du compte Google ou Apple, pas celui de l'appli."
+  - "Supprimer l'icône de l'écran d'accueil ne désinstalle pas toujours l'appli : précisez la différence."
+liesA: [smartphone/compte-google-apple, smartphone/reglages, securite/faux-sites]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Où trouver les applications ? \{#magasin\}
+
+<Definition terme="application">
+Une <Terme id="application">application</Terme> (ou appli) est un programme qui sert à une chose précise : messages, banque, météo, carte Vitale.
+</Definition>
+
+Les applications s'installent depuis le <Terme id="magasin-applications">magasin d'applications</Terme> officiel :
+
+<TableauComparatif
+  legende="Les magasins d'applications"
+  colonnes={['Téléphone', 'Magasin', 'Icône']}
+  lignes={[
+    ['Android (Samsung…)', 'Play Store (Google Play)', 'Triangle multicolore'],
+    ['iPhone', 'App Store', '« A » blanc sur fond bleu'],
+  ]}
+/>
+
+<Attention>
+N'installez jamais une application à partir d'un lien reçu par SMS, e-mail ou téléphone. Passez toujours par le magasin officiel.
+</Attention>
+
+## Comment installer une application ? \{#installer\}
+
+<Etapes titre="Installer une application">
+1. Ouvrez le **Play Store** ou l'**App Store**.
+2. Touchez **Rechercher** (la loupe) et tapez le nom de l'appli, par exemple « ameli ».
+3. Touchez le bon résultat et vérifiez le nom de l'**éditeur** affiché dessous.
+4. Touchez **Installer** (Android) ou **Obtenir** (iPhone).
+5. Si demandé, confirmez avec votre code, votre doigt ou votre visage.
+6. L'icône apparaît sur l'écran d'accueil ou dans la liste des applis.
+</Etapes>
+
+## Comment reconnaître la vraie application ? \{#vraie-appli\}
+
+Des copies existent, parfois juste sous le vrai résultat.
+
+- L'**éditeur** correspond au service : « Assurance Maladie » pour ameli, votre banque pour son appli.
+- Le premier résultat marqué **Annonce** ou **Sponsorisé** est une publicité : ce n'est pas forcément la bonne appli.
+- Le site officiel du service donne souvent un lien direct vers son appli.
+
+## Que faire des autorisations ? \{#autorisations\}
+
+<Definition terme="autorisation">
+Une autorisation permet à une appli d'utiliser une partie du téléphone : appareil photo, micro, localisation, contacts.
+</Definition>
+
+Acceptez seulement ce qui a un rapport avec l'appli : une appli de cartes a besoin de la localisation, une lampe torche non.
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+Pour revoir les autorisations : **Paramètres → Applications**, touchez l'appli, puis **Autorisations**.
+
+</Onglet>
+<Onglet appareil="iphone">
+
+Pour revoir les autorisations : **Réglages → Confidentialité et sécurité**, puis par type (Localisation, Photos, Micro…).
+
+</Onglet>
+</Onglets>
+
+## Comment mettre à jour ? \{#mettre-a-jour\}
+
+Les <Terme id="mise-a-jour">mises à jour</Terme> corrigent des failles. Laissez-les se faire automatiquement.
+
+- **Play Store** : touchez votre photo de profil en haut à droite, puis **Gérer les applis et l'appareil**, puis **Tout mettre à jour**.
+- **App Store** : touchez votre photo de profil en haut à droite, puis **Tout mettre à jour**.
+
+## Comment supprimer une application ? \{#desinstaller\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Désinstaller sur Android">
+1. Faites un **appui long** sur l'icône de l'appli.
+2. Touchez **Désinstaller**.
+3. Confirmez avec **OK**.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Supprimer sur iPhone">
+1. Faites un **appui long** sur l'icône de l'appli.
+2. Touchez **Supprimer l'app**.
+3. Touchez **Supprimer l'app** à nouveau, puis **Supprimer**.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Astuce>
+Sur iPhone, « Supprimer de l'écran d'accueil » cache l'icône sans désinstaller l'appli : elle reste dans la Bibliothèque d'apps.
+</Astuce>

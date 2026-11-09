@@ -1,0 +1,124 @@
+---
+identifiant: e-mail
+titre: Créer et utiliser une adresse e-mail
+rubrique: communiquer
+resume: Choisir un fournisseur, créer son adresse, lire, répondre et transférer un message, utiliser la copie et la copie cachée, et retrouver ses e-mails sur le téléphone.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - choisir un fournisseur de messagerie ;
+  - créer une adresse e-mail ;
+  - lire, écrire, répondre et transférer ;
+  - utiliser Cc et Cci à bon escient ;
+  - consulter ses e-mails sur le téléphone.
+motsCles: [e-mail, mail, courriel, adresse e-mail, Gmail, Outlook, créer une adresse, répondre, transférer, Cc, Cci, copie cachée]
+titreSeo: "Créer une adresse e-mail et envoyer un mail : le guide"
+metaDescription: "Comment créer une adresse e-mail gratuite, écrire, répondre, transférer un message et utiliser la copie cachée (Cci), sur ordinateur et sur téléphone."
+bristol:
+  - "Adresse = identifiant@fournisseur (ex. prenom.nom@gmail.com)"
+  - "Répondre : à l'expéditeur · Répondre à tous : à tous les destinataires · Transférer : à quelqu'un d'autre"
+  - "Cc : copie visible · Cci : copie cachée (pour écrire à un groupe sans dévoiler les adresses)"
+  - "Toujours remplir l'objet : il dit de quoi parle le message"
+  - "Mieux vaut une adresse indépendante de son opérateur (Gmail, Outlook…)"
+sources:
+  - titre: Aide Gmail
+    url: https://support.google.com/mail/?hl=fr
+    editeur: Google
+  - titre: Aide Outlook.com
+    url: https://support.microsoft.com/fr-fr/outlook
+    editeur: Microsoft
+  - titre: "Arnaques par message électronique : comment identifier et déjouer l'hameçonnage ?"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/arnaques-par-message-electronique-comment-identifier-et-dejouer-lhameconnage
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-05
+pourAidant:
+  - "Faites choisir une adresse simple à dicter au téléphone : prénom.nom, sans chiffres inutiles."
+  - "« Répondre à tous » envoie à tout le monde : c'est l'erreur gênante la plus fréquente."
+liesA: [communiquer/pieces-jointes, communiquer/trier-e-mails, communiquer/changer-adresse-e-mail]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'une adresse e-mail ? \{#definition\}
+
+<Definition terme="e-mail">
+Un <Terme id="e-mail">e-mail</Terme> (courriel) est un message envoyé par Internet à une adresse électronique, par exemple **prenom.nom@gmail.com**.
+</Definition>
+
+L'adresse comprend votre **identifiant**, le signe **@** (arobase) et le **fournisseur** (gmail.com, outlook.fr, orange.fr…). Elle est demandée pour presque toutes les démarches.
+
+## Quel fournisseur choisir ? \{#fournisseur\}
+
+<TableauComparatif
+  legende="Quelques fournisseurs de messagerie gratuits"
+  colonnes={['Fournisseur', 'Adresse', 'À savoir']}
+  lignes={[
+    ['Gmail (Google)', '…@gmail.com', 'Déjà créée si vous avez un téléphone Android'],
+    ['Outlook (Microsoft)', '…@outlook.fr / @hotmail.fr', 'Pratique avec Word et Windows'],
+    ['iCloud Mail (Apple)', '…@icloud.com', 'Proposée avec le compte Apple'],
+    ['Messagerie de l’opérateur', '…@orange.fr, @sfr.fr…', 'Liée à votre abonnement : voir « Changer d’adresse »'],
+  ]}
+/>
+
+<Astuce>
+Préférez une adresse indépendante de votre fournisseur d'accès : vous la garderez si vous changez d'opérateur.
+</Astuce>
+
+## Comment créer son adresse ? \{#creer\}
+
+<Etapes titre="Créer une adresse Gmail (exemple)">
+1. Sur l'ordinateur, allez sur **accounts.google.com** et cliquez sur **Créer un compte**, puis **Pour mon usage personnel**.
+2. Saisissez prénom, nom, date de naissance.
+3. Choisissez l'adresse proposée ou tapez la vôtre (prenom.nom).
+4. Choisissez un mot de passe solide (voir « Créer de bons mots de passe »).
+5. Ajoutez un numéro de téléphone de récupération.
+</Etapes>
+
+## Comment écrire, répondre et transférer ? \{#ecrire\}
+
+<Etapes titre="Écrire un nouveau message">
+1. Cliquez ou touchez **Nouveau message** (ou **Écrire**, souvent un crayon).
+2. Dans **À**, tapez l'adresse du destinataire.
+3. Dans **Objet**, résumez le sujet en quelques mots.
+4. Écrivez le message, puis touchez **Envoyer** (souvent un avion en papier).
+</Etapes>
+
+<TableauComparatif
+  legende="Répondre ou transférer"
+  colonnes={['Bouton', 'Ce qu’il fait']}
+  lignes={[
+    ['Répondre', 'Répond seulement à l’expéditeur'],
+    ['Répondre à tous', 'Répond à l’expéditeur et à tous les destinataires'],
+    ['Transférer', 'Envoie le message (et ses pièces jointes) à une autre personne'],
+  ]}
+/>
+
+## À quoi servent Cc et Cci ? \{#copie\}
+
+<Definition terme="Cc et Cci">
+**Cc** (copie) ajoute des destinataires visibles de tous. **Cci** (<Terme id="cci">copie cachée</Terme>) ajoute des destinataires invisibles des autres.
+</Definition>
+
+<ARetenir>
+Pour écrire à un groupe (association, voisins), mettez toutes les adresses en **Cci** : personne ne verra l'adresse des autres. Cela protège leur vie privée.
+</ARetenir>
+
+## Comment lire ses e-mails sur le téléphone ? \{#telephone\}
+
+- **Gmail** : l'appli Gmail est installée sur Android, et s'installe depuis l'App Store sur iPhone.
+- **Autre adresse** : ajoutez-la dans l'appli **Mail** (iPhone) ou **Gmail** / **Outlook** : Paramètres → Ajouter un compte, puis saisissez adresse et mot de passe.
+
+<Attention>
+Un e-mail qui vous presse de cliquer sur un lien pour « débloquer » votre compte ou recevoir un remboursement est très souvent une arnaque (voir « Reconnaître une arnaque »).
+</Attention>

@@ -112,16 +112,16 @@ const actuel = Astro.url.pathname;
   }
   .entete-barre { display: flex; align-items: center; gap: .5rem; min-height: 4.25rem; }
   .entete-logo { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent); text-decoration: none; min-height: var(--cible); margin-right: auto; }
-  .entete-nom { font: 700 1.45rem/1 var(--police-titre); letter-spacing: -.03em; color: var(--texte); }
+  .entete-nom { font: 650 1.55rem/1 var(--police-titre); letter-spacing: -.04em; color: var(--texte); }
   .nav-principale { display: none; }
-  .nav-liste { display: flex; gap: .25rem; list-style: none; margin: 0; padding: 0; }
+  .nav-liste { display: flex; gap: .15rem; list-style: none; margin: 0; padding: 4px; background: var(--surface-2); border-radius: 999px; }
   .nav-bouton, .nav-lien {
     display: inline-flex; align-items: center; gap: .35rem; min-height: var(--cible); padding: 0 .9rem;
-    border-radius: 10px; border: 0; background: none; color: var(--texte); cursor: pointer;
-    font: 550 1.05rem var(--police-titre); text-decoration: none;
+    border-radius: 999px; border: 0; background: none; color: var(--texte); cursor: pointer;
+    font: 500 1.05rem var(--police-titre); text-decoration: none; min-height: 44px;
   }
-  .nav-bouton:hover, .nav-lien:hover { background: var(--surface-2); color: var(--texte); }
-  .nav-lien[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .4em; }
+  .nav-bouton:hover, .nav-lien:hover { background: var(--surface); color: var(--texte); }
+  .nav-bouton[aria-expanded='true'], .nav-lien[aria-current='page'] { background: var(--surface); box-shadow: var(--ombre); }
   [aria-expanded='true'] > :global(.chevron) { transform: rotate(180deg); }
   :global(.chevron) { transition: transform .15s; }
   .entete-outils { display: flex; align-items: center; gap: .15rem; }
@@ -142,7 +142,7 @@ const actuel = Astro.url.pathname;
   .mega-menu { border-top: 1px solid var(--trait); background: var(--fond); max-height: calc(100vh - 4.25rem); overflow-y: auto; box-shadow: var(--ombre); }
   .mega-grille { list-style: none; margin: 0; padding: 1.5rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem; }
   .mega-titre { display: flex; align-items: center; gap: .5rem; font: 650 1.05rem var(--police-titre); color: var(--texte); text-decoration: none; min-height: 44px; }
-  .mega-titre :global(svg) { color: var(--accent); flex: none; }
+  .mega-titre :global(svg) { color: var(--accent); flex: none; box-sizing: content-box; padding: .45rem; border-radius: 50%; background: var(--teinte); }
   .mega-titre:hover span { text-decoration: underline; }
   .mega-modules { list-style: none; margin: .25rem 0 0; padding: 0 0 0 2rem; font-size: 1rem; }
   .mega-modules a { display: block; padding: .3rem 0; color: var(--texte-doux); text-decoration: none; }

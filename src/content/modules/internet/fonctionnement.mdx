@@ -1,0 +1,93 @@
+---
+identifiant: fonctionnement
+titre: Comment fonctionne Internet ?
+rubrique: internet
+resume: Internet expliqué simplement - un réseau de réseaux, la box et le fournisseur d'accès, l'adresse IP, l'annuaire DNS et les serveurs qui hébergent les sites.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - comprendre ce qu'est Internet ;
+  - savoir à quoi servent la box et le fournisseur d'accès ;
+  - comprendre adresse IP et DNS ;
+  - distinguer Internet, le Web et une application.
+motsCles: [Internet, comment marche Internet, réseau, box, fournisseur d'accès, adresse IP, DNS, serveur, Web]
+titreSeo: "Comment fonctionne Internet ? Explication simple"
+metaDescription: "Internet expliqué simplement : un réseau de réseaux, la box et l'opérateur, l'adresse IP, l'annuaire DNS et les serveurs qui hébergent les sites web."
+bristol:
+  - "Internet = des millions d'ordinateurs reliés entre eux, partout dans le monde"
+  - "La box (ou le forfait mobile) vous relie à ce réseau via votre opérateur"
+  - "Adresse IP : le numéro de votre appareil sur Internet"
+  - "DNS : l'annuaire qui transforme un nom de site en adresse IP"
+  - "Un site est stocké sur un serveur, un ordinateur toujours allumé"
+sources:
+  - titre: Comment fonctionne Internet ?
+    url: https://developer.mozilla.org/fr/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work
+    editeur: Mozilla (MDN)
+  - titre: Qu'est-ce qu'un nom de domaine ?
+    url: https://developer.mozilla.org/fr/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_domain_name
+    editeur: Mozilla (MDN)
+  - titre: Arcep, régulateur des télécoms
+    url: https://www.arcep.fr/
+    editeur: Arcep
+verifieLe: 2026-11-09
+pourAidant:
+  - "L'image de La Poste aide : l'adresse IP est l'adresse postale, le DNS l'annuaire, le serveur la maison où l'on va chercher la page."
+liesA: [internet/se-connecter, internet/adresse-web, internet/navigateur]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'Internet ? \{#definition\}
+
+<Definition terme="Internet">
+Internet est un réseau mondial qui relie entre eux des millions d'ordinateurs, téléphones et serveurs, pour qu'ils échangent des informations.
+</Definition>
+
+**À quoi ça sert.** Consulter des sites, envoyer des e-mails, passer des appels vidéo, faire ses démarches, regarder des vidéos.
+
+## Comment est-on relié à Internet ? \{#box\}
+
+Votre <Terme id="fournisseur-acces">fournisseur d'accès</Terme> (opérateur) vous relie au réseau :
+
+- à la maison, par la **fibre** ou l'**ADSL**, jusqu'à la <Terme id="box">box</Terme> ; la box diffuse ensuite le <Terme id="wi-fi">Wi-Fi</Terme> dans le logement ;
+- dehors, par le réseau mobile <Terme id="4g-5g">4G ou 5G</Terme> de votre forfait.
+
+## À quoi servent l'adresse IP et le DNS ? \{#ip-dns\}
+
+<TableauComparatif
+  legende="Les mots clés, avec une comparaison postale"
+  colonnes={['Mot', 'Ce que c’est', 'Comme…']}
+  lignes={[
+    ['Adresse IP', 'Le numéro de votre appareil ou de votre box sur Internet', 'Votre adresse postale'],
+    ['DNS', 'L’annuaire qui transforme « impots.gouv.fr » en adresse IP', 'L’annuaire téléphonique'],
+    ['Serveur', 'L’ordinateur, toujours allumé, qui stocke un site', 'La maison où l’on va chercher la lettre'],
+  ]}
+/>
+
+<Etapes titre="Ce qui se passe quand vous ouvrez un site">
+1. Vous tapez **service-public.gouv.fr**.
+2. Le <Terme id="dns">DNS</Terme> trouve l'<Terme id="adresse-ip">adresse IP</Terme> du serveur de ce site.
+3. Votre navigateur demande la page à ce serveur, en passant par votre box et votre opérateur.
+4. Le serveur renvoie la page, qui s'affiche en une fraction de seconde.
+</Etapes>
+
+## Internet, le Web, une application : quelle différence ? \{#web\}
+
+- **Internet** est le réseau, les « routes ».
+- Le **Web** est l'ensemble des <Terme id="site-web">sites</Terme> qu'on consulte avec un navigateur.
+- Une **application** (WhatsApp, appli de banque) utilise aussi Internet, sans passer par un navigateur.
+
+<ARetenir>
+Sans connexion (Wi-Fi ou données mobiles), ni les sites ni la plupart des applications ne fonctionnent.
+</ARetenir>

@@ -1,0 +1,91 @@
+---
+identifiant: ecran-fige
+titre: "L'écran est figé"
+rubrique: depannage
+resume: L'écran ne répond plus sur l'ordinateur ou le téléphone ? Attendre, fermer l'appli bloquée, puis forcer le redémarrage, dans le bon ordre.
+duree: 4
+niveau: Premiers pas
+objectifs:
+  - savoir attendre ou agir ;
+  - fermer l'application bloquée ;
+  - forcer le redémarrage d'un téléphone ;
+  - savoir quand faire réparer.
+motsCles: [écran figé, téléphone bloqué, écran ne répond plus, redémarrage forcé, iPhone bloqué, Samsung bloqué, ordinateur figé]
+titreSeo: "Écran figé : débloquer son téléphone ou son ordinateur"
+metaDescription: "L'écran de votre téléphone ou ordinateur ne répond plus ? Attendre, fermer l'appli bloquée puis forcer le redémarrage d'un Samsung ou d'un iPhone."
+bristol:
+  - "1. Attendre une minute sans toucher"
+  - "2. Fermer l'appli bloquée (liste des applis ouvertes)"
+  - "3. Samsung : maintenir volume bas + bouton latéral ~7 à 10 s"
+  - "4. iPhone récent : volume +, puis volume −, puis maintenir le bouton latéral jusqu'au logo"
+  - "Ordinateur : voir « Mon ordinateur est bloqué »"
+sources:
+  - titre: Forcer le redémarrage de l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/iph8903c3ee6/ios
+    editeur: Apple
+  - titre: Assistance smartphones Galaxy
+    url: https://www.samsung.com/fr/support/mobile-devices/
+    editeur: Samsung
+verifieLe: 2026-11-09
+appareils: [android, iphone]
+pourAidant:
+  - "Le redémarrage forcé ne supprime aucune donnée : rassurez avant de le faire faire."
+liesA: [ordinateur/ordinateur-bloque, smartphone/premiers-pas, depannage/telephone-plein]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## 1. Faut-il attendre ? \{#attendre\}
+
+Attendez une minute sans toucher l'écran : une appli lourde ou une mise à jour peut figer l'écran un moment. Vérifiez aussi que l'écran est propre et sec, et retirez un éventuel gant.
+
+## 2. Comment fermer l'appli bloquée ? \{#appli\}
+
+- **Android** : touchez le bouton **|||** (ou glissez du bas vers le haut et maintenez), puis faites glisser l'appli vers le haut pour la fermer.
+- **iPhone** : glissez du bas vers le haut et arrêtez-vous au milieu, puis faites glisser l'appli vers le haut.
+
+## 3. Comment forcer le redémarrage du téléphone ? \{#redemarrage-force\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Samsung (Galaxy récents)">
+1. Maintenez ensemble le bouton **volume bas** et le bouton **latéral**.
+2. Gardez-les appuyés environ 7 à 10 secondes, jusqu'à ce que l'écran s'éteigne et que le logo réapparaisse.
+3. Relâchez.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="iPhone avec Face ID (et iPhone 8 et plus récents)">
+1. Appuyez puis relâchez rapidement **volume +**.
+2. Appuyez puis relâchez rapidement **volume −**.
+3. Maintenez le **bouton latéral** jusqu'à voir le logo Apple, puis relâchez.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<ARetenir>
+Le redémarrage forcé n'efface aucune donnée.
+</ARetenir>
+
+## 4. Et sur l'ordinateur ? \{#ordinateur\}
+
+Suivez le module « Mon ordinateur est bloqué » : Gestionnaire des tâches (Windows), Forcer à quitter (Mac), puis redémarrage.
+
+## 5. Quand faire réparer ? \{#reparer\}
+
+Si l'écran reste noir ou figé après un redémarrage forcé et une charge d'une heure, ou si le tactile ne répond plus du tout, faites vérifier le téléphone par un réparateur ou le service après-vente.

@@ -1,0 +1,94 @@
+---
+identifiant: payer-en-ligne
+titre: Payer en ligne sans risque
+rubrique: argent
+resume: Ce que l'on donne en payant sur Internet, la validation 3D Secure, PayPal et les cartes virtuelles, et les règles pour ne jamais se faire voler sa carte.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - savoir quelles informations on donne en payant ;
+  - comprendre la validation 3D Secure ;
+  - connaître les solutions de paiement alternatives ;
+  - adopter les bons réflexes et réagir en cas de fraude.
+motsCles: [payer en ligne, carte bancaire, 3D Secure, authentification forte, PayPal, carte virtuelle, cryptogramme, fraude carte, paiement sécurisé]
+titreSeo: "Payer en ligne sans risque : carte, 3D Secure, PayPal"
+metaDescription: "Payer en ligne sans risque : ce que l'on donne, la validation 3D Secure dans l'appli bancaire, PayPal et cartes virtuelles, et que faire en cas de fraude."
+bristol:
+  - "Paiement : numéro de carte, date, cryptogramme (3 chiffres au dos)"
+  - "3D Secure : validation dans l'appli bancaire ou code SMS — vérifier le montant et le marchand"
+  - "Carte virtuelle : un numéro à usage unique ou limité, proposé par certaines banques"
+  - "Jamais de code de carte (4 chiffres) sur Internet"
+  - "Fraude : opposition immédiate, puis contestation auprès de la banque"
+sources:
+  - titre: La fraude aux paiements en ligne
+    url: https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/la-fraude-aux-paiements-en-ligne
+    editeur: DGCCRF
+  - titre: "Opérations bancaires à distance : comment vous protéger des fraudes ?"
+    url: https://www.economie.gouv.fr/particuliers/mes-droits-conso/eviter-les-arnaques/operations-bancaires-distance-comment-vous-proteger-des-fraudes
+    editeur: Ministère de l'Économie
+  - titre: Conditions de mise en œuvre de l'authentification forte
+    url: https://www.banque-france.fr/system/files/2023-10/Banque%20de%20Frnace%20-%20Osmp_-_dsp2-sca_-_note_sur_les_cas_dusage.pdf
+    editeur: Banque de France (OSMP)
+verifieLe: 2026-11-09
+pourAidant:
+  - "Lire ensemble l'écran de validation 3D Secure : il affiche le montant et le nom du marchand. S'ils ne correspondent pas, on refuse."
+liesA: [argent/banque-en-ligne, vie-pratique/acheter-en-ligne, securite/faux-sites]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Que donne-t-on en payant par carte ? \{#donnees\}
+
+Le site demande le **numéro** de la carte (16 chiffres), la **date d'expiration** et le **cryptogramme** (3 chiffres au dos). Jamais votre **code secret** à 4 chiffres : il ne sert qu'aux distributeurs et terminaux.
+
+## Qu'est-ce que la validation 3D Secure ? \{#3d-secure\}
+
+<Definition terme="3D Secure">
+<Terme id="3d-secure">3D Secure</Terme> est la vérification demandée par votre banque pour un paiement en ligne : validation dans l'appli bancaire, ou code reçu par SMS. Elle est obligatoire en Europe depuis 2019, sauf petites exceptions.
+</Definition>
+
+<Etapes>
+1. Après avoir saisi la carte, l'appli bancaire vous envoie une notification, ou un code arrive par SMS.
+2. Lisez le **montant** et le **nom du marchand** affichés.
+3. S'ils correspondent à votre achat, validez. Sinon, **refusez**.
+</Etapes>
+
+<Attention>
+Une demande de validation que vous n'attendiez pas signifie que quelqu'un essaie d'utiliser votre carte. Refusez, puis faites opposition.
+</Attention>
+
+## Quelles autres façons de payer ? \{#alternatives\}
+
+<TableauComparatif
+  legende="Solutions de paiement en ligne"
+  colonnes={['Solution', 'Principe', 'Intérêt']}
+  lignes={[
+    ['PayPal (ou équivalent)', 'Un compte relié à votre carte ou votre compte bancaire', 'Le site ne voit pas votre numéro de carte'],
+    ['Carte virtuelle', 'Numéro temporaire créé dans l’appli bancaire', 'Le vrai numéro reste protégé'],
+    ['Paiement mobile (Apple Pay, Google Pay…)', 'Carte enregistrée dans le téléphone', 'Validation par empreinte ou visage'],
+  ]}
+/>
+
+## Quels réflexes adopter ? \{#reflexes\}
+
+<Etapes>
+1. Achetez sur des sites connus ou vérifiés (voir « Repérer un faux site »).
+2. Ne saisissez jamais votre carte sur un site atteint par un lien reçu par SMS ou e-mail.
+3. Consultez vos comptes régulièrement.
+4. N'enregistrez votre carte que sur des sites de confiance.
+</Etapes>
+
+## Que faire en cas de paiement frauduleux ? \{#fraude\}
+
+Faites **opposition** immédiatement auprès de votre banque, puis **contestez** les opérations. Si la carte est toujours en votre possession, déclarez la fraude sur le service **Perceval** (via service-public.gouv.fr). Voir « J'ai été victime : que faire ? ».

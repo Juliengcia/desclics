@@ -1,0 +1,101 @@
+---
+identifiant: gestionnaire-mots-de-passe
+titre: Utiliser un gestionnaire de mots de passe
+rubrique: securite
+resume: Un coffre-fort qui retient tous vos mots de passe à votre place. À quoi il sert, lequel choisir, comment l'installer et protéger le mot de passe maître.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - comprendre le principe du gestionnaire de mots de passe ;
+  - choisir un outil parmi les solutions courantes ;
+  - l'installer et y ranger ses premiers comptes ;
+  - protéger le mot de passe maître.
+motsCles: [gestionnaire de mots de passe, coffre-fort, Bitwarden, KeePassXC, trousseau, Google Password Manager, mot de passe maître]
+titreSeo: "Gestionnaire de mots de passe : lequel choisir et comment ?"
+metaDescription: "Un gestionnaire de mots de passe retient tout à votre place. Comment il fonctionne, lequel choisir (Bitwarden, KeePassXC, celui du téléphone) et comment l'installer."
+bristol:
+  - "Un seul mot de passe à retenir : le mot de passe maître"
+  - "Le gestionnaire crée et remplit les mots de passe à votre place"
+  - "Gratuits : celui du téléphone ou du navigateur, Bitwarden, KeePassXC"
+  - "Mot de passe maître : une longue phrase de passe, notée sur papier rangé à la maison"
+  - "Activer la double authentification sur le gestionnaire"
+sources:
+  - titre: Pourquoi et comment bien gérer ses mots de passe ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/mots-de-passe
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Recommandations relatives à l'authentification multifacteur et aux mots de passe
+    url: https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-authentification_multifacteur_et_mots_de_passe.pdf
+    editeur: ANSSI
+  - titre: Bitwarden, aide en ligne
+    url: https://bitwarden.com/help/
+    editeur: Bitwarden
+verifieLe: 2026-11-05
+pourAidant:
+  - "Commencez petit : trois comptes (messagerie, banque, impôts) la première fois, le reste au fil de l'eau."
+  - "Le gestionnaire intégré au téléphone est souvent le plus simple pour débuter : il est déjà là."
+liesA: [securite/mots-de-passe, securite/double-authentification]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## À quoi sert un gestionnaire de mots de passe ? \{#principe\}
+
+<Definition terme="gestionnaire de mots de passe">
+Un <Terme id="gestionnaire-mots-de-passe">gestionnaire de mots de passe</Terme> est un coffre-fort numérique. Il garde tous vos mots de passe, chiffrés, derrière un seul **mot de passe maître**.
+</Definition>
+
+**À quoi ça sert.**
+
+- vous n'avez qu'**un** mot de passe à retenir ;
+- il **crée** des mots de passe longs et différents pour chaque site ;
+- il les **remplit** tout seul sur la page de connexion ;
+- il ne remplit rien sur un faux site, ce qui vous alerte.
+
+## Lequel choisir ? \{#choisir\}
+
+<TableauComparatif
+  legende="Quelques gestionnaires de mots de passe"
+  colonnes={['Outil', 'Prix', 'Pour qui']}
+  lignes={[
+    ['Gestionnaire du téléphone (Google, trousseau iCloud)', 'Gratuit', 'Débuter, si tous vos appareils sont de la même marque'],
+    ['Bitwarden', 'Gratuit (option payante)', 'Ordinateur et téléphone de marques différentes'],
+    ['KeePassXC', 'Gratuit, logiciel libre', 'Garder le coffre sur son ordinateur ; certifié par l’ANSSI'],
+  ]}
+/>
+
+<Astuce>
+Pour débuter, le gestionnaire déjà intégré à votre téléphone ou à votre navigateur suffit. Il propose d'enregistrer le mot de passe à chaque connexion.
+</Astuce>
+
+## Comment l'installer ? \{#installer\}
+
+<Etapes titre="Démarrer avec Bitwarden (exemple)">
+1. Installez l'appli **Bitwarden** depuis le Play Store ou l'App Store, et l'extension pour votre navigateur sur l'ordinateur.
+2. Créez un compte avec votre adresse e-mail et un **mot de passe maître** (voir ci-dessous).
+3. Touchez **+** pour ajouter un premier compte : nom du site, identifiant, mot de passe.
+4. Activez le **remplissage automatique** proposé par l'appli.
+5. Lors de votre prochaine connexion à un site, le gestionnaire propose d'enregistrer ou de remplir.
+</Etapes>
+
+## Comment protéger le mot de passe maître ? \{#maitre\}
+
+<Etapes>
+1. Choisissez une <Terme id="phrase-de-passe">phrase de passe</Terme> longue (cinq mots ou plus) que vous n'utilisez nulle part ailleurs.
+2. Écrivez-la sur un papier rangé dans un endroit sûr à la maison.
+3. Activez la **double authentification** sur le gestionnaire.
+</Etapes>
+
+<Attention>
+Si vous oubliez le mot de passe maître, personne ne peut le récupérer, pas même l'éditeur : c'est ce qui garantit la sécurité du coffre. Gardez-en une trace papier.
+</Attention>

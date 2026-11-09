@@ -1,0 +1,88 @@
+---
+identifiant: imprimante
+titre: "L'imprimante ne marche pas"
+rubrique: depannage
+resume: L'imprimante n'imprime pas ? Les vérifications dans l'ordre - papier, encre, voyants, Wi-Fi, file d'attente bloquée, pilote - jusqu'au dépannage avancé.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - faire les vérifications de base ;
+  - reconnecter l'imprimante au Wi-Fi ;
+  - débloquer la file d'impression ;
+  - réinstaller l'imprimante.
+motsCles: [imprimante ne marche pas, imprimante hors ligne, n'imprime pas, file d'attente, bourrage papier, encre, pilote, Wi-Fi imprimante]
+titreSeo: "L'imprimante n'imprime pas : que faire ?"
+metaDescription: "Votre imprimante n'imprime pas ou est « hors ligne » ? Les vérifications dans l'ordre : papier, encre, Wi-Fi, file d'attente bloquée, réinstallation."
+bristol:
+  - "1. Allumée ? Papier ? Encre ? Voyant d'erreur ?"
+  - "2. Même Wi-Fi que l'ordinateur ? Éteindre-rallumer imprimante, box, ordinateur"
+  - "3. File d'attente : supprimer les impressions bloquées"
+  - "4. « Hors ligne » : retirer puis réajouter l'imprimante"
+  - "5. Pilote : uniquement depuis le site officiel du fabricant"
+sources:
+  - titre: Résoudre les problèmes d'imprimante dans Windows
+    url: https://support.microsoft.com/fr-fr/windows/r%C3%A9soudre-les-probl%C3%A8mes-de-connexion-d-imprimante-et-d-impression-dans-windows-fb830bff-7702-6349-33cd-9443fe987f73
+    editeur: Microsoft
+  - titre: Installer une imprimante dans Windows
+    url: https://support.microsoft.com/fr-fr/windows/installer-une-imprimante-dans-windows-cc0724cf-793e-3542-d1ff-727e4978638b
+    editeur: Microsoft
+verifieLe: 2026-11-09
+appareils: [windows, mac]
+pourAidant:
+  - "Après un changement de box, l'imprimante Wi-Fi doit être reconnectée au nouveau réseau : c'est une cause très fréquente de « hors ligne »."
+liesA: [bureautique/imprimer-scanner, depannage/plus-internet, ordinateur/entretien]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## 1. Les vérifications de base \{#base\}
+
+- L'imprimante est-elle **allumée** ? Un **voyant** clignote-t-il (papier, encre, bourrage) ?
+- Y a-t-il du **papier**, bien calé ? Pas de feuille coincée ?
+- Les **cartouches** sont-elles bien en place et non vides ?
+
+## 2. L'imprimante est-elle sur le bon réseau ? \{#reseau\}
+
+<Etapes>
+1. Vérifiez que l'imprimante est connectée au **même Wi-Fi** que l'ordinateur (menu de l'imprimante, ou page d'état imprimable).
+2. Éteignez l'**imprimante**, la **box**, puis l'**ordinateur**. Rallumez dans cet ordre : box, imprimante, ordinateur.
+3. Après un changement de box, reconnectez l'imprimante au nouveau Wi-Fi depuis son menu ou son appli.
+</Etapes>
+
+## 3. La file d'impression est-elle bloquée ? \{#file\}
+
+<Onglets appareils={['windows', 'mac']}>
+<Onglet appareil="windows">
+
+Ouvrez **Paramètres → Bluetooth et appareils → Imprimantes et scanners**, cliquez sur l'imprimante, puis **Ouvrir la file d'attente**. Annulez les documents bloqués, puis réessayez.
+
+</Onglet>
+<Onglet appareil="mac">
+
+Ouvrez **Réglages Système → Imprimantes et scanners**, cliquez sur l'imprimante, puis **File d'attente**. Supprimez les documents bloqués et vérifiez que l'impression n'est pas en pause.
+
+</Onglet>
+</Onglets>
+
+## 4. L'imprimante est « hors ligne » \{#hors-ligne\}
+
+Retirez l'imprimante de la liste (**Supprimer** dans Imprimantes et scanners), puis **ajoutez-la à nouveau** (voir « Imprimer et scanner »). Sur Windows, l'utilitaire de **résolution des problèmes** d'impression peut aussi aider.
+
+## 5. Faut-il réinstaller le pilote ? \{#pilote\}
+
+Le **pilote** est le logiciel qui permet à l'ordinateur de parler à l'imprimante. Téléchargez-le uniquement depuis le **site officiel du fabricant** (HP, Canon, Epson, Brother…), rubrique Assistance, avec le modèle exact.
+
+<Attention>
+Méfiez-vous des sites qui proposent un « pilote d'imprimante » avec un numéro d'assistance à appeler : c'est une arnaque fréquente au faux support technique.
+</Attention>

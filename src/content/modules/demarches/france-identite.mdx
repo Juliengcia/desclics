@@ -1,0 +1,93 @@
+---
+identifiant: france-identite
+titre: "Sa carte d'identité sur le téléphone"
+rubrique: demarches
+resume: L'application officielle France Identité met la carte d'identité au format carte bancaire sur le téléphone. Conditions, installation, activation et usages.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - savoir si l'on peut utiliser France Identité ;
+  - installer et activer l'application ;
+  - générer une attestation d'identité ;
+  - se connecter aux services publics avec France Identité.
+motsCles: [France Identité, carte d'identité numérique, carte d'identité sur téléphone, NFC, attestation d'identité, FranceConnect+, application officielle]
+titreSeo: "France Identité : sa carte d'identité sur le téléphone"
+metaDescription: "France Identité met votre carte d'identité sur votre téléphone : conditions (carte format carte bancaire, NFC), installation, activation et usages au quotidien."
+bristol:
+  - "Conditions : 18 ans, carte d'identité au format carte bancaire (depuis 2021), téléphone avec NFC"
+  - "Téléphone : Android 11 ou plus, ou iPhone avec iOS 16.6 ou plus"
+  - "Activer : appli France Identité → poser la carte au dos du téléphone → code"
+  - "Attestation d'identité : à envoyer au lieu d'une photocopie de la carte"
+  - "Connexion FranceConnect et FranceConnect+"
+sources:
+  - titre: France Identité
+    url: https://france-identite.gouv.fr/
+    editeur: Ministère de l'Intérieur
+  - titre: Créer son identité numérique
+    url: https://france-identite.gouv.fr/creation-identite-numerique/
+    editeur: Ministère de l'Intérieur
+  - titre: "France Identité : une activation simplifiée dès la remise de la carte d'identité"
+    url: https://www.interieur.gouv.fr/actualites/actualites-du-ministere/france-identite-activation-simplifiee-des-remise-de-carte-didentite
+    editeur: Ministère de l'Intérieur
+verifieLe: 2026-11-05
+pourAidant:
+  - "Le contact NFC est capricieux : faites retirer la coque et déplacer lentement la carte au dos du téléphone jusqu'à la vibration."
+  - "Les usages acceptés évoluent vite : vérifiez sur france-identite.gouv.fr avant de compter dessus (aéroport, gare, administration)."
+liesA: [demarches/ants, demarches/franceconnect, demarches/sante]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que France Identité ? \{#definition\}
+
+<Definition terme="France Identité">
+France Identité est l'application officielle du ministère de l'Intérieur qui enregistre votre carte d'identité au format carte bancaire dans votre téléphone, de façon sécurisée.
+</Definition>
+
+## Puis-je l'utiliser ? \{#conditions\}
+
+<TableauComparatif
+  legende="Conditions (vérifiées en novembre 2026)"
+  colonnes={['Il faut', 'Détail']}
+  lignes={[
+    ['Avoir 18 ans ou plus', ''],
+    ['Une carte d’identité au format carte bancaire', 'Délivrée depuis 2021 ; les anciennes cartes cartonnées ne marchent pas'],
+    ['Un téléphone avec NFC', 'Android 11 ou plus récent, ou iPhone avec iOS 16.6 ou plus récent'],
+  ]}
+/>
+
+## Comment l'installer et l'activer ? \{#activer\}
+
+<Etapes>
+1. Installez **France Identité** (éditeur : Ministère de l'Intérieur) depuis le Play Store ou l'App Store.
+2. Ayez sous la main votre carte et son **code** (reçu à la remise de la carte).
+3. Suivez l'appli : posez la carte au **dos du téléphone** quand elle le demande, sans bouger, jusqu'à la vibration.
+4. Choisissez un **code personnel** pour l'application.
+5. Pour la version **certifiée** (démarches les plus sensibles), suivez les indications : une vérification supplémentaire peut être demandée.
+</Etapes>
+
+<Astuce>
+Retirez la coque du téléphone si la carte n'est pas lue, et cherchez l'emplacement NFC (souvent au milieu du dos, ou en haut sur iPhone).
+</Astuce>
+
+## À quoi sert-elle ? \{#usages\}
+
+- **Attestation d'identité** : générez un justificatif à envoyer au lieu d'une photocopie de votre carte, avec seulement les informations nécessaires.
+- **Connexion** aux services publics avec **FranceConnect** et **FranceConnect+**.
+- **Activation de l'appli carte Vitale**.
+- **Présentation** de son identité dans certains lieux qui l'acceptent (le site officiel tient la liste à jour).
+
+<Attention>
+L'application ne remplace pas toujours la carte physique : gardez-la sur vous pour voyager et pour les contrôles où elle est exigée.
+</Attention>

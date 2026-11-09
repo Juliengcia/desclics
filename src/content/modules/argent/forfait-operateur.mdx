@@ -1,0 +1,101 @@
+---
+identifiant: forfait-operateur
+titre: "Forfait mobile et box : comprendre et changer"
+rubrique: argent
+resume: Lire sa facture, comparer les offres, changer d'opérateur en gardant son numéro grâce au RIO, et changer de box sans couper Internet.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - comprendre sa facture ;
+  - comparer les forfaits et les box ;
+  - changer d'opérateur en gardant son numéro ;
+  - changer de box sans tout perdre.
+motsCles: [forfait mobile, box internet, facture, changer d'opérateur, portabilité, RIO, "3179", garder son numéro, comparer forfaits, engagement]
+titreSeo: "Changer de forfait ou de box en gardant son numéro"
+metaDescription: "Lire sa facture, comparer les forfaits mobile et box, changer d'opérateur en gardant son numéro grâce au code RIO (3179), sans couper sa ligne."
+bristol:
+  - "Facture : forfait de base + options + hors-forfait"
+  - "Comparer : volume de données, prix après la première année, engagement"
+  - "Garder son numéro : appeler le 3179 (gratuit) pour obtenir son RIO"
+  - "Donner le RIO au nouvel opérateur : il résilie l'ancien pour vous"
+  - "Avant de résilier une box : vérifier le sort de l'adresse e-mail de l'opérateur"
+sources:
+  - titre: "Abonnements téléphoniques et internet : comment bien analyser l'offre des opérateurs ?"
+    url: https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/abonnements-telephoniques-et-internet-comment-bien-analyser-loffre-des-operateurs
+    editeur: DGCCRF
+  - titre: La portabilité du numéro
+    url: https://www.arcep.fr/demarches-et-services/utilisateurs/la-portabilite-du-numero.html
+    editeur: Arcep
+  - titre: Vous souhaitez résilier votre abonnement téléphonique ou d'accès à Internet
+    url: https://www.inc-conso.fr/content/vous-souhaitez-resilier-votre-abonnement-telephonique-ou-dacces-internet-0
+    editeur: Institut national de la consommation
+verifieLe: 2026-11-09
+pourAidant:
+  - "Beaucoup paient un forfait trop gros : regardez ensemble la consommation réelle de données sur trois mois avant de choisir."
+liesA: [communiquer/changer-adresse-e-mail, argent/abonnements, internet/se-connecter]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment lire sa facture ? \{#facture\}
+
+Dans l'espace client de l'opérateur, la facture distingue :
+
+- le **forfait** (prix mensuel de base) ;
+- les **options** (assurance, chaînes, services) ;
+- le **hors-forfait** (appels vers des numéros spéciaux, données à l'étranger hors Europe).
+
+<Astuce>
+Une ligne que vous ne comprenez pas ? Les numéros surtaxés et les « services + » sont des sources fréquentes de frais imprévus. Demandez des explications au service client.
+</Astuce>
+
+## Comment comparer les offres ? \{#comparer\}
+
+<TableauComparatif
+  legende="Les points à comparer"
+  colonnes={['Point', 'Question à se poser']}
+  lignes={[
+    ['Données mobiles', 'Combien de Go j’utilise vraiment par mois ?'],
+    ['Prix après la promotion', 'Combien coûtera l’offre après la première année ?'],
+    ['Engagement', 'Puis-je partir quand je veux, ou suis-je engagé 12 ou 24 mois ?'],
+    ['Couverture', 'Le réseau passe-t-il chez moi ? (carte de l’Arcep)'],
+    ['Box', 'Fibre disponible à mon adresse ? Location de la box comprise ?'],
+  ]}
+/>
+
+## Comment changer d'opérateur et garder son numéro ? \{#portabilite\}
+
+<Definition terme="RIO">
+Le <Terme id="rio">RIO</Terme> (relevé d'identité opérateur) est un code qui permet de garder votre numéro en changeant d'opérateur. C'est la **portabilité**.
+</Definition>
+
+<Etapes>
+1. Depuis votre mobile, appelez le **3179** (gratuit) : un serveur vocal vous donne votre RIO, confirmé par SMS.
+2. Souscrivez la nouvelle offre et indiquez votre **numéro** et votre **RIO**.
+3. Le nouvel opérateur s'occupe de **résilier l'ancien** : ne résiliez pas vous-même, vous perdriez le numéro.
+4. Le jour du transfert, insérez la nouvelle carte SIM (ou activez l'eSIM).
+</Etapes>
+
+<Attention>
+Vérifiez la fin de votre période d'engagement chez l'ancien opérateur : partir avant peut entraîner des frais.
+</Attention>
+
+## Comment changer de box ? \{#box\}
+
+<Etapes>
+1. Vérifiez l'éligibilité (fibre) à votre adresse sur le site du nouvel opérateur.
+2. Pour un numéro de téléphone fixe, demandez aussi son RIO (3179 depuis la ligne fixe).
+3. Avant la résiliation, vérifiez ce que devient votre **adresse e-mail** de l'opérateur (voir « Changer d'adresse e-mail »).
+4. Renvoyez l'ancienne box en suivant les instructions, avec une preuve d'envoi.
+</Etapes>

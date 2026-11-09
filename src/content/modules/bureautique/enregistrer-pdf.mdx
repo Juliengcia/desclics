@@ -1,0 +1,100 @@
+---
+identifiant: enregistrer-pdf
+titre: Enregistrer, retrouver et faire un PDF
+rubrique: bureautique
+resume: Enregistrer un document au bon endroit avec un bon nom, le retrouver, comprendre ce qu'est un PDF, transformer un document en PDF, et remplir ou signer un PDF.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - enregistrer et enregistrer sous ;
+  - bien nommer un fichier ;
+  - comprendre le PDF ;
+  - exporter un document en PDF ;
+  - remplir et signer un PDF.
+motsCles: [enregistrer, enregistrer sous, PDF, exporter en PDF, convertir en PDF, remplir un PDF, signer un PDF, Adobe Acrobat Reader, formulaire]
+titreSeo: "Enregistrer un document et le transformer en PDF"
+metaDescription: "Enregistrer un document au bon endroit, le retrouver, le transformer en PDF depuis Word, LibreOffice ou Google Docs, et remplir ou signer un formulaire PDF."
+bristol:
+  - "Enregistrer : Ctrl + S · Première fois : choisir le dossier et le nom"
+  - "Nom clair : quoi-qui-date (lettre-mairie-2026-11)"
+  - "PDF depuis Word : Fichier → Enregistrer sous → type PDF"
+  - "LibreOffice : Fichier → Exporter au format PDF · Google Docs : Fichier → Télécharger → PDF"
+  - "Remplir un PDF : l'ouvrir avec Acrobat Reader ou le navigateur, cliquer dans les cases"
+sources:
+  - titre: Enregistrer ou convertir au format PDF
+    url: https://support.microsoft.com/fr-fr/office/enregistrer-ou-convertir-au-format-pdf-ou-xps-dans-les-programmes-office-pour-ordinateurs-de-bureau-d85416c5-7d77-4fd6-a216-6f4bf7c7c110
+    editeur: Microsoft
+  - titre: Aide LibreOffice, exporter au format PDF
+    url: https://help.libreoffice.org/latest/fr/text/shared/01/ref_pdf_export.html
+    editeur: The Document Foundation
+  - titre: Adobe Acrobat Reader, aide
+    url: https://helpx.adobe.com/fr/reader.html
+    editeur: Adobe
+verifieLe: 2026-11-09
+pourAidant:
+  - "Beaucoup enregistrent sans voir où : à la première sauvegarde, faites choisir le dossier Documents à voix haute."
+liesA: [ordinateur/fichiers-dossiers, communiquer/pieces-jointes, bureautique/imprimer-scanner]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Enregistrer ou enregistrer sous ? \{#enregistrer\}
+
+- **Enregistrer** (<Touches k="Ctrl+S" />) garde les modifications dans le fichier.
+- **Enregistrer sous** crée une **copie** : nouveau nom, nouveau dossier ou nouveau format.
+
+<Etapes titre="Première sauvegarde">
+1. Appuyez sur <Touches k="Ctrl+S" /> (Mac : <Touches k="⌘+S" />).
+2. Choisissez le **dossier**, par exemple Documents.
+3. Tapez un **nom clair** : quoi, qui, quand (lettre-mairie-2026-11).
+4. Cliquez sur **Enregistrer**.
+</Etapes>
+
+<Astuce>
+Google Docs et Microsoft 365 en ligne enregistrent tout seuls, en continu : le document est dans votre Drive ou OneDrive.
+</Astuce>
+
+## Comment retrouver un document ? \{#retrouver\}
+
+Dans le logiciel, **Fichier → Ouvrir** ou **Récents** affiche les derniers documents. Sinon, cherchez-le par son nom dans l'Explorateur ou le Finder (voir « Ranger et retrouver ses fichiers »).
+
+## Qu'est-ce qu'un PDF ? \{#pdf\}
+
+<Definition terme="PDF">
+Un <Terme id="pdf">PDF</Terme> est un format de document qui s'affiche à l'identique sur tous les appareils, et qu'on ne modifie pas par accident.
+</Definition>
+
+**À quoi ça sert.** Envoyer un document à imprimer ou à joindre à une démarche : CV, attestation, courrier.
+
+## Comment transformer un document en PDF ? \{#exporter\}
+
+<TableauComparatif
+  legende="Exporter en PDF selon le logiciel"
+  colonnes={['Logiciel', 'Chemin']}
+  lignes={[
+    ['Word', 'Fichier → Enregistrer sous → Type : PDF'],
+    ['LibreOffice', 'Fichier → Exporter au format PDF'],
+    ['Google Docs', 'Fichier → Télécharger → Document PDF'],
+    ['N’importe quel logiciel', 'Imprimer → Imprimante : « Microsoft Print to PDF » (Windows) ou « Enregistrer au format PDF » (Mac)'],
+  ]}
+/>
+
+## Comment remplir et signer un PDF ? \{#remplir\}
+
+<Etapes>
+1. Ouvrez le PDF avec **Adobe Acrobat Reader** (gratuit), **Aperçu** (Mac) ou votre navigateur.
+2. Cliquez dans les cases du formulaire et tapez. Si les cases ne réagissent pas, utilisez l'outil **Remplir et signer** (ou Annoter → Texte).
+3. Pour signer : outil **Signer**, puis dessinez votre signature avec la souris ou insérez une image de signature.
+4. Enregistrez le PDF rempli sous un nouveau nom.
+</Etapes>

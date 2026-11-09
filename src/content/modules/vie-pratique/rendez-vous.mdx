@@ -1,0 +1,94 @@
+---
+identifiant: rendez-vous
+titre: Prendre rendez-vous en ligne
+rubrique: vie-pratique
+resume: Réserver un médecin, un coiffeur ou un service sur une plateforme de rendez-vous, recevoir les rappels, annuler ou déplacer, et préparer une téléconsultation.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - choisir une plateforme de rendez-vous ;
+  - créer son compte ;
+  - réserver un créneau ;
+  - annuler ou déplacer un rendez-vous ;
+  - préparer une téléconsultation.
+motsCles: [prendre rendez-vous en ligne, Doctolib, Maiia, Planity, médecin, coiffeur, annuler rendez-vous, déplacer, téléconsultation, rappel SMS]
+titreSeo: "Prendre rendez-vous en ligne chez le médecin ou le coiffeur"
+metaDescription: "Réserver un rendez-vous médical ou chez le coiffeur en ligne (Doctolib, Planity…), recevoir les rappels, annuler ou déplacer, et préparer une téléconsultation."
+bristol:
+  - "Santé : Doctolib, Maiia… · Beauté et services : Planity…"
+  - "Chercher la spécialité et la ville, choisir un créneau, confirmer"
+  - "Annuler ou déplacer : « Mes rendez-vous » dans l'appli, dans le délai indiqué"
+  - "Un rendez-vous non annulé bloque un créneau pour un autre patient"
+  - "Téléconsultation : tester caméra et micro avant l'heure"
+sources:
+  - titre: Doctolib (aide patients)
+    url: https://www.doctolib.fr/
+    editeur: Doctolib
+  - titre: La téléconsultation
+    url: https://www.ameli.fr/assure/remboursements/rembourse/consultations-telemedecine/telemedecine/teleconsultation
+    editeur: Assurance Maladie
+verifieLe: 2026-11-09
+pourAidant:
+  - "Les plateformes de santé demandent un numéro de mobile pour envoyer un code : préparez le téléphone avant de commencer sur l'ordinateur."
+liesA: [demarches/sante, communiquer/appels-video, smartphone/applications]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quelle plateforme utiliser ? \{#plateformes\}
+
+<TableauComparatif
+  legende="Plateformes de rendez-vous courantes (exemples)"
+  colonnes={['Besoin', 'Exemples', 'À savoir']}
+  lignes={[
+    ['Médecin, dentiste, kiné', 'Doctolib, Maiia', 'Le praticien choisit sa plateforme'],
+    ['Coiffeur, esthéticienne', 'Planity', 'Paiement parfois demandé à la réservation'],
+    ['Services publics', 'Site de la mairie, de la préfecture', 'Toujours sur le site officiel'],
+  ]}
+/>
+
+<Astuce>
+Si le praticien n'apparaît pas, il prend peut-être ses rendez-vous par téléphone ou sur une autre plateforme : regardez son site ou appelez le cabinet.
+</Astuce>
+
+## Comment réserver un rendez-vous ? \{#reserver\}
+
+<Etapes>
+1. Installez l'appli de la plateforme ou ouvrez son site.
+2. Tapez la **spécialité** (« médecin généraliste ») ou le **nom** du praticien, et la **ville**.
+3. Choisissez un praticien, puis un **motif** (première consultation, suivi…) et un **créneau**.
+4. Créez votre compte ou connectez-vous : nom, date de naissance, téléphone, e-mail.
+5. Confirmez. Vous recevez une confirmation par e-mail ou SMS, et un rappel avant le rendez-vous.
+</Etapes>
+
+## Comment annuler ou déplacer ? \{#annuler\}
+
+<Etapes>
+1. Ouvrez l'appli et touchez **Mes rendez-vous**.
+2. Choisissez le rendez-vous, puis **Déplacer** ou **Annuler**, et indiquez un motif si demandé.
+3. Passé un certain délai fixé par le praticien, l'annulation en ligne n'est plus possible : appelez le cabinet.
+</Etapes>
+
+<Attention>
+Un rendez-vous oublié prive un autre patient d'un créneau. Annulez dès que vous savez ne pas pouvoir venir.
+</Attention>
+
+## Comment préparer une téléconsultation ? \{#teleconsultation\}
+
+1. Choisissez le motif **Vidéo** ou **Téléconsultation** lors de la réservation.
+2. Quelques minutes avant, testez la caméra et le micro (voir « Faire un appel vidéo »).
+3. Préparez votre carte Vitale (ou l'appli) et vos ordonnances.
+4. L'ordonnance arrive ensuite dans l'appli ou dans Mon espace santé.
+
+Les conditions de remboursement sont expliquées dans le module « Santé : Ameli, carte Vitale, Mon espace santé ».

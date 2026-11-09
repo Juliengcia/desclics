@@ -1,0 +1,94 @@
+---
+identifiant: limites
+titre: Limites, erreurs et deepfakes
+rubrique: intelligence-artificielle
+resume: Les erreurs inventées par l'IA, ce qu'elle fait de vos données, les deepfakes (vidéos, photos et voix truquées) et les arnaques qui les utilisent, et comment s'en protéger.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - comprendre pourquoi l'IA se trompe ;
+  - protéger ses données personnelles ;
+  - savoir ce qu'est un deepfake ;
+  - déjouer les arnaques à la voix ou à la vidéo truquée ;
+  - repérer un contenu généré.
+motsCles: [limites IA, erreurs IA, hallucination, données personnelles, deepfake, voix clonée, arnaque faux proche, image générée, vérifier, CNIL]
+titreSeo: "IA : erreurs, deepfakes et arnaques à la voix clonée"
+metaDescription: "Pourquoi l'IA invente parfois, comment protéger vos données, ce qu'est un deepfake et comment déjouer les arnaques à la voix clonée d'un proche."
+bristol:
+  - "L'IA peut inventer avec assurance : vérifier tout fait important"
+  - "Ne pas confier : mots de passe, banque, santé, numéro de sécurité sociale"
+  - "Deepfake : vidéo, photo ou voix truquée par IA"
+  - "Appel d'un proche en détresse qui demande de l'argent : raccrocher et le rappeler sur son numéro habituel"
+  - "Convenir en famille d'un mot de passe secret pour les urgences"
+sources:
+  - titre: "Les questions-réponses de la CNIL sur l'utilisation d'un système d'IA générative"
+    url: https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative
+    editeur: CNIL
+  - titre: "IA : votre assistant vocal connaît-il votre vie privée ?"
+    url: https://www.cnil.fr/fr/ia-votre-assistant-vocal-connait-il-votre-vie-privee
+    editeur: CNIL
+  - titre: "IA et vie privée : comment s'opposer à la réutilisation de ses données ?"
+    url: https://www.cnil.fr/fr/ia-comment-sopposer-la-reutilisation-de-ses-donnees-personnelles-entrainement-agent-conversationnel
+    editeur: CNIL
+verifieLe: 2026-11-09
+pourAidant:
+  - "Le mot de passe familial pour les urgences est simple à mettre en place et désamorce la plupart des arnaques au faux proche."
+liesA: [reseaux-sociaux/verifier-information, securite/arnaques, intelligence-artificielle/ecrire]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Pourquoi l'IA se trompe-t-elle ? \{#erreurs\}
+
+Un assistant d'IA produit le texte le plus **vraisemblable**, pas forcément le plus **vrai**. Il peut inventer une référence, une loi, un chiffre ou une citation, avec un ton très assuré. On parle d'« hallucination ».
+
+<ARetenir>
+Utilisez l'IA comme un brouillon ou une aide à la compréhension, jamais comme une source sûre. Vérifiez sur un site officiel ou auprès d'un professionnel.
+</ARetenir>
+
+## Que fait l'IA de mes données ? \{#donnees\}
+
+Ce que vous écrivez peut être conservé et, selon les réglages, servir à entraîner l'outil. La CNIL recommande de :
+
+- ne partager que le **minimum** d'informations ;
+- ne jamais confier de **mots de passe, coordonnées bancaires, données de santé** ;
+- **supprimer** régulièrement l'historique ;
+- **refuser** l'utilisation de vos conversations pour l'entraînement, dans les réglages.
+
+## Qu'est-ce qu'un deepfake ? \{#deepfake\}
+
+<Definition terme="deepfake">
+Un <Terme id="deepfake">deepfake</Terme> (ou hypertrucage) est une vidéo, une photo ou une voix fabriquée ou modifiée par IA, qui fait dire ou faire à une personne ce qu'elle n'a jamais dit ni fait.
+</Definition>
+
+On en voit avec des célébrités qui « recommandent » un placement financier, de fausses déclarations de responsables politiques, ou des montages humiliants.
+
+## Comment déjouer les arnaques à la voix ou à la vidéo ? \{#arnaques\}
+
+Quelques secondes d'enregistrement suffisent pour imiter une voix. Des escrocs appellent en se faisant passer pour un enfant ou un petit-enfant en détresse (« J'ai eu un accident, envoie-moi de l'argent vite »).
+
+<Etapes titre="Les bons réflexes">
+1. Ne cédez pas à l'urgence : raccrochez.
+2. **Rappelez la personne** sur son numéro habituel, ou un autre membre de la famille.
+3. Convenez en famille d'un **mot de passe secret** à demander en cas d'appel d'urgence.
+4. Ne faites jamais de virement ni d'achat de cartes cadeaux sur la foi d'un appel ou d'une vidéo.
+</Etapes>
+
+<Attention>
+Une vidéo de personnalité qui vante un placement « garanti » ou une cryptomonnaie est presque toujours un deepfake utilisé pour une escroquerie.
+</Attention>
+
+## Comment repérer un contenu généré ? \{#reperer\}
+
+Indices fréquents : mains ou doigts bizarres, textes déformés dans l'image, regard figé, voix sans respiration, lèvres décalées. Mais les outils progressent vite : le meilleur réflexe reste de **vérifier la source** (voir « S'informer et vérifier une information »).

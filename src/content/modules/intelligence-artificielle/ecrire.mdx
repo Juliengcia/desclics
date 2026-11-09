@@ -1,0 +1,92 @@
+---
+identifiant: ecrire
+titre: Se faire aider pour écrire
+rubrique: intelligence-artificielle
+resume: Bien formuler sa demande à un assistant d'IA, écrire un courrier, résumer ou reformuler un texte, et vérifier la réponse avant de s'en servir.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - bien formuler une demande ;
+  - faire rédiger un courrier ;
+  - résumer ou reformuler un texte ;
+  - relire et vérifier la réponse ;
+  - protéger ses informations personnelles.
+motsCles: [IA écrire courrier, rédiger une lettre avec l'IA, prompt, consigne, résumer, reformuler, ChatGPT, Le Chat, vérifier, données personnelles]
+titreSeo: "Écrire un courrier avec l'IA : bien formuler sa demande"
+metaDescription: "Se faire aider par l'IA pour écrire : formuler une bonne demande, rédiger un courrier, résumer ou reformuler un texte, vérifier la réponse et protéger ses données."
+bristol:
+  - "Une bonne demande : qui je suis, ce que je veux, à qui, le ton, la longueur"
+  - "Demander des corrections : « plus court », « plus poli », « sans jargon »"
+  - "Toujours relire, vérifier dates, montants, noms et lois"
+  - "Ne jamais donner : numéro de sécurité sociale, mots de passe, coordonnées bancaires, données de santé"
+  - "Remplacer les vrais noms par [Nom] dans la demande"
+sources:
+  - titre: "Les questions-réponses de la CNIL sur l'utilisation d'un système d'IA générative"
+    url: https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative
+    editeur: CNIL
+  - titre: "IA et vie privée : comment s'opposer à la réutilisation de ses données ?"
+    url: https://www.cnil.fr/fr/ia-comment-sopposer-la-reutilisation-de-ses-donnees-personnelles-entrainement-agent-conversationnel
+    editeur: CNIL
+verifieLe: 2026-11-09
+pourAidant:
+  - "Faites écrire la demande à voix haute avant de la taper : on y met naturellement le contexte qui manque."
+liesA: [intelligence-artificielle/comprendre, intelligence-artificielle/limites, bureautique/traitement-de-texte]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment bien formuler sa demande ? \{#prompt\}
+
+<Definition terme="prompt">
+Le <Terme id="prompt">prompt</Terme> (ou consigne) est la demande que vous écrivez à l'IA. Plus elle est précise, meilleure est la réponse.
+</Definition>
+
+<TableauComparatif
+  legende="Une demande vague, une demande précise"
+  colonnes={['Vague', 'Précise']}
+  lignes={[
+    ['« Écris une lettre pour mon propriétaire. »', '« Je suis locataire. Écris une lettre polie et courte à mon propriétaire pour signaler une fuite d’eau sous l’évier depuis le 3 novembre et demander une intervention rapide. »'],
+  ]}
+/>
+
+<Etapes titre="Les cinq éléments d'une bonne demande">
+1. **Qui vous êtes** : « Je suis retraitée », « Je suis locataire ».
+2. **Ce que vous voulez** : écrire, résumer, expliquer, corriger.
+3. **Pour qui** : propriétaire, mairie, employeur, petit-fils.
+4. **Le ton** : poli, ferme, chaleureux, simple.
+5. **La longueur** : « en 10 lignes », « en 3 points ».
+</Etapes>
+
+## Comment faire rédiger un courrier ? \{#courrier\}
+
+<Etapes>
+1. Ouvrez l'assistant et tapez votre demande précise.
+2. Lisez la réponse, puis demandez des ajustements : « plus court », « plus ferme », « ajoute que j'ai déjà appelé deux fois ».
+3. Copiez le texte dans votre traitement de texte ou votre e-mail.
+4. Complétez vous-même les vraies coordonnées et références, puis relisez.
+</Etapes>
+
+## Comment résumer ou reformuler un texte ? \{#resumer\}
+
+Collez un texte (un courrier compliqué, un article) et demandez : « Résume ce texte en 5 phrases simples » ou « Explique-moi ce courrier comme à quelqu'un qui n'est pas juriste ».
+
+## Comment vérifier la réponse ? \{#verifier\}
+
+<Attention>
+L'IA peut inventer des dates, des articles de loi, des montants ou des noms. Vérifiez toute information importante sur un site officiel, et relisez le courrier avant de l'envoyer : vous en restez responsable.
+</Attention>
+
+## Que ne faut-il pas confier à l'IA ? \{#donnees\}
+
+La CNIL recommande de ne partager que le **strict minimum**. Ne donnez jamais vos mots de passe, coordonnées bancaires, numéro de sécurité sociale ni informations de santé détaillées. Remplacez les vrais noms par **[Nom]**, **[Adresse]**, puis complétez vous-même. Dans les réglages des principaux assistants, vous pouvez refuser que vos conversations servent à les entraîner.

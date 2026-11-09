@@ -26,15 +26,16 @@ const jsonld = [{
     <div class="peinture" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="conteneur hero-grille">
       <div class="hero-texte">
-        <p class="etiquette"><Icone nom="etincelle" /> Gratuit, sans compte, sans publicité</p>
-        <h1>Le numérique, expliqué clairement.</h1>
+        <p class="etiquette">Gratuit, sans compte, sans publicité</p>
+        <h1>Le numérique, <span class="ton-doux">expliqué clairement.</span></h1>
         <p class="chapo">Ordinateur, smartphone, démarches, arnaques : des réponses précises, étape par étape, en français simple.</p>
         <div class="hero-recherche">
           <Recherche id="recherche-accueil" enPage />
         </div>
       </div>
 
-      <aside class="hero-fiche carte" aria-label="Exemple de fiche">
+      <aside class="hero-fiche" aria-label="Exemple de fiche">
+        <div class="fiche-barre" aria-hidden="true"><span></span></div>
         <p class="fiche-surtitre">Fiche Bristol · Clavier</p>
         <p class="fiche-titre">Copier-coller un texte</p>
         <ol>
@@ -42,14 +43,28 @@ const jsonld = [{
           <li><span>Copier</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>C</kbd></span></li>
           <li><span>Coller</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>V</kbd></span></li>
         </ol>
-        <p class="fiche-note">Sur Mac, remplacez Ctrl par <kbd>⌘</kbd>.</p>
+        <a class="bouton bouton--clair" href={lien('ordinateur/clavier-raccourcis#copier-coller')}>Voir le module</a>
       </aside>
     </div>
   </section>
 
+  <div class="conteneur">
+    <ul class="bande" aria-label="Les engagements du site">
+      <li><strong>100 %</strong><span>gratuit</span></li>
+      <li><strong>0</strong><span>compte à créer</span></li>
+      <li><strong>0</strong><span>traceur publicitaire</span></li>
+      <li><strong>Hors ligne</strong><span>une fois installé</span></li>
+    </ul>
+  </div>
+
   {entrees.length > 0 && (
     <section class="conteneur bloc" aria-labelledby="titre-je-veux">
-      <h2 id="titre-je-veux">Je veux…</h2>
+      <div class="entete-section">
+        <div>
+          <h2 id="titre-je-veux">Je veux…</h2>
+          <p>Les questions les plus fréquentes, avec le bon chapitre en un clic.</p>
+        </div>
+      </div>
       <ul class="je-veux">
         {entrees.map((e) => (
           <li><a href={lien(`${e.module}${e.ancre ? `#${e.ancre}` : ''}`)}><span>{e.libelle}</span><Icone nom="fleche" /></a></li>
@@ -58,29 +73,40 @@ const jsonld = [{
     </section>
   )}
 
+  <div class="hachures" aria-hidden="true"></div>
+
   <section class="conteneur bloc" aria-labelledby="titre-rubriques">
-    <p class="etiquette">12 rubriques</p>
-    <h2 id="titre-rubriques">Tout ce qu'il faut savoir, rangé par thème</h2>
+    <div class="entete-section">
+      <div>
+        <p class="etiquette">12 rubriques</p>
+        <h2 id="titre-rubriques">Tout ce qu'il faut savoir, <span class="ton-doux">rangé par thème.</span></h2>
+      </div>
+      <a class="bouton bouton--secondaire" href={lien('plan-du-site')}>Voir le plan du site</a>
+    </div>
     <ul class="grille grille--3 rubriques">
       {rubriques.map((r) => (
-        <li class="carte carte-lien rubrique-carte">
-          <span class="rubrique-icone"><Icone nom={r.icone} taille={28} /></span>
+        <li class:list={['carte carte-lien rubrique-carte', r.slug === 'depannage' ? 'carte--sombre' : `pastel-${r.pastel}`]}>
+          <span class="pastille"><Icone nom={r.icone} /></span>
           <h3><a href={lien(r.slug)}>{r.titre}</a></h3>
           <p>{r.description}</p>
-          <p class="rubrique-compte">{compte(r.slug) > 0 ? `${compte(r.slug)} module${compte(r.slug) > 1 ? 's' : ''} disponible${compte(r.slug) > 1 ? 's' : ''}` : 'En préparation'}</p>
+          <p class="rubrique-compte">{compte(r.slug) > 0 ? `${compte(r.slug)} module${compte(r.slug) > 1 ? 's' : ''}` : 'En préparation'}</p>
         </li>
       ))}
     </ul>
   </section>
 
+  <div class="hachures" aria-hidden="true"></div>
+
   <section class="conteneur bloc grille grille--2" aria-label="Aide et nouveautés">
-    <div class="carte encart-aide">
-      <h2>Besoin d'une aide en personne ?</h2>
-      <p>Des conseillers numériques et les espaces France Services accompagnent gratuitement près de chez vous.</p>
-      <p><a href="https://www.france-services.gouv.fr/" rel="noopener">Trouver un espace France Services</a></p>
+    <div class="carte carte--teinte">
+      <p class="etiquette">Près de chez vous</p>
+      <h2>Besoin d'une aide <span class="ton-doux">en personne ?</span></h2>
+      <p>Des conseillers numériques et les espaces France Services accompagnent gratuitement, sur rendez-vous ou sans.</p>
+      <p><a class="bouton bouton--clair" href="https://www.france-services.gouv.fr/" rel="noopener">Trouver un espace France Services</a></p>
     </div>
-    <div class="carte">
-      <h2>Quoi de neuf ?</h2>
+    <div class="carte carte--blanche">
+      <p class="etiquette">Quoi de neuf ?</p>
+      <h2>Dernières <span class="ton-doux">nouveautés</span></h2>
       <ul class="nouveautes">
         {nouveautes.slice(0, 4).map((n) => (
           <li><time datetime={n.date}>{dateFr(n.date)}</time> {n.lien ? <a href={lien(n.lien)}>{n.texte}</a> : n.texte}</li>
@@ -91,40 +117,46 @@ const jsonld = [{
 </Base>
 
 <style>
-  .accueil-hero { position: relative; overflow: hidden; padding: 3rem 0 3.5rem; border-bottom: 1px solid var(--trait); }
+  .accueil-hero { position: relative; overflow: hidden; padding: 3rem 0 3rem; }
   .hero-grille { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
-  @media (min-width: 1024px) { .accueil-hero { padding: 5rem 0; } .hero-grille { grid-template-columns: 1.35fr 1fr; gap: 4rem; } }
-  .hero-texte h1 { margin-top: 1.25rem; max-width: 14ch; }
-  .hero-recherche { margin-top: 1.75rem; max-width: 38rem; }
+  @media (min-width: 1024px) { .accueil-hero { padding: 5.5rem 0 4.5rem; } .hero-grille { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
+  .hero-texte h1 { margin-top: 1.25rem; font-size: clamp(2.6rem, 1.6rem + 4.5vw, 5rem); max-width: 15ch; }
+  .hero-recherche { margin-top: 2rem; max-width: 38rem; }
   .hero-recherche :global(.recherche-label) { font-size: 1.05rem; }
-  .hero-fiche { background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(8px); max-width: 26rem; justify-self: center; width: 100%; }
-  .fiche-surtitre { font: 600 .8rem var(--police-titre); text-transform: uppercase; letter-spacing: .08em; color: var(--texte-doux); margin: 0 0 .25rem; }
-  .fiche-titre { font: 650 1.4rem var(--police-titre); letter-spacing: -.02em; margin: 0 0 1rem; }
-  .hero-fiche ol { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .5rem; counter-reset: e; }
-  .hero-fiche li { counter-increment: e; display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem .9rem; border: 1px solid var(--trait); border-radius: 12px; background: var(--surface); }
+  .hero-fiche { background: var(--teinte); border-radius: 24px; padding: 1.75rem; max-width: 26rem; justify-self: center; width: 100%; }
+  .fiche-barre { height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--texte) 15%, transparent); margin-bottom: 1.5rem; }
+  .fiche-barre span { display: block; width: 40%; height: 100%; border-radius: inherit; background: var(--texte); }
+  .fiche-surtitre { font: 500 .9rem var(--police-titre); color: var(--texte-doux); margin: 0 0 .25rem; }
+  .fiche-titre { font: 600 1.6rem/1.15 var(--police-titre); letter-spacing: -.03em; margin: 0 0 1.25rem; }
+  .hero-fiche ol { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .5rem; counter-reset: e; }
+  .hero-fiche li { counter-increment: e; display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem 1rem; border-radius: 14px; background: var(--surface); }
   .hero-fiche li > span:first-child::before { content: counter(e) '. '; font-weight: 700; color: var(--accent); }
   .touches { white-space: nowrap; }
-  .fiche-note { margin: 0; font-size: 1rem; color: var(--texte-doux); }
+  :global(.bouton--clair) { background: var(--surface); color: var(--texte); border-color: var(--surface); width: 100%; }
+  :global(.bouton--clair:hover) { background: var(--fond); color: var(--accent); border-color: var(--fond); }
 
   .bloc { padding-top: 3.5rem; }
   .je-veux { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
   .je-veux a {
-    display: inline-flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .5rem 1rem;
-    border: 1px solid var(--bordure); border-radius: 999px; background: var(--surface);
-    color: var(--texte); text-decoration: none; font: 550 1.05rem var(--police-titre);
+    display: inline-flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .5rem 1.1rem;
+    border-radius: 999px; background: var(--surface-2); border: 1px solid transparent;
+    color: var(--texte); text-decoration: none; font: 500 1.05rem var(--police-titre);
   }
   .je-veux a:hover { border-color: var(--accent); color: var(--accent); }
   .je-veux a :global(svg) { width: 1.1em; height: 1.1em; color: var(--accent); }
-  .rubriques { list-style: none; padding: 0; margin: 1.5rem 0 0; }
-  .rubrique-carte h3 { font-size: 1.25rem; margin: .75rem 0 .35rem; }
+  .rubriques { list-style: none; padding: 0; margin: 0; }
+  .rubrique-carte { display: flex; flex-direction: column; min-height: 17rem; }
+  .rubrique-carte h3 { font-size: 1.4rem; margin: auto 0 .4rem; padding-top: 2.5rem; }
   .rubrique-carte h3 a { color: var(--texte); text-decoration: none; }
   .rubrique-carte:hover h3 a { text-decoration: underline; }
   .rubrique-carte p { margin: 0; color: var(--texte-doux); font-size: 1rem; }
-  .rubrique-icone { display: inline-flex; padding: .6rem; border-radius: 12px; background: var(--accent-pale); color: var(--accent); }
-  .rubrique-compte { margin-top: .75rem !important; font: 600 .9rem var(--police-titre) !important; }
-  .encart-aide { background: var(--accent-pale); }
+  .rubrique-compte { margin-top: .9rem !important; font: 600 .9rem var(--police-titre) !important; }
+  .carte--teinte { background: var(--teinte); }
+  .carte--teinte p:not(.etiquette) { color: var(--texte); }
+  .carte h2 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); margin-top: .5rem; }
   .nouveautes { list-style: none; padding: 0; margin: 0; }
-  .nouveautes li { padding: .5rem 0; border-top: 1px solid var(--trait); }
-  .nouveautes time { display: block; font: 600 .9rem var(--police-titre); color: var(--texte-doux); }
-  h2 { font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem); }
+  .nouveautes li { padding: .6rem 0; border-top: 1px solid var(--trait); }
+  .nouveautes time { display: block; font: 500 .9rem var(--police-titre); color: var(--texte-doux); }
+  h2 { font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem); }
+  .bande { list-style: none; padding: 0; margin: 0; }
 </style>

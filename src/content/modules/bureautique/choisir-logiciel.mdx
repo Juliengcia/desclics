@@ -1,0 +1,90 @@
+---
+identifiant: choisir-logiciel
+titre: Quel logiciel pour écrire, compter, présenter ?
+rubrique: bureautique
+resume: Les trois familles de logiciels de bureautique, les suites payantes et gratuites (Microsoft 365, LibreOffice, Google Docs), en ligne ou installées, et comment ouvrir un fichier reçu.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - distinguer traitement de texte, tableur et présentation ;
+  - comparer Microsoft 365, LibreOffice et Google Docs ;
+  - choisir entre logiciel installé et en ligne ;
+  - ouvrir un fichier reçu d'un autre logiciel.
+motsCles: [bureautique, Word, Excel, PowerPoint, Microsoft 365, LibreOffice, Google Docs, Google Sheets, gratuit, ouvrir un fichier docx]
+titreSeo: "Word, LibreOffice ou Google Docs : quel logiciel choisir ?"
+metaDescription: "Traitement de texte, tableur, présentation : comparer Microsoft 365 (Word, Excel), LibreOffice et Google Docs, gratuits ou payants, et ouvrir un fichier reçu."
+bristol:
+  - "Écrire : traitement de texte (Word, Writer, Docs)"
+  - "Compter, faire un tableau : tableur (Excel, Calc, Sheets)"
+  - "Présenter : diaporama (PowerPoint, Impress, Slides)"
+  - "Gratuit : LibreOffice (installé) ou Google Docs (en ligne)"
+  - "Fichier reçu en .docx ou .xlsx : LibreOffice et Google Docs savent l'ouvrir"
+sources:
+  - titre: LibreOffice
+    url: https://fr.libreoffice.org/
+    editeur: The Document Foundation
+  - titre: Microsoft 365
+    url: https://www.microsoft.com/fr-fr/microsoft-365
+    editeur: Microsoft
+  - titre: Aide Google Docs
+    url: https://support.google.com/docs/?hl=fr
+    editeur: Google
+verifieLe: 2026-11-09
+pourAidant:
+  - "Les versions web gratuites de Word et Excel (Microsoft 365 en ligne, avec un compte Microsoft) suffisent souvent pour un usage simple."
+liesA: [bureautique/traitement-de-texte, bureautique/tableur, bureautique/enregistrer-pdf]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quelles sont les trois familles de logiciels ? \{#familles\}
+
+<TableauComparatif
+  legende="Les logiciels de bureautique"
+  colonnes={['Besoin', 'Type de logiciel', 'Exemples']}
+  lignes={[
+    ['Écrire une lettre, un CV', 'Traitement de texte', 'Word, LibreOffice Writer, Google Docs'],
+    ['Faire un budget, une liste', 'Tableur', 'Excel, LibreOffice Calc, Google Sheets'],
+    ['Faire un diaporama', 'Présentation', 'PowerPoint, LibreOffice Impress, Google Slides'],
+  ]}
+/>
+
+## Payant ou gratuit ? \{#comparer\}
+
+<TableauComparatif
+  legende="Les trois grandes suites"
+  colonnes={['Suite', 'Prix', 'Installé ou en ligne', 'À savoir']}
+  lignes={[
+    ['Microsoft 365 (Word, Excel…)', 'Abonnement ; version web gratuite limitée', 'Les deux', 'La référence en entreprise'],
+    ['LibreOffice', 'Gratuit, logiciel libre', 'Installé sur l’ordinateur', 'Ouvre les fichiers Word et Excel'],
+    ['Google Docs, Sheets, Slides', 'Gratuit avec un compte Google', 'En ligne (navigateur, appli)', 'Enregistrement automatique, partage facile'],
+  ]}
+/>
+
+<Astuce>
+Téléchargez LibreOffice uniquement depuis son site officiel, **libreoffice.org**. Des sites tiers proposent des copies avec des logiciels indésirables.
+</Astuce>
+
+## Installé ou en ligne ? \{#installe-en-ligne\}
+
+- **Installé** : marche sans Internet, fichiers sur l'ordinateur.
+- **En ligne** : rien à installer, accessible partout, enregistrement automatique dans le cloud, mais il faut une connexion.
+
+## Comment ouvrir un fichier reçu ? \{#ouvrir\}
+
+Un fichier **.docx** (Word), **.xlsx** (Excel) ou **.pptx** (PowerPoint) s'ouvre aussi avec LibreOffice ou Google Docs. Double-cliquez dessus : s'il ne s'ouvre pas, faites un clic droit → **Ouvrir avec** → choisissez le logiciel.
+
+<ARetenir>
+Pour envoyer un document à quelqu'un qui doit seulement le lire ou l'imprimer, envoyez-le en **PDF** : il s'affichera à l'identique partout.
+</ARetenir>
