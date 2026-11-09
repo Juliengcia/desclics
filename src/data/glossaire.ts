@@ -14,6 +14,11 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'assistant-conversationnel', terme: 'Assistant conversationnel', definition: "Programme d'intelligence artificielle à qui l'on écrit ou parle comme à une personne, et qui répond en texte : ChatGPT, Le Chat de Mistral, Gemini, Copilot, Claude…", variantes: ['chatbot', 'agent conversationnel', 'chatgpt', 'gemini', 'copilot', 'le chat'], voir: 'intelligence-artificielle/comprendre' },
+  { id: 'deepfake', terme: 'Deepfake', definition: "Vidéo, photo ou voix truquée par intelligence artificielle, qui fait dire ou faire à quelqu'un ce qu'il n'a jamais dit ou fait.", variantes: ['deepfakes', 'hypertrucage', 'voix clonée'], voir: 'intelligence-artificielle/limites' },
+  { id: 'prompt', terme: 'Prompt (consigne)', definition: "Demande écrite à une intelligence artificielle. Plus elle est précise (rôle, but, ton, longueur), meilleure est la réponse.", variantes: ['prompts', 'consigne', 'requête'], voir: 'intelligence-artificielle/ecrire' },
+  { id: 'algorithme', terme: 'Algorithme', definition: "Ensemble de règles qu'un programme suit. Sur les réseaux sociaux, l'algorithme choisit les contenus montrés à chacun selon ce qu'il regarde.", variantes: ['algorithmes'], voir: 'reseaux-sociaux/comprendre' },
+  { id: 'reseau-social', terme: 'Réseau social', definition: "Site ou appli où l'on publie et partage des contenus avec d'autres personnes : Facebook, Instagram, TikTok, LinkedIn…", variantes: ['réseaux sociaux', 'facebook', 'instagram', 'tiktok'], voir: 'reseaux-sociaux/comprendre' },
   { id: 'traitement-de-texte', terme: 'Traitement de texte', definition: "Logiciel pour écrire et mettre en forme des documents : Word, LibreOffice Writer, Google Docs.", variantes: ['word', 'writer', 'google docs'], voir: 'bureautique/traitement-de-texte' },
   { id: 'tableur', terme: 'Tableur', definition: "Logiciel de tableaux et de calculs : Excel, LibreOffice Calc, Google Sheets.", variantes: ['excel', 'calc', 'google sheets'], voir: 'bureautique/tableur' },
   { id: 'cellule', terme: 'Cellule', definition: "Case d'un tableau de tableur, repérée par sa colonne (lettre) et sa ligne (chiffre), par exemple B3.", variantes: ['cellules'], voir: 'bureautique/tableur' },
