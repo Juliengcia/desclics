@@ -2,6 +2,14 @@
 
 Chaque modification, datée, la plus récente en haut.
 
+## 2026-11-09
+
+- **Toutes les rubriques sont rédigées : 89 modules.** Ajout de Smartphone (10), Sécurité et confiance (10), Communiquer (7), Démarches en ligne (10), Internet et navigation (6), Argent et banque (5), Vie pratique (12), Bureautique (6), Réseaux sociaux et vidéo (4), Intelligence artificielle (5, dont « Actualités IA » datée), J'ai un problème (7).
+- **Atelier** : simulateur de faux SMS et e-mails (module « Reconnaître une arnaque »).
+- **Glossaire** : 97 mots.
+- **Direction artistique v2** : deux typos (Bricolage Grotesque + Atkinson Hyperlegible Next), pastels par rubrique, boutons en pilule, cartes plates, séparateurs hachurés, bande d'engagements, navigation en pilule (références 05 à 09 dans `refs/`).
+- Vérifications : 109 pages, 0 lien interne cassé, 0 erreur axe-core (clair et sombre).
+
 ## 2026-11-05
 
 - **Rubrique « Comprendre l'ordinateur » terminée** (7 modules) : ajout de « De quoi est fait un ordinateur ? », « Windows, macOS, Linux », « Ranger et retrouver ses fichiers », « Mon ordinateur est bloqué », « Brancher ses appareils », « Entretenir son ordinateur ». 3 schémas (ordinateur, dossiers, prises), une frise, 16 mots ajoutés au glossaire (57 au total), 2 entrées « Je veux… ».

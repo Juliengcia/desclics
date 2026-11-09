@@ -12,6 +12,13 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 
 ## À revérifier
 
+- [ ] **Liens externes** (199, liste dans rapports/liens-externes.txt) : le réseau de développement bloque la plupart des sites ; vérifier à la main en priorité les pages d'aide Apple, Google, Samsung, CNIL (adresses de pages précises rédigées d'après les recherches).
+- [ ] **Menus Samsung** (One UI) : les intitulés varient selon les versions (« Batterie et maintenance de l'appareil », « Gestion globale »). À contrôler sur un appareil récent.
+- [ ] **Prix et conditions** : passeport 86 €, timbre perte 25 €, carte Avantage 49 €, conditions d'échange SNCF, quotas cloud gratuits : à revérifier chaque année.
+- [ ] **Messagerie vocale** : numéros 888 / 123 / 660 / 666 issus de sources non officielles concordantes ; vérifier sur les sites des opérateurs.
+- [ ] **Actualités IA** : sources presse ; à mettre à jour chaque mois (commande « Mets à jour les actualités IA »).
+- [ ] **Adresses e-mail d'opérateur** après résiliation : aucune obligation légale trouvée ; texte rédigé de façon prudente.
+
 - [ ] Mac : majuscule accentuée (É) via Verr. Maj + appui long sur E — à tester sur un vrai Mac (source Apple ne précise que l'appui long).
 - [ ] Mac : € = Option + $ sur clavier français — confirmé par des sources secondaires seulement.
 - [ ] Liens externes (rapports/liens-externes.txt) : le réseau du poste de développement bloque support.apple.com et support.microsoft.com ; vérifier à la main que les pages citées existent en français.
@@ -23,7 +30,9 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 ## Prochaines étapes
 
 - [x] Rubrique 1 « Comprendre l'ordinateur » (7 modules).
-- [ ] Étape 5 suite : ordre proposé Smartphone, Sécurité, Communiquer, Démarches, Internet, Argent, Vie pratique, Bureautique, Réseaux sociaux, IA, J'ai un problème.
+- [x] Étape 5 : les 12 rubriques sont rédigées (89 modules).
+- [ ] Étape 6 : audit final (accessibilité manuelle, Lighthouse, relecture orthographique complète).
+- [ ] Visuels : seuls 4 schémas existent (ordinateur). Prévoir des illustrations SVG simplifiées pour les modules smartphone (écran d'appel, réglages rapides), WhatsApp, banque.
 - [ ] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques), sources à vérifier.
 - [ ] Parcours « Je viens de… » (4 parcours) dès que leurs modules existent.
 - [ ] Version FALC des pages clés (démarches, arnaques, premiers pas smartphone).

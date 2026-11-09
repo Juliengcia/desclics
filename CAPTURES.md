@@ -10,3 +10,4 @@ Chaque visuel, sa date, son état. À revoir tous les trois mois : refaire ceux 
 | Arborescence de dossiers et fichiers (`SchemaDossiers.astro`) | ordinateur/fichiers-dossiers | Schéma SVG | 2026-11 | À jour |
 | Prises vues de face (`SchemaPrises.astro`) | ordinateur/connectiques | Schéma SVG | 2026-11 | À jour |
 | Frise des connectiques (`<Frise>`) | ordinateur/connectiques | Frise | 2026-11 | À jour |
+| Simulateur de faux messages (`SimulateurArnaques.tsx`), messages fictifs | securite/arnaques | Atelier | 2026-11 | À revoir tous les 6 mois (nouvelles arnaques) |
