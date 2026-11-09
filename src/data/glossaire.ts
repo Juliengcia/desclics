@@ -14,6 +14,13 @@ export interface Terme {
 }
 
 export const glossaire: Terme[] = [
+  { id: 'adresse-ip', terme: 'Adresse IP', definition: "Numéro qui identifie un appareil ou une box sur Internet, comme une adresse postale pour les données.", variantes: ['ip'], voir: 'internet/fonctionnement' },
+  { id: 'dns', terme: 'DNS', definition: "Annuaire d'Internet : il traduit un nom de site (impots.gouv.fr) en adresse IP que les machines comprennent.", voir: 'internet/fonctionnement' },
+  { id: 'fournisseur-acces', terme: "Fournisseur d'accès à Internet", definition: "Opérateur qui vous relie à Internet (Orange, SFR, Bouygues Telecom, Free…), avec une box ou un forfait mobile.", variantes: ['fai', 'opérateur'], voir: 'internet/fonctionnement' },
+  { id: '4g-5g', terme: '4G et 5G', definition: "Réseaux mobiles qui donnent accès à Internet sur le téléphone, sans Wi-Fi. La 5G est plus rapide là où elle est disponible.", variantes: ['4g', '5g', 'données mobiles', 'data'], voir: 'internet/se-connecter' },
+  { id: 'favori', terme: 'Favori', definition: "Raccourci enregistré dans le navigateur pour revenir en un clic sur une page. On dit aussi marque-page.", variantes: ['favoris', 'marque-page', 'signet'], voir: 'internet/navigateur' },
+  { id: 'navigation-privee', terme: 'Navigation privée', definition: "Mode du navigateur qui n'enregistre ni l'historique ni les cookies sur l'appareil. Il ne vous rend pas invisible sur Internet.", variantes: ['mode privé', 'incognito'], voir: 'internet/navigateur' },
+  { id: 'site-web', terme: 'Site web', definition: "Ensemble de pages consultables sur Internet, sous une même adresse (par exemple service-public.gouv.fr).", variantes: ['site', 'site internet', 'page web'], voir: 'internet/adresse-web' },
   { id: 'cci', terme: 'Cc et Cci', definition: "Cc (copie) envoie l'e-mail à d'autres personnes, visibles de tous. Cci (copie cachée) l'envoie sans que les destinataires voient les autres adresses.", variantes: ['cc', 'copie cachée', 'copie carbone', 'bcc'], voir: 'communiquer/e-mail' },
   { id: 'redirection', terme: 'Redirection (e-mail)', definition: "Réglage qui fait suivre automatiquement les e-mails reçus sur une adresse vers une autre adresse.", variantes: ['transfert automatique', 'faire suivre'], voir: 'communiquer/changer-adresse-e-mail' },
   { id: 'rcs', terme: 'RCS', definition: "Version moderne du SMS : photos de bonne qualité, « en train d'écrire », accusés de lecture, via Internet. Il dépend de l'opérateur.", variantes: ['chat rcs'], voir: 'communiquer/sms' },

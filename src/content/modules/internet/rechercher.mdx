@@ -1,0 +1,90 @@
+---
+identifiant: rechercher
+titre: Chercher efficacement sur Internet
+rubrique: internet
+resume: Choisir un moteur de recherche, bien formuler sa question, lire les résultats, repérer les publicités et chercher par image ou à la voix.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - connaître les moteurs de recherche ;
+  - formuler une recherche efficace ;
+  - lire une page de résultats ;
+  - repérer les résultats sponsorisés ;
+  - chercher par image ou à la voix.
+motsCles: [moteur de recherche, Google, Bing, Qwant, Yahoo, recherche, sponsorisé, annonce, recherche d'image, recherche vocale, Google Lens]
+titreSeo: "Chercher sur Internet : bien formuler et éviter les pubs"
+metaDescription: "Bien chercher sur Google, Bing ou Qwant : formuler sa question, lire les résultats, repérer les publicités « Sponsorisé » et chercher par image ou à la voix."
+bristol:
+  - "Taper quelques mots clés, pas une phrase entière"
+  - "Guillemets pour une expression exacte : \"carte grise perdue\""
+  - "« Sponsorisé » ou « Annonce » = publicité, pas forcément le site officiel"
+  - "Regarder l'adresse du site sous chaque titre avant de cliquer"
+  - "Recherche vocale : icône micro · par image : Google Lens"
+sources:
+  - titre: Effectuer une recherche sur Google
+    url: https://support.google.com/websearch/answer/134479?hl=fr
+    editeur: Google
+  - titre: Assistance Qwant
+    url: https://help.qwant.com/
+    editeur: Qwant
+verifieLe: 2026-11-09
+pourAidant:
+  - "Faites remarquer que le premier résultat est souvent une publicité : c'est le piège le plus fréquent pour les démarches administratives."
+liesA: [internet/navigateur, securite/faux-sites, internet/adresse-web]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quel moteur de recherche utiliser ? \{#moteurs\}
+
+<Definition terme="moteur de recherche">
+Un <Terme id="moteur-de-recherche">moteur de recherche</Terme> est un site qui trouve des pages web à partir de quelques mots.
+</Definition>
+
+<TableauComparatif
+  legende="Moteurs de recherche courants"
+  colonnes={['Moteur', 'À savoir']}
+  lignes={[
+    ['Google', 'Le plus utilisé, très complet'],
+    ['Bing', 'De Microsoft, par défaut dans Edge'],
+    ['Qwant', 'Français, met en avant le respect de la vie privée'],
+    ['Yahoo', 'Résultats fournis en partie par Bing'],
+  ]}
+/>
+
+La barre d'adresse du navigateur sert aussi de champ de recherche : tapez vos mots directement dedans.
+
+## Comment bien formuler sa recherche ? \{#formuler\}
+
+<Etapes>
+1. Tapez **quelques mots clés** : « renouveler carte identité » plutôt qu'une longue phrase.
+2. Ajoutez une **précision** utile : la ville, l'année, « gratuit », « officiel ».
+3. Pour une expression exacte, mettez-la entre **guillemets** : "attestation de droits ameli".
+4. Pour retirer un mot, mettez un **tiret** devant : jaguar -voiture.
+</Etapes>
+
+## Comment lire les résultats ? \{#resultats\}
+
+Chaque résultat affiche un **titre** (le lien), l'**adresse du site** et un court **extrait**. Regardez l'adresse avant de cliquer : c'est elle qui dit où vous allez.
+
+## Comment repérer les publicités ? \{#publicites\}
+
+<Attention>
+Les premiers résultats sont souvent des **publicités**, marquées **Sponsorisé** ou **Annonce**. Pour une démarche administrative, ce sont parfois des sites payants qui imitent l'État. Descendez jusqu'au site officiel (.gouv.fr).
+</Attention>
+
+## Comment chercher par image ou à la voix ? \{#voix-image\}
+
+- **À la voix** : touchez le **micro** dans la barre de recherche et parlez.
+- **Par image** : avec **Google Lens** (icône appareil photo dans la barre Google), photographiez une plante, un monument, un texte à traduire.
