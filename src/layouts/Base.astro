@@ -55,6 +55,7 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
       d.setAttribute('data-theme-effectif', sombre ? 'dark' : 'light');
       if (sombre) d.classList.add('sombre-systeme');
       ['contraste', 'dyslexie', 'curseur', 'animations', 'simple', 'regle', 'loupe'].forEach(function (k) { if (p[k]) d.setAttribute('data-' + k, p[k]); });
+      if (p.affichage) d.setAttribute('data-affichage-modules', p.affichage);
       if (p.taille) { d.style.setProperty('--echelle-texte', p.taille); if (Number(p.taille) >= 1.5) d.setAttribute('data-grand-texte', ''); }
       // Appareils : choix enregistré (un ou plusieurs), sinon système détecté automatiquement.
       var ua = navigator.userAgent, det = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'iphone'
