@@ -24,7 +24,8 @@ const adresse = (chemin: string) => new URL(lien(chemin), Astro.site).href.repla
       <h1>{rubrique.titre}</h1>
       <p class="chapo">{modules.length} fiches, une par module. Une fiche par page à l'impression.</p>
       <p class="actions">
-        <button type="button" class="bouton" data-imprimer-tout><Icone nom="imprimer" /> Imprimer toutes les fiches</button>
+        <a class="bouton" href={lien(`fiches/pdf/${rubrique.slug}.pdf`).replace(/\/$/, '')} download><Icone nom="telecharger" /> Télécharger toutes les fiches (PDF)</a>
+        <button type="button" class="bouton bouton--secondaire" data-imprimer-tout><Icone nom="imprimer" /> Imprimer toutes les fiches</button>
         <a class="bouton bouton--secondaire" href={lien(rubrique.slug)}>Voir les modules de la rubrique</a>
       </p>
     </header>

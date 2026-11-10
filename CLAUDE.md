@@ -35,7 +35,10 @@ scripts/                vérifications (liens, accessibilité, responsive), gén
 src/data/rubriques.ts   SOURCE UNIQUE de l'ordre des rubriques et modules
 src/data/glossaire.ts   glossaire (une entrée par mot, ancre stable)
 src/data/je-veux.ts     entrées « Je veux… » de l'accueil
-src/data/nouveautes.ts  « Quoi de neuf ? »
+src/data/nouveautes.ts  « Quoi de neuf ? » (journal) ; les 3 derniers modules sont calculés depuis verifieLe
+src/data/questions.ts   « Les questions les plus posées » de l'accueil (6)
+src/data/alertes.ts     « Alerte arnaques » de l'accueil (sources datées, à relire chaque mois)
+src/data/site.ts        nom, description, bandeau d'information de l'accueil
 src/content.config.ts   schéma des métadonnées obligatoires d'un module
 src/content/modules/    un fichier MDX par module, un dossier par rubrique
 src/components/         en-tête, pied, recherche, panneau d'accessibilité, icônes
@@ -44,7 +47,10 @@ src/components/ateliers/ ateliers React (chargés seulement sur leur page)
 src/components/schemas/ schémas SVG réutilisables
 src/layouts/            Base (toutes les pages), PageTexte (pages légales)
 src/pages/              routes ; [rubrique]/index.astro et [rubrique]/[module].astro sont générées
-src/scripts/site.ts     comportements communs (menus, thème, accessibilité, voix, recherche)
+src/scripts/site.ts     comportements communs (en-tête, menus, thème, accessibilité, voix)
+src/scripts/            recherche.ts (liste déroulante, dictée), appareils.ts (Mon appareil), favoris.ts,
+                        infobulles.ts, liens-et-cartes.ts (liens externes, cartes au texte copiable)
+src/pages/fiches/a5/    gabarit A5 des PDF Bristol (supprimé de dist/ après génération)
 src/styles/global.css   jetons de couleur (clair, sombre, contraste élevé) et styles de base
 ```
 
@@ -59,7 +65,9 @@ Chaque chapitre suit le **gabarit d'explication** :
 3. `<Etapes>` « Comment faire » (liste numérotée) ;
 4. `<Attention>` si nécessaire. Puis `<Astuce>`, `<ARetenir>` au besoin.
 
-Composants : `Definition`, `Etapes`, `Attention`, `Astuce`, `ARetenir`, `TableauComparatif`, `Figure` (schéma / capture annotée / illustration, avec `alt` complet, `annotations` numérotées et `date`), `Frise`, `Touches` (raccourci clavier), `Terme` (lien glossaire), `Onglets` + `Onglet` (par appareil), `Quiz` (facultatif, sans score), ateliers React (`client:visible`). La fiche Bristol, « Pour l'aidant », les modules liés, les sources et précédent / suivant sont ajoutés automatiquement.
+Composants : `Definition`, `Etapes`, `Attention`, `Astuce`, `ARetenir`, `TableauComparatif`, `Raccourcis` (raccourcis clavier ligne par ligne : `[action, Windows, Mac]`, jamais en tableau), `Figure` (schéma / capture annotée / illustration, avec `alt` complet, `annotations` numérotées et `date`), `Frise`, `Touches` (raccourci clavier), `Terme` (lien glossaire), `Onglets` + `Onglet` (par appareil : affiche les appareils choisis dans « Mon appareil », détectés par défaut), `Quiz` (facultatif, sans score), ateliers React (`client:visible`). La fiche Bristol, « Pour l'aidant », les modules liés, les sources et précédent / suivant sont ajoutés automatiquement.
+
+Les chapitres sont repliables automatiquement (rien à écrire). Les liens externes s'ouvrent seuls dans un nouvel onglet avec l'icône.
 
 Titres de chapitres = vraies questions. Ancre obligatoire et stable : `## Comment copier un texte ? \{#copier-coller\}` (accolades échappées : c'est du MDX).
 
@@ -102,7 +110,8 @@ Pour chaque demande : plan court → exécution → compte rendu (fichiers touch
 ```bash
 npm install            # une fois
 npm run dev            # aperçu local (recherche indisponible en dev)
-npm run build          # construit dist/ et l'index de recherche
+npm run build          # construit dist/, les fiches PDF (Playwright) et l'index de recherche
+SANS_PDF=1 npm run build  # idem sans les PDF (aperçu rapide)
 npm run check          # build + liens + accessibilité + responsive (Playwright requis)
 node scripts/serveur.mjs  # sert dist/ sur http://localhost:4321/desclics/
 node scripts/generer-images.mjs  # icônes PWA et image de partage

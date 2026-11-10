@@ -1,5 +1,7 @@
 /** « Quoi de neuf ? » — les plus récentes en premier. Tenir à jour avec le CHANGELOG. */
 export const nouveautes: { date: string; texte: string; lien?: string }[] = [
+  { date: '2026-11-10', texte: 'Nouveau : les fiches Bristol se téléchargent en PDF, et vos pages préférées se gardent en favori.', lien: 'fiches' },
+  { date: '2026-11-10', texte: 'Le traducteur de jargon reconnaît désormais 190 mots, au pluriel comme conjugués.', lien: 'glossaire/traducteur' },
   { date: '2026-11-10', texte: 'Nouveau : quatre parcours « Je viens de… » pour savoir quoi lire, et dans quel ordre.', lien: 'parcours' },
   { date: '2026-11-10', texte: 'Nouveau : où se faire aider gratuitement, en personne, près de chez vous.', lien: 'aide-pres-de-chez-vous' },
   { date: '2026-11-10', texte: 'Nouveau : toutes les fiches Bristol d’une rubrique, à imprimer d’un coup.', lien: 'fiches' },

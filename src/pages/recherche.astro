@@ -6,9 +6,9 @@ import { lien } from '../lib/chemins';
 ---
 <Base titre="Rechercher sur le site" description="Recherchez une explication sur Desclics : un mot, une question ou une démarche. Les résultats pointent directement vers le bon chapitre." indexer={false}>
   <div class="conteneur" style="max-width: 52rem">
-    <FilAriane miettes={[{ titre: 'Recherche' }]} />
+    <FilAriane miettes={[{ titre: 'Recherche' }]} favori={false} />
     <h1>Rechercher</h1>
-    <Recherche id="recherche-page" enPage />
+    <Recherche id="recherche-page" mode="page" libelleVisible />
     <p style="margin-top:2rem">Vous ne trouvez pas ? Parcourez le <a href={lien('plan-du-site')}>plan du site</a> ou le <a href={lien('glossaire')}>glossaire</a>.</p>
   </div>
 </Base>

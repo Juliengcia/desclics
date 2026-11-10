@@ -10,7 +10,14 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [ ] **Aperçu par branche** : GitHub Pages ne publie qu'une version. Aujourd'hui, chaque branche produit un aperçu téléchargeable (site + captures) dans l'onglet Actions. Pour un vrai lien d'aperçu par branche : Cloudflare Pages ou Netlify (gratuits), à connecter au dépôt.
 - [ ] **Nom de domaine** (ex. desclics.fr) : vérifier la disponibilité et le registre INPI avant achat.
 
+- [ ] **Dossier `references/design`** : il n'existe pas dans le dépôt (seul `refs/`, images 01 à 09). Si d'autres références existent, les ajouter au dépôt.
+
 ## À revérifier
+
+- [ ] **Alerte arnaques** (`src/data/alertes.ts`) : relire chaque mois sur cybermalveillance.gouv.fr, retirer les alertes de plus de six mois, changer le bandeau de l'accueil (`site.ts`, changer `id` pour le réafficher).
+- [ ] **Faux numéro d'opposition bancaire** (alerte Cybermalveillance du 3 décembre 2025) : page illisible depuis le poste de développement, non reprise dans les alertes. À relire.
+- [ ] **Dictée vocale** : testée seulement par simulation (pas de micro en test automatique). À essayer sur Chrome, Edge et Safari (Mac et iPhone).
+- [ ] **Recherche sur Firefox** : pas de dictée (le bouton est masqué), c'est normal.
 
 - [ ] **Liens externes** (199, liste dans rapports/liens-externes.txt) : le réseau de développement bloque la plupart des sites ; vérifier à la main en priorité les pages d'aide Apple, Google, Samsung, CNIL (adresses de pages précises rédigées d'après les recherches).
 - [ ] **Menus Samsung** (One UI) : les intitulés varient selon les versions (« Batterie et maintenance de l'appareil », « Gestion globale »). À contrôler sur un appareil récent.
