@@ -78,7 +78,7 @@ const jsonld = [{
           </aside>
         )}
 
-        <FicheBristol titre={d.titre} lignes={d.bristol} adresse={url.replace(/^https?:\/\//, '')} />
+        <FicheBristol titre={d.titre} lignes={d.bristol} adresse={url.replace(/^https?:\/\//, '')} pdf={lien(`fiches/pdf/${m.rubrique.slug}-${m.slug}.pdf`).replace(/\/$/, '')} />
 
         {lies.length > 0 && (
           <section aria-labelledby="lies-titre" class="modules-lies ne-pas-imprimer">

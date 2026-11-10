@@ -6,7 +6,7 @@
   "description": "Desclics — comprendre le numérique, pas à pas.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist --output-subdir pagefind",
+    "build": "astro build && node scripts/generer-fiches-pdf.mjs && pagefind --site dist --output-subdir pagefind",
     "preview": "astro preview",
     "check:liens": "node scripts/verifier-liens.mjs",
     "check:a11y": "node scripts/audit-accessibilite.mjs",
