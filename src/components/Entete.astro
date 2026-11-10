@@ -1,18 +1,28 @@
 ---
+/**
+ * En-tête fixe : toujours visible, il s'affine quand on descend dans la page.
+ * Le méga-menu et le menu mobile s'ouvrent PAR-DESSUS la page (ils ne la poussent pas).
+ * Sur l'accueil, la recherche de l'en-tête n'apparaît qu'une fois la grande recherche dépassée.
+ */
 import Logo from './Logo.astro';
 import Icone from './Icone.astro';
+import Recherche from './Recherche.astro';
 import { rubriques } from '../data/rubriques';
 import { modulesPublies } from '../lib/navigation';
 import { lien } from '../lib/chemins';
 import { site } from '../data/site';
 
+interface Props { accueil?: boolean }
+const { accueil = false } = Astro.props;
 const publies = await modulesPublies();
 const parRubrique = new Map(rubriques.map((r) => [r.slug, publies.filter((m) => m.rubrique.slug === r.slug)]));
 const actuel = Astro.url.pathname;
+const APERCU = 3; // modules montrés par rubrique dans le menu
+const nbModules = (n: number) => `${n} module${n > 1 ? 's' : ''}`;
 ---
-<header class="site-entete">
+<header class:list={['site-entete', { 'entete--accueil': accueil }]} data-entete>
   <div class="conteneur entete-barre">
-    <a class="entete-logo" href={lien()} aria-label={`${site.nom}, accueil`}>
+    <a class="entete-logo" href={lien()} aria-label={`${site.nom}, accueil`} data-infobulle="Revenir à l'accueil">
       <Logo />
       <span class="entete-nom">{site.nom}</span>
     </a>
@@ -20,7 +30,7 @@ const actuel = Astro.url.pathname;
     <nav class="nav-principale" aria-label="Menu principal">
       <ul class="nav-liste">
         <li>
-          <button class="nav-bouton" type="button" aria-expanded="false" aria-controls="mega-menu" data-ouvre="mega-menu">
+          <button class="nav-bouton" type="button" aria-expanded="false" aria-controls="mega-menu" data-ouvre="mega-menu" data-infobulle="Voir toutes les rubriques et leurs modules">
             Rubriques <Icone nom="chevron" taille={18} class="chevron" />
           </button>
         </li>
@@ -29,14 +39,21 @@ const actuel = Astro.url.pathname;
       </ul>
     </nav>
 
+    <div class="entete-recherche" data-entete-recherche>
+      <Recherche id="recherche-entete" compact />
+    </div>
+
     <div class="entete-outils">
-      <a class="bouton-icone" href={lien('recherche')} data-ouvre-recherche aria-label="Rechercher">
-        <Icone nom="recherche" /><span class="outil-texte">Rechercher</span>
+      <a class="bouton-icone bouton-recherche-mobile" href={lien('recherche')} data-ouvre-recherche data-entete-loupe data-infobulle="Rechercher sur le site">
+        <Icone nom="recherche" /><span class="visually-hidden">Rechercher</span>
       </a>
-      <button class="bouton-icone" type="button" data-ouvre-a11y aria-controls="panneau-a11y" aria-expanded="false">
-        <Icone nom="accessibilite" /><span class="outil-texte">Accessibilité</span>
+      <a class="bouton-icone bouton-favoris" href={lien('favoris')} data-ouvre-favoris data-infobulle="Mes favoris : les pages que vous avez gardées">
+        <Icone nom="etoile" /><span class="visually-hidden">Mes favoris</span><span class="favoris-compte" data-favoris-compte hidden></span>
+      </a>
+      <button class="bouton-icone" type="button" data-ouvre-a11y aria-controls="panneau-a11y" aria-expanded="false" data-infobulle="Taille du texte, contraste, lecture à voix haute, mon appareil">
+        <Icone nom="accessibilite" /><span class="outil-texte">Accessibilité</span><span class="visually-hidden outil-texte-cache">Accessibilité</span>
       </button>
-      <button class="bouton-icone" type="button" data-bascule-theme aria-pressed="false">
+      <button class="bouton-icone" type="button" data-bascule-theme aria-pressed="false" data-infobulle="Passer en mode sombre ou clair">
         <Icone nom="lune" class="icone-lune" /><Icone nom="soleil" class="icone-soleil" />
         <span class="visually-hidden" data-theme-libelle>Mode sombre</span>
       </button>
@@ -46,51 +63,56 @@ const actuel = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Méga-menu (ordinateur et tablette) -->
+  <!-- Méga-menu (ordinateur et tablette), par-dessus la page -->
   <div id="mega-menu" class="mega-menu" hidden>
     <div class="conteneur">
+      <p class="mega-intro">Chaque rubrique est une page qui regroupe plusieurs modules. Un module répond à un besoin.</p>
       <ul class="mega-grille">
         {rubriques.map((r) => {
           const mods = parRubrique.get(r.slug) ?? [];
           return (
             <li class="mega-rubrique">
               <a class="mega-titre" href={lien(r.slug)}>
-                <Icone nom={r.icone} /> <span>{r.titre}</span>
+                <span class:list={['mega-pastille', `pastel-${r.pastel}`]}><Icone nom={r.icone} /></span>
+                <span class="mega-titre-texte">{r.titre}<span class="mega-compte">{mods.length > 0 ? nbModules(mods.length) : 'En préparation'}</span></span>
               </a>
-              {mods.length > 0 ? (
+              {mods.length > 0 && (
                 <ul class="mega-modules">
-                  {mods.map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
+                  {mods.slice(0, APERCU).map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
                 </ul>
-              ) : (
-                <p class="mega-vide">Modules en préparation</p>
+              )}
+              {mods.length > APERCU && (
+                <a class="mega-tous" href={lien(r.slug)}>Voir les {mods.length} modules<span class="visually-hidden"> de « {r.titre} »</span> <Icone nom="fleche" taille={16} /></a>
               )}
             </li>
           );
         })}
       </ul>
-      <p class="mega-pied"><a href={lien('plan-du-site')}>Voir le plan complet du site</a></p>
+      <p class="mega-pied"><a href={lien('plan-du-site')}>Voir le plan complet du site</a> · <a href={lien('parcours')}>Parcours « Je viens de… »</a> · <a href={lien('aide-pres-de-chez-vous')}>Se faire aider près de chez vous</a></p>
     </div>
   </div>
 
-  <!-- Menu mobile repliable -->
+  <!-- Menu mobile repliable, par-dessus la page -->
   <div id="menu-mobile" class="menu-mobile" hidden>
     <nav aria-label="Menu principal (mobile)" class="conteneur">
+      <p class="mega-intro">Chaque rubrique regroupe plusieurs modules.</p>
       <ul class="menu-mobile-liste">
         {rubriques.map((r, i) => {
           const mods = parRubrique.get(r.slug) ?? [];
           return (
             <li>
               <div class="menu-mobile-ligne">
-                <a href={lien(r.slug)}><Icone nom={r.icone} /> {r.titre}</a>
+                <a href={lien(r.slug)}><Icone nom={r.icone} /> <span>{r.titre} <span class="mega-compte">{mods.length > 0 ? nbModules(mods.length) : 'En préparation'}</span></span></a>
                 {mods.length > 0 && (
-                  <button type="button" class="bouton-icone" aria-expanded="false" aria-controls={`mm-${i}`} data-ouvre={`mm-${i}`}>
+                  <button type="button" class="bouton-icone" aria-expanded="false" aria-controls={`mm-${i}`} data-ouvre={`mm-${i}`} data-infobulle="Afficher quelques modules">
                     <Icone nom="chevron" class="chevron" /><span class="visually-hidden">Modules de « {r.titre} »</span>
                   </button>
                 )}
               </div>
               {mods.length > 0 && (
                 <ul id={`mm-${i}`} class="menu-mobile-modules" hidden>
-                  {mods.map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
+                  {mods.slice(0, APERCU).map((m) => <li><a href={lien(m.chemin)}>{m.titre}</a></li>)}
+                  <li><a class="mega-tous" href={lien(r.slug)}>Voir les {mods.length} modules<span class="visually-hidden"> de « {r.titre} »</span></a></li>
                 </ul>
               )}
             </li>
@@ -98,6 +120,7 @@ const actuel = Astro.url.pathname;
         })}
         <li class="menu-mobile-sep"><a href={lien('parcours')}>Parcours « Je viens de… »</a></li>
         <li><a href={lien('aide-pres-de-chez-vous')}>Se faire aider près de chez vous</a></li>
+        <li><a href={lien('favoris')}>Mes favoris</a></li>
         <li><a href={lien('glossaire')}>Glossaire</a></li>
         <li><a href={lien('plan-du-site')}>Plan du site</a></li>
       </ul>
@@ -108,69 +131,98 @@ const actuel = Astro.url.pathname;
 <style>
   .site-entete {
     position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--fond) 92%, transparent);
+    background: color-mix(in srgb, var(--fond) 94%, transparent);
     backdrop-filter: saturate(1.4) blur(10px);
     border-bottom: 1px solid var(--trait);
+    transition: box-shadow .2s;
   }
-  .entete-barre { display: flex; align-items: center; gap: .5rem; min-height: 4.25rem; }
-  .entete-logo { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent); text-decoration: none; min-height: var(--cible); margin-right: auto; }
-  .entete-nom { font: 650 1.55rem/1 var(--police-titre); letter-spacing: -.04em; color: var(--texte); }
+  .entete-barre { display: flex; align-items: center; gap: .5rem; min-height: 4.5rem; transition: min-height .2s ease; }
+  /* Version affinée quand on a défilé (reste toujours visible). */
+  .site-entete.entete-reduite { box-shadow: 0 4px 18px rgb(22 24 29 / .08); }
+  .entete-reduite .entete-barre { min-height: 3.5rem; }
+  .entete-reduite .entete-nom { font-size: 1.3rem; }
+  .entete-reduite .entete-logo :global(svg) { width: 30px; height: 30px; }
+  .entete-logo :global(svg) { transition: width .2s, height .2s; }
+  .entete-logo { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent); text-decoration: none; min-height: 44px; margin-right: auto; }
+  .entete-nom { font: 650 1.55rem/1 var(--police-titre); letter-spacing: -.04em; color: var(--texte); transition: font-size .2s; }
   .nav-principale { display: none; }
   .nav-liste { display: flex; gap: .15rem; list-style: none; margin: 0; padding: 4px; background: var(--surface-2); border-radius: 999px; }
   .nav-bouton, .nav-lien {
-    display: inline-flex; align-items: center; gap: .35rem; min-height: var(--cible); padding: 0 .9rem;
+    display: inline-flex; align-items: center; gap: .35rem; padding: 0 .9rem;
     border-radius: 999px; border: 0; background: none; color: var(--texte); cursor: pointer;
-    font: 500 1.05rem var(--police-titre); text-decoration: none; min-height: 44px;
+    font: 500 1.05rem var(--police-titre); text-decoration: none; min-height: 44px; white-space: nowrap;
   }
   .nav-bouton:hover, .nav-lien:hover { background: var(--surface); color: var(--texte); }
   .nav-bouton[aria-expanded='true'], .nav-lien[aria-current='page'] { background: var(--surface); box-shadow: var(--ombre); }
   [aria-expanded='true'] > :global(.chevron) { transform: rotate(180deg); }
   :global(.chevron) { transition: transform .15s; }
+  .entete-recherche { display: none; }
   .entete-outils { display: flex; align-items: center; gap: .15rem; }
   .outil-texte { display: none; }
   .outil-texte-mobile { font-size: .95rem; }
+  .bouton-favoris { position: relative; }
+  .favoris-compte { position: absolute; top: 4px; right: 4px; min-width: 1.15rem; height: 1.15rem; padding: 0 .25rem; border-radius: 999px;
+    background: var(--accent); color: var(--sur-accent); font: 700 .7rem/1.15rem var(--police-titre); text-align: center; }
   :global(.icone-soleil) { display: none; }
   :global(:root[data-theme-effectif='dark'] .icone-soleil) { display: block; }
   :global(:root[data-theme-effectif='dark'] .icone-lune) { display: none; }
 
   @media (min-width: 1024px) {
-    .nav-principale { display: block; margin-right: auto; margin-left: 1.5rem; }
+    .nav-principale { display: block; margin-right: auto; margin-left: 1.25rem; }
     .entete-logo { margin-right: 0; }
     .bouton-menu-mobile { display: none; }
-    .outil-texte { display: inline; }
   }
-  @media (max-width: 479px) { .entete-nom { font-size: 1.25rem; } .outil-texte-mobile { display: none; } }
+  @media (min-width: 1180px) {
+    .entete-recherche { display: block; width: clamp(14rem, 22vw, 21rem); margin-right: .5rem; }
+    .bouton-recherche-mobile { display: none; }
+    .nav-principale { margin-right: 1rem; }
+  }
+  @media (min-width: 1360px) { .outil-texte { display: inline; } .outil-texte-cache { display: none; } }
+  @media (max-width: 479px) { .entete-nom { font-size: 1.25rem; } .outil-texte-mobile { display: none; } .entete-outils { gap: 0; } }
+  /* Accueil : la recherche de l'en-tête n'apparaît qu'une fois la grande recherche dépassée. */
+  .entete--accueil:not(.recherche-hero-depassee) :is(.entete-recherche, .bouton-recherche-mobile) { display: none; }
 
-  .mega-menu { border-top: 1px solid var(--trait); background: var(--fond); max-height: calc(100vh - 4.25rem); overflow-y: auto; box-shadow: var(--ombre); }
-  .mega-grille { list-style: none; margin: 0; padding: 1.5rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem; }
-  .mega-titre { display: flex; align-items: center; gap: .5rem; font: 650 1.05rem var(--police-titre); color: var(--texte); text-decoration: none; min-height: 44px; }
-  .mega-titre :global(svg) { color: var(--accent); flex: none; box-sizing: content-box; padding: .45rem; border-radius: 50%; background: var(--teinte); }
-  .mega-titre:hover span { text-decoration: underline; }
-  .mega-modules { list-style: none; margin: .25rem 0 0; padding: 0 0 0 2rem; font-size: 1rem; }
-  .mega-modules a { display: block; padding: .3rem 0; color: var(--texte-doux); text-decoration: none; }
+  /* Menus par-dessus la page : position absolue sous l'en-tête. */
+  .mega-menu, .menu-mobile {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 55;
+    border-top: 1px solid var(--trait); border-bottom: 1px solid var(--trait); background: var(--fond);
+    max-height: calc(100dvh - 4.5rem); overflow-y: auto; box-shadow: 0 24px 48px rgb(22 24 29 / .16);
+  }
+  .mega-intro { margin: 1.1rem 0 0; color: var(--texte-doux); font-size: 1rem; }
+  .mega-grille { list-style: none; margin: 0; padding: 1.25rem 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; }
+  .mega-titre { display: flex; align-items: center; gap: .65rem; font: 650 1.05rem/1.25 var(--police-titre); color: var(--texte); text-decoration: none; min-height: 44px; }
+  .mega-pastille { display: inline-grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--pastel, var(--teinte)); color: var(--accent); flex: none; }
+  .mega-pastille :global(svg) { width: 1.2rem; height: 1.2rem; }
+  .mega-titre:hover .mega-titre-texte { text-decoration: underline; }
+  .mega-compte { display: block; font: 500 .85rem var(--police-titre); color: var(--texte-doux); }
+  .mega-modules { list-style: none; margin: .3rem 0 0; padding: 0 0 0 3.05rem; font-size: 1rem; }
+  .mega-modules a { display: block; padding: .3rem 0; color: var(--texte-doux); text-decoration: none; line-height: 1.35; }
   .mega-modules a:hover { color: var(--accent); text-decoration: underline; }
-  .mega-vide { margin: .1rem 0 0 2rem; font-size: .95rem; color: var(--texte-doux); }
+  .mega-tous { display: inline-flex; align-items: center; gap: .3rem; margin: .25rem 0 0 3.05rem; padding: .3rem 0; font: 600 .95rem var(--police-titre); color: var(--accent); }
   .mega-pied { border-top: 1px solid var(--trait); padding: 1rem 0 1.25rem; margin: 0; }
 
-  .menu-mobile { border-top: 1px solid var(--trait); background: var(--fond); max-height: calc(100vh - 4.25rem); overflow-y: auto; }
   .menu-mobile-liste { list-style: none; margin: 0; padding: .5rem 0 1.5rem; }
   .menu-mobile-liste > li { border-bottom: 1px solid var(--trait); }
   .menu-mobile-ligne { display: flex; align-items: center; justify-content: space-between; }
   .menu-mobile-liste a { display: flex; align-items: center; gap: .6rem; min-height: 52px; color: var(--texte); text-decoration: none; font: 550 1.05rem var(--police-titre); flex: 1; }
-  .menu-mobile-liste a :global(svg) { color: var(--accent); }
+  .menu-mobile-liste a :global(svg) { color: var(--accent); flex: none; }
   .menu-mobile-modules { list-style: none; padding: 0 0 .5rem 2.1rem; margin: 0; }
   .menu-mobile-modules a { font: 400 1rem var(--police-texte); min-height: 44px; color: var(--texte-doux); }
+  .menu-mobile-modules .mega-tous { margin: 0; color: var(--accent); font: 600 1rem var(--police-titre); }
   .menu-mobile-sep { margin-top: .75rem; }
   @media (min-width: 1024px) { :global(:root:not([data-grand-texte])) .menu-mobile { display: none !important; } }
   @media (max-width: 1023px) { .mega-menu { display: none !important; } }
+  @media (max-width: 1279px) { .mega-grille { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   /* Texte agrandi (≥ 150 %) : l'en-tête passe en version compacte, comme sur mobile. */
   .entete-barre { flex-wrap: wrap; }
   .entete-outils { flex-wrap: wrap; justify-content: flex-end; }
-  :global(:root[data-grand-texte]) .nav-principale, :global(:root[data-grand-texte]) .outil-texte, :global(:root[data-grand-texte]) .outil-texte-mobile { display: none; }
+  :global(:root[data-grand-texte]) :is(.nav-principale, .outil-texte, .outil-texte-mobile, .entete-recherche) { display: none !important; }
+  :global(:root[data-grand-texte]) .bouton-recherche-mobile { display: inline-flex; }
+  :global(:root[data-grand-texte]) .entete--accueil:not(.recherche-hero-depassee) .bouton-recherche-mobile { display: none; }
   :global(:root[data-grand-texte]) .bouton-menu-mobile { display: inline-flex; }
   :global(:root[data-grand-texte]) .mega-menu { display: none !important; }
   :global(:root[data-grand-texte]) .menu-mobile { display: block; }
   :global(:root[data-grand-texte]) .menu-mobile[hidden] { display: none !important; }
   :global(:root[data-grand-texte]) .entete-nom { font-size: 1.1rem; }
-  @media (max-width: 1279px) { .mega-grille { grid-template-columns: repeat(3, 1fr); } }
+  :global(:root[data-grand-texte]) .outil-texte-cache { display: inline; }
 </style>

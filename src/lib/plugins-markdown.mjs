@@ -34,6 +34,7 @@ export function rehypeChapitres() {
     for (const n of enfants) {
       if (n.type === 'element' && n.tagName === 'h2') {
         const id = n.properties?.id;
+        n.properties = { ...(n.properties ?? {}), 'data-pagefind-weight': '6' };
         courant = {
           type: 'element', tagName: 'section',
           properties: { className: ['chapitre'], id: id ? `chapitre-${id}` : undefined, 'aria-labelledby': id, 'data-chapitre': id ?? '' },

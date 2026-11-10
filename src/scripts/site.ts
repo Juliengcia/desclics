@@ -3,7 +3,13 @@
    Aucune donnée ne quitte l'appareil : réglages dans localStorage uniquement.
    ========================================================================== */
 
-type Prefs = Partial<Record<'theme' | 'contraste' | 'dyslexie' | 'curseur' | 'animations' | 'simple' | 'regle' | 'loupe' | 'taille' | 'appareil' | 'voix' | 'vitesse', string>>;
+import { initialiserRecherche } from './recherche';
+import { initialiserChoixAppareils } from './appareils';
+import { initialiserFavoris } from './favoris';
+import { initialiserInfobulles } from './infobulles';
+import { marquerLiensExternes, initialiserCartes } from './liens-et-cartes';
+
+type Prefs = Partial<Record<'theme' | 'contraste' | 'dyslexie' | 'curseur' | 'animations' | 'simple' | 'regle' | 'loupe' | 'taille' | 'appareil' | 'appareils' | 'voix' | 'vitesse', string>>;
 const CLE = 'desclics-prefs';
 const racine = document.documentElement;
 
@@ -48,6 +54,27 @@ document.addEventListener('click', (e) => {
   if (!t.closest('.site-entete')) fermerMenus();
 });
 
+/* ---------- En-tête : toujours visible, affiné quand on descend ---------- */
+const entete = document.querySelector<HTMLElement>('[data-entete]');
+if (entete) {
+  let reduite = false;
+  const majEntete = () => {
+    const y = window.scrollY;
+    // Hystérésis : évite le clignotement quand la hauteur de l'en-tête change.
+    if (!reduite && y > 80) { reduite = true; entete.classList.add('entete-reduite'); }
+    else if (reduite && y < 8) { reduite = false; entete.classList.remove('entete-reduite'); }
+  };
+  window.addEventListener('scroll', majEntete, { passive: true });
+  majEntete();
+  // Accueil : la recherche de l'en-tête apparaît une fois la grande recherche dépassée.
+  const heroRecherche = document.querySelector('[data-hero-recherche]');
+  if (heroRecherche && entete.classList.contains('entete--accueil')) {
+    new IntersectionObserver(([e]) => {
+      entete.classList.toggle('recherche-hero-depassee', !e.isIntersecting && e.boundingClientRect.top < 0);
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe(heroRecherche);
+  }
+}
+
 /* ---------- Thème clair / sombre ---------- */
 const boutonTheme = document.querySelector<HTMLButtonElement>('[data-bascule-theme]');
 function themeEffectif() { return racine.getAttribute('data-theme-effectif') === 'dark' ? 'dark' : 'light'; }
@@ -71,6 +98,7 @@ majBoutonTheme();
 /* ---------- Boîtes de dialogue (recherche, accessibilité) ---------- */
 const dlgRecherche = document.getElementById('dialogue-recherche') as HTMLDialogElement | null;
 const dlgA11y = document.getElementById('panneau-a11y') as HTMLDialogElement | null;
+const dlgFavoris = document.getElementById('dialogue-favoris') as HTMLDialogElement | null;
 const boutonA11y = document.querySelector<HTMLButtonElement>('[data-ouvre-a11y]');
 function ouvrirDialogue(d: HTMLDialogElement | null, focus?: string) {
   if (!d || d.open) return;
@@ -90,19 +118,24 @@ dlgA11y?.addEventListener('close', () => boutonA11y?.setAttribute('aria-expanded
 document.querySelectorAll<HTMLButtonElement>('[data-ferme-dialogue]').forEach((b) =>
   b.addEventListener('click', () => (b.closest('dialog') as HTMLDialogElement)?.close()),
 );
-for (const d of [dlgRecherche, dlgA11y]) {
+for (const d of [dlgRecherche, dlgA11y, dlgFavoris]) {
   d?.addEventListener('click', (e) => { if (e.target === d) d.close(); });
 }
 document.addEventListener('keydown', (e) => {
   const t = e.target as HTMLElement;
   if (e.key === '/' && !t.closest('input, textarea, select, [contenteditable]')) {
     e.preventDefault();
-    ouvrirDialogue(dlgRecherche, 'input[type=search]');
+    const champEntete = document.querySelector<HTMLInputElement>('[data-entete-recherche] input');
+    const heroChamp = document.querySelector<HTMLInputElement>('[data-hero-recherche] input');
+    const visible = (el: HTMLElement | null) => el && el.offsetParent !== null;
+    if (visible(heroChamp) && !document.querySelector('.recherche-hero-depassee')) heroChamp!.focus();
+    else if (visible(champEntete)) champEntete!.focus();
+    else ouvrirDialogue(dlgRecherche, 'input[type=search]');
   }
 });
 
 /* ---------- Panneau d'accessibilité ---------- */
-const PALIERS = [1, 1.125, 1.25, 1.5, 1.75, 2];
+const PALIERS = [0.8, 0.9, 1, 1.125, 1.25, 1.5, 1.75, 2]; // de 80 % à 200 %
 const sortieTaille = document.querySelector<HTMLOutputElement>('[data-taille-valeur]');
 function appliquerTaille(v: number) {
   racine.style.setProperty('--echelle-texte', String(v));
@@ -114,7 +147,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-taille]').forEach((b) =>
   b.addEventListener('click', () => {
     const actuel = Number(lirePrefs().taille ?? 1);
     let i = PALIERS.findIndex((x) => x >= actuel - 0.001);
-    if (i < 0) i = 0;
+    if (i < 0) i = PALIERS.indexOf(1);
     i = Math.min(PALIERS.length - 1, Math.max(0, i + Number(b.dataset.taille)));
     appliquerTaille(PALIERS[i]);
     majPref('taille', PALIERS[i] === 1 ? undefined : String(PALIERS[i]));
@@ -137,24 +170,13 @@ for (const s of interrupteurs) {
 }
 synchroInterrupteurs();
 
-/* Choix de l'appareil : mémorisé, et diffusé aux onglets par appareil. */
-const radiosAppareil = Array.from(document.querySelectorAll<HTMLInputElement>('[data-choix-appareil]'));
-function choisirAppareil(v: string, enregistrer = true) {
-  racine.setAttribute('data-appareil', v);
-  for (const r of radiosAppareil) r.checked = r.value === v;
-  if (enregistrer) majPref('appareil', v);
-  document.dispatchEvent(new CustomEvent('desclics:appareil', { detail: v }));
-}
-for (const r of radiosAppareil) r.addEventListener('change', () => r.checked && choisirAppareil(r.value));
-const appareilEnregistre = lirePrefs().appareil;
-if (appareilEnregistre) for (const r of radiosAppareil) r.checked = r.value === appareilEnregistre;
-(window as unknown as { desclicsChoisirAppareil: typeof choisirAppareil }).desclicsChoisirAppareil = choisirAppareil;
+/* Choix des appareils (un, plusieurs ou tous) : voir appareils.ts */
+initialiserChoixAppareils();
 
 document.querySelector('[data-a11y-reinit]')?.addEventListener('click', () => {
   const garder = lirePrefs();
   ecrirePrefs(garder.theme ? { theme: garder.theme } : {});
-  for (const k of ['contraste', 'dyslexie', 'curseur', 'animations', 'simple', 'regle', 'loupe', 'appareil']) racine.removeAttribute(`data-${k}`);
-  for (const r of radiosAppareil) r.checked = false;
+  for (const k of ['contraste', 'dyslexie', 'curseur', 'animations', 'simple', 'regle', 'loupe']) racine.removeAttribute(`data-${k}`);
   appliquerTaille(1);
   synchroInterrupteurs();
   majOutilsVisuels();
@@ -250,72 +272,12 @@ document.querySelectorAll<HTMLButtonElement>('[data-lire-cible]').forEach((b) =>
 );
 window.addEventListener('pagehide', () => synth?.cancel());
 
-/* ---------- Recherche (Pagefind) ---------- */
-interface ResultatPagefind {
-  url: string; excerpt: string; meta: { title?: string };
-  sub_results?: { title: string; url: string; excerpt: string }[];
-}
-interface Pagefind {
-  options?: (o: Record<string, unknown>) => Promise<void>;
-  debouncedSearch: (q: string, o?: unknown, ms?: number) => Promise<{ results: { data: () => Promise<ResultatPagefind> }[] } | null>;
-}
-let pagefind: Promise<Pagefind | null> | null = null;
-function chargerPagefind(url: string) {
-  pagefind ??= import(/* @vite-ignore */ url).then(async (pf: Pagefind) => { await pf.options?.({ excerptLength: 22 }); return pf; }).catch(() => null);
-  return pagefind;
-}
-function echapper(s: string) { return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!); }
-
-document.querySelectorAll<HTMLElement>('[data-recherche]').forEach((bloc) => {
-  const champ = bloc.querySelector<HTMLInputElement>('[data-recherche-champ]')!;
-  const etat = bloc.querySelector<HTMLElement>('[data-recherche-etat]')!;
-  const liste = bloc.querySelector<HTMLOListElement>('[data-recherche-resultats]')!;
-  const index = bloc.dataset.index!;
-
-  async function chercher() {
-    const q = champ.value.trim();
-    if (q.length < 2) { liste.innerHTML = ''; etat.textContent = ''; return; }
-    const pf = await chargerPagefind(index);
-    if (!pf) { etat.textContent = "La recherche n'est disponible qu'une fois le site construit (npm run build)."; return; }
-    const rep = await pf.debouncedSearch(q, {}, 250);
-    if (!rep) return; // remplacée par une frappe plus récente
-    const donnees = await Promise.all(rep.results.slice(0, 8).map((r) => r.data()));
-    etat.textContent = donnees.length === 0
-      ? `Aucun résultat pour « ${q} ». Essayez un mot plus simple, ou consultez le glossaire.`
-      : `${rep.results.length} résultat${rep.results.length > 1 ? 's' : ''} pour « ${q} ».`;
-    liste.innerHTML = donnees.map((d) => {
-      const sous = (d.sub_results ?? []).filter((s) => s.url !== d.url).slice(0, 3);
-      return `<li><a class="res-titre" href="${d.url}">${echapper(d.meta.title ?? d.url)}</a>
-        <p class="res-extrait">${d.excerpt}</p>
-        ${sous.length ? `<ul class="res-sous">${sous.map((s) => `<li><a href="${s.url}">${echapper(s.title)}</a></li>`).join('')}</ul>` : ''}</li>`;
-    }).join('');
-  }
-  champ.addEventListener('input', chercher);
-  champ.addEventListener('focus', () => chargerPagefind(index), { once: true });
-  const q = new URLSearchParams(location.search).get('q');
-  if (q && bloc.closest('main')) { champ.value = q; chercher(); }
-
-  /* Recherche à la voix (si le navigateur la propose) */
-  type Reco = { lang: string; interimResults: boolean; start: () => void; stop: () => void; onresult: (e: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void; onend: () => void; onerror: () => void };
-  const W = window as unknown as { SpeechRecognition?: new () => Reco; webkitSpeechRecognition?: new () => Reco };
-  const Reconnaissance = W.SpeechRecognition ?? W.webkitSpeechRecognition;
-  const boutonVoix = bloc.querySelector<HTMLButtonElement>('[data-recherche-voix]');
-  if (Reconnaissance && boutonVoix) {
-    boutonVoix.hidden = false;
-    bloc.querySelector<HTMLElement>('[data-recherche-voix-note]')!.hidden = false;
-    let reco: Reco | null = null;
-    boutonVoix.addEventListener('click', () => {
-      if (reco) { reco.stop(); return; }
-      reco = new Reconnaissance();
-      reco.lang = 'fr-FR'; reco.interimResults = false;
-      reco.onresult = (e) => { champ.value = e.results[0][0].transcript; chercher(); };
-      reco.onend = reco.onerror = () => { reco = null; boutonVoix.setAttribute('aria-pressed', 'false'); };
-      boutonVoix.setAttribute('aria-pressed', 'true');
-      etat.textContent = 'Parlez maintenant…';
-      reco.start();
-    });
-  }
-});
+/* ---------- Recherche, favoris, liens externes, cartes, infobulles ---------- */
+initialiserRecherche();
+initialiserFavoris();
+marquerLiensExternes();
+initialiserCartes();
+initialiserInfobulles();
 
 /* ---------- Site installable et lisible hors connexion ---------- */
 if ('serviceWorker' in navigator && import.meta.env.PROD) {

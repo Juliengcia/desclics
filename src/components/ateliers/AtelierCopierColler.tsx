@@ -14,12 +14,14 @@ export default function AtelierCopierColler() {
 
   useEffect(() => {
     const lire = () => {
-      const choix = document.documentElement.getAttribute('data-appareil');
-      setMac(choix ? choix === 'mac' || choix === 'iphone' : /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
+      // Ordinateur choisi dans « Mon appareil » : Mac seul => ⌘, sinon Ctrl (le plus courant).
+      const choix = (document.documentElement.getAttribute('data-appareils') ?? '').split(',');
+      const ordis = choix.filter((c) => c === 'windows' || c === 'mac');
+      setMac(ordis.length ? ordis.length === 1 && ordis[0] === 'mac' : /Mac/.test(navigator.platform || navigator.userAgent));
     };
     lire();
-    document.addEventListener('desclics:appareil', lire);
-    return () => document.removeEventListener('desclics:appareil', lire);
+    document.addEventListener('desclics:appareils', lire);
+    return () => document.removeEventListener('desclics:appareils', lire);
   }, []);
 
   const mod = mac ? '⌘' : 'Ctrl';
