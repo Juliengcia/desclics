@@ -25,7 +25,9 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [ ] Frise des connectiques : dates RJ11 et RJ45 données en décennies ; USB (1996) et USB-C (2014) à confirmer sur les sites de l'USB-IF. Sources actuelles : Wikipédia.
 - [ ] Windows 11 : libellés « Recommandations de nettoyage » et « Applications installées » à revoir à chaque mise à jour majeure (captures réelles à faire).
 - [ ] Captures réelles (Playwright impossible pour Windows/macOS) : à défaut, illustrations SVG de l'écran Windows Update et du Gestionnaire des tâches à prévoir.
-- [ ] Adresse France Services utilisée sur l'accueil (france-services.gouv.fr) à confirmer.
+- [ ] Adresse France Services (france-services.gouv.fr), utilisée sur la page « Se faire aider », à confirmer : la page n'a pas pu être lue depuis le poste de développement.
+- [ ] Page « Se faire aider » : la carte des conseillers numériques sur info.gouv.fr affichait « données en cours de collecte » le 9 novembre 2026. Remplacer le lien par l'adresse directe de la carte nationale dès qu'elle est confirmée.
+- [ ] Solidarité Numérique (01 70 772 372) : le site redirige vers lesbases.anct.gouv.fr, numéro non retrouvé. Non cité sur le site ; vérifier s'il existe encore.
 
 ## Prochaines étapes
 
@@ -33,10 +35,11 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [x] Étape 5 : les 12 rubriques sont rédigées (89 modules).
 - [ ] Étape 6 : audit final (accessibilité manuelle, Lighthouse, relecture orthographique complète).
 - [ ] Visuels : seuls 4 schémas existent (ordinateur). Prévoir des illustrations SVG simplifiées pour les modules smartphone (écran d'appel, réglages rapides), WhatsApp, banque.
-- [ ] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques), sources à vérifier.
-- [ ] Parcours « Je viens de… » (4 parcours) dès que leurs modules existent.
+- [x] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques, Aidants Connect).
+- [x] Parcours « Je viens de… » (4 parcours).
 - [ ] Version FALC des pages clés (démarches, arnaques, premiers pas smartphone).
-- [ ] Page « Fiches Bristol » : imprimer toutes les fiches d'une rubrique.
+- [x] Page « Fiches Bristol » : imprimer toutes les fiches d'une rubrique.
+- [x] Page « Quoi de neuf ? ». Penser à ajouter une ligne dans `nouveautes.ts` à chaque nouveauté.
 - [ ] Audit Lighthouse (performance, SEO) en plus d'axe-core, dans la CI.
 - [ ] Images : passer les futures captures en WebP / AVIF (composant `<Image>` d'Astro).
 - [ ] Mettre à jour Astro (version majeure 7 disponible ; le socle utilise la 5, stable).

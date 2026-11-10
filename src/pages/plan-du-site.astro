@@ -4,6 +4,7 @@ import FilAriane from '../components/FilAriane.astro';
 import { rubriques } from '../data/rubriques';
 import { tousLesModules } from '../lib/navigation';
 import { lien } from '../lib/chemins';
+import { parcours } from '../data/parcours';
 const modules = await tousLesModules();
 ---
 <Base titre="Plan du site" description="Toutes les rubriques et tous les modules de Desclics sur une seule page : ordinateur, smartphone, Internet, démarches, sécurité, intelligence artificielle.">
@@ -21,9 +22,18 @@ const modules = await tousLesModules();
           </ul>
         </section>
       ))}
+      <section aria-labelledby="plan-parcours">
+        <h2 id="plan-parcours"><a href={lien('parcours')}>Parcours « Je viens de… »</a></h2>
+        <ul>
+          {parcours.map((p) => <li><a href={lien(`parcours/${p.slug}`)}>{p.titre}</a></li>)}
+        </ul>
+      </section>
       <section aria-labelledby="plan-outils">
         <h2 id="plan-outils">Outils et informations</h2>
         <ul>
+          <li><a href={lien('aide-pres-de-chez-vous')}>Se faire aider près de chez vous</a></li>
+          <li><a href={lien('fiches')}>Fiches Bristol à imprimer</a></li>
+          <li><a href={lien('nouveautes')}>Quoi de neuf ?</a></li>
           <li><a href={lien('glossaire')}>Glossaire</a></li>
           <li><a href={lien('glossaire/traducteur')}>Traducteur de jargon</a></li>
           <li><a href={lien('recherche')}>Recherche</a></li>

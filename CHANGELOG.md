@@ -2,6 +2,16 @@
 
 Chaque modification, datée, la plus récente en haut.
 
+## 2026-11-10
+
+- **Pages transversales** prévues dans l'arborescence (§ 4 de `docs/01-etude-et-arborescence.md`) :
+  - **Parcours « Je viens de… »** (`/parcours`) : acheter un smartphone, avoir Internet à la maison, recevoir un SMS bizarre, acheter un ordinateur. Données dans `src/data/parcours.ts` ; chaque étape renvoie à un chapitre d'un module publié (le build échoue sinon).
+  - **Se faire aider près de chez vous** (`/aide-pres-de-chez-vous`) : France Services, conseillers numériques, médiathèques et mairies, Aidants Connect, aide aux victimes, préparation du rendez-vous.
+  - **Fiches Bristol** (`/fiches`) : toutes les fiches d'une rubrique sur une page, une fiche par page A5 à l'impression. `FicheBristol` accepte un identifiant pour en afficher plusieurs.
+  - **Quoi de neuf ?** (`/nouveautes`) : toutes les nouveautés, groupées par date.
+- Liens vers ces pages : accueil (section « Je viens de… », carte d'aide, « Toutes les nouveautés »), pied de page, menu mobile, plan du site.
+- Vérifications : 129 pages, 0 lien interne cassé, 0 erreur axe-core (clair et sombre), aucun défilement horizontal sur les nouvelles pages.
+
 ## 2026-11-09
 
 - **Toutes les rubriques sont rédigées : 89 modules.** Ajout de Smartphone (10), Sécurité et confiance (10), Communiquer (7), Démarches en ligne (10), Internet et navigation (6), Argent et banque (5), Vie pratique (12), Bureautique (6), Réseaux sociaux et vidéo (4), Intelligence artificielle (5, dont « Actualités IA » datée), J'ai un problème (7).
