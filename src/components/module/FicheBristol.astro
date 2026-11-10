@@ -2,12 +2,13 @@
 /** Fiche Bristol : récapitulatif imprimable au format A5. Générée depuis les métadonnées du module. */
 import Icone from '../Icone.astro';
 import { site } from '../../data/site';
-interface Props { titre: string; lignes: string[]; adresse: string; seule?: boolean }
-const { titre, lignes, adresse, seule = true } = Astro.props;
+interface Props { titre: string; lignes: string[]; adresse: string; seule?: boolean; ident?: string; niveauTitre?: 2 | 3 }
+const { titre, lignes, adresse, seule = true, ident = 'fiche-bristol', niveauTitre = 2 } = Astro.props;
+const Titre = `h${niveauTitre}`;
 ---
-<section class="fiche-bristol" aria-labelledby="fiche-titre" id="fiche-bristol">
+<section class="fiche-bristol" aria-labelledby={`${ident}-titre`} id={ident}>
   <div class="fiche-entete">
-    <h2 id="fiche-titre"><span class="fiche-type">Fiche Bristol</span> {titre}</h2>
+    <Titre id={`${ident}-titre`} class="fiche-h"><span class="fiche-type">Fiche Bristol</span> {titre}</Titre>
     {seule && <button type="button" class="bouton bouton--secondaire ne-pas-imprimer" data-imprimer-fiche><Icone nom="imprimer" /> Imprimer la fiche</button>}
   </div>
   <ul>{lignes.map((l) => <li set:html={l} />)}</ul>
@@ -20,7 +21,7 @@ const { titre, lignes, adresse, seule = true } = Astro.props;
   :global(:root[data-theme-effectif='dark']) .fiche-bristol { background-color: #1D1F24; color: #ECEDEF; border-color: #3A3F4A;
     background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(2.2rem - 1px), #2A3550 calc(2.2rem - 1px), #2A3550 2.2rem); }
   .fiche-entete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: .75rem; }
-  h2 { font-size: 1.5rem; margin: 0 0 .75rem; }
+  .fiche-h { font-size: 1.5rem; margin: 0 0 .75rem; }
   .fiche-type { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: #B4430B; }
   :global(:root[data-theme-effectif='dark']) .fiche-type { color: #FFA06B; }
   ul { margin: 0; padding-left: 1.2rem; line-height: 2.2rem; }
