@@ -137,8 +137,9 @@ const jsonld = [{
   .module-contenu :global(:is(p, dd, .definition, .encadre, .bloc-etapes, .quiz)), .module-contenu :global(li:not(.raccourci, .raccourcis-entete)) { max-width: var(--mesure); }
   .module-contenu :global(.chapitre) { padding-top: 1.5rem; margin-bottom: 1rem; }
   .module-contenu :global(.chapitre-tete) { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .5rem 1rem; margin-bottom: 1rem; }
-  .module-contenu :global(.chapitre-tete h2) { margin: 0; flex: 1 1 20rem; }
-  .module-contenu :global(.chapitre-boutons) { display: flex; gap: .4rem; flex: none; }
+  .module-contenu :global(.chapitre-tete h2) { margin: 0; flex: 1 1 min(20rem, 100%); min-width: 0; }
+  .module-contenu :global(.chapitre-boutons) { display: flex; flex-wrap: wrap; gap: .4rem; flex: 0 1 auto; max-width: 100%; }
+  .module-contenu :global(.chapitre-boutons > *) { max-width: 100%; }
   .module-contenu :global(.bouton-replier) { min-height: 44px; padding: 0 .85rem; border-radius: 999px; border: 1px solid var(--bordure); background: var(--surface); color: var(--texte); font: 600 .95rem var(--police-titre); cursor: pointer; display: inline-flex; align-items: center; gap: .35rem; }
   .module-contenu :global(.bouton-replier:hover) { border-color: var(--accent); color: var(--accent); }
   .module-contenu :global(.bouton-replier svg) { transition: transform .15s; }
