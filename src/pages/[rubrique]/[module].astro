@@ -36,7 +36,7 @@ const jsonld = [{
 
     <header class="module-entete">
       <p class="etiquette">{m.rubrique.titre}</p>
-      <h1>{d.titre}</h1>
+      <h1 data-pagefind-weight="10">{d.titre}</h1>
       <p class="chapo">{d.resume}</p>
       <ul class="module-meta" aria-label="Informations sur ce module">
         <li><Icone nom="horloge" taille={20} /> Lecture : {d.duree} minutes</li>
@@ -64,6 +64,10 @@ const jsonld = [{
       </nav>
 
       <div class="module-contenu">
+        <div class="chapitres-outils ne-pas-imprimer" data-chapitres-outils hidden>
+          <button type="button" class="bouton-texte" data-tout-replier data-infobulle="Replier tous les chapitres pour voir le plan. Ctrl + F les retrouve quand même.">Tout replier</button>
+          <button type="button" class="bouton-texte" data-tout-deplier data-infobulle="Ouvrir tous les chapitres">Tout déplier</button>
+        </div>
         <Content />
 
         {d.pourAidant.length > 0 && (
@@ -74,7 +78,7 @@ const jsonld = [{
           </aside>
         )}
 
-        <FicheBristol titre={d.titre} lignes={d.bristol} adresse={url.replace(/^https?:\/\//, '')} />
+        <FicheBristol titre={d.titre} lignes={d.bristol} adresse={url.replace(/^https?:\/\//, '')} pdf={lien(`fiches/pdf/${m.rubrique.slug}-${m.slug}.pdf`).replace(/\/$/, '')} />
 
         {lies.length > 0 && (
           <section aria-labelledby="lies-titre" class="modules-lies ne-pas-imprimer">
@@ -128,17 +132,30 @@ const jsonld = [{
   .sommaire-coche { flex: none; width: .7rem; height: .7rem; border-radius: 50%; border: 2px solid var(--bordure); transform: translateY(.05rem); }
   .sommaire li a.lu .sommaire-coche { background: var(--accent); border-color: var(--accent); }
 
-  .module-contenu { max-width: var(--largeur-texte); min-width: 0; }
+  /* Page jusqu'à 1440 px ; les paragraphes restent à environ 70 caractères par ligne. */
+  .module-contenu { min-width: 0; }
+  .module-contenu :global(:is(p, dd, .definition, .encadre, .bloc-etapes, .quiz)), .module-contenu :global(li:not(.raccourci, .raccourcis-entete)) { max-width: var(--mesure); }
   .module-contenu :global(.chapitre) { padding-top: 1.5rem; margin-bottom: 1rem; }
+  .module-contenu :global(.chapitre-tete) { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .5rem 1rem; margin-bottom: 1rem; }
+  .module-contenu :global(.chapitre-tete h2) { margin: 0; flex: 1 1 min(20rem, 100%); min-width: 0; }
+  .module-contenu :global(.chapitre-boutons) { display: flex; flex-wrap: wrap; gap: .4rem; flex: 0 1 auto; max-width: 100%; }
+  .module-contenu :global(.chapitre-boutons > *) { max-width: 100%; }
+  .module-contenu :global(.bouton-replier) { min-height: 44px; padding: 0 .85rem; border-radius: 999px; border: 1px solid var(--bordure); background: var(--surface); color: var(--texte); font: 600 .95rem var(--police-titre); cursor: pointer; display: inline-flex; align-items: center; gap: .35rem; }
+  .module-contenu :global(.bouton-replier:hover) { border-color: var(--accent); color: var(--accent); }
+  .module-contenu :global(.bouton-replier svg) { transition: transform .15s; }
+  .module-contenu :global(.bouton-replier[aria-expanded='false'] svg) { transform: rotate(-90deg); }
+  .module-contenu :global(.chapitre-corps.replie-secours) { max-height: 0; overflow: hidden; }
+  .chapitres-outils { display: flex; justify-content: flex-end; gap: .5rem; margin-bottom: -.5rem; }
+  .bouton-texte { min-height: 44px; padding: 0 .5rem; border: 0; background: none; color: var(--accent); font: 600 .95rem var(--police-titre); text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
   .module-contenu :global(.chapitre + .chapitre) { border-top: 1px solid var(--trait); }
   .module-contenu :global(h2) { scroll-margin-top: 6rem; }
   .module-contenu :global(h3) { margin-top: 1.75rem; }
   .module-contenu :global(ul), .module-contenu :global(ol) { padding-left: 1.4rem; }
   .module-contenu :global(li) { margin-bottom: .35rem; }
-  .module-contenu :global(.bouton-ecouter) { margin: -.25rem 0 1rem; min-height: 40px; font-size: .95rem; padding: .25rem .9rem; border-width: 1px; }
+  .module-contenu :global(.bouton-ecouter) { min-height: 44px; font-size: .95rem; padding: .25rem .9rem; border-width: 1px; }
 
   /* Mode « lecture simple » : seulement définitions et étapes */
-  :global(:root[data-simple='oui']) .module-contenu :global(.chapitre > :not(h2):not(.definition):not(.bloc-etapes):not(.onglets)) { display: none; }
+  :global(:root[data-simple='oui']) .module-contenu :global(.chapitre-corps > :not(.definition):not(.bloc-etapes):not(.onglets)) { display: none; }
   :global(:root[data-simple='oui']) .module-contenu :global(.onglet > :not(.bloc-etapes):not(.onglet-titre)) { display: none; }
   :global(:root[data-simple='oui']) :is(.module-objectifs, .pour-aidant, .modules-lies) { display: none; }
 
@@ -206,6 +223,58 @@ const jsonld = [{
   }
   lus.forEach(marquer);
 
+  // Chapitres repliables : ouverts par défaut. Repliés, ils restent trouvables avec Ctrl + F
+  // (attribut hidden="until-found" : le navigateur rouvre le chapitre quand il y trouve le mot).
+  const untilFound = 'onbeforematch' in document.body;
+  const CHEVRON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+  const boutonsReplier: ((ouvrir: boolean) => void)[] = [];
+  for (const s of sections) {
+    const h2 = s.querySelector(':scope > h2');
+    const corps = s.querySelector<HTMLElement>(':scope > .chapitre-corps');
+    if (!h2 || !corps) continue;
+    const tete = document.createElement('div');
+    tete.className = 'chapitre-tete';
+    h2.before(tete);
+    tete.append(h2);
+    const boutons = document.createElement('div');
+    boutons.className = 'chapitre-boutons ne-pas-imprimer';
+    tete.append(boutons);
+    const r = document.createElement('button');
+    r.type = 'button';
+    r.className = 'bouton-replier';
+    r.setAttribute('aria-expanded', 'true');
+    r.setAttribute('aria-controls', corps.id);
+    const libelle = (ouvert: boolean) => `${CHEVRON}<span aria-hidden="true">${ouvert ? 'Replier' : 'Déplier'}</span><span class="visually-hidden">${ouvert ? 'Replier' : 'Déplier'} le chapitre « ${h2.textContent} »</span>`;
+    r.innerHTML = libelle(true);
+    r.dataset.infobulle = 'Replier ou déplier ce chapitre';
+    const regler = (ouvrir: boolean) => {
+      r.setAttribute('aria-expanded', String(ouvrir));
+      r.innerHTML = libelle(ouvrir);
+      if (ouvrir) { corps.removeAttribute('hidden'); corps.classList.remove('replie-secours'); }
+      else if (untilFound) corps.setAttribute('hidden', 'until-found');
+      else corps.classList.add('replie-secours');
+    };
+    r.addEventListener('click', () => regler(r.getAttribute('aria-expanded') !== 'true'));
+    corps.addEventListener('beforematch', () => regler(true));
+    boutonsReplier.push(regler);
+    boutons.append(r);
+  }
+  const outils = document.querySelector<HTMLElement>('[data-chapitres-outils]');
+  if (outils && boutonsReplier.length > 1) {
+    outils.hidden = false;
+    outils.querySelector('[data-tout-replier]')?.addEventListener('click', () => boutonsReplier.forEach((f) => f(false)));
+    outils.querySelector('[data-tout-deplier]')?.addEventListener('click', () => boutonsReplier.forEach((f) => f(true)));
+  }
+  // Un lien vers un chapitre (sommaire, « Je veux… ») rouvre le chapitre visé.
+  const ouvrirCible = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const cible = id && document.getElementById(id);
+    const sec = cible ? (cible as HTMLElement).closest('.chapitre') : null;
+    sec?.querySelector<HTMLButtonElement>('.bouton-replier[aria-expanded="false"]')?.click();
+  };
+  window.addEventListener('hashchange', ouvrirCible);
+  ouvrirCible();
+
   if ('speechSynthesis' in window) {
     for (const s of sections) {
       const h2 = s.querySelector('h2');
@@ -216,14 +285,14 @@ const jsonld = [{
       b.dataset.ecouter = s.id;
       b.setAttribute('aria-pressed', 'false');
       b.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg> Écouter<span class="visually-hidden"> le chapitre « ${h2.textContent} »</span>`;
-      h2.after(b);
+      s.querySelector('.chapitre-boutons')?.prepend(b);
       b.addEventListener('click', async () => {
         const synth = window.speechSynthesis;
         if (b.getAttribute('aria-pressed') === 'true') { synth.cancel(); b.setAttribute('aria-pressed', 'false'); return; }
         document.querySelectorAll('.bouton-ecouter').forEach((x) => x.setAttribute('aria-pressed', 'false'));
         b.setAttribute('aria-pressed', 'true');
         const clone = s.cloneNode(true) as HTMLElement;
-        clone.querySelectorAll('button, .visually-hidden, [aria-hidden=true], .atelier, [hidden]').forEach((n) => n.remove());
+        clone.querySelectorAll('button, .visually-hidden, [aria-hidden=true], .atelier, [hidden]:not(.chapitre-corps)').forEach((n) => n.remove());
         const texte = (clone.textContent ?? '').replace(/\s+/g, ' ').trim();
         synth.cancel();
         const prefs = (() => { try { return JSON.parse(localStorage.getItem('desclics-prefs') || '{}'); } catch { return {}; } })();

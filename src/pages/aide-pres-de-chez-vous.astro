@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import Icone from '../components/Icone.astro';
+import { lien } from '../lib/chemins';
+
+const verifieLe = '2026-11-09';
+const dateFr = (d: string) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const sources = [
+  { titre: 'Conseillers numériques : un accompagnement gratuit à la maîtrise du numérique du quotidien', url: 'https://www.info.gouv.fr/politiques-prioritaires/batir-de-nouveaux-progres-et-refonder-nos-services-publics/conseillers-numeriques-un-accompagnement-gratuit-a-la-maitrise-du-numerique-du-quotidien', editeur: 'Gouvernement (info.gouv.fr)' },
+  { titre: 'Aidants Connect', url: 'https://aidantsconnect.beta.gouv.fr/', editeur: 'Agence nationale de la cohésion des territoires' },
+  { titre: 'France Services', url: 'https://www.france-services.gouv.fr/', editeur: 'Agence nationale de la cohésion des territoires' },
+  { titre: 'Service-Public.fr', url: 'https://www.service-public.gouv.fr/', editeur: "Direction de l'information légale et administrative" },
+  { titre: '17Cyber, mon assistance en ligne', url: 'https://www.cybermalveillance.gouv.fr/tous-nos-contenus/17cyber-mon-assistance-en-ligne', editeur: 'Cybermalveillance.gouv.fr' },
+];
+---
+<Base titre="Se faire aider en personne près de chez soi" description="France Services, conseillers numériques, médiathèques, Aidants Connect : où trouver une aide gratuite, en personne, pour l'ordinateur, le téléphone et les démarches.">
+  <div class="conteneur">
+    <FilAriane miettes={[{ titre: 'Où se faire aider' }]} />
+    <header class="entete-page">
+      <p class="etiquette">Près de chez vous</p>
+      <h1>Se faire aider <span class="ton-doux">en personne.</span></h1>
+      <p class="chapo">Un site ne remplace pas toujours quelqu'un à côté de vous. Ces lieux accompagnent gratuitement, pour apprendre ou pour faire une démarche.</p>
+    </header>
+
+    <section aria-labelledby="qui-titre">
+      <h2 id="qui-titre">Qui peut vous aider ?</h2>
+      <ul class="grille grille--2 lieux">
+        <li class="carte pastel-ciel">
+          <span class="pastille"><Icone nom="tampon" /></span>
+          <h3>Les espaces France Services</h3>
+          <p><strong>Pour les démarches administratives.</strong> Des agents formés vous accueillent gratuitement pour les démarches des impôts, de la CAF, de l'Assurance Maladie, de la retraite et de France Travail.</p>
+          <p><a href="https://www.france-services.gouv.fr/" rel="noopener">Trouver un espace France Services</a></p>
+        </li>
+        <li class="carte pastel-menthe">
+          <span class="pastille"><Icone nom="aidant" /></span>
+          <h3>Les conseillers numériques</h3>
+          <p><strong>Pour apprendre à se servir des outils.</strong> Ils accompagnent gratuitement, seul ou en groupe : messagerie, recherche d'emploi, scolarité des enfants, arnaques, démarches en ligne. On les trouve par exemple en mairie ou en médiathèque.</p>
+          <p><a href="https://www.info.gouv.fr/politiques-prioritaires/batir-de-nouveaux-progres-et-refonder-nos-services-publics/conseillers-numeriques-un-accompagnement-gratuit-a-la-maitrise-du-numerique-du-quotidien" rel="noopener">Trouver un conseiller numérique</a></p>
+        </li>
+        <li class="carte pastel-citron">
+          <span class="pastille"><Icone nom="livre" /></span>
+          <h3>Les médiathèques et les mairies</h3>
+          <p><strong>Pour pratiquer près de chez vous.</strong> Beaucoup proposent des ordinateurs en accès libre, le Wi-Fi et des ateliers d'initiation. Les horaires et les inscriptions varient : renseignez-vous à l'accueil ou sur le site de votre commune.</p>
+        </li>
+        <li class="carte pastel-lilas">
+          <span class="pastille"><Icone nom="cle" /></span>
+          <h3>Aidants Connect</h3>
+          <p><strong>Quand quelqu'un doit faire la démarche à votre place.</strong> Certains professionnels (travailleurs sociaux, agents d'accueil, médiateurs et conseillers numériques) sont habilités à agir pour vous, avec un mandat que vous signez. La démarche est faite dans le cadre de ce mandat, de façon sécurisée. Les proches et les bénévoles ne peuvent pas être habilités.</p>
+          <p><a href="https://aidantsconnect.beta.gouv.fr/" rel="noopener">En savoir plus sur Aidants Connect</a></p>
+        </li>
+      </ul>
+    </section>
+
+    <div class="hachures" aria-hidden="true"></div>
+
+    <div class="grille grille--2 bas">
+      <section aria-labelledby="preparer-titre" class="carte carte--blanche">
+        <h2 id="preparer-titre">Comment préparer le rendez-vous ?</h2>
+        <ol>
+          <li>Notez votre question en une phrase, par exemple « Je veux déclarer mes impôts en ligne ».</li>
+          <li>Apportez l'appareil concerné (téléphone, ordinateur portable) chargé, avec son code de déverrouillage.</li>
+          <li>Pour une démarche, apportez vos papiers : pièce d'identité, numéro fiscal ou de sécurité sociale, dernier courrier reçu.</li>
+          <li>Ayez sous la main l'adresse e-mail et le mot de passe des comptes concernés. Vous les tapez vous-même.</li>
+        </ol>
+      </section>
+      <section aria-labelledby="arnaque-titre" class="carte carte--sombre">
+        <h2 id="arnaque-titre">Victime d'une arnaque ?</h2>
+        <p>Appelez d'abord votre banque si vous avez payé ou donné vos coordonnées bancaires.</p>
+        <p>Puis faites-vous aider par les services officiels et gratuits : 17Cyber, Info Escroqueries au 0 805 805 817.</p>
+        <p><a href={lien('securite/victime')}>J'ai été victime : que faire ?</a></p>
+      </section>
+    </div>
+
+    <section aria-labelledby="attention-titre" class="attention-bloc">
+      <h2 id="attention-titre">Attention aux faux services d'aide</h2>
+      <p>L'aide des services publics est <strong>gratuite</strong>. Méfiez-vous des sites qui font payer une démarche normalement gratuite et des personnes qui vous appellent pour « vous aider » sans que vous l'ayez demandé. Ne laissez jamais un inconnu prendre le contrôle de votre ordinateur.</p>
+      <p><a href={lien('securite/assistance-distance')}>Assistance à distance : quand c'est dangereux</a> · <a href={lien('demarches/service-public#officiel')}>Reconnaître un site officiel</a></p>
+    </section>
+
+    <section class="sources" aria-labelledby="sources-titre">
+      <h2 id="sources-titre">Sources</h2>
+      <ul>{sources.map((s) => <li><a href={s.url} rel="noopener">{s.titre}</a> — {s.editeur}</li>)}</ul>
+      <p class="sources-date">Informations vérifiées le <time datetime={verifieLe}>{dateFr(verifieLe)}</time>.</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .entete-page { max-width: 52rem; margin-bottom: 2rem; }
+  .entete-page h1 { margin-top: 1rem; }
+  h2 { font-size: clamp(1.5rem, 1.3rem + .8vw, 2rem); }
+  .lieux { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .lieux h3 { font-size: 1.35rem; margin: 1.5rem 0 .5rem; }
+  .lieux p { margin: 0 0 .6rem; font-size: 1rem; color: var(--texte); }
+  .bas { margin-top: 0; }
+  .bas h2 { font-size: 1.35rem; margin-top: 0; }
+  .bas ol { padding-left: 1.4rem; margin: 0; }
+  .bas li { margin-bottom: .5rem; }
+  .attention-bloc { margin-top: 2.5rem; max-width: var(--largeur-texte); padding: 1.25rem 1.5rem; border-radius: var(--rayon-grand); background: var(--attention-fond); }
+  .attention-bloc h2 { font-size: 1.35rem; margin-top: 0; }
+  .sources { margin-top: 2.5rem; font-size: 1rem; max-width: var(--largeur-texte); }
+  .sources h2 { font-size: 1.35rem; }
+  .sources-date { color: var(--texte-doux); }
+</style>

@@ -2,84 +2,116 @@
 import Base from '../layouts/Base.astro';
 import Icone from '../components/Icone.astro';
 import Recherche from '../components/Recherche.astro';
+import Illustration from '../components/accueil/Illustration.astro';
 import { rubriques } from '../data/rubriques';
 import { jeVeux } from '../data/je-veux';
-import { nouveautes } from '../data/nouveautes';
+import { parcours } from '../data/parcours';
+import { questions } from '../data/questions';
+import { alertes } from '../data/alertes';
 import { site } from '../data/site';
 import { tousLesModules } from '../lib/navigation';
 import { lien } from '../lib/chemins';
 
 const modules = await tousLesModules();
-const publies = new Set(modules.filter((m) => m.publie).map((m) => m.chemin));
-const entrees = jeVeux.filter((e) => publies.has(e.module));
-const compte = (slug: string) => modules.filter((m) => m.rubrique.slug === slug && m.publie).length;
-const dateFr = (d: string) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const publies = modules.filter((m) => m.publie);
+const chemins = new Set(publies.map((m) => m.chemin));
+const entrees = jeVeux.filter((e) => chemins.has(e.module)).slice(0, 6);
+const compte = (slug: string) => publies.filter((m) => m.rubrique.slug === slug).length;
+const nbModules = (n: number) => (n > 0 ? `${n} module${n > 1 ? 's' : ''}` : 'En préparation');
+const dateFr = (d: string | Date) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+// « Quoi de neuf ? » : les trois derniers modules ajoutés ou mis à jour (date de vérification),
+// à date égale, les derniers rédigés (fin de l'ordre du site) d'abord.
+const ordre = new Map(publies.map((m, i) => [m.chemin, i]));
+const derniers = [...publies]
+  .sort((a, b) => (b.entree!.data.verifieLe.getTime() - a.entree!.data.verifieLe.getTime()) || (ordre.get(b.chemin)! - ordre.get(a.chemin)!))
+  .slice(0, 3);
+const majAlertes = alertes.map((a) => a.date).sort().at(-1)!;
 
 const jsonld = [{
   '@context': 'https://schema.org', '@type': 'WebSite', name: site.nom, inLanguage: 'fr-FR',
   url: new URL(lien(), Astro.site).href,
   potentialAction: { '@type': 'SearchAction', target: `${new URL(lien('recherche'), Astro.site).href}?q={q}`, 'query-input': 'required name=q' },
+}, {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: questions.map((q) => ({ '@type': 'Question', name: q.question, acceptedAnswer: { '@type': 'Answer', text: q.reponse } })),
 }];
 ---
-<Base titre={site.nom} description={site.description} jsonld={jsonld}>
-  <section class="accueil-hero">
-    <div class="peinture" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-    <div class="conteneur hero-grille">
-      <div class="hero-texte">
-        <p class="etiquette">Gratuit, sans compte, sans publicité</p>
-        <h1>Le numérique, <span class="ton-doux">expliqué clairement.</span></h1>
-        <p class="chapo">Ordinateur, smartphone, démarches, arnaques : des réponses précises, étape par étape, en français simple.</p>
-        <div class="hero-recherche">
-          <Recherche id="recherche-accueil" enPage />
+<Base titre={site.nom} description={site.description} jsonld={jsonld} accueil indexer={false}>
+  <section class="accueil-hero" aria-labelledby="titre-accueil">
+    {site.bandeau.texte && (
+      <div class="bandeau" data-bandeau={site.bandeau.id} role="region" aria-label="Information">
+        <div class="conteneur bandeau-ligne">
+          <Icone nom="info" taille={22} />
+          <p><strong>{site.bandeau.texte}</strong> <a href={site.bandeau.lien}>{site.bandeau.libelle}</a></p>
+          <button type="button" class="bouton-icone bandeau-fermer" data-bandeau-fermer data-infobulle="Fermer ce message (il ne reviendra pas)">
+            <Icone nom="fermer" /><span class="visually-hidden">Fermer le bandeau d'information</span>
+          </button>
         </div>
       </div>
+    )}
+    <div class="peinture" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
-      <aside class="hero-fiche" aria-label="Exemple de fiche">
-        <div class="fiche-barre" aria-hidden="true"><span></span></div>
-        <p class="fiche-surtitre">Fiche Bristol · Clavier</p>
-        <p class="fiche-titre">Copier-coller un texte</p>
-        <ol>
-          <li><span>Sélectionner</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>A</kbd></span></li>
-          <li><span>Copier</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>C</kbd></span></li>
-          <li><span>Coller</span><span class="touches"><kbd>Ctrl</kbd> + <kbd>V</kbd></span></li>
-        </ol>
-        <a class="bouton bouton--clair" href={lien('ordinateur/clavier-raccourcis#copier-coller')}>Voir le module</a>
-      </aside>
+    <div class="hero-decor ne-pas-imprimer" aria-hidden="true">
+      <div class="decor decor--gauche"><Illustration type="etapes" /></div>
+      <div class="decor decor--droite"><Illustration type="sms" /></div>
+    </div>
+
+    <div class="conteneur hero-centre">
+      <p class="etiquette">Ordinateur · Smartphone · Internet · Démarches</p>
+      <h1 id="titre-accueil">Le numérique, <span class="ton-doux">expliqué clairement.</span></h1>
+      <p class="chapo">Des réponses précises, étape par étape, en français simple. Pour comprendre, pas seulement pour cliquer.</p>
+      <div class="hero-recherche" data-hero-recherche>
+        <Recherche id="recherche-accueil" />
+      </div>
+      {entrees.length > 0 && (
+        <div class="hero-je-veux">
+          <p id="je-veux-titre">Je veux…</p>
+          <ul aria-labelledby="je-veux-titre">
+            {entrees.map((e) => (
+              <li><a href={lien(`${e.module}${e.ancre ? `#${e.ancre}` : ''}`)}>{e.libelle}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   </section>
 
-  <div class="conteneur">
-    <ul class="bande" aria-label="Les engagements du site">
-      <li><strong>100 %</strong><span>gratuit</span></li>
-      <li><strong>0</strong><span>compte à créer</span></li>
-      <li><strong>0</strong><span>traceur publicitaire</span></li>
-      <li><strong>Hors ligne</strong><span>une fois installé</span></li>
-    </ul>
-  </div>
-
-  {entrees.length > 0 && (
-    <section class="conteneur bloc" aria-labelledby="titre-je-veux">
-      <div class="entete-section">
-        <div>
-          <h2 id="titre-je-veux">Je veux…</h2>
-          <p>Les questions les plus fréquentes, avec le bon chapitre en un clic.</p>
-        </div>
+  <section class="conteneur bloc" aria-labelledby="titre-comment">
+    <div class="entete-section">
+      <div>
+        <p class="etiquette">Comment ça marche</p>
+        <h2 id="titre-comment">Trois étapes, <span class="ton-doux">sans jargon.</span></h2>
       </div>
-      <ul class="je-veux">
-        {entrees.map((e) => (
-          <li><a href={lien(`${e.module}${e.ancre ? `#${e.ancre}` : ''}`)}><span>{e.libelle}</span><Icone nom="fleche" /></a></li>
-        ))}
-      </ul>
-    </section>
-  )}
+    </div>
+    <ol class="grille grille--3 comment">
+      <li class="carte comment-etape pastel-ciel">
+        <Illustration type="recherche" />
+        <h3><span class="comment-num">1</span> Cherchez votre question</h3>
+        <p>Tapez-la avec vos mots, ou dites-la au micro. Le site vous mène au bon chapitre.</p>
+      </li>
+      <li class="carte comment-etape pastel-menthe">
+        <Illustration type="etapes" />
+        <h3><span class="comment-num">2</span> Suivez les étapes</h3>
+        <p>Une définition, à quoi ça sert, puis comment faire, étape par étape, pour votre appareil.</p>
+      </li>
+      <li class="carte comment-etape pastel-peche">
+        <Illustration type="fiche" />
+        <h3><span class="comment-num">3</span> Gardez la fiche</h3>
+        <p>Chaque module se termine par une fiche Bristol à imprimer ou à télécharger en PDF.</p>
+      </li>
+    </ol>
+  </section>
 
   <div class="hachures" aria-hidden="true"></div>
 
   <section class="conteneur bloc" aria-labelledby="titre-rubriques">
     <div class="entete-section">
       <div>
-        <p class="etiquette">12 rubriques</p>
+        <p class="etiquette">{rubriques.length} rubriques · {publies.length} modules</p>
         <h2 id="titre-rubriques">Tout ce qu'il faut savoir, <span class="ton-doux">rangé par thème.</span></h2>
+        <p>Une rubrique regroupe plusieurs modules. Un module répond à un besoin.</p>
       </div>
       <a class="bouton bouton--secondaire" href={lien('plan-du-site')}>Voir le plan du site</a>
     </div>
@@ -89,7 +121,68 @@ const jsonld = [{
           <span class="pastille"><Icone nom={r.icone} /></span>
           <h3><a href={lien(r.slug)}>{r.titre}</a></h3>
           <p>{r.description}</p>
-          <p class="rubrique-compte">{compte(r.slug) > 0 ? `${compte(r.slug)} module${compte(r.slug) > 1 ? 's' : ''}` : 'En préparation'}</p>
+          <p class="rubrique-compte">{nbModules(compte(r.slug))}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="conteneur bloc" aria-labelledby="titre-questions">
+    <div class="entete-section">
+      <div>
+        <p class="etiquette">Questions fréquentes</p>
+        <h2 id="titre-questions">Les questions <span class="ton-doux">les plus posées.</span></h2>
+      </div>
+    </div>
+    <ul class="grille grille--3 questions">
+      {questions.map((q) => (
+        <li class="carte carte--blanche carte-lien">
+          <h3><a href={lien(q.lien)}>{q.question}</a></h3>
+          <p>{q.reponse}</p>
+          <p class="question-suite" aria-hidden="true">Lire la réponse <Icone nom="fleche" taille={18} /></p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="alertes-zone" id="alerte-arnaques" aria-labelledby="titre-alertes">
+    <div class="conteneur bloc-alertes">
+      <div class="entete-section">
+        <div>
+          <p class="etiquette etiquette--alerte">Alerte arnaques · mise à jour le <time datetime={majAlertes}>{dateFr(majAlertes)}</time></p>
+          <h2 id="titre-alertes">Les arnaques du moment, <span class="ton-doux">et le bon réflexe.</span></h2>
+        </div>
+        <a class="bouton bouton--secondaire" href={lien('securite/arnaques')}>Reconnaître une arnaque</a>
+      </div>
+      <ul class="grille grille--3 alertes">
+        {alertes.map((a) => (
+          <li class="alerte">
+            <p class="alerte-date"><time datetime={a.date}>{dateFr(a.date)}</time></p>
+            <h3>{a.titre}</h3>
+            <p>{a.piege}</p>
+            <div class="alerte-reflexe"><p class="alerte-reflexe-titre"><Icone nom="bouclier" taille={20} /> Le bon réflexe</p><p>{a.reflexe}</p></div>
+            <p class="alerte-liens"><a href={lien(a.module)}>En savoir plus<span class="visually-hidden"> : {a.titre}</span></a> · <a href={a.source.url}>Source : {a.source.editeur}</a></p>
+          </li>
+        ))}
+      </ul>
+      <p class="alertes-victime"><Icone nom="info" taille={20} /> Vous pensez être victime ? <a href={lien('securite/victime')}>Les premiers gestes</a>, et l'assistance gratuite de Cybermalveillance.gouv.fr.</p>
+    </div>
+  </section>
+
+  <section class="conteneur bloc" aria-labelledby="titre-parcours">
+    <div class="entete-section">
+      <div>
+        <h2 id="titre-parcours">Je viens de…</h2>
+        <p>Une situation nouvelle ? Suivez les étapes dans l'ordre.</p>
+      </div>
+      <a class="bouton bouton--secondaire" href={lien('parcours')}>Tous les parcours</a>
+    </div>
+    <ul class="grille grille--4 parcours-accueil">
+      {parcours.map((p) => (
+        <li class:list={['carte carte-lien', `pastel-${p.pastel}`]}>
+          <span class="pastille"><Icone nom={p.icone} /></span>
+          <h3><a href={lien(`parcours/${p.slug}`)}><span aria-hidden="true">… {p.court}</span><span class="visually-hidden">Je viens {p.situation}</span></a></h3>
+          <p>{p.etapes.length} étapes</p>
         </li>
       ))}
     </ul>
@@ -97,66 +190,124 @@ const jsonld = [{
 
   <div class="hachures" aria-hidden="true"></div>
 
-  <section class="conteneur bloc grille grille--2" aria-label="Aide et nouveautés">
+  <section class="conteneur bloc grille grille--2 fin-accueil" aria-label="Nouveautés et aide">
+    <div class="carte carte--blanche">
+      <p class="etiquette">Quoi de neuf ?</p>
+      <h2>Derniers modules <span class="ton-doux">ajoutés ou mis à jour</span></h2>
+      <ul class="nouveautes">
+        {derniers.map((m) => (
+          <li>
+            <time datetime={iso(m.entree!.data.verifieLe)}>{dateFr(m.entree!.data.verifieLe)} · {m.rubrique.titre}</time>
+            <a href={lien(m.chemin)}>{m.titre}</a>
+            <span class="nouveaute-resume">{m.entree!.data.resume}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="tout-voir"><a class="bouton bouton--secondaire" href={lien('nouveautes')}>Toutes les nouveautés</a></p>
+    </div>
     <div class="carte carte--teinte">
       <p class="etiquette">Près de chez vous</p>
       <h2>Besoin d'une aide <span class="ton-doux">en personne ?</span></h2>
       <p>Des conseillers numériques et les espaces France Services accompagnent gratuitement, sur rendez-vous ou sans.</p>
-      <p><a class="bouton bouton--clair" href="https://www.france-services.gouv.fr/" rel="noopener">Trouver un espace France Services</a></p>
-    </div>
-    <div class="carte carte--blanche">
-      <p class="etiquette">Quoi de neuf ?</p>
-      <h2>Dernières <span class="ton-doux">nouveautés</span></h2>
-      <ul class="nouveautes">
-        {nouveautes.slice(0, 4).map((n) => (
-          <li><time datetime={n.date}>{dateFr(n.date)}</time> {n.lien ? <a href={lien(n.lien)}>{n.texte}</a> : n.texte}</li>
-        ))}
-      </ul>
+      <p><a class="bouton bouton--clair" href={lien('aide-pres-de-chez-vous')}>Où se faire aider</a></p>
     </div>
   </section>
 </Base>
 
-<style>
-  .accueil-hero { position: relative; overflow: hidden; padding: 3rem 0 3rem; }
-  .hero-grille { position: relative; z-index: 1; display: grid; gap: 2.5rem; align-items: center; }
-  @media (min-width: 1024px) { .accueil-hero { padding: 5.5rem 0 4.5rem; } .hero-grille { grid-template-columns: 1.4fr 1fr; gap: 4rem; } }
-  .hero-texte h1 { margin-top: 1.25rem; font-size: clamp(2.6rem, 1.6rem + 4.5vw, 5rem); max-width: 15ch; }
-  .hero-recherche { margin-top: 2rem; max-width: 38rem; }
-  .hero-recherche :global(.recherche-label) { font-size: 1.05rem; }
-  .hero-fiche { background: var(--teinte); border-radius: 24px; padding: 1.75rem; max-width: 26rem; justify-self: center; width: 100%; }
-  .fiche-barre { height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--texte) 15%, transparent); margin-bottom: 1.5rem; }
-  .fiche-barre span { display: block; width: 40%; height: 100%; border-radius: inherit; background: var(--texte); }
-  .fiche-surtitre { font: 500 .9rem var(--police-titre); color: var(--texte-doux); margin: 0 0 .25rem; }
-  .fiche-titre { font: 600 1.6rem/1.15 var(--police-titre); letter-spacing: -.03em; margin: 0 0 1.25rem; }
-  .hero-fiche ol { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .5rem; counter-reset: e; }
-  .hero-fiche li { counter-increment: e; display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .7rem 1rem; border-radius: 14px; background: var(--surface); }
-  .hero-fiche li > span:first-child::before { content: counter(e) '. '; font-weight: 700; color: var(--accent); }
-  .touches { white-space: nowrap; }
-  :global(.bouton--clair) { background: var(--surface); color: var(--texte); border-color: var(--surface); width: 100%; }
-  :global(.bouton--clair:hover) { background: var(--fond); color: var(--accent); border-color: var(--fond); }
+<script>
+  // Bandeau refermable, fermeture mémorisée sur l'appareil.
+  const bandeau = document.querySelector<HTMLElement>('[data-bandeau]');
+  bandeau?.querySelector('[data-bandeau-fermer]')?.addEventListener('click', () => {
+    try { localStorage.setItem('desclics-bandeau-ferme', bandeau.dataset.bandeau!); } catch { /* */ }
+    document.documentElement.setAttribute('data-bandeau-ferme', '');
+    document.querySelector<HTMLElement>('#recherche-accueil-champ')?.focus();
+  });
+</script>
 
-  .bloc { padding-top: 3.5rem; }
-  .je-veux { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
-  .je-veux a {
-    display: inline-flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .5rem 1.1rem;
-    border-radius: 999px; background: var(--surface-2); border: 1px solid transparent;
-    color: var(--texte); text-decoration: none; font: 500 1.05rem var(--police-titre);
+<style>
+  /* Hero : pleine hauteur d'écran (moins l'en-tête), contenu centré. */
+  .accueil-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: calc(100svh - 4.5rem); }
+  .hero-centre { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-block: 3rem 4rem; }
+  .hero-centre h1 { margin: 1.25rem auto .75rem; font-size: clamp(2.6rem, 1.4rem + 5vw, 5.4rem); max-width: 14ch; }
+  .hero-centre .chapo { margin-inline: auto; max-width: 36rem; }
+  .hero-recherche { width: 100%; max-width: 40rem; margin-top: 1.75rem; position: relative; z-index: 5; }
+  .hero-recherche :global(input[type='search']) { min-height: 64px; font-size: 1.2rem; box-shadow: 0 10px 30px rgb(22 24 29 / .08); }
+  .hero-je-veux { margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .5rem .75rem; max-width: 48rem; }
+  .hero-je-veux p { margin: 0; font: 600 1rem var(--police-titre); color: var(--texte-doux); }
+  .hero-je-veux ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+  .hero-je-veux a { display: inline-flex; align-items: center; min-height: 44px; padding: .35rem 1rem; border-radius: 999px; background: var(--surface);
+    border: 1px solid var(--trait); color: var(--texte); text-decoration: none; font: 500 1rem var(--police-titre); }
+  .hero-je-veux a:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-decor { display: none; }
+  @media (min-width: 1280px) {
+    .hero-decor { display: block; position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .decor { position: absolute; width: 15rem; }
+    .decor--gauche { left: max(2rem, calc(50% - 44rem)); top: 30%; transform: rotate(-4deg); }
+    .decor--droite { right: max(2rem, calc(50% - 44rem)); top: 46%; transform: rotate(3deg); }
   }
-  .je-veux a:hover { border-color: var(--accent); color: var(--accent); }
-  .je-veux a :global(svg) { width: 1.1em; height: 1.1em; color: var(--accent); }
-  .rubriques { list-style: none; padding: 0; margin: 0; }
+  :global(:root[data-grand-texte]) .hero-decor { display: none; }
+
+  .bandeau { position: relative; z-index: 3; background: var(--accent-pale); border-bottom: 1px solid var(--trait); }
+  .bandeau-ligne { display: flex; align-items: center; gap: .75rem; min-height: 3.25rem; padding-block: .35rem; }
+  .bandeau-ligne > :global(svg) { color: var(--accent); flex: none; }
+  .bandeau p { margin: 0; flex: 1; font-size: 1rem; }
+  .bandeau strong { font-weight: 650; }
+  .bandeau-fermer { flex: none; }
+  :global(:root[data-bandeau-ferme]) .bandeau { display: none; }
+
+  .bloc { padding-top: 4rem; }
+  h2 { font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem); }
+
+  .comment { list-style: none; padding: 0; margin: 0; counter-reset: none; }
+  .comment-etape { display: flex; flex-direction: column; gap: .25rem; }
+  .comment-etape :global(.illu) { margin-bottom: 1.25rem; min-height: 11.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .comment-etape h3 { display: flex; align-items: center; gap: .6rem; font-size: 1.35rem; margin: 0 0 .35rem; }
+  .comment-num { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--texte); color: var(--fond); font-size: 1rem; flex: none; }
+  .comment-etape p { margin: 0; }
+
+  .rubriques, .questions, .alertes, .parcours-accueil { list-style: none; padding: 0; margin: 0; }
   .rubrique-carte { display: flex; flex-direction: column; min-height: 17rem; }
   .rubrique-carte h3 { font-size: 1.4rem; margin: auto 0 .4rem; padding-top: 2.5rem; }
-  .rubrique-carte h3 a { color: var(--texte); text-decoration: none; }
-  .rubrique-carte:hover h3 a { text-decoration: underline; }
+  .rubrique-carte h3 a { color: inherit; text-decoration: none; }
   .rubrique-carte p { margin: 0; color: var(--texte-doux); font-size: 1rem; }
-  .rubrique-compte { margin-top: .9rem !important; font: 600 .9rem var(--police-titre) !important; }
+  .rubrique-compte { margin-top: .9rem !important; font: 600 .95rem var(--police-titre) !important; color: var(--texte) !important; }
+  .carte--sombre .rubrique-compte { color: var(--sur-carte-sombre) !important; }
+
+  .questions h3 { font-size: 1.25rem; margin: 0 0 .5rem; }
+  .questions h3 a { color: var(--texte); text-decoration: none; }
+  .questions li { display: flex; flex-direction: column; }
+  .questions p { margin: 0; color: var(--texte-doux); font-size: 1rem; }
+  .question-suite { margin-top: auto !important; padding-top: 1rem; display: inline-flex; align-items: center; gap: .35rem; color: var(--accent) !important; font: 600 1rem var(--police-titre) !important; }
+
+  .alertes-zone { margin-top: 4rem; background: var(--attention-fond); border-block: 1px solid var(--trait); }
+  .bloc-alertes { padding-block: 3.5rem; }
+  .etiquette--alerte::before { background: var(--attention-texte); }
+  .alerte { background: var(--surface); border-radius: 24px; padding: 1.5rem; display: flex; flex-direction: column; }
+  .alerte h3 { font-size: 1.3rem; margin: .25rem 0 .5rem; }
+  .alerte p { margin: 0 0 .75rem; font-size: 1rem; }
+  .alerte-date { font: 600 .9rem var(--police-titre); color: var(--attention-texte); margin: 0 !important; }
+  .alerte-reflexe { margin-top: auto; padding: .9rem 1rem; border-radius: 16px; background: var(--astuce-fond); color: var(--texte); }
+  .alerte-reflexe p { margin: 0; }
+  .alerte-reflexe-titre { display: flex; align-items: center; gap: .4rem; font: 650 1rem var(--police-titre); color: var(--astuce-texte); margin-bottom: .3rem !important; }
+  .alerte-liens { margin: .9rem 0 0 !important; font-size: .95rem !important; }
+  .alertes-victime { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; margin: 1.75rem 0 0; }
+  :global(:root[data-contraste='eleve']) .alertes-zone { background: var(--fond); }
+  :global(:root[data-contraste='eleve']) .alerte { border: 2px solid var(--texte); }
+
+  .parcours-accueil h3 { font-size: 1.25rem; margin: 1.75rem 0 .3rem; }
+  .parcours-accueil h3 a { color: var(--texte); text-decoration: none; }
+  .parcours-accueil p { margin: 0; font: 600 .95rem var(--police-titre); }
+
+  .fin-accueil { padding-bottom: 1rem; }
+  .carte h2 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); margin-top: .5rem; }
   .carte--teinte { background: var(--teinte); }
   .carte--teinte p:not(.etiquette) { color: var(--texte); }
-  .carte h2 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); margin-top: .5rem; }
+  :global(.bouton--clair) { background: var(--surface); color: var(--texte); border-color: var(--surface); }
+  :global(.bouton--clair:hover) { background: var(--fond); color: var(--accent); border-color: var(--fond); }
   .nouveautes { list-style: none; padding: 0; margin: 0; }
-  .nouveautes li { padding: .6rem 0; border-top: 1px solid var(--trait); }
-  .nouveautes time { display: block; font: 500 .9rem var(--police-titre); color: var(--texte-doux); }
-  h2 { font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.6rem); }
-  .bande { list-style: none; padding: 0; margin: 0; }
+  .nouveautes li { display: grid; gap: .15rem; padding: .8rem 0; border-top: 1px solid var(--trait); }
+  .nouveautes time { font: 500 .9rem var(--police-titre); color: var(--texte-doux); }
+  .nouveautes a { font: 650 1.1rem var(--police-titre); }
+  .nouveaute-resume { font-size: 1rem; color: var(--texte-doux); }
+  .tout-voir { margin: 1rem 0 0; }
 </style>

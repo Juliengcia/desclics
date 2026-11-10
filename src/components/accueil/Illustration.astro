@@ -1,0 +1,107 @@
+---
+/**
+ * Petites illustrations animées de l'accueil, dans l'esprit de la fiche Bristol.
+ * Décoratives (aria-hidden). Animations douces, coupées par « Réduire les animations »
+ * (panneau Accessibilité) et par le réglage système « réduire les animations ».
+ */
+interface Props { type: 'recherche' | 'etapes' | 'fiche' | 'sms' }
+const { type } = Astro.props;
+---
+<div class:list={['illu', `illu--${type}`]} aria-hidden="true">
+  {type === 'recherche' && (
+    <div class="illu-carte">
+      <div class="illu-champ">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <span class="illu-frappe">raccrocher un appel</span><span class="illu-curseur"></span>
+      </div>
+      <ul class="illu-resultats">
+        <li><b>Téléphoner et gérer ses contacts</b><span>Comment décrocher et raccrocher ?</span></li>
+        <li><b>Utiliser WhatsApp</b><span>Comment appeler et raccrocher ?</span></li>
+      </ul>
+    </div>
+  )}
+  {type === 'etapes' && (
+    <div class="illu-carte">
+      <p class="illu-surtitre">Comment faire</p>
+      <ol class="illu-etapes">
+        <li><span>1</span>Ouvrez la discussion</li>
+        <li><span>2</span>Touchez le trombone</li>
+        <li><span>3</span>Choisissez la photo</li>
+        <li><span>4</span>Envoyez</li>
+      </ol>
+    </div>
+  )}
+  {type === 'fiche' && (
+    <div class="illu-fiche">
+      <p class="illu-fiche-type">Fiche Bristol</p>
+      <p class="illu-fiche-titre">Copier-coller</p>
+      <ul>
+        <li>Sélectionner <kbd>Ctrl</kbd>+<kbd>A</kbd></li>
+        <li>Copier <kbd>Ctrl</kbd>+<kbd>C</kbd></li>
+        <li>Coller <kbd>Ctrl</kbd>+<kbd>V</kbd></li>
+      </ul>
+      <span class="illu-pdf">PDF</span>
+    </div>
+  )}
+  {type === 'sms' && (
+    <div class="illu-telephone">
+      <div class="illu-bulle">
+        <p class="illu-exp">+33 7 •• •• •• ••</p>
+        <p>Votre colis est en attente. Payez 1,99 € ici : livr-colis.info</p>
+      </div>
+      <p class="illu-verdict"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg> Arnaque probable</p>
+    </div>
+  )}
+</div>
+<style>
+  .illu { font-family: var(--police-titre); color: var(--texte); user-select: none; }
+  .illu-carte { background: var(--surface); border-radius: 20px; padding: 1rem; box-shadow: 0 10px 30px rgb(22 24 29 / .08); }
+  .illu-champ { display: flex; align-items: center; gap: .5rem; padding: .6rem .9rem; border: 2px solid var(--accent); border-radius: 999px; font-size: .95rem; color: var(--texte-doux); }
+  .illu-frappe { display: inline-block; overflow: hidden; white-space: nowrap; color: var(--texte); max-width: 0; animation: frappe 6s steps(19) infinite; }
+  .illu-curseur { width: 2px; height: 1.1em; background: var(--accent); animation: clignote 1s step-end infinite; }
+  .illu-resultats { list-style: none; margin: .6rem 0 0; padding: 0; display: grid; gap: .35rem; }
+  .illu-resultats li { padding: .5rem .75rem; border-radius: 12px; background: var(--surface-2); font-size: .85rem; opacity: 0; animation: apparait 6s ease infinite; }
+  .illu-resultats li:nth-child(2) { animation-delay: .25s; }
+  .illu-resultats b { display: block; font-weight: 650; }
+  .illu-resultats span { color: var(--accent); }
+  @keyframes frappe { 0% { max-width: 0; } 40%, 100% { max-width: 19ch; } }
+  @keyframes clignote { 50% { opacity: 0; } }
+  @keyframes apparait { 0%, 42% { opacity: 0; transform: translateY(4px); } 50%, 100% { opacity: 1; transform: none; } }
+
+  .illu-surtitre { margin: 0 0 .5rem; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--texte-doux); }
+  .illu-etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; }
+  .illu-etapes li { display: flex; align-items: center; gap: .6rem; padding: .45rem .6rem; border-radius: 12px; font-size: .9rem; animation: etape 8s ease infinite; }
+  .illu-etapes li span { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--surface-2); font-weight: 700; font-size: .8rem; flex: none; }
+  .illu-etapes li:nth-child(2) { animation-delay: 2s; } .illu-etapes li:nth-child(3) { animation-delay: 4s; } .illu-etapes li:nth-child(4) { animation-delay: 6s; }
+  @keyframes etape { 0%, 24% { background: var(--accent-pale); } 25%, 100% { background: transparent; } }
+
+  .illu-fiche { position: relative; background: #FFFDF6; color: #16181D; border: 1px solid #D9CFB4; border-radius: 8px; padding: .9rem 1rem .6rem;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 calc(1.9rem - 1px), #D8E3F5 calc(1.9rem - 1px) 1.9rem); background-position: 0 3.1rem;
+    box-shadow: 0 10px 30px rgb(22 24 29 / .1); animation: flotte 7s ease-in-out infinite; }
+  .illu-fiche-type { margin: 0; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #B4430B; }
+  .illu-fiche-titre { margin: 0 0 .3rem; font-size: 1.15rem; font-weight: 650; }
+  .illu-fiche ul { margin: 0; padding-left: 1rem; font-family: var(--police-texte); font-size: .85rem; line-height: 1.9rem; }
+  .illu-fiche kbd { font-size: .7rem; background: transparent; color: #16181D; border-color: #868A93; }
+  .illu-pdf { position: absolute; right: -.6rem; bottom: -.6rem; padding: .25rem .6rem; border-radius: 8px; background: var(--accent); color: var(--sur-accent); font-size: .75rem; font-weight: 700; animation: tampon 7s ease-in-out infinite; }
+  @keyframes flotte { 50% { transform: translateY(-6px) rotate(-1deg); } }
+  @keyframes tampon { 0%, 60% { transform: scale(1); } 65% { transform: scale(1.15); } 72%, 100% { transform: scale(1); } }
+
+  .illu-telephone { width: 15rem; padding: 1rem .8rem 1.2rem; border-radius: 28px; border: 6px solid var(--texte); background: var(--surface); animation: flotte 8s ease-in-out infinite; animation-delay: -3s; }
+  .illu-bulle { background: var(--surface-2); border-radius: 16px 16px 16px 4px; padding: .6rem .75rem; font-family: var(--police-texte); font-size: .85rem; line-height: 1.4; }
+  .illu-bulle p { margin: 0; }
+  .illu-exp { font-family: var(--police-titre); font-size: .75rem; color: var(--texte-doux); margin-bottom: .2rem !important; }
+  .illu-verdict { display: flex; align-items: center; gap: .35rem; margin: .6rem 0 0; padding: .35rem .6rem; border-radius: 999px; width: fit-content;
+    background: var(--attention-fond); color: var(--attention-texte); font-size: .8rem; font-weight: 650; animation: apparait 5s ease infinite; }
+  :global(:root[data-theme-effectif='dark']) .illu-fiche { background-color: #1D1F24; color: #ECEDEF; border-color: #3A3F4A;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 calc(1.9rem - 1px), #2A3550 calc(1.9rem - 1px) 1.9rem); }
+  :global(:root[data-theme-effectif='dark']) .illu-fiche kbd { color: #ECEDEF; }
+  :global(:root[data-theme-effectif='dark']) .illu-fiche-type { color: #FFA06B; }
+  /* Sans animation : état final lisible. */
+  :global(:root[data-animations='non']) .illu-frappe { max-width: 19ch; }
+  :global(:root[data-animations='non']) :is(.illu-resultats li, .illu-verdict) { opacity: 1; transform: none; }
+  :global(:root[data-animations='non']) .illu-etapes li:first-child { background: var(--accent-pale); }
+  @media (prefers-reduced-motion: reduce) {
+    .illu-frappe { max-width: 19ch; animation: none; }
+    .illu-resultats li, .illu-verdict { opacity: 1; animation: none; }
+  }
+</style>

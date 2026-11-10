@@ -14,7 +14,7 @@ export default defineConfig({
   site: SITE,
   base: BASE,
   trailingSlash: 'always',
-  integrations: [mdx(), react(), sitemap()],
+  integrations: [mdx(), react(), sitemap({ filter: (page) => !page.includes('/fiches/a5/') && !page.includes('/favoris/') })],
   build: { format: 'directory' },
   markdown: {
     remarkPlugins: [remarqueAncres],

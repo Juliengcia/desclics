@@ -57,6 +57,7 @@ import Touches from '../../../components/module/Touches.astro';
 import Terme from '../../../components/module/Terme.astro';
 import Figure from '../../../components/module/Figure.astro';
 import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Raccourcis from '../../../components/module/Raccourcis.astro';
 import Onglets from '../../../components/module/Onglets.astro';
 import Onglet from '../../../components/module/Onglet.astro';
 import Quiz from '../../../components/module/Quiz.astro';
@@ -109,9 +110,9 @@ Certains caractères sont imprimés en petit, en bas à droite d'une touche. On 
 <Onglets appareils={['windows', 'mac']} libelle="Choisir le système de votre ordinateur">
 <Onglet appareil="windows">
 
-<TableauComparatif
+<Raccourcis
   legende="Caractères spéciaux sur un clavier Windows français"
-  colonnes={['Caractère', 'Combinaison']}
+  entete={['Combinaison', 'Caractère']}
   lignes={[
     ['@ (arobase)', '<kbd>Alt Gr</kbd> + <kbd>à</kbd> (touche du 0)'],
     ['€ (euro)', '<kbd>Alt Gr</kbd> + <kbd>E</kbd>'],
@@ -136,9 +137,9 @@ Les codes Alt ne marchent qu'avec le pavé numérique. Les chiffres de la rangé
 </Onglet>
 <Onglet appareil="mac">
 
-<TableauComparatif
+<Raccourcis
   legende="Caractères spéciaux sur un clavier Mac français"
-  colonnes={['Caractère', 'Combinaison']}
+  entete={['Combinaison', 'Caractère']}
   lignes={[
     ['@ (arobase)', 'Touche <kbd>@</kbd>, en haut à gauche du clavier'],
     ['€ (euro)', '<kbd>⌥ Option</kbd> + <kbd>$</kbd>'],
@@ -171,9 +172,8 @@ Copier, c'est dupliquer un texte ou une image pour le placer ailleurs, sans le r
 
 Ce que vous copiez part dans le <Terme id="presse-papiers">presse-papiers</Terme> : une mémoire invisible de l'ordinateur. Il ne garde qu'un seul élément : une nouvelle copie remplace la précédente.
 
-<TableauComparatif
+<Raccourcis
   legende="Les cinq raccourcis de base"
-  colonnes={['Action', 'Windows', 'Mac']}
   lignes={[
     ['Tout sélectionner', '<kbd>Ctrl</kbd> + <kbd>A</kbd>', '<kbd>⌘</kbd> + <kbd>A</kbd>'],
     ['Copier', '<kbd>Ctrl</kbd> + <kbd>C</kbd>', '<kbd>⌘</kbd> + <kbd>C</kbd>'],
@@ -206,9 +206,8 @@ Une erreur ? <Touches k="Ctrl+Z" /> annule la dernière action. Vous pouvez l'ut
 
 Quelques raccourcis font gagner beaucoup de temps. La touche <Touches k="⊞" /> est la touche Windows, entre <Touches k="Ctrl" /> et <Touches k="Alt" />.
 
-<TableauComparatif
+<Raccourcis
   legende="Raccourcis utiles sur Windows"
-  colonnes={['Je veux…', 'Raccourci']}
   lignes={[
     ['Passer d’une fenêtre ouverte à une autre', '<kbd>Alt</kbd> + <kbd>Tab</kbd>'],
     ['Voir le bureau (tout réduire)', '<kbd>⊞</kbd> + <kbd>D</kbd>'],
@@ -235,18 +234,17 @@ Quelques raccourcis font gagner beaucoup de temps. La touche <Touches k="⊞" />
 
 Le <Terme id="navigateur">navigateur</Terme> est le logiciel qui affiche les sites web. Ces raccourcis marchent dans Chrome, Edge et Firefox. Sur Mac, remplacez <Touches k="Ctrl" /> par <Touches k="⌘" />.
 
-<TableauComparatif
+<Raccourcis
   legende="Raccourcis du navigateur"
-  colonnes={['Je veux…', 'Raccourci']}
   lignes={[
-    ['Ouvrir un nouvel onglet', '<kbd>Ctrl</kbd> + <kbd>T</kbd>'],
-    ['Fermer l’onglet', '<kbd>Ctrl</kbd> + <kbd>W</kbd>'],
-    ['Rouvrir l’onglet fermé par erreur', '<kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>T</kbd>'],
-    ['Chercher un mot dans la page', '<kbd>Ctrl</kbd> + <kbd>F</kbd>'],
-    ['Agrandir le texte de la page', '<kbd>Ctrl</kbd> + <kbd>+</kbd>'],
-    ['Réduire / revenir à la taille normale', '<kbd>Ctrl</kbd> + <kbd>-</kbd> / <kbd>Ctrl</kbd> + <kbd>0</kbd>'],
-    ['Imprimer la page', '<kbd>Ctrl</kbd> + <kbd>P</kbd>'],
-    ['Recharger la page', '<kbd>F5</kbd>'],
+    ['Ouvrir un nouvel onglet', '<kbd>Ctrl</kbd> + <kbd>T</kbd>', '<kbd>⌘</kbd> + <kbd>T</kbd>'],
+    ['Fermer l’onglet', '<kbd>Ctrl</kbd> + <kbd>W</kbd>', '<kbd>⌘</kbd> + <kbd>W</kbd>'],
+    ['Rouvrir l’onglet fermé par erreur', '<kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>T</kbd>', '<kbd>⌘</kbd> + <kbd>Maj</kbd> + <kbd>T</kbd>'],
+    ['Chercher un mot dans la page', '<kbd>Ctrl</kbd> + <kbd>F</kbd>', '<kbd>⌘</kbd> + <kbd>F</kbd>'],
+    ['Agrandir le texte de la page', '<kbd>Ctrl</kbd> + <kbd>+</kbd>', '<kbd>⌘</kbd> + <kbd>+</kbd>'],
+    ['Réduire / revenir à la taille normale', '<kbd>Ctrl</kbd> + <kbd>-</kbd> / <kbd>Ctrl</kbd> + <kbd>0</kbd>', '<kbd>⌘</kbd> + <kbd>-</kbd> / <kbd>⌘</kbd> + <kbd>0</kbd>'],
+    ['Imprimer la page', '<kbd>Ctrl</kbd> + <kbd>P</kbd>', '<kbd>⌘</kbd> + <kbd>P</kbd>'],
+    ['Recharger la page', '<kbd>F5</kbd>', '<kbd>⌘</kbd> + <kbd>R</kbd>'],
   ]}
 />
 
@@ -258,9 +256,8 @@ Le <Terme id="navigateur">navigateur</Terme> est le logiciel qui affiche les sit
 
 Sur Mac, la plupart des raccourcis utilisent la touche <Touches k="⌘" /> **Commande**, de chaque côté de la barre d'espace.
 
-<TableauComparatif
+<Raccourcis
   legende="Raccourcis utiles sur Mac"
-  colonnes={['Je veux…', 'Raccourci']}
   lignes={[
     ['Passer d’une application à une autre', '<kbd>⌘</kbd> + <kbd>Tab</kbd>'],
     ['Chercher un fichier ou une application (Spotlight)', '<kbd>⌘</kbd> + <kbd>Espace</kbd>'],

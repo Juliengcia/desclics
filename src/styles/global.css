@@ -49,8 +49,9 @@
   --espacement-mots: normal;
 
   /* Mise en page */
-  --largeur-max: 76rem;
-  --largeur-texte: 42rem;
+  --largeur-max: 90rem;    /* 1440 px : grilles, tableaux, sommaire */
+  --largeur-texte: 46rem;
+  --mesure: 70ch;           /* paragraphes : environ 70 caractères par ligne */
   --gouttiere: 1rem;
   --rayon: 14px;
   --rayon-grand: 22px;
@@ -281,12 +282,17 @@ button { font: inherit; color: inherit; }
 @media (min-width: 640px) { .grille--2, .grille--3, .grille--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .grille--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .grille--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-/* Carte cliquable entière (lien étendu) */
-.carte-lien { position: relative; transition: transform .15s ease, box-shadow .15s ease; }
-.carte-lien:hover { transform: translateY(-2px); }
-.carte-lien a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+/* Carte cliquable : seul le titre est un lien ; le texte reste sélectionnable (voir liens-et-cartes.ts). */
+.carte-lien { position: relative; transition: transform .15s ease, box-shadow .15s ease, outline-color .15s; }
+.carte-cliquable { cursor: pointer; }
+.carte-cliquable :is(p, li, span:not(.pastille)) { cursor: text; }
+.carte-lien:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgb(22 24 29 / .1); }
+.carte-lien:hover [data-carte-lien] { text-decoration: underline; }
 .carte-lien:focus-within { outline: 3px solid var(--focus); outline-offset: 3px; }
-.carte-lien a:focus-visible { outline: none; }
+.carte-lien [data-carte-lien]:focus-visible { outline: none; }
+
+/* Liens externes : icône (le texte caché est ajouté par le script). */
+.icone-externe { display: inline-block; width: .85em; height: .85em; margin-left: .2em; vertical-align: -.05em; flex: none; }
 
 /* ---------- Peinture décorative (hero) ---------- */
 .peinture { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }

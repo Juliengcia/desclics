@@ -10,7 +10,14 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [ ] **Aperçu par branche** : GitHub Pages ne publie qu'une version. Aujourd'hui, chaque branche produit un aperçu téléchargeable (site + captures) dans l'onglet Actions. Pour un vrai lien d'aperçu par branche : Cloudflare Pages ou Netlify (gratuits), à connecter au dépôt.
 - [ ] **Nom de domaine** (ex. desclics.fr) : vérifier la disponibilité et le registre INPI avant achat.
 
+- [ ] **Dossier `references/design`** : il n'existe pas dans le dépôt (seul `refs/`, images 01 à 09). Si d'autres références existent, les ajouter au dépôt.
+
 ## À revérifier
+
+- [ ] **Alerte arnaques** (`src/data/alertes.ts`) : relire chaque mois sur cybermalveillance.gouv.fr, retirer les alertes de plus de six mois, changer le bandeau de l'accueil (`site.ts`, changer `id` pour le réafficher).
+- [ ] **Faux numéro d'opposition bancaire** (alerte Cybermalveillance du 3 décembre 2025) : page illisible depuis le poste de développement, non reprise dans les alertes. À relire.
+- [ ] **Dictée vocale** : testée seulement par simulation (pas de micro en test automatique). À essayer sur Chrome, Edge et Safari (Mac et iPhone).
+- [ ] **Recherche sur Firefox** : pas de dictée (le bouton est masqué), c'est normal.
 
 - [ ] **Liens externes** (199, liste dans rapports/liens-externes.txt) : le réseau de développement bloque la plupart des sites ; vérifier à la main en priorité les pages d'aide Apple, Google, Samsung, CNIL (adresses de pages précises rédigées d'après les recherches).
 - [ ] **Menus Samsung** (One UI) : les intitulés varient selon les versions (« Batterie et maintenance de l'appareil », « Gestion globale »). À contrôler sur un appareil récent.
@@ -25,7 +32,9 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [ ] Frise des connectiques : dates RJ11 et RJ45 données en décennies ; USB (1996) et USB-C (2014) à confirmer sur les sites de l'USB-IF. Sources actuelles : Wikipédia.
 - [ ] Windows 11 : libellés « Recommandations de nettoyage » et « Applications installées » à revoir à chaque mise à jour majeure (captures réelles à faire).
 - [ ] Captures réelles (Playwright impossible pour Windows/macOS) : à défaut, illustrations SVG de l'écran Windows Update et du Gestionnaire des tâches à prévoir.
-- [ ] Adresse France Services utilisée sur l'accueil (france-services.gouv.fr) à confirmer.
+- [ ] Adresse France Services (france-services.gouv.fr), utilisée sur la page « Se faire aider », à confirmer : la page n'a pas pu être lue depuis le poste de développement.
+- [ ] Page « Se faire aider » : la carte des conseillers numériques sur info.gouv.fr affichait « données en cours de collecte » le 9 novembre 2026. Remplacer le lien par l'adresse directe de la carte nationale dès qu'elle est confirmée.
+- [ ] Solidarité Numérique (01 70 772 372) : le site redirige vers lesbases.anct.gouv.fr, numéro non retrouvé. Non cité sur le site ; vérifier s'il existe encore.
 
 ## Prochaines étapes
 
@@ -33,10 +42,11 @@ Idées, améliorations, retours des lecteurs, informations à revérifier.
 - [x] Étape 5 : les 12 rubriques sont rédigées (89 modules).
 - [ ] Étape 6 : audit final (accessibilité manuelle, Lighthouse, relecture orthographique complète).
 - [ ] Visuels : seuls 4 schémas existent (ordinateur). Prévoir des illustrations SVG simplifiées pour les modules smartphone (écran d'appel, réglages rapides), WhatsApp, banque.
-- [ ] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques), sources à vérifier.
-- [ ] Parcours « Je viens de… » (4 parcours) dès que leurs modules existent.
+- [x] Page « Où se faire aider près de chez soi » (France Services, conseillers numériques, médiathèques, Aidants Connect).
+- [x] Parcours « Je viens de… » (4 parcours).
 - [ ] Version FALC des pages clés (démarches, arnaques, premiers pas smartphone).
-- [ ] Page « Fiches Bristol » : imprimer toutes les fiches d'une rubrique.
+- [x] Page « Fiches Bristol » : imprimer toutes les fiches d'une rubrique.
+- [x] Page « Quoi de neuf ? ». Penser à ajouter une ligne dans `nouveautes.ts` à chaque nouveauté.
 - [ ] Audit Lighthouse (performance, SEO) en plus d'axe-core, dans la CI.
 - [ ] Images : passer les futures captures en WebP / AVIF (composant `<Image>` d'Astro).
 - [ ] Mettre à jour Astro (version majeure 7 disponible ; le socle utilise la 5, stable).

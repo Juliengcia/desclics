@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import { lien } from '../lib/chemins';
+---
+<Base titre="Mes favoris" description="Les pages que vous avez gardées en favori sur Desclics. Sans compte : la liste reste dans votre navigateur, sur cet appareil." indexer={false}>
+  <div class="conteneur page-favoris">
+    <FilAriane miettes={[{ titre: 'Mes favoris' }]} favori={false} />
+    <h1>Mes favoris</h1>
+    <p class="chapo">Les pages que vous avez gardées. Pour en ajouter une, appuyez sur « Ajouter aux favoris », près du titre de la page.</p>
+    <p class="favoris-avert">Vos favoris restent dans ce navigateur, sur cet appareil. Ils disparaissent si vous effacez les données du navigateur ou si vous changez d'appareil.</p>
+    <div data-favoris-page>
+      <noscript><p>Les favoris ont besoin de JavaScript. Vous pouvez utiliser les favoris de votre navigateur à la place.</p></noscript>
+    </div>
+    <p class="visually-hidden" role="status" data-favoris-statut></p>
+    <p><a href={lien('plan-du-site')}>Parcourir le plan du site</a></p>
+  </div>
+</Base>
+<style>
+  .page-favoris { max-width: 52rem; }
+  .favoris-avert { padding: .9rem 1.1rem; border-radius: 14px; background: var(--surface-2); font-size: 1rem; }
+</style>

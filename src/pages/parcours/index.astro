@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import Icone from '../../components/Icone.astro';
+import { parcours } from '../../data/parcours';
+import { lien } from '../../lib/chemins';
+---
+<Base titre="Parcours « Je viens de… »" description="Nouveau smartphone, nouvel ordinateur, Internet à la maison, SMS bizarre : quatre parcours qui indiquent quoi lire, et dans quel ordre.">
+  <div class="conteneur">
+    <FilAriane miettes={[{ titre: 'Parcours' }]} />
+    <header class="entete-page">
+      <p class="etiquette">Parcours</p>
+      <h1>Je viens de… <span class="ton-doux">par où commencer ?</span></h1>
+      <p class="chapo">Une situation, puis les étapes à suivre dans l'ordre. Chaque étape renvoie au bon chapitre d'un module.</p>
+    </header>
+    <ul class="grille grille--2 liste-parcours">
+      {parcours.map((p) => (
+        <li class:list={['carte carte-lien', `pastel-${p.pastel}`]}>
+          <span class="pastille"><Icone nom={p.icone} /></span>
+          <h2><a href={lien(`parcours/${p.slug}`)}>Je viens {p.situation}</a></h2>
+          <p>{p.chapo}</p>
+          <p class="meta"><Icone nom="horloge" taille={18} /> {p.etapes.length} étapes · environ {p.duree} minutes au total</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+<style>
+  .entete-page { max-width: 52rem; margin-bottom: 2rem; }
+  .entete-page h1 { margin-top: 1rem; }
+  .liste-parcours { list-style: none; padding: 0; margin: 0; }
+  .liste-parcours h2 { font-size: 1.4rem; margin: 2rem 0 .5rem; }
+  .liste-parcours h2 a { color: var(--texte); text-decoration: none; }
+  .liste-parcours li:hover h2 a { text-decoration: underline; }
+  .liste-parcours p { margin: 0 0 .5rem; color: var(--texte); font-size: 1rem; }
+  .meta { display: flex; align-items: center; gap: .4rem; font: 600 .95rem var(--police-titre); }
+</style>
