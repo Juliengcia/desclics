@@ -22,7 +22,7 @@ const canonique = new URL(Astro.url.pathname, Astro.site).href;
 const imageOg = new URL(lien('og-image.png'), Astro.site).href;
 ---
 <!doctype html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" data-bandeau-id={site.bandeau.id}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,6 +64,7 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
       var app = p.appareils || p.appareil || det;
       if (app) d.setAttribute('data-appareils', app);
       if (!p.appareils && !p.appareil) d.setAttribute('data-appareils-auto', '');
+      try { if (localStorage.getItem('desclics-bandeau-ferme') === d.getAttribute('data-bandeau-id')) d.setAttribute('data-bandeau-ferme', ''); } catch (e) {}
     })();
   </script>
 </head>

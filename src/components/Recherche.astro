@@ -18,7 +18,7 @@ const { mode = 'deroulant', id = 'recherche', libelleVisible = false, compact = 
     <div class="recherche-ligne">
       <Icone nom="recherche" class="recherche-loupe" />
       <input id={`${id}-champ`} name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search"
-        placeholder={compact ? 'Que cherchez-vous ?' : 'Exemple : copier-coller, carte Vitale'}
+        placeholder={compact ? 'Que cherchez-vous ?' : 'Exemple : copier-coller'}
         data-recherche-champ
         {...(mode === 'deroulant'
           ? { role: 'combobox', 'aria-autocomplete': 'list', 'aria-expanded': 'false', 'aria-controls': `${id}-liste` }
