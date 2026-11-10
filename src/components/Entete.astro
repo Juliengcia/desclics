@@ -178,7 +178,7 @@ const nbModules = (n: number) => `${n} module${n > 1 ? 's' : ''}`;
     .nav-principale { margin-right: 1rem; }
   }
   @media (min-width: 1360px) { .outil-texte { display: inline; } .outil-texte-cache { display: none; } }
-  @media (max-width: 479px) { .entete-nom { font-size: 1.25rem; } .outil-texte-mobile { display: none; } .entete-outils { gap: 0; } }
+  @media (max-width: 479px) { .entete-nom { font-size: 1.25rem; } .outil-texte-mobile { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .entete-outils { gap: 0; } }
   /* Accueil : la recherche de l'en-tête n'apparaît qu'une fois la grande recherche dépassée. */
   .entete--accueil:not(.recherche-hero-depassee) :is(.entete-recherche, .bouton-recherche-mobile) { display: none; }
 
@@ -216,7 +216,8 @@ const nbModules = (n: number) => `${n} module${n > 1 ? 's' : ''}`;
   /* Texte agrandi (≥ 150 %) : l'en-tête passe en version compacte, comme sur mobile. */
   .entete-barre { flex-wrap: wrap; }
   .entete-outils { flex-wrap: wrap; justify-content: flex-end; }
-  :global(:root[data-grand-texte]) :is(.nav-principale, .outil-texte, .outil-texte-mobile, .entete-recherche) { display: none !important; }
+  :global(:root[data-grand-texte]) :is(.nav-principale, .outil-texte, .entete-recherche) { display: none !important; }
+  :global(:root[data-grand-texte]) .outil-texte-mobile { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   :global(:root[data-grand-texte]) .bouton-recherche-mobile { display: inline-flex; }
   :global(:root[data-grand-texte]) .entete--accueil:not(.recherche-hero-depassee) .bouton-recherche-mobile { display: none; }
   :global(:root[data-grand-texte]) .bouton-menu-mobile { display: inline-flex; }

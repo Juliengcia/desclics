@@ -89,7 +89,18 @@ const exemples = [
       p.textContent = "Le traducteur n'a reconnu aucun mot technique dans cette phrase. Vérifiez l'orthographe, ou essayez avec un seul mot. Vous pouvez aussi :";
       const ul = document.createElement('ul');
       const q = encodeURIComponent(brut.trim().slice(0, 80));
-      ul.innerHTML = `<li><a href="${base}">parcourir le glossaire complet</a> ;</li><li><a href="${recherche}?q=${q}">chercher cette phrase sur le site</a> ;</li><li><a href="${depot}/issues/new?title=${encodeURIComponent('Glossaire : mot à ajouter')}">nous proposer un mot à ajouter</a>.</li>`;
+      const liens = [
+        [base, 'parcourir le glossaire complet', ' ;'],
+        [recherche + '?q=' + q, 'chercher cette phrase sur le site', ' ;'],
+        [depot + '/issues/new?title=' + encodeURIComponent('Glossaire : mot à ajouter'), 'nous proposer un mot à ajouter', '.'],
+      ];
+      for (const [cible, texte, ponct] of liens) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.setAttribute('href', cible); a.textContent = texte;
+        li.append(a, ponct);
+        ul.append(li);
+      }
       sortie.append(p, ul);
     } else {
       h.textContent = `${trouves.length} mot${trouves.length > 1 ? 's' : ''} expliqué${trouves.length > 1 ? 's' : ''}`;
