@@ -1,0 +1,60 @@
+---
+/**
+ * Liste de raccourcis clavier, ligne par ligne : la touche à gauche, l'action à droite.
+ * <Raccourcis legende="Raccourcis du navigateur" lignes={[
+ *   ['Ouvrir un nouvel onglet', '<kbd>Ctrl</kbd> + <kbd>T</kbd>', '<kbd>⌘</kbd> + <kbd>T</kbd>'],
+ * ]} />
+ * Chaque ligne : [action, touches Windows (ou touches communes), touches Mac (facultatif)].
+ * Avec une colonne Mac, la liste suit « Mon appareil » : Windows seul, Mac seul, ou les deux.
+ */
+interface Props { legende: string; lignes: string[][]; entete?: [string, string] }
+const { legende, lignes, entete = ['Raccourci', 'Action'] } = Astro.props;
+const deuxSystemes = lignes.some((l) => l.length > 2 && l[2]);
+---
+<figure class="raccourcis" data-raccourcis={deuxSystemes ? 'windows,mac' : undefined}>
+  <figcaption>{legende}</figcaption>
+  <ul class="raccourcis-liste">
+    <li class="raccourcis-entete" aria-hidden="true"><span>{entete[0]}</span><span>{entete[1]}</span></li>
+    {lignes.map(([action, win, mac]) => (
+      <li class="raccourci">
+        <span class="raccourci-touches">
+          {deuxSystemes && mac ? (
+            <>
+              <span class="raccourci-version" data-systeme-rac="windows"><span class="raccourci-os">Windows</span> <span set:html={win} /></span>
+              <span class="raccourci-version" data-systeme-rac="mac"><span class="raccourci-os">Mac</span> <span set:html={mac} /></span>
+            </>
+          ) : <span set:html={win} />}
+        </span>
+        <span class="raccourci-action"><span class="visually-hidden"> : </span><span set:html={action} /></span>
+      </li>
+    ))}
+  </ul>
+</figure>
+<style>
+  .raccourcis { margin: 1.5rem 0; border: 1px solid var(--trait); border-radius: var(--rayon); background: var(--surface); overflow: hidden; max-width: 46rem; }
+  figcaption { font: 650 1.05rem var(--police-titre); padding: .9rem 1rem .5rem; }
+  .raccourcis-liste { list-style: none; margin: 0; padding: 0 !important; }
+  .raccourcis-liste li { display: grid; grid-template-columns: minmax(11rem, 2fr) minmax(0, 3fr); gap: .25rem 1.25rem; align-items: center;
+    padding: .65rem 1rem; border-top: 1px solid var(--trait); margin: 0 !important; }
+  .raccourcis-entete { background: var(--surface-2); font: 600 .85rem var(--police-titre); text-transform: uppercase; letter-spacing: .06em; color: var(--texte-doux); padding-block: .45rem !important; }
+  .raccourci-touches { display: grid; gap: .35rem; font-size: 1rem; }
+  .raccourci-version { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem; }
+  .raccourci-os { font: 600 .8rem var(--police-titre); color: var(--texte-doux); min-width: 4.2rem; }
+  .raccourci-action { font-size: 1rem; }
+  /* Un seul système affiché : l'étiquette Windows / Mac devient inutile. */
+  .raccourcis[data-un-systeme] .raccourci-os { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 479px) { .raccourcis-liste li { grid-template-columns: minmax(0, 1fr); } .raccourcis-entete { display: none !important; } }
+  :global(:root[data-grand-texte]) .raccourcis-liste li { grid-template-columns: minmax(0, 1fr); }
+</style>
+<script>
+  import { appareilsAffiches } from '../../scripts/appareils';
+  document.querySelectorAll<HTMLElement>('[data-raccourcis]').forEach((bloc) => {
+    const maj = () => {
+      const montres = appareilsAffiches(['windows', 'mac']);
+      bloc.querySelectorAll<HTMLElement>('[data-systeme-rac]').forEach((v) => (v.hidden = !montres.includes(v.dataset.systemeRac!)));
+      bloc.toggleAttribute('data-un-systeme', montres.length === 1);
+    };
+    maj();
+    document.addEventListener('desclics:appareils', maj);
+  });
+</script>
