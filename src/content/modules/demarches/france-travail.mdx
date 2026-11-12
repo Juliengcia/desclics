@@ -1,0 +1,102 @@
+---
+identifiant: france-travail
+titre: "France Travail : s'actualiser et chercher un emploi"
+rubrique: demarches
+resume: Utiliser son espace France Travail, s'actualiser chaque mois, préparer son CV, candidater en ligne et repérer les fausses offres d'emploi.
+duree: 8
+niveau: Intermédiaire
+objectifs:
+  - se connecter à son espace France Travail ;
+  - s'actualiser chaque mois dans les délais ;
+  - créer ou mettre en ligne son CV ;
+  - candidater à une offre ;
+  - repérer les fausses offres.
+motsCles: [France Travail, Pôle emploi, actualisation, s'actualiser, espace personnel, CV, candidater, offre d'emploi, fausse offre, arnaque emploi]
+titreSeo: "France Travail : s'actualiser, CV et offres d'emploi"
+metaDescription: "S'actualiser chaque mois sur France Travail, créer son CV, candidater en ligne et repérer les fausses offres d'emploi : le guide pas à pas."
+bristol:
+  - "Site officiel : francetravail.fr · Appli « Mon espace - France Travail »"
+  - "Actualisation : chaque mois, du 28 au 15 du mois suivant (26 en février)"
+  - "Pas d'actualisation = radiation et allocations suspendues"
+  - "CV : rubrique « Mon profil de compétences » ou « Mes CV »"
+  - "Offre qui demande de l'argent, des codes bancaires ou un recrutement sur WhatsApp = arnaque"
+sources:
+  - titre: France Travail actualisation
+    url: https://www.francetravail.fr/faq/candidat/ma-situation-change/actualisation-et-changement-de-s/actualisation/france-travail-actualisation.html
+    editeur: France Travail
+  - titre: "Le paiement France Travail : versement de l'allocation chômage"
+    url: https://www.francetravail.fr/candidat/vos-droits-et-demarches/vos-demarches-aupres-de-pole-emp/le-paiement-des-allocations.html
+    editeur: France Travail
+  - titre: Les cybermalveillances les plus fréquentes
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/cybersecurite-les-cybermalveillances-les-plus-frequentes
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+pourAidant:
+  - "Une alarme mensuelle le 28 dans le téléphone évite l'oubli de l'actualisation."
+  - "Les conseillers France Travail et France Services aident à rédiger le CV."
+liesA: [demarches/caf, bureautique/traitement-de-texte, securite/arnaques]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment se connecter à son espace ? \{#espace\}
+
+<Etapes>
+1. Allez sur **francetravail.fr**, cliquez sur **Se connecter**, puis **Candidat**. Ou installez l'appli **Mon espace - France Travail**.
+2. Saisissez votre **identifiant** France Travail et votre mot de passe, ou passez par **FranceConnect**.
+</Etapes>
+
+## Comment s'actualiser chaque mois ? \{#actualisation\}
+
+<Definition terme="actualisation">
+L'actualisation est la déclaration mensuelle de votre situation : avez-vous travaillé, êtes-vous toujours à la recherche d'un emploi ? Elle est obligatoire pour rester inscrit et percevoir vos allocations.
+</Definition>
+
+<Etapes>
+1. Entre le **28 du mois** et le **15 du mois suivant** (à partir du 26 en février), connectez-vous à votre espace.
+2. Cliquez sur **M'actualiser**.
+3. Répondez aux questions : heures travaillées, revenus, formation, arrêt maladie…
+4. Validez et gardez la confirmation.
+</Etapes>
+
+<Attention>
+Sans actualisation, vous êtes radié de la liste des demandeurs d'emploi et vos allocations sont suspendues. Le paiement de l'allocation arrive au début du mois suivant.
+</Attention>
+
+## Comment préparer son CV ? \{#cv\}
+
+Dans votre espace, la rubrique **Mes CV** (ou profil de compétences) permet de créer un CV en ligne ou de déposer le vôtre en PDF. Les recruteurs peuvent le consulter si vous le rendez visible. Voir aussi « Écrire et mettre en forme une lettre » pour le traitement de texte.
+
+## Comment candidater ? \{#candidater\}
+
+1. Cherchez des offres dans **Offres d'emploi** : métier, ville, distance.
+2. Ouvrez l'offre, lisez le **mode de candidature**.
+3. Cliquez sur **Postuler** : joignez votre CV et, si demandé, une lettre de motivation.
+
+## Comment repérer une fausse offre ? \{#fausses-offres\}
+
+<TableauComparatif
+  legende="Signes d'une fausse offre d'emploi"
+  colonnes={['Signe', 'Exemple']}
+  lignes={[
+    ['On vous demande de l’argent', 'Frais de dossier, de formation, de matériel'],
+    ['Salaire trop beau', '« 2 000 € par semaine depuis chez vous, sans expérience »'],
+    ['Recrutement par messagerie', 'Tout se passe sur WhatsApp ou Telegram, sans entretien'],
+    ['Demande de coordonnées bancaires', 'RIB et code reçu par SMS « pour le premier salaire »'],
+  ]}
+/>
+
+<Attention>
+Un employeur ne vous demande jamais d'argent pour être embauché. Signalez l'offre à France Travail et ne donnez aucune information bancaire.
+</Attention>

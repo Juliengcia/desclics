@@ -1,0 +1,96 @@
+---
+identifiant: verifier-information
+titre: "S'informer et vérifier une information"
+rubrique: reseaux-sociaux
+resume: Savoir qui parle, repérer les fausses nouvelles, reconnaître une image truquée ou sortie de son contexte, faire une recherche d'image inversée et utiliser les sites de vérification.
+duree: 7
+niveau: Intermédiaire
+objectifs:
+  - identifier la source d'une information ;
+  - reconnaître les signes d'une fausse nouvelle ;
+  - repérer une image truquée ou détournée ;
+  - faire une recherche d'image inversée ;
+  - consulter les sites de vérification.
+motsCles: [fausse information, fake news, vérifier une info, source, image truquée, recherche d'image inversée, Google Lens, AFP Factuel, Les Décodeurs, désinformation]
+titreSeo: "Vérifier une information et repérer une fausse nouvelle"
+metaDescription: "Comment vérifier une information vue sur les réseaux : qui parle, signes d'une fausse nouvelle, image truquée, recherche d'image inversée, sites de vérification."
+bristol:
+  - "Qui parle ? Un média connu, un organisme officiel, ou un compte anonyme ?"
+  - "Titre choc, émotion forte, « on vous cache » = prudence"
+  - "Chercher la même info dans deux médias reconnus"
+  - "Image : recherche inversée avec Google Lens"
+  - "Sites de vérification : AFP Factuel, Les Décodeurs, CheckNews"
+sources:
+  - titre: CLEMI, éducation aux médias et à l'information
+    url: https://www.clemi.fr/
+    editeur: CLEMI (ministère de l'Éducation nationale)
+  - titre: AFP Factuel
+    url: https://factuel.afp.com/
+    editeur: Agence France-Presse
+  - titre: Les Décodeurs
+    url: https://www.lemonde.fr/les-decodeurs/
+    editeur: Le Monde
+verifieLe: 2026-11-09
+pourAidant:
+  - "Le bon réflexe à faire répéter : « Avant de partager, je vérifie ». Partager une fausse information, même de bonne foi, la propage."
+liesA: [intelligence-artificielle/limites, reseaux-sociaux/comprendre, internet/rechercher]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qui parle ? \{#source\}
+
+Avant de croire ou de partager, regardez :
+
+- **qui publie** : un média connu, un organisme officiel (.gouv.fr), un expert identifié, ou un compte anonyme ;
+- **la date** : une vieille information peut ressortir comme si elle était nouvelle ;
+- **les sources citées** : l'article renvoie-t-il vers une étude, un document officiel ?
+
+## Comment reconnaître une fausse nouvelle ? \{#signes\}
+
+<TableauComparatif
+  legende="Les signes qui doivent alerter"
+  colonnes={['Signe', 'Exemple']}
+  lignes={[
+    ['Titre choc, en majuscules', '« URGENT : ce que les médias vous cachent »'],
+    ['Émotion forte', 'Colère, peur, indignation'],
+    ['Aucune source', '« Un ami infirmier m’a dit… »'],
+    ['Appel à partager vite', '« Partagez avant que ce soit supprimé ! »'],
+    ['Seul site à en parler', 'Aucun média reconnu ne reprend l’info'],
+  ]}
+/>
+
+<Etapes titre="Vérifier en trois minutes">
+1. Copiez le titre ou les mots clés dans un moteur de recherche.
+2. Regardez si **deux médias reconnus** en parlent.
+3. Consultez un **site de vérification** (chapitre suivant).
+</Etapes>
+
+## Comment repérer une image truquée ou détournée ? \{#images\}
+
+Une vraie photo peut être **sortie de son contexte** (une vieille photo présentée comme récente), et une image peut être **fabriquée** par intelligence artificielle (voir « Limites, erreurs et deepfakes »).
+
+<Etapes titre="Faire une recherche d'image inversée">
+1. Faites un appui long sur l'image (téléphone) ou un clic droit (ordinateur).
+2. Choisissez **Rechercher avec Google Lens** (ou **Rechercher l'image**).
+3. Les résultats montrent où et quand l'image est apparue pour la première fois.
+</Etapes>
+
+## Où vérifier une information ? \{#verification\}
+
+Des journalistes vérifient les rumeurs qui circulent : **AFP Factuel** (Agence France-Presse), **Les Décodeurs** (Le Monde), **CheckNews** (Libération), **Les Surligneurs** (pour le droit). Tapez le sujet suivi de « vérification » ou « intox ».
+
+<ARetenir>
+Dans le doute, ne partagez pas. Une fausse information se propage surtout grâce aux partages de bonne foi.
+</ARetenir>

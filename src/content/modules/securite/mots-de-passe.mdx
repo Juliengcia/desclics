@@ -1,0 +1,113 @@
+---
+identifiant: mots-de-passe
+titre: Créer de bons mots de passe
+rubrique: securite
+resume: Ce qui fait un bon mot de passe, pourquoi en avoir un par compte, comment en retenir plusieurs et que faire en cas d'oubli.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - reconnaître un mot de passe faible ;
+  - créer un mot de passe solide et mémorisable ;
+  - utiliser un mot de passe différent par compte ;
+  - réagir en cas d'oubli ou de fuite.
+motsCles: [mot de passe, sécurité, phrase de passe, mot de passe oublié, réinitialiser, compte piraté, fuite de données]
+titreSeo: "Comment créer un bon mot de passe facile à retenir ?"
+metaDescription: "Comment créer un mot de passe solide et facile à retenir, pourquoi en avoir un par compte et que faire en cas d'oubli : les conseils de Cybermalveillance.gouv.fr."
+bristol:
+  - "Au moins 12 caractères : majuscules, minuscules, chiffres, symboles"
+  - "Ou une phrase de passe : 4 à 5 mots au hasard (ex. Lampe-Gravier-Melon-Pluie!7)"
+  - "Un mot de passe différent pour chaque compte important"
+  - "Jamais : date de naissance, prénom, « 123456 », nom de l'animal"
+  - "Oublié ? Lien « Mot de passe oublié » sur la page de connexion"
+sources:
+  - titre: Pourquoi et comment bien gérer ses mots de passe ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/mots-de-passe
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Comment choisir un bon mot de passe ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/comment-choisir-un-bon-mot-de-passe
+    editeur: Cybermalveillance.gouv.fr
+  - titre: Recommandations relatives à l'authentification multifacteur et aux mots de passe
+    url: https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-authentification_multifacteur_et_mots_de_passe.pdf
+    editeur: ANSSI
+verifieLe: 2026-11-05
+pourAidant:
+  - "Beaucoup utilisent le même mot de passe partout par peur d'oublier. Proposez le gestionnaire de mots de passe plutôt qu'un carnet laissé près de l'ordinateur."
+  - "Le carnet papier reste acceptable s'il est rangé à la maison, loin de l'ordinateur, et n'indique pas les sites en clair."
+liesA: [securite/gestionnaire-mots-de-passe, securite/double-authentification, depannage/mot-de-passe-oublie]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'un bon mot de passe ? \{#bon-mot-de-passe\}
+
+<Definition terme="mot de passe">
+Un <Terme id="mot-de-passe">mot de passe</Terme> est une clé secrète qui protège un compte. Plus il est long et imprévisible, plus il est difficile à deviner.
+</Definition>
+
+Cybermalveillance.gouv.fr recommande **au moins 12 caractères**, mélangeant majuscules, minuscules, chiffres et caractères spéciaux.
+
+<TableauComparatif
+  legende="Mauvais et bons mots de passe"
+  colonnes={['Exemple', 'Verdict', 'Pourquoi']}
+  lignes={[
+    ['123456', 'Très faible', 'Le plus utilisé au monde, trouvé en une seconde'],
+    ['Jacqueline1974', 'Faible', 'Prénom et année de naissance : faciles à trouver'],
+    ['Soleil2026!', 'Moyen', 'Mot courant avec des ajouts prévisibles'],
+    ['Lampe-Gravier-Melon-Pluie!7', 'Solide', 'Long, mots sans lien, facile à retenir'],
+  ]}
+/>
+
+## Comment créer un mot de passe solide et facile à retenir ? \{#phrase-de-passe\}
+
+<Etapes titre="Fabriquer une phrase de passe">
+1. Choisissez **quatre ou cinq mots sans rapport** entre eux, par exemple en ouvrant un livre au hasard.
+2. Reliez-les par un tiret ou un point.
+3. Mettez une majuscule à chaque mot.
+4. Ajoutez un chiffre et un symbole à la fin.
+5. Vous obtenez une <Terme id="phrase-de-passe">phrase de passe</Terme> : longue, solide, et dont vous vous souvenez en imaginant la scène.
+</Etapes>
+
+<Attention>
+N'utilisez jamais d'informations personnelles : date de naissance, prénom des enfants, nom de l'animal, ville. On les trouve facilement sur les réseaux sociaux.
+</Attention>
+
+## Pourquoi un mot de passe par compte ? \{#un-par-compte\}
+
+Les sites se font parfois voler leurs fichiers de mots de passe. Si vous utilisez le même partout, les pirates essaient ce mot de passe sur votre messagerie, votre banque, vos achats.
+
+<ARetenir>
+Votre **messagerie e-mail** a besoin du meilleur mot de passe : elle sert à réinitialiser tous les autres.
+</ARetenir>
+
+Retenir des dizaines de mots de passe est impossible : utilisez un **gestionnaire de mots de passe** (module suivant).
+
+## Que faire en cas d'oubli ? \{#oubli\}
+
+<Etapes>
+1. Sur la page de connexion, touchez **Mot de passe oublié**.
+2. Indiquez votre adresse e-mail ou votre numéro.
+3. Ouvrez le message reçu (pensez au dossier Spam) et suivez le lien, ou tapez le code reçu.
+4. Choisissez un nouveau mot de passe, différent de l'ancien.
+</Etapes>
+
+<Attention>
+Un vrai service ne vous envoie jamais un lien de réinitialisation que vous n'avez pas demandé. Si vous en recevez un, ne cliquez pas : c'est peut-être une tentative d'hameçonnage.
+</Attention>
+
+## Que faire si un compte est piraté ? \{#pirate\}
+
+1. Changez immédiatement le mot de passe de ce compte et de tous ceux qui utilisaient le même.
+2. Activez la **double authentification**.
+3. Prévenez vos contacts si des messages ont été envoyés en votre nom.
+4. Faites-vous aider sur **17Cyber.gouv.fr** (voir « J'ai été victime : que faire ? »).

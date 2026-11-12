@@ -1,0 +1,81 @@
+---
+/**
+ * Gabarit A5 des fiches Bristol, servant UNIQUEMENT à fabriquer les PDF au build
+ * (scripts/generer-fiches-pdf.mjs). Ces pages sont supprimées de dist/ une fois les PDF créés.
+ * - /fiches/a5/<rubrique>/<module>/ : une fiche  -> fiches/pdf/<rubrique>-<module>.pdf
+ * - /fiches/a5/<rubrique>/          : toutes les fiches de la rubrique -> fiches/pdf/<rubrique>.pdf
+ * Le contenu vient des métadonnées du module (champ bristol) : le PDF reste toujours à jour.
+ */
+import '@fontsource-variable/bricolage-grotesque/standard.css';
+import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
+import { rubriques } from '../../../data/rubriques';
+import { modulesPublies, type EntreeModule } from '../../../lib/navigation';
+import { lien } from '../../../lib/chemins';
+import { site } from '../../../data/site';
+
+export async function getStaticPaths() {
+  const publies = await modulesPublies();
+  const parModule = publies.map((m) => ({ params: { chemin: m.chemin }, props: { fiches: [m], titre: m.titre } }));
+  const parRubrique = rubriques
+    .map((r) => ({ r, mods: publies.filter((m) => m.rubrique.slug === r.slug) }))
+    .filter((x) => x.mods.length)
+    .map(({ r, mods }) => ({ params: { chemin: r.slug }, props: { fiches: mods, titre: `Fiches Bristol : ${r.titre}` } }));
+  return [...parModule, ...parRubrique];
+}
+const { fiches, titre } = Astro.props as { fiches: EntreeModule[]; titre: string };
+const dateFr = (x: Date) => x.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+const adresse = (chemin: string) => new URL(lien(chemin), Astro.site).href.replace(/^https?:\/\//, '').replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <title>{titre} | {site.nom}</title>
+  <style is:global>
+    @page { size: A5; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #fff; color: #16181D; }
+    body { font: 11pt/1.5 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible', sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { width: 148mm; height: 210mm; padding: 12mm 12mm 10mm; display: flex; flex-direction: column; break-after: page; position: relative; overflow: hidden; }
+    .page:last-child { break-after: auto; }
+    .bande { position: absolute; left: 0; top: 0; bottom: 0; width: 4mm; background: #2440C8; }
+    .tete { display: flex; align-items: center; justify-content: space-between; gap: 4mm; padding-bottom: 4mm; border-bottom: .3mm solid #DCDDE0; }
+    .marque { display: flex; align-items: center; gap: 2mm; font: 650 13pt 'Bricolage Grotesque Variable', sans-serif; letter-spacing: -.03em; color: #16181D; }
+    .marque svg { color: #2440C8; }
+    .rubrique { font: 500 9pt 'Bricolage Grotesque Variable', sans-serif; color: #565B66; text-align: right; }
+    .type { margin: 9mm 0 1.5mm; font: 650 8.5pt 'Bricolage Grotesque Variable', sans-serif; text-transform: uppercase; letter-spacing: .14em; color: #B4430B; }
+    h1 { margin: 0 0 7mm; font: 600 22pt/1.08 'Bricolage Grotesque Variable', sans-serif; letter-spacing: -.035em; font-variation-settings: 'wdth' 92; }
+    ol { list-style: none; margin: 0; padding: 0; counter-reset: l; flex: 1; }
+    li { counter-increment: l; position: relative; padding: 2.6mm 0 2.6mm 10mm; border-bottom: .3mm solid #D8E3F5; font-size: 11.5pt; line-height: 1.45; }
+    li::before { content: counter(l); position: absolute; left: 0; top: 2.4mm; width: 6.5mm; height: 6.5mm; border-radius: 50%; background: #E4E8FB; color: #2440C8;
+      font: 700 9pt/6.5mm 'Bricolage Grotesque Variable', sans-serif; text-align: center; }
+    kbd { display: inline-block; padding: 0 1.6mm; border: .3mm solid #868A93; border-bottom-width: .8mm; border-radius: 1.2mm; font: 600 9pt 'Bricolage Grotesque Variable', sans-serif; line-height: 1.5; white-space: nowrap; }
+    strong { font-weight: 700; }
+    .pied { display: flex; justify-content: space-between; align-items: flex-end; gap: 4mm; padding-top: 4mm; margin-top: 4mm; border-top: .3mm solid #DCDDE0; font-size: 8.5pt; color: #565B66; }
+    .pied p { margin: 0; }
+    .pied .url { color: #2440C8; text-align: right; }
+  </style>
+</head>
+<body>
+  {fiches.map((m) => (
+    <section class="page">
+      <div class="bande"></div>
+      <div class="tete">
+        <span class="marque">
+          <svg viewBox="0 0 52 52" width="22" height="22" aria-hidden="true"><path d="M18 14l20 12-9 2 5 10-4 2-5-10-7 6z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M10 8l4 4M6 18h5M18 4v5" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
+          {site.nom}
+        </span>
+        <span class="rubrique">{m.rubrique.titre}</span>
+      </div>
+      <p class="type">Fiche Bristol</p>
+      <h1>{m.titre}</h1>
+      <ol>{m.entree!.data.bristol.map((l) => <li set:html={l} />)}</ol>
+      <div class="pied">
+        <p>Vérifié le {dateFr(m.entree!.data.verifieLe)}</p>
+        <p class="url">Le module complet :<br />{adresse(m.chemin)}</p>
+      </div>
+    </section>
+  ))}
+</body>
+</html>

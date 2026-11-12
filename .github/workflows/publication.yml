@@ -30,6 +30,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Installer le navigateur (fiches Bristol en PDF)
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,93 @@
+---
+identifiant: cookies-publicites
+titre: "Cookies, publicités et pièges d'interface"
+rubrique: securite
+resume: Comprendre les cookies et la bannière qui les demande, savoir les refuser, repérer les pièges d'interface (dark patterns) et limiter les publicités.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - comprendre ce qu'est un cookie ;
+  - refuser les cookies publicitaires en un clic ;
+  - repérer les pièges d'interface ;
+  - limiter les publicités en ligne.
+motsCles: [cookies, bannière cookies, refuser les cookies, dark patterns, publicité ciblée, bloqueur de publicité, consentement, CNIL]
+titreSeo: "Cookies : faut-il accepter ? Comment refuser ?"
+metaDescription: "À quoi servent les cookies, comment les refuser aussi facilement que les accepter, repérer les pièges d'interface (dark patterns) et limiter la publicité ciblée."
+bristol:
+  - "Bannière cookies : « Tout refuser » doit être aussi simple que « Tout accepter » (règle CNIL)"
+  - "Refuser n'empêche pas d'utiliser le site"
+  - "Pièges : bouton Refuser caché, cases pré-cochées, compte à rebours"
+  - "Moins de pub ciblée : refuser les cookies publicitaires, effacer les cookies du navigateur"
+sources:
+  - titre: "Cookies et autres traceurs"
+    url: https://www.cnil.fr/fr/cookies-et-autres-traceurs
+    editeur: CNIL
+  - titre: Dark patterns
+    url: https://www.cnil.fr/fr/tag/Dark%2Bpatterns
+    editeur: CNIL
+verifieLe: 2026-11-05
+pourAidant:
+  - "Beaucoup acceptent tout par peur que le site ne fonctionne plus : montrez qu'il fonctionne aussi après un refus."
+liesA: [internet/navigateur, securite/faux-sites, vie-pratique/acheter-en-ligne]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'un cookie ? \{#definition\}
+
+<Definition terme="cookie">
+Un <Terme id="cookie">cookie</Terme> est un petit fichier qu'un site enregistre dans votre navigateur pour se souvenir de vous.
+</Definition>
+
+Certains sont **utiles** (garder votre panier, votre connexion, votre langue). D'autres servent à la **publicité** : ils suivent vos visites de site en site pour vous montrer des publicités ciblées.
+
+## Comment refuser les cookies ? \{#refuser\}
+
+La loi impose de demander votre accord pour les cookies publicitaires. Selon la CNIL, **refuser doit être aussi simple qu'accepter**.
+
+<Etapes titre="Répondre à une bannière de cookies">
+1. Cherchez le bouton **Tout refuser** ou **Continuer sans accepter** (parfois en petit, en haut à droite).
+2. S'il n'y en a pas, touchez **Paramétrer** ou **Personnaliser**, puis désactivez tout ce qui n'est pas « nécessaire », et touchez **Enregistrer**.
+3. Le site reste utilisable normalement.
+</Etapes>
+
+<Astuce>
+Vous avez tout accepté par erreur ? Le lien **Gérer les cookies** se trouve souvent en bas de page. Vous pouvez aussi effacer les cookies dans les réglages du navigateur.
+</Astuce>
+
+## Qu'est-ce qu'un piège d'interface ? \{#dark-patterns\}
+
+Un <Terme id="dark-pattern">dark pattern</Terme> est une présentation trompeuse qui vous pousse à faire ce que le site veut.
+
+<TableauComparatif
+  legende="Les pièges les plus courants"
+  colonnes={['Piège', 'Exemple']}
+  lignes={[
+    ['Bouton caché', '« Accepter » en gros bouton bleu, « Refuser » en petit lien gris'],
+    ['Case pré-cochée', 'Assurance ou newsletter ajoutée d’office au panier'],
+    ['Fausse urgence', '« Plus que 2 en stock », compte à rebours'],
+    ['Culpabilisation', '« Non merci, je préfère payer plus cher »'],
+    ['Résiliation difficile', 'S’abonner en 1 clic, résilier en 10 étapes'],
+  ]}
+/>
+
+## Comment limiter les publicités ? \{#publicites\}
+
+1. Refusez les cookies publicitaires.
+2. Dans les réglages de votre compte Google ou Apple, désactivez la **personnalisation des annonces**.
+3. Sur ordinateur, un **bloqueur de publicités** (extension du navigateur) masque une grande partie des annonces. Installez-le uniquement depuis le magasin officiel d'extensions du navigateur.
+
+<Attention>
+Une publicité qui annonce un gain, un virus détecté ou un cadeau est presque toujours un piège. Ne cliquez pas.
+</Attention>

@@ -1,0 +1,93 @@
+---
+identifiant: cloud
+titre: "Le cloud : ses fichiers en ligne"
+rubrique: internet
+resume: Ce qu'est le cloud, les principaux services (Google Drive, iCloud, OneDrive), la synchronisation, l'espace gratuit et payant, et le partage d'un fichier par lien.
+duree: 6
+niveau: Intermédiaire
+objectifs:
+  - comprendre ce qu'est le cloud ;
+  - connaître les principaux services ;
+  - comprendre la synchronisation ;
+  - connaître l'espace gratuit ;
+  - partager un fichier par lien.
+motsCles: [cloud, stockage en ligne, Google Drive, iCloud, OneDrive, synchronisation, espace de stockage, partager un lien, sauvegarde]
+titreSeo: "Le cloud, c'est quoi ? Google Drive, iCloud, OneDrive"
+metaDescription: "Le cloud expliqué simplement : stocker ses fichiers en ligne avec Google Drive, iCloud ou OneDrive, la synchronisation, l'espace gratuit et le partage par lien."
+bristol:
+  - "Le cloud = vos fichiers gardés sur Internet, accessibles depuis tous vos appareils"
+  - "Gratuit : Google 15 Go (partagés avec Gmail et Photos), OneDrive 5 Go, iCloud 5 Go"
+  - "Synchronisation : un fichier modifié sur l'ordinateur l'est aussi sur le téléphone"
+  - "Partager : clic droit → Partager → copier le lien, réglé sur « lecture seule »"
+  - "Supprimer dans un dossier synchronisé supprime partout"
+sources:
+  - titre: Fonctionnement de votre espace de stockage Google
+    url: https://support.google.com/googleone/answer/9312312?hl=fr
+    editeur: Google
+  - titre: Quotas de stockage Microsoft
+    url: https://support.microsoft.com/fr-fr/onedrive/microsoft-storage-quotas
+    editeur: Microsoft
+  - titre: iCloud
+    url: https://www.apple.com/fr/icloud/
+    editeur: Apple
+verifieLe: 2026-11-09
+pourAidant:
+  - "Insistez sur la synchronisation : supprimer une photo sur le téléphone peut la supprimer aussi du cloud."
+liesA: [smartphone/photos, ordinateur/fichiers-dossiers, communiquer/pieces-jointes]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que le cloud ? \{#definition\}
+
+<Definition terme="cloud">
+Le <Terme id="cloud">cloud</Terme> (nuage) est un espace de stockage sur Internet. Vos fichiers sont gardés sur les serveurs d'une entreprise et accessibles depuis tous vos appareils.
+</Definition>
+
+**À quoi ça sert.** Sauvegarder ses photos et documents, les retrouver sur un nouvel appareil, les partager avec un proche.
+
+## Quels sont les principaux services ? \{#services\}
+
+<TableauComparatif
+  legende="Les services courants et leur espace gratuit (vérifié en novembre 2026)"
+  colonnes={['Service', 'Lié à', 'Gratuit']}
+  lignes={[
+    ['Google Drive', 'Compte Google (Android)', '15 Go, partagés avec Gmail et Google Photos'],
+    ['iCloud Drive', 'Compte Apple (iPhone, Mac)', '5 Go'],
+    ['OneDrive', 'Compte Microsoft (Windows)', '5 Go, partagés avec Outlook.com'],
+  ]}
+/>
+
+Au-delà, un abonnement mensuel ou annuel donne plus d'espace.
+
+## Qu'est-ce que la synchronisation ? \{#synchronisation\}
+
+La synchronisation garde les mêmes fichiers partout : une photo prise sur le téléphone apparaît sur l'ordinateur, un document modifié sur l'ordinateur est à jour sur le téléphone.
+
+<Attention>
+La synchronisation marche dans les deux sens : **supprimer** un fichier dans un dossier synchronisé le supprime **partout**. Vérifiez avant un grand ménage. La corbeille du service garde en général les fichiers supprimés quelque temps.
+</Attention>
+
+## Comment partager un fichier par lien ? \{#partager\}
+
+<Etapes>
+1. Dans Google Drive, iCloud Drive ou OneDrive, faites un clic droit (ou appui long) sur le fichier.
+2. Choisissez **Partager**, puis **Copier le lien**.
+3. Réglez l'accès : **lecture seule** pour que la personne puisse voir sans modifier.
+4. Collez le lien dans un e-mail ou un message.
+</Etapes>
+
+<Astuce>
+C'est la solution pour envoyer un fichier trop lourd pour une pièce jointe (voir « Envoyer et ouvrir une pièce jointe »).
+</Astuce>

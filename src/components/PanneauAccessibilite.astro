@@ -28,11 +28,16 @@ const interrupteurs = [
 
   <section aria-labelledby="a11y-appareil">
     <h3 id="a11y-appareil">Mon appareil</h3>
-    <p class="a11y-aide" id="a11y-appareil-aide">Les explications s'affichent pour cet appareil quand il y a des différences.</p>
-    <div class="a11y-appareils" role="radiogroup" aria-labelledby="a11y-appareil" aria-describedby="a11y-appareil-aide">
+    <p class="a11y-aide" id="a11y-appareil-aide">Cochez un, plusieurs ou tous vos appareils. Les explications s'affichent pour eux quand il y a des différences. Appareil détecté : <strong data-systeme-nom>…</strong>.</p>
+    <fieldset class="a11y-appareils" aria-describedby="a11y-appareil-aide">
+      <legend class="visually-hidden">Mes appareils</legend>
       {[['windows', 'Ordinateur Windows'], ['mac', 'Mac'], ['android', 'Android'], ['iphone', 'iPhone']].map(([v, t]) => (
-        <label class="a11y-choix"><input type="radio" name="appareil" value={v} data-choix-appareil /> <span>{t}</span></label>
+        <label class="a11y-choix"><input type="checkbox" name="appareils" value={v} data-choix-appareil /> <span>{t}</span></label>
       ))}
+    </fieldset>
+    <div class="a11y-boutons a11y-boutons--appareils">
+      <button type="button" class="bouton bouton--secondaire" data-appareils-tous>Tout cocher</button>
+      <button type="button" class="bouton bouton--secondaire" data-appareils-detecter>Détecter automatiquement</button>
     </div>
   </section>
 
@@ -90,9 +95,10 @@ const interrupteurs = [
   .a11y-taille { display: flex; align-items: center; gap: .75rem; }
   .a11y-taille .bouton-icone { border: 2px solid var(--bordure); font-size: 1.15rem; min-width: 56px; }
   .a11y-valeur { font: 650 1.2rem var(--police-titre); min-width: 4.5ch; text-align: center; }
-  .a11y-appareils { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .a11y-appareils { border: 0; padding: 0; margin: 0 0 .75rem; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
   .a11y-choix { display: flex; align-items: center; gap: .5rem; min-height: var(--cible); padding: .25rem .75rem; border: 1px solid var(--bordure); border-radius: 12px; cursor: pointer; font-size: 1rem; }
   .a11y-choix:has(input:checked) { border: 2px solid var(--accent); background: var(--accent-pale); }
+    .a11y-boutons--appareils .bouton { flex: 1 1 auto; font-size: .95rem; padding-inline: 1rem; }
   .a11y-choix input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
   .a11y-liste { list-style: none; margin: 0; padding: 0; }
   .a11y-liste li { margin-bottom: .5rem; }

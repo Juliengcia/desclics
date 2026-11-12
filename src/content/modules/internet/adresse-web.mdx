@@ -1,0 +1,95 @@
+---
+identifiant: adresse-web
+titre: Lire une adresse web et reconnaître un site
+rubrique: internet
+resume: Décortiquer une adresse web, comprendre le cadenas et https, reconnaître un site officiel, et se repérer dans la structure d'un site (menu, pied de page, liens).
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - lire une adresse web et trouver le vrai nom du site ;
+  - comprendre ce que signifie le cadenas ;
+  - reconnaître un site officiel ;
+  - se repérer sur un site (menu, recherche, pied de page).
+motsCles: [adresse web, URL, nom de domaine, https, cadenas, site officiel, gouv.fr, menu, pied de page, lien]
+titreSeo: "Lire une adresse web et reconnaître un site officiel"
+metaDescription: "Comment lire une adresse web (URL), trouver le vrai nom du site, comprendre le cadenas https, reconnaître un site officiel et se repérer dans un site."
+bristol:
+  - "Le vrai nom du site est juste avant .fr, .com ou .gouv.fr"
+  - "https et cadenas = connexion chiffrée, pas une garantie d'honnêteté"
+  - "Sites de l'État : .gouv.fr"
+  - "Menu en haut, informations légales et contact en bas de page"
+  - "Un lien se reconnaît au soulignement ou au changement de pointeur (main)"
+sources:
+  - titre: Qu'est-ce qu'une URL ?
+    url: https://developer.mozilla.org/fr/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL
+    editeur: Mozilla (MDN)
+  - titre: "Phishing (hameçonnage) : soyez vigilant sur les informations que vous communiquez"
+    url: https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/phishing-hameconnage-soyez-vigilant-sur-les-informations-que-vous
+    editeur: DGCCRF
+verifieLe: 2026-11-09
+pourAidant:
+  - "Faites lire des adresses à voix haute en partant de la fin : « .fr, impots.gouv… » aide à repérer le vrai nom."
+liesA: [securite/faux-sites, internet/navigateur, internet/fonctionnement]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment lire une adresse web ? \{#url\}
+
+<Definition terme="adresse web (URL)">
+L'<Terme id="url">adresse web</Terme> (ou URL) indique où se trouve une page. Elle s'affiche dans la barre en haut du navigateur.
+</Definition>
+
+Exemple : **https://www.service-public.gouv.fr/particuliers/vosdroits/F1234**
+
+<TableauComparatif
+  legende="Les parties d'une adresse"
+  colonnes={['Partie', 'Exemple', 'Ce que ça veut dire']}
+  lignes={[
+    ['Protocole', 'https://', 'Connexion chiffrée'],
+    ['Nom de domaine', 'service-public.gouv.fr', 'Le vrai nom du site : c’est la partie à vérifier'],
+    ['Chemin', '/particuliers/vosdroits/F1234', 'La page précise dans le site'],
+  ]}
+/>
+
+<ARetenir>
+Lisez le nom de domaine **en partant du .fr ou du .com, vers la gauche**. Dans « impots.gouv.fr.paiement-rapide.com », le vrai site est « paiement-rapide.com ».
+</ARetenir>
+
+## Que signifie le cadenas ? \{#cadenas\}
+
+Le cadenas (et le **https**) signifie que les échanges entre vous et le site sont **chiffrés** : personne ne peut les lire en route. Il ne dit rien de l'honnêteté du site : les faux sites ont aussi un cadenas.
+
+## Comment reconnaître un site officiel ? \{#officiel\}
+
+- Les sites de l'État finissent par **.gouv.fr**.
+- Les grands organismes ont leur propre domaine : ameli.fr, caf.fr, francetravail.fr, laposte.fr.
+- En cas de doute, passez par **service-public.gouv.fr**, qui renvoie vers le bon site.
+
+## Comment se repérer sur un site ? \{#structure\}
+
+<TableauComparatif
+  legende="Où trouver quoi sur un site"
+  colonnes={['Zone', 'Ce qu’on y trouve']}
+  lignes={[
+    ['En-tête (en haut)', 'Logo (retour à l’accueil), menu, recherche, connexion'],
+    ['Menu ☰ (sur téléphone)', 'Les rubriques du site, cachées derrière trois traits'],
+    ['Contenu (au milieu)', 'Le texte de la page'],
+    ['Pied de page (tout en bas)', 'Contact, mentions légales, plan du site, aide'],
+  ]}
+/>
+
+<Astuce>
+Un **lien** est souvent souligné ou en couleur. Sur ordinateur, la flèche de la souris devient une petite main quand vous passez dessus.
+</Astuce>

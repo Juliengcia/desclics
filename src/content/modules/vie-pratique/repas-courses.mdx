@@ -1,0 +1,84 @@
+---
+identifiant: repas-courses
+titre: Se faire livrer un repas ou faire ses courses en drive
+rubrique: vie-pratique
+resume: Commander un repas en livraison, faire ses courses en ligne avec retrait au drive ou livraison, choisir un créneau et repérer les frais cachés.
+duree: 5
+niveau: Premiers pas
+objectifs:
+  - commander un repas en livraison ;
+  - faire ses courses en ligne ;
+  - choisir un créneau de retrait ou de livraison ;
+  - repérer les frais avant de payer.
+motsCles: [livraison repas, Uber Eats, Deliveroo, drive, courses en ligne, click and collect, créneau, frais de livraison, frais de service]
+titreSeo: "Livraison de repas et courses au drive : mode d'emploi"
+metaDescription: "Commander un repas en livraison ou faire ses courses en drive : choisir un créneau, retirer sa commande et repérer les frais de livraison et de service."
+bristol:
+  - "Repas : appli de livraison (Uber Eats, Deliveroo…) ou site du restaurant"
+  - "Courses : site ou appli de l'enseigne, panier, créneau, retrait au drive ou livraison"
+  - "Comparer le total : prix + livraison + frais de service + pourboire"
+  - "Drive : garder le code de retrait reçu par SMS ou e-mail"
+sources:
+  - titre: "Retrait en magasin, drive et click & collect : comment ça marche ?"
+    url: https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/retrait-en-magasin-drive-et-click-collect-comment-ca-marche
+    editeur: Ministère de l'Économie
+  - titre: Comment réaliser des achats sur internet de façon sécurisée ?
+    url: https://economie.gouv.fr/dgccrf/les-fiches-pratiques-et-les-faq/comment-realiser-des-achats-sur-internet-de-facon-securisee
+    editeur: DGCCRF
+verifieLe: 2026-11-09
+pourAidant:
+  - "La première commande en drive est la plus longue : on peut ensuite « recommander » le panier précédent en un clic."
+liesA: [vie-pratique/acheter-en-ligne, argent/payer-en-ligne, argent/abonnements]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment commander un repas en livraison ? \{#repas\}
+
+<Etapes>
+1. Installez une appli de livraison (Uber Eats, Deliveroo…) ou ouvrez le site du restaurant.
+2. Indiquez votre **adresse**, choisissez un restaurant et vos plats.
+3. Vérifiez le **total** : plats, frais de livraison, frais de service.
+4. Payez, puis suivez la livraison en direct dans l'appli.
+</Etapes>
+
+<Attention>
+Les applis proposent souvent un abonnement « livraison gratuite » avec une période d'essai : il devient payant automatiquement. Voir « Retrouver et résilier ses abonnements ».
+</Attention>
+
+## Comment faire ses courses en ligne ? \{#courses\}
+
+<Etapes>
+1. Ouvrez le site ou l'appli de votre enseigne et choisissez le **magasin** le plus proche.
+2. Remplissez le **panier** : recherchez chaque produit ou utilisez vos achats habituels.
+3. Choisissez **retrait au drive** (vous passez en voiture ou à pied chercher les sacs) ou **livraison** à domicile.
+4. Choisissez un **créneau** horaire, puis payez.
+</Etapes>
+
+## Comment retirer sa commande au drive ? \{#retrait\}
+
+À l'heure prévue, présentez-vous au drive avec le **code de retrait** reçu par SMS ou e-mail (ou scannez-le à la borne). Vérifiez les sacs et signalez sur place un produit manquant ou abîmé.
+
+## Comment éviter les mauvaises surprises ? \{#frais\}
+
+<TableauComparatif
+  legende="Les frais possibles"
+  colonnes={['Frais', 'Où le voir']}
+  lignes={[
+    ['Frais de livraison', 'Au panier, selon la distance et le montant'],
+    ['Frais de service', 'Ajoutés par certaines applis, en bas du récapitulatif'],
+    ['Frais de préparation', 'Certains drives pour les petites commandes'],
+    ['Produits de remplacement', 'Option à accepter ou refuser si un produit manque'],
+  ]}
+/>

@@ -30,18 +30,20 @@ export function rehypeChapitres() {
   return (arbre) => {
     const enfants = arbre.children;
     const sortie = [];
-    let courant = null;
+    let corps = null;
     for (const n of enfants) {
       if (n.type === 'element' && n.tagName === 'h2') {
         const id = n.properties?.id;
-        courant = {
+        n.properties = { ...(n.properties ?? {}), 'data-pagefind-weight': '6' };
+        // Le contenu du chapitre est rangé dans un bloc repliable (bouton ajouté par le script de la page).
+        corps = { type: 'element', tagName: 'div', properties: { className: ['chapitre-corps'], id: id ? `corps-${id}` : undefined }, children: [] };
+        sortie.push({
           type: 'element', tagName: 'section',
           properties: { className: ['chapitre'], id: id ? `chapitre-${id}` : undefined, 'aria-labelledby': id, 'data-chapitre': id ?? '' },
-          children: [n],
-        };
-        sortie.push(courant);
-      } else if (courant) {
-        courant.children.push(n);
+          children: [n, corps],
+        });
+      } else if (corps) {
+        corps.children.push(n);
       } else {
         sortie.push(n);
       }

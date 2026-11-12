@@ -1,0 +1,75 @@
+---
+identifiant: la-poste
+titre: "La Poste : colis et courrier en ligne"
+rubrique: demarches
+resume: Suivre un colis avec son numéro, envoyer une lettre recommandée depuis l'ordinateur, et reconnaître les faux SMS de livraison.
+duree: 5
+niveau: Premiers pas
+objectifs:
+  - suivre un colis ou un courrier ;
+  - envoyer une lettre recommandée en ligne ;
+  - reconnaître un faux SMS de livraison.
+motsCles: [La Poste, suivi colis, numéro de suivi, Colissimo, lettre recommandée en ligne, avis de passage, faux SMS colis, arnaque livraison]
+titreSeo: "Suivre un colis et envoyer un recommandé en ligne"
+metaDescription: "Suivre un colis avec son numéro sur laposte.fr, envoyer une lettre recommandée en ligne depuis l'ordinateur et reconnaître les faux SMS de livraison."
+bristol:
+  - "Suivi : laposte.fr → Suivre un envoi → numéro de suivi (sur l'e-mail de commande)"
+  - "Recommandé en ligne : laposte.fr → Lettre recommandée en ligne, La Poste l'imprime et l'envoie"
+  - "SMS « colis en attente, frais à payer » avec un lien = arnaque"
+  - "Avis de passage : seulement dans la boîte aux lettres, papier"
+sources:
+  - titre: Suivre un envoi
+    url: https://www.laposte.fr/outils/suivre-vos-envois
+    editeur: La Poste
+  - titre: "Smishing : comment réagir face aux SMS frauduleux de livraison de colis ?"
+    url: https://www.economie.gouv.fr/particuliers/numerique-et-cybersecurite/smishing-comment-reagir-face-aux-sms-frauduleux-de-livraison-de-colis
+    editeur: Ministère de l'Économie
+verifieLe: 2026-11-09
+pourAidant:
+  - "Le numéro de suivi est souvent dans l'e-mail de confirmation de la commande : montrez où le chercher."
+liesA: [securite/arnaques, vie-pratique/acheter-en-ligne, smartphone/qr-code]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment suivre un colis ? \{#suivre\}
+
+<Etapes>
+1. Retrouvez le **numéro de suivi** : dans l'e-mail ou le SMS de confirmation d'envoi du vendeur, ou sur le reçu du bureau de poste.
+2. Allez sur **laposte.fr**, rubrique **Suivre un envoi**, ou dans l'appli La Poste.
+3. Tapez le numéro : les étapes s'affichent (pris en charge, en cours d'acheminement, en livraison, livré).
+</Etapes>
+
+<Astuce>
+Pour un colis venant d'un autre transporteur (Chronopost, DPD, Mondial Relay, UPS…), utilisez le site de ce transporteur, indiqué dans l'e-mail de commande.
+</Astuce>
+
+## Comment envoyer un recommandé en ligne ? \{#recommande\}
+
+La **lettre recommandée en ligne** se prépare sur l'ordinateur : vous déposez votre lettre (en PDF ou en la tapant), La Poste l'imprime, la met sous enveloppe et la remet au destinataire contre signature.
+
+<Etapes>
+1. Allez sur **laposte.fr**, rubrique **Lettre recommandée en ligne**.
+2. Déposez votre document et saisissez les adresses.
+3. Choisissez l'option **avec avis de réception** si vous voulez une preuve de remise.
+4. Payez en ligne. Les preuves de dépôt et de distribution arrivent dans votre espace.
+</Etapes>
+
+## Comment reconnaître un faux SMS de livraison ? \{#faux-sms\}
+
+Exemple d'arnaque : « Votre colis est en attente, 1,99 € de frais de réexpédition à régler : lien ». Le lien mène à un faux site qui vole votre carte bancaire.
+
+<Attention>
+La Poste ne demande pas de payer des frais par un lien envoyé par SMS. En cas de doute, tapez votre numéro de suivi vous-même sur laposte.fr. Transférez le SMS frauduleux au **33700**, puis supprimez-le.
+</Attention>

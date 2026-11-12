@@ -1,0 +1,93 @@
+---
+identifiant: comprendre
+titre: "Comprendre l'intelligence artificielle"
+rubrique: intelligence-artificielle
+resume: Ce qu'est l'intelligence artificielle, comment fonctionne un assistant conversationnel en termes simples, ce qu'il sait faire et ne sait pas faire, et les principaux outils.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - définir l'intelligence artificielle simplement ;
+  - comprendre comment un assistant conversationnel produit ses réponses ;
+  - savoir ce que l'IA fait bien et mal ;
+  - connaître les principaux outils.
+motsCles: [intelligence artificielle, IA, IA générative, assistant conversationnel, chatbot, ChatGPT, Le Chat, Gemini, Copilot, Claude, comment ça marche]
+titreSeo: "L'intelligence artificielle expliquée simplement"
+metaDescription: "Qu'est-ce que l'intelligence artificielle ? Comment fonctionne un assistant comme ChatGPT ou Le Chat, ce qu'il sait faire, ce qu'il ne sait pas faire."
+bristol:
+  - "IA : programme qui imite des capacités humaines (écrire, reconnaître, traduire)"
+  - "Assistant conversationnel : prédit les mots les plus probables, à partir d'énormes quantités de textes"
+  - "Il rédige, résume, reformule, explique… mais peut inventer"
+  - "Exemples : ChatGPT, Le Chat (Mistral, français), Gemini, Copilot, Claude"
+  - "Toujours vérifier les informations importantes"
+sources:
+  - titre: "Les questions-réponses de la CNIL sur l'utilisation d'un système d'IA générative"
+    url: https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative
+    editeur: CNIL
+  - titre: "L'action du numérique de l'État en faveur de l'IA"
+    url: https://www.numerique.gouv.fr/intelligence-artificielle/
+    editeur: DINUM
+verifieLe: 2026-11-09
+pourAidant:
+  - "L'image du « très bon élève qui a tout lu mais peut réciter de travers » aide à comprendre à la fois la force et les erreurs de l'IA."
+liesA: [intelligence-artificielle/ecrire, intelligence-artificielle/limites, intelligence-artificielle/images]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce que l'intelligence artificielle ? \{#definition\}
+
+<Definition terme="intelligence artificielle">
+L'<Terme id="intelligence-artificielle">intelligence artificielle</Terme> (IA) désigne des programmes capables d'imiter certaines capacités humaines : comprendre une phrase, reconnaître une image, traduire, écrire.
+</Definition>
+
+Vous l'utilisez déjà : traduction automatique, reconnaissance du visage pour déverrouiller le téléphone, suggestions de mots du clavier, tri des spams.
+
+## Comment fonctionne un assistant conversationnel ? \{#fonctionnement\}
+
+Un <Terme id="assistant-conversationnel">assistant conversationnel</Terme> (ChatGPT, Le Chat…) a été entraîné sur d'immenses quantités de textes. Quand vous lui écrivez, il **prédit les mots les plus probables** pour répondre, un par un.
+
+<ARetenir>
+L'assistant ne « sait » pas au sens humain : il produit un texte vraisemblable. La plupart du temps c'est juste, mais il peut affirmer avec aplomb une chose fausse.
+</ARetenir>
+
+## Que sait-il faire, et ne pas faire ? \{#capacites\}
+
+<TableauComparatif
+  legende="Les forces et les limites"
+  colonnes={['Il fait bien', 'Il fait mal']}
+  lignes={[
+    ['Rédiger un courrier, reformuler un texte', 'Donner des faits sûrs sans vérification'],
+    ['Résumer un long document', 'Les calculs compliqués, parfois'],
+    ['Expliquer simplement une notion', 'Connaître l’actualité très récente (selon l’outil)'],
+    ['Traduire, corriger l’orthographe', 'Remplacer un médecin, un avocat, un notaire'],
+  ]}
+/>
+
+## Quels sont les principaux outils ? \{#outils\}
+
+<TableauComparatif
+  legende="Assistants conversationnels courants (exemples)"
+  colonnes={['Outil', 'Éditeur', 'À savoir']}
+  lignes={[
+    ['Le Chat', 'Mistral AI (France)', 'Version gratuite disponible'],
+    ['ChatGPT', 'OpenAI', 'Version gratuite disponible'],
+    ['Gemini', 'Google', 'Intégré aux téléphones Android'],
+    ['Copilot', 'Microsoft', 'Intégré à Windows et Edge'],
+    ['Claude', 'Anthropic', 'Version gratuite disponible'],
+  ]}
+/>
+
+<Attention>
+Installez ces outils depuis le magasin officiel ou leur site officiel. Des copies payantes ou malveillantes circulent sous des noms proches.
+</Attention>

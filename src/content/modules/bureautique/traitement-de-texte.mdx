@@ -1,0 +1,103 @@
+---
+identifiant: traitement-de-texte
+titre: Écrire et mettre en forme une lettre
+rubrique: bureautique
+resume: Créer un document, taper et corriger du texte, mettre en forme (gras, taille, alignement), faire une liste, insérer une image et partir d'un modèle de lettre.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - créer un nouveau document ;
+  - mettre en forme le texte ;
+  - faire des listes et des retraits ;
+  - insérer une image ;
+  - utiliser le correcteur et un modèle.
+motsCles: [traitement de texte, Word, Writer, Google Docs, écrire une lettre, mettre en forme, gras, aligner, liste à puces, insérer image, correcteur orthographique, modèle de lettre]
+titreSeo: "Écrire et mettre en forme une lettre sur Word ou Writer"
+metaDescription: "Créer un document, mettre en forme (gras, taille, alignement), faire une liste, insérer une image et utiliser le correcteur ou un modèle de lettre, pas à pas."
+bristol:
+  - "Sélectionner d'abord, puis appliquer la mise en forme"
+  - "Gras : Ctrl + G (Word) ou Ctrl + B (LibreOffice, Google Docs)"
+  - "Aligner à droite (adresse) : Ctrl + R · Justifier : Ctrl + J"
+  - "Mots soulignés en rouge : clic droit → choisir la correction"
+  - "Partir d'un modèle : Fichier → Nouveau → Modèles"
+sources:
+  - titre: Aide et formation Word
+    url: https://support.microsoft.com/fr-fr/word
+    editeur: Microsoft
+  - titre: Aide LibreOffice Writer
+    url: https://help.libreoffice.org/latest/fr/text/swriter/main0000.html
+    editeur: The Document Foundation
+  - titre: Aide Google Docs
+    url: https://support.google.com/docs/?hl=fr
+    editeur: Google
+verifieLe: 2026-11-09
+pourAidant:
+  - "La règle d'or : on sélectionne d'abord, on agit ensuite. Beaucoup cliquent sur Gras avant d'avoir sélectionné."
+  - "Les raccourcis de gras diffèrent entre Word français (Ctrl + G) et les autres logiciels (Ctrl + B) : vérifiez avec le logiciel utilisé."
+liesA: [bureautique/enregistrer-pdf, ordinateur/clavier-raccourcis, bureautique/imprimer-scanner]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment créer un document ? \{#creer\}
+
+<Etapes>
+1. Ouvrez le <Terme id="traitement-de-texte">traitement de texte</Terme> (Word, LibreOffice Writer ou Google Docs).
+2. Choisissez **Document vierge** (ou Nouveau document).
+3. Cliquez dans la page : le curseur clignote, vous pouvez taper.
+4. Appuyez sur <Touches k="Entrée" /> seulement pour changer de paragraphe : le texte passe à la ligne tout seul.
+</Etapes>
+
+## Comment mettre en forme le texte ? \{#mise-en-forme\}
+
+<ARetenir>
+On **sélectionne** d'abord le texte (il apparaît surligné), puis on choisit la mise en forme.
+</ARetenir>
+
+<TableauComparatif
+  legende="Les mises en forme courantes"
+  colonnes={['Mise en forme', 'Bouton', 'Raccourci']}
+  lignes={[
+    ['Gras', 'G ou B en gras', '<kbd>Ctrl</kbd> + <kbd>G</kbd> (Word) · <kbd>Ctrl</kbd> + <kbd>B</kbd> (Writer, Docs)'],
+    ['Italique', 'I penché', '<kbd>Ctrl</kbd> + <kbd>I</kbd>'],
+    ['Taille du texte', 'Liste de chiffres (11, 12, 14…)', ''],
+    ['Aligner à droite', 'Lignes calées à droite', '<kbd>Ctrl</kbd> + <kbd>R</kbd>'],
+    ['Justifier', 'Lignes alignées des deux côtés', '<kbd>Ctrl</kbd> + <kbd>J</kbd>'],
+  ]}
+/>
+
+## Comment faire une liste ? \{#listes\}
+
+Sélectionnez les lignes, puis cliquez sur **Puces** (points) ou **Numérotation** (1, 2, 3). Pour décaler une ligne vers la droite, appuyez sur <Touches k="Tab" /> au début de la ligne.
+
+## Comment insérer une image ? \{#image\}
+
+<Etapes>
+1. Cliquez à l'endroit voulu.
+2. Menu **Insertion** (ou Insérer), puis **Image**, puis **À partir de cet appareil**.
+3. Choisissez l'image dans vos dossiers.
+4. Réduisez-la en tirant un coin, sans déformer.
+</Etapes>
+
+## Comment corriger les fautes ? \{#correcteur\}
+
+Les mots soulignés en **rouge** sont peut-être mal orthographiés, en **bleu** ou **vert** la grammaire est douteuse. Faites un **clic droit** sur le mot pour voir les corrections proposées.
+
+<Attention>
+Le correcteur ne repère pas tout (« ses » au lieu de « ces »). Relisez à voix haute une lettre importante.
+</Attention>
+
+## Comment partir d'un modèle de lettre ? \{#modele\}
+
+**Fichier → Nouveau** affiche des modèles (lettre, CV, facture). Choisissez-en un, puis remplacez les textes d'exemple par les vôtres. Pour une lettre administrative : vos coordonnées en haut à gauche, celles du destinataire à droite, la date, l'objet, puis le texte et la formule de politesse.

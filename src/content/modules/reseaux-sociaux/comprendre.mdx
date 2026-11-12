@@ -1,0 +1,94 @@
+---
+identifiant: comprendre
+titre: Comprendre les réseaux sociaux
+rubrique: reseaux-sociaux
+resume: La différence entre réseau social, plateforme vidéo et messagerie, le vocabulaire (story, reel, hashtag, mention), le rôle de l'algorithme et le modèle économique de la gratuité.
+duree: 6
+niveau: Premiers pas
+objectifs:
+  - distinguer réseau social, plateforme et messagerie ;
+  - comprendre le vocabulaire courant ;
+  - comprendre le rôle de l'algorithme ;
+  - savoir comment ces services gagnent de l'argent.
+motsCles: [réseaux sociaux, Facebook, Instagram, TikTok, LinkedIn, story, reel, short, hashtag, mention, algorithme, publicité ciblée]
+titreSeo: "Réseaux sociaux : vocabulaire, algorithme, comment ça marche"
+metaDescription: "Comprendre les réseaux sociaux : différence avec une messagerie, vocabulaire (story, reel, hashtag, mention), rôle de l'algorithme et modèle de la gratuité."
+bristol:
+  - "Réseau social : on publie pour un public (Facebook, Instagram, TikTok, LinkedIn)"
+  - "Messagerie : on écrit à des personnes choisies (WhatsApp, Messenger)"
+  - "Story : publication qui disparaît après 24 h · Reel / Short : vidéo courte verticale"
+  - "# hashtag : mot-clé cliquable · @ mention : cite et prévient une personne"
+  - "Gratuit = financé par la publicité ciblée, grâce à vos données"
+sources:
+  - titre: Réseaux sociaux, conseils de la CNIL
+    url: https://www.cnil.fr/fr/reseaux-sociaux
+    editeur: CNIL
+  - titre: Ressources pour comprendre les médias et l'information
+    url: https://www.clemi.fr/
+    editeur: CLEMI (ministère de l'Éducation nationale)
+verifieLe: 2026-11-09
+pourAidant:
+  - "Partir de ce que la personne veut voir (petits-enfants, recettes, actualités locales) aide à choisir le bon réseau."
+liesA: [reseaux-sociaux/compte-confidentialite, reseaux-sociaux/verifier-information, communiquer/whatsapp]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Réseau social, plateforme, messagerie : quelle différence ? \{#differences\}
+
+<Definition terme="réseau social">
+Un <Terme id="reseau-social">réseau social</Terme> est un service où l'on publie des textes, photos ou vidéos pour un public : amis, abonnés, ou tout le monde.
+</Definition>
+
+<TableauComparatif
+  legende="Les familles de services"
+  colonnes={['Type', 'Exemples', 'Principe']}
+  lignes={[
+    ['Réseau social', 'Facebook, Instagram, TikTok, X, LinkedIn', 'Publier pour un public, suivre des personnes'],
+    ['Plateforme vidéo', 'YouTube', 'Regarder et publier des vidéos'],
+    ['Messagerie', 'WhatsApp, Messenger, SMS', 'Écrire à des personnes choisies'],
+  ]}
+/>
+
+## Quel vocabulaire faut-il connaître ? \{#vocabulaire\}
+
+<TableauComparatif
+  legende="Le vocabulaire des réseaux"
+  colonnes={['Mot', 'Sens']}
+  lignes={[
+    ['Publication (post)', 'Texte, photo ou vidéo partagé'],
+    ['Story', 'Publication qui disparaît après 24 heures'],
+    ['Reel, Short', 'Vidéo courte et verticale'],
+    ['Hashtag (#)', 'Mot-clé cliquable : #recette regroupe les publications sur ce thème'],
+    ['Mention (@)', 'Cite une personne et la prévient : @marie'],
+    ['Abonné, abonnement', 'Personne qui suit un compte, et le fait de suivre'],
+    ['J’aime, partage, commentaire', 'Les réactions à une publication'],
+  ]}
+/>
+
+## Qu'est-ce que l'algorithme ? \{#algorithme\}
+
+<Definition terme="algorithme">
+L'<Terme id="algorithme">algorithme</Terme> est le programme qui choisit ce que chaque personne voit, selon ce qu'elle regarde, aime ou commente.
+</Definition>
+
+**Conséquence.** Plus vous regardez un type de contenu, plus on vous en montre. Cela peut enfermer dans un seul point de vue, ou faire passer beaucoup de temps sur l'écran.
+
+## Pourquoi est-ce gratuit ? \{#gratuite\}
+
+Les réseaux sociaux gagnent de l'argent grâce à la **publicité ciblée** : ils analysent vos centres d'intérêt pour vendre des publicités qui vous correspondent. Vos données personnelles sont la vraie monnaie.
+
+<ARetenir>
+Ce que vous publiez peut être vu, copié et conservé longtemps. Avant de publier, demandez-vous si cela pourrait vous gêner dans quelques années.
+</ARetenir>

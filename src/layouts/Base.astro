@@ -14,14 +14,15 @@ interface Props {
   type?: 'website' | 'article';
   jsonld?: Record<string, unknown>[];
   indexer?: boolean;       // false : exclure de la recherche interne
+  accueil?: boolean;       // page d'accueil : recherche de l'en-tête masquée tant que le hero est visible
 }
-const { titre, description, type = 'website', jsonld = [], indexer = true } = Astro.props;
+const { titre, description, type = 'website', jsonld = [], indexer = true, accueil = false } = Astro.props;
 const titreComplet = titre === site.nom ? `${site.nom} — ${site.accroche}` : `${titre} | ${site.nom}`;
 const canonique = new URL(Astro.url.pathname, Astro.site).href;
 const imageOg = new URL(lien('og-image.png'), Astro.site).href;
 ---
 <!doctype html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" data-bandeau-id={site.bandeau.id}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,8 +32,8 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
   <link rel="icon" href={lien('favicon.svg')} type="image/svg+xml" />
   <link rel="manifest" href={lien('manifest.webmanifest')} />
   <link rel="sitemap" href={lien('sitemap-index.xml')} />
-  <meta name="theme-color" content="#F5F2EA" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#101216" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F6F6F3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F1013" media="(prefers-color-scheme: dark)" />
   <meta property="og:type" content={type} />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content={site.nom} />
@@ -54,14 +55,23 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
       d.setAttribute('data-theme-effectif', sombre ? 'dark' : 'light');
       if (sombre) d.classList.add('sombre-systeme');
       ['contraste', 'dyslexie', 'curseur', 'animations', 'simple', 'regle', 'loupe'].forEach(function (k) { if (p[k]) d.setAttribute('data-' + k, p[k]); });
+      if (p.affichage) d.setAttribute('data-affichage-modules', p.affichage);
       if (p.taille) { d.style.setProperty('--echelle-texte', p.taille); if (Number(p.taille) >= 1.5) d.setAttribute('data-grand-texte', ''); }
-      if (p.appareil) d.setAttribute('data-appareil', p.appareil);
+      // Appareils : choix enregistré (un ou plusieurs), sinon système détecté automatiquement.
+      var ua = navigator.userAgent, det = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'iphone'
+        : /Android/.test(ua) ? 'android' : /Mac OS X|Macintosh/.test(ua) ? 'mac' : /Windows/.test(ua) ? 'windows' : '';
+      d.setAttribute('data-systeme', det);
+      d.setAttribute('data-ecran', /iphone|android/.test(det) ? 'mobile' : 'ordinateur');
+      var app = p.appareils || p.appareil || det;
+      if (app) d.setAttribute('data-appareils', app);
+      if (!p.appareils && !p.appareil) d.setAttribute('data-appareils-auto', '');
+      try { if (localStorage.getItem('desclics-bandeau-ferme') === d.getAttribute('data-bandeau-id')) d.setAttribute('data-bandeau-ferme', ''); } catch (e) {}
     })();
   </script>
 </head>
 <body>
   <a class="lien-evitement" href="#contenu">Aller au contenu</a>
-  <Entete />
+  <Entete accueil={accueil} />
   <main id="contenu" tabindex="-1" data-pagefind-body={indexer ? '' : undefined}>
     <slot />
   </main>
@@ -72,8 +82,18 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
       <h2 class="visually-hidden">Recherche</h2>
       <button type="button" class="bouton-icone" data-ferme-dialogue><Icone nom="fermer" /><span>Fermer</span></button>
     </div>
-    <Recherche id="recherche-dialogue" enPage />
+    <Recherche id="recherche-dialogue" libelleVisible />
   </dialog>
+
+  <dialog id="dialogue-favoris" class="dialogue-favoris" aria-labelledby="favoris-titre">
+    <div class="dialogue-favoris-entete">
+      <h2 id="favoris-titre">Mes favoris</h2>
+      <button type="button" class="bouton-icone" data-ferme-dialogue data-infobulle="Fermer la liste"><Icone nom="fermer" /><span class="visually-hidden">Fermer</span></button>
+    </div>
+    <div data-favoris-liste></div>
+    <p class="favoris-note">Vos favoris sont gardés dans ce navigateur, sur cet appareil. Ils disparaissent si vous effacez les données du navigateur ou si vous changez d'appareil.</p>
+  </dialog>
+  <div class="infobulle" role="tooltip" id="infobulle" hidden></div>
   <PanneauAccessibilite />
 
   <script>
@@ -97,5 +117,27 @@ const imageOg = new URL(lien('og-image.png'), Astro.site).href;
   }
   .dialogue-recherche::backdrop { background: rgb(0 0 0 / .45); }
   .dialogue-recherche-entete { display: flex; justify-content: flex-end; }
+  .dialogue-recherche .recherche .recherche-deroulant { position: static; margin-top: .75rem; box-shadow: none; max-height: calc(85dvh - 12rem); }
+  .dialogue-favoris {
+    width: min(36rem, calc(100% - 2rem)); max-width: 100%; max-height: min(85dvh, 46rem); margin: 8vh auto auto;
+    border: 1px solid var(--trait); border-radius: var(--rayon-grand); padding: 1rem 1.25rem 1.25rem;
+    background: var(--fond); color: var(--texte); box-shadow: var(--ombre);
+  }
+  .dialogue-favoris::backdrop { background: rgb(0 0 0 / .45); }
+  .dialogue-favoris-entete { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .dialogue-favoris-entete h2 { margin: 0; font-size: 1.6rem; }
+  .favoris-note { font-size: .95rem; color: var(--texte-doux); margin: 1rem 0 0; }
+  .favoris-liste { list-style: none; margin: 1rem 0; padding: 0; }
+  .favoris-liste li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: .5rem; padding: .5rem 0; border-top: 1px solid var(--trait); }
+  .favoris-liste li a { font: 650 1.1rem var(--police-titre); padding: .3rem 0; }
+  .favoris-liste .favoris-rubrique { grid-column: 1; font-size: .95rem; color: var(--texte-doux); }
+  .favoris-liste .favoris-retirer { grid-column: 2; grid-row: 1 / span 2; }
+  .favoris-vide { color: var(--texte-doux); }
+  .infobulle {
+    position: fixed; z-index: 120; max-width: min(22rem, calc(100vw - 1rem)); padding: .45rem .75rem; border-radius: 10px;
+    background: var(--texte); color: var(--fond); font: 500 .95rem/1.35 var(--police-titre); box-shadow: var(--ombre);
+  }
+  :root[data-contraste="eleve"] .infobulle { border: 2px solid var(--fond); }
+  @media (max-width: 639px) { .dialogue-favoris { margin: auto 0 0; width: 100%; border-radius: 22px 22px 0 0; } }
   @media (max-width: 639px) { .dialogue-recherche { margin: 0; width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; } }
 </style>

@@ -17,18 +17,25 @@ const prevus = modules.filter((m) => !m.publie);
 <Base titre={rubrique.titre} description={`${rubrique.description} Explications claires, étape par étape, sur Desclics.`}>
   <div class="conteneur">
     <FilAriane miettes={[{ titre: rubrique.titre }]} />
-    <header class="rubrique-entete">
-      <span class="rubrique-icone"><Icone nom={rubrique.icone} taille={32} /></span>
+    <header class:list={["rubrique-entete carte", `pastel-${rubrique.pastel}`]}>
+      <span class="pastille"><Icone nom={rubrique.icone} /></span>
       <h1>{rubrique.titre}</h1>
       <p class="chapo">{rubrique.description}</p>
+      <p class="rubrique-nb">{publies.length > 0 ? `${publies.length} module${publies.length > 1 ? 's' : ''} dans cette rubrique` : 'Modules en préparation'}</p>
     </header>
 
     {publies.length > 0 && (
       <section aria-labelledby="dispo">
-        <h2 id="dispo">Modules disponibles</h2>
-        <ol class="grille grille--2 liste-modules">
+        <div class="dispo-entete">
+          <h2 id="dispo">Les {publies.length} modules</h2>
+          <div class="bascule-affichage ne-pas-imprimer" role="group" aria-label="Affichage des modules">
+            <button type="button" class="bouton-icone" aria-pressed="true" data-affichage="grille" data-infobulle="Afficher les modules en grille"><Icone nom="grille" /><span>Grille</span></button>
+            <button type="button" class="bouton-icone" aria-pressed="false" data-affichage="liste" data-infobulle="Afficher les modules en liste"><Icone nom="liste" /><span>Liste</span></button>
+          </div>
+        </div>
+        <ol class="grille grille--2 grille--3-large liste-modules" data-liste-modules>
           {publies.map((m) => (
-            <li class="carte carte-lien">
+            <li class="carte carte--blanche carte-lien module-carte">
               <h3><a href={lien(m.chemin)}>{m.titre}</a></h3>
               <p>{m.entree!.data.resume}</p>
               <p class="meta"><Icone nom="horloge" taille={18} /> {m.entree!.data.duree} min · {m.entree!.data.niveau}</p>
@@ -49,9 +56,41 @@ const prevus = modules.filter((m) => !m.publie);
     )}
   </div>
 </Base>
+<script>
+  // Grille ou liste : choix mémorisé sur l'appareil (appliqué avant l'affichage dans Base.astro).
+  const racine = document.documentElement;
+  const boutons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-affichage]'));
+  const maj = () => {
+    const mode = racine.getAttribute('data-affichage-modules') === 'liste' ? 'liste' : 'grille';
+    boutons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.affichage === mode)));
+  };
+  boutons.forEach((b) => b.addEventListener('click', () => {
+    const mode = b.dataset.affichage!;
+    if (mode === 'liste') racine.setAttribute('data-affichage-modules', 'liste'); else racine.removeAttribute('data-affichage-modules');
+    try { const p = JSON.parse(localStorage.getItem('desclics-prefs') || '{}'); if (mode === 'liste') p.affichage = 'liste'; else delete p.affichage; localStorage.setItem('desclics-prefs', JSON.stringify(p)); } catch { /* */ }
+    maj();
+  }));
+  maj();
+</script>
 <style>
-  .rubrique-entete { padding: .5rem 0 2rem; }
-  .rubrique-icone { display: inline-flex; padding: .7rem; border-radius: 14px; background: var(--accent-pale); color: var(--accent); margin-bottom: 1rem; }
+  .rubrique-entete { padding: 2rem; margin-bottom: 2.5rem; }
+  .rubrique-entete h1 { margin-top: 1.5rem; }
+  .rubrique-entete .chapo { color: var(--texte) !important; margin-bottom: 0; }
+  .rubrique-nb { margin: 1rem 0 0; font: 600 1rem var(--police-titre); }
+  .dispo-entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+  .dispo-entete h2 { margin: 0; }
+  .bascule-affichage { display: inline-flex; gap: .25rem; padding: 4px; border-radius: 999px; background: var(--surface-2); }
+  .bascule-affichage .bouton-icone { min-height: 44px; font-weight: 600; }
+  .bascule-affichage [aria-pressed='true'] { background: var(--surface); box-shadow: var(--ombre); color: var(--accent); }
+  @media (min-width: 1024px) { .grille--3-large { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  /* Affichage en liste */
+  :global(:root[data-affichage-modules='liste']) .liste-modules { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--trait); }
+  :global(:root[data-affichage-modules='liste']) .module-carte { background: none; border: 0; border-bottom: 1px solid var(--trait); border-radius: 0; padding: 1rem .25rem;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.5rem; transform: none; box-shadow: none; }
+  :global(:root[data-affichage-modules='liste']) .module-carte h3 { grid-column: 1; margin: 0; }
+  :global(:root[data-affichage-modules='liste']) .module-carte p:not(.meta) { grid-column: 1; margin: .2rem 0 0; }
+  :global(:root[data-affichage-modules='liste']) .module-carte .meta { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; white-space: nowrap; }
+  @media (max-width: 639px) { :global(:root[data-affichage-modules='liste']) .module-carte { grid-template-columns: minmax(0, 1fr); } :global(:root[data-affichage-modules='liste']) .module-carte .meta { grid-column: 1; grid-row: auto; margin-top: .3rem; } }
   .liste-modules { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
   .liste-modules h3 { font-size: 1.25rem; margin-bottom: .4rem; }
   .liste-modules h3 a { color: var(--texte); text-decoration: none; }

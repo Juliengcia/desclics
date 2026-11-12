@@ -1,0 +1,188 @@
+---
+identifiant: premiers-pas
+titre: Premiers pas avec son smartphone
+rubrique: smartphone
+resume: Allumer et déverrouiller le téléphone, maîtriser les gestes de base, se repérer sur l'écran d'accueil et agrandir le texte pour mieux lire.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - allumer, déverrouiller et éteindre le téléphone ;
+  - toucher, glisser, faire défiler et zoomer ;
+  - se repérer entre écran d'accueil, liste des applis et réglages rapides ;
+  - revenir en arrière et retourner à l'accueil ;
+  - agrandir le texte de tout le téléphone.
+motsCles: [smartphone, débutant, gestes, écran d'accueil, déverrouiller, réglages rapides, agrandir texte, Android, iPhone]
+titreSeo: "Smartphone pour débutant : gestes, écran d'accueil, texte"
+metaDescription: "Débuter avec un smartphone Android ou iPhone : déverrouiller, gestes de base, écran d'accueil, réglages rapides et agrandir le texte, expliqué pas à pas."
+bristol:
+  - "Toucher = appuyer brièvement · Appui long = garder le doigt 1 seconde"
+  - "Glisser vers le haut depuis le bas de l'écran : revenir à l'accueil (iPhone et Android récents)"
+  - "Réglages rapides : glisser du haut de l'écran vers le bas (Android) ou du coin haut droit (iPhone)"
+  - "Écarter deux doigts : zoomer · Les pincer : dézoomer"
+  - "Agrandir le texte : Paramètres → Affichage → Taille de la police (Android) · Réglages → Luminosité et affichage → Taille du texte (iPhone)"
+sources:
+  - titre: Guide d'utilisation de l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/welcome/ios
+    editeur: Apple
+  - titre: Aide Android
+    url: https://support.google.com/android/?hl=fr
+    editeur: Google
+  - titre: Assistance smartphones Galaxy
+    url: https://www.samsung.com/fr/support/mobile-devices/
+    editeur: Samsung
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+falc: true
+pourAidant:
+  - "Le geste le plus difficile est l'appui long : montrez qu'il faut garder le doigt immobile, sans appuyer fort."
+  - "Beaucoup tapent trop fort ou trop longtemps. Un effleurement suffit."
+  - "Agrandissez le texte dès la première séance : c'est souvent ce qui change tout."
+liesA: [smartphone/appels-contacts, smartphone/reglages, smartphone/applications]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment allumer et déverrouiller le téléphone ? \{#allumer\}
+
+<Definition terme="smartphone">
+Un <Terme id="smartphone">smartphone</Terme> est un téléphone à écran tactile : on le commande avec les doigts. Il fonctionne avec <Terme id="android">Android</Terme> (Samsung et la plupart des marques) ou <Terme id="ios">iOS</Terme> (iPhone).
+</Definition>
+
+<Etapes titre="Allumer et déverrouiller">
+1. Maintenez le **bouton latéral** (sur la tranche droite) enfoncé quelques secondes, jusqu'à voir le logo.
+2. Pour réveiller l'écran ensuite, appuyez brièvement sur ce même bouton.
+3. Glissez le doigt du bas vers le haut de l'écran.
+4. Tapez votre **code**, ou présentez votre visage ou votre doigt si vous avez activé la reconnaissance.
+</Etapes>
+
+<Attention>
+Choisissez un code que vous retenez, mais pas votre date de naissance. Notez-le dans un endroit sûr à la maison, jamais avec le téléphone.
+</Attention>
+
+## Quels sont les gestes de base ? \{#gestes\}
+
+<TableauComparatif
+  legende="Les gestes sur un écran tactile"
+  colonnes={['Geste', 'Comment faire', 'À quoi ça sert']}
+  lignes={[
+    ['Toucher', 'Effleurer l’écran une fois', 'Ouvrir une appli, appuyer sur un bouton'],
+    ['Appui long', 'Garder le doigt immobile une seconde', 'Afficher plus d’options'],
+    ['Glisser', 'Poser le doigt et le faire glisser', 'Faire défiler une page, changer d’écran'],
+    ['Écarter deux doigts', 'Poser deux doigts et les éloigner', 'Zoomer sur une photo ou un texte'],
+    ['Pincer', 'Rapprocher deux doigts', 'Dézoomer'],
+  ]}
+/>
+
+<Astuce>
+L'écran réagit au toucher, pas à la pression. Un effleurement léger suffit : inutile d'appuyer fort.
+</Astuce>
+
+## Comment se repérer sur l'écran ? \{#ecrans\}
+
+- **L'écran d'accueil** : celui qui s'affiche après le déverrouillage, avec vos <Terme id="icone">icônes</Terme> principales.
+- **La liste de toutes les applis** : sur Android, glissez du bas vers le haut de l'écran d'accueil. Sur iPhone, glissez vers la gauche jusqu'à la **Bibliothèque d'apps**.
+- **Les réglages rapides** : Wi-Fi, son, lampe torche, luminosité.
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Ouvrir les réglages rapides (Android)">
+1. Glissez un doigt du **haut** de l'écran vers le bas : les notifications apparaissent.
+2. Glissez une seconde fois vers le bas : tous les réglages rapides s'affichent.
+3. Touchez une icône pour l'activer ou la désactiver (elle change de couleur).
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Ouvrir le centre de contrôle (iPhone)">
+1. Glissez un doigt depuis le **coin en haut à droite** de l'écran vers le bas.
+2. Touchez une icône pour l'activer ou la désactiver (elle s'allume en couleur).
+3. Pour fermer, glissez vers le haut ou touchez un espace vide.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+## Comment revenir en arrière ou à l'accueil ? \{#navigation\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+Selon le réglage du téléphone, vous avez soit **trois boutons** en bas de l'écran, soit une **barre** fine.
+
+- Avec trois boutons : **‹** revient en arrière, **○** retourne à l'accueil, **|||** montre les applis ouvertes.
+- Avec la barre : glissez du bas vers le haut pour l'accueil, glissez depuis le bord gauche ou droit vers le centre pour revenir en arrière.
+
+</Onglet>
+<Onglet appareil="iphone">
+
+- Pour revenir à l'accueil : glissez du bas de l'écran vers le haut. Sur un iPhone avec bouton rond sous l'écran, appuyez dessus.
+- Pour revenir en arrière dans une appli : touchez **‹** en haut à gauche, ou glissez depuis le bord gauche vers la droite.
+- Pour voir les applis ouvertes : glissez du bas vers le haut et arrêtez-vous au milieu.
+
+</Onglet>
+</Onglets>
+
+## Comment agrandir le texte ? \{#agrandir-texte\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Agrandir le texte sur Android (Samsung)">
+1. Ouvrez **Paramètres** (la roue crantée).
+2. Touchez **Affichage**.
+3. Touchez **Taille et style de police** (ou **Taille de la police**).
+4. Faites glisser le curseur vers la droite jusqu'à une taille confortable.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Agrandir le texte sur iPhone">
+1. Ouvrez **Réglages**.
+2. Touchez **Luminosité et affichage**.
+3. Touchez **Taille du texte**.
+4. Faites glisser le curseur vers la droite.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<ARetenir>
+Le texte agrandi s'applique à presque toutes les applis : messages, réglages, navigateur. Vous pouvez revenir en arrière à tout moment.
+</ARetenir>
+
+## Comment éteindre ou redémarrer ? \{#eteindre\}
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+1. Ouvrez les réglages rapides (glisser deux fois du haut vers le bas).
+2. Touchez l'icône **Marche/Arrêt**, en haut.
+3. Choisissez **Éteindre** ou **Redémarrer**.
+
+</Onglet>
+<Onglet appareil="iphone">
+
+1. Maintenez ensemble le **bouton latéral** et l'un des **boutons de volume**.
+2. Faites glisser le curseur **Éteindre** vers la droite.
+3. Pour rallumer, maintenez le bouton latéral jusqu'au logo Apple.
+
+</Onglet>
+</Onglets>
+
+<Astuce>
+Un téléphone qui rame se remet souvent d'aplomb après un simple redémarrage. Faites-le une fois par semaine.
+</Astuce>

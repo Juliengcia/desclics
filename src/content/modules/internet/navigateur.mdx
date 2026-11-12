@@ -1,0 +1,108 @@
+---
+identifiant: navigateur
+titre: Bien utiliser son navigateur
+rubrique: internet
+resume: Choisir un navigateur, ouvrir et fermer des onglets, enregistrer des favoris, retrouver l'historique et les téléchargements, et utiliser la navigation privée.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - connaître les principaux navigateurs ;
+  - utiliser les onglets ;
+  - enregistrer et retrouver des favoris ;
+  - consulter l'historique et les téléchargements ;
+  - comprendre la navigation privée.
+motsCles: [navigateur, Firefox, Chrome, Edge, Safari, onglet, favoris, historique, téléchargements, navigation privée, barre d'adresse]
+titreSeo: "Navigateur : onglets, favoris, historique, mode privé"
+metaDescription: "Bien utiliser Chrome, Firefox, Edge ou Safari : ouvrir des onglets, enregistrer des favoris, retrouver l'historique et les téléchargements, navigation privée."
+bristol:
+  - "Nouvel onglet : bouton + ou Ctrl + T · Fermer : × ou Ctrl + W"
+  - "Rouvrir un onglet fermé : Ctrl + Maj + T"
+  - "Favori : étoile ☆ dans la barre d'adresse (Ctrl + D)"
+  - "Historique : Ctrl + H · Téléchargements : Ctrl + J"
+  - "Navigation privée : n'enregistre rien sur l'appareil, mais ne rend pas invisible"
+sources:
+  - titre: Raccourcis clavier dans Chrome
+    url: https://support.google.com/chrome/answer/157179?hl=fr
+    editeur: Google
+  - titre: Assistance Firefox
+    url: https://support.mozilla.org/fr/products/firefox
+    editeur: Mozilla
+  - titre: Guide d'utilisation de Safari
+    url: https://support.apple.com/fr-fr/guide/safari/welcome/mac
+    editeur: Apple
+verifieLe: 2026-11-09
+appareils: [windows, mac]
+pourAidant:
+  - "Beaucoup ouvrent des dizaines d'onglets sans le savoir sur téléphone : montrez le compteur d'onglets et comment les fermer."
+liesA: [internet/rechercher, ordinateur/clavier-raccourcis, securite/cookies-publicites]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'un navigateur ? \{#definition\}
+
+<Definition terme="navigateur">
+Un <Terme id="navigateur">navigateur</Terme> est le logiciel qui affiche les sites web.
+</Definition>
+
+<TableauComparatif
+  legende="Les navigateurs courants"
+  colonnes={['Navigateur', 'Éditeur', 'Installé sur']}
+  lignes={[
+    ['Chrome', 'Google', 'Téléphones Android, à installer ailleurs'],
+    ['Edge', 'Microsoft', 'Ordinateurs Windows'],
+    ['Safari', 'Apple', 'iPhone, iPad, Mac'],
+    ['Firefox', 'Mozilla (fondation à but non lucratif)', 'À installer, sur tous les appareils'],
+  ]}
+/>
+
+Ils font tous la même chose : utilisez celui qui est installé, ou celui que vous préférez.
+
+## Comment utiliser les onglets ? \{#onglets\}
+
+<Definition terme="onglet">
+Chaque page ouverte occupe un <Terme id="onglet">onglet</Terme>, comme les intercalaires d'un classeur. On passe de l'un à l'autre sans fermer les pages.
+</Definition>
+
+- **Ouvrir** : bouton **+** à droite des onglets, ou <Touches k="Ctrl+T" />.
+- **Fermer** : croix **×** de l'onglet, ou <Touches k="Ctrl+W" />.
+- **Rouvrir celui fermé par erreur** : <Touches k="Ctrl+Maj+T" />.
+- **Sur téléphone** : touchez le carré avec un chiffre (le nombre d'onglets ouverts) pour les voir et les fermer.
+
+## Comment enregistrer des favoris ? \{#favoris\}
+
+<Etapes>
+1. Ouvrez la page à garder (par exemple service-public.gouv.fr).
+2. Cliquez sur l'**étoile** ☆ à droite de la barre d'adresse, ou <Touches k="Ctrl+D" />.
+3. Validez. La page apparaît dans la **barre des favoris** ou le menu Favoris.
+</Etapes>
+
+<Astuce>
+Enregistrez en favoris les sites officiels que vous utilisez (impots, ameli, banque) : vous éviterez les faux sites trouvés par une recherche.
+</Astuce>
+
+## Où retrouver l'historique et les téléchargements ? \{#historique\}
+
+- **Historique** (pages déjà visitées) : <Touches k="Ctrl+H" />, ou menu (trois points ou trois traits) → Historique.
+- **Téléchargements** : <Touches k="Ctrl+J" />, ou menu → Téléchargements. Les fichiers sont dans le dossier Téléchargements de l'ordinateur.
+
+Sur Mac, remplacez <Touches k="Ctrl" /> par <Touches k="⌘" /> (historique : <Touches k="⌘+Y" />).
+
+## À quoi sert la navigation privée ? \{#navigation-privee\}
+
+La <Terme id="navigation-privee">navigation privée</Terme> n'enregistre ni historique, ni cookies, ni mots de passe **sur l'appareil**. Utile sur un ordinateur partagé ou pour un cadeau à garder secret.
+
+<Attention>
+La navigation privée ne vous rend pas anonyme : les sites, votre employeur ou votre opérateur peuvent voir votre activité. Elle ne protège pas non plus contre les arnaques.
+</Attention>

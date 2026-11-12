@@ -1,68 +1,63 @@
 ---
 /**
- * Onglets par appareil. Le choix fait une fois (panneau Accessibilité ou onglet) est mémorisé.
+ * Explications par appareil. S'adapte au choix « Mon appareil » (un, plusieurs ou tous),
+ * détecté automatiquement au départ et modifiable dans le panneau Accessibilité ou ici.
  * <Onglets appareils={['windows','mac']}>
  *   <Onglet appareil="windows">…</Onglet>
  *   <Onglet appareil="mac">…</Onglet>
  * </Onglets>
- * Sans JavaScript, tous les panneaux s'affichent les uns sous les autres, avec leur titre.
+ * - Seuls les appareils choisis s'affichent (Windows seul = Windows ; Windows + Mac = les deux).
+ * - Si aucun appareil choisi ne concerne ce bloc (sujet mobile lu sur un ordinateur, ou l'inverse),
+ *   toutes ses versions s'affichent : Android et iPhone, ou Windows et Mac.
+ * - Sans JavaScript, tous les panneaux s'affichent les uns sous les autres, avec leur titre.
  */
 interface Props { appareils: ('windows' | 'mac' | 'android' | 'iphone')[]; libelle?: string }
-const { appareils, libelle = 'Choisir votre appareil' } = Astro.props;
+const { appareils, libelle = 'Afficher les explications pour' } = Astro.props;
 const noms = { windows: 'Windows', mac: 'Mac', android: 'Android', iphone: 'iPhone' };
-const uid = `ong-${Math.random().toString(36).slice(2, 8)}`;
 ---
-<div class="onglets" data-onglets data-uid={uid}>
-  <div class="onglets-liste" role="tablist" aria-label={libelle} hidden>
-    {appareils.map((a, i) => (
-      <button type="button" role="tab" id={`${uid}-tab-${a}`} aria-controls={`${uid}-${a}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-appareil={a}>{noms[a]}</button>
+<div class="onglets" data-onglets data-appareils-bloc={appareils.join(',')}>
+  <div class="onglets-choix ne-pas-imprimer" role="group" aria-label={libelle} hidden>
+    <span class="onglets-libelle" aria-hidden="true">Afficher pour :</span>
+    {appareils.map((a) => (
+      <button type="button" class="onglets-puce" aria-pressed="true" data-appareil={a} data-infobulle={`Afficher ou masquer les explications pour ${noms[a]}`}>
+        <svg class="puce-coche" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>{noms[a]}
+      </button>
     ))}
   </div>
   <div class="onglets-panneaux"><slot /></div>
 </div>
 <style>
   .onglets { margin: 1.5rem 0; }
-  .onglets-liste { display: flex; flex-wrap: wrap; gap: .4rem; padding: .3rem; border-radius: 14px; background: var(--surface-2); width: fit-content; max-width: 100%; }
-  .onglets-liste button { min-height: 44px; padding: 0 1.1rem; border-radius: 10px; border: 0; background: transparent; color: var(--texte); font: 600 1rem var(--police-titre); cursor: pointer; }
-  .onglets-liste button[aria-selected='true'] { background: var(--surface); box-shadow: var(--ombre); color: var(--accent); }
-  .onglets-liste button:hover { text-decoration: underline; }
+  .onglets-choix { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-bottom: .5rem; }
+  .onglets-libelle { font: 600 .95rem var(--police-titre); color: var(--texte-doux); margin-right: .25rem; }
+  .onglets-puce { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; padding: 0 1rem; border-radius: 999px;
+    border: 1px solid var(--bordure); background: var(--surface); color: var(--texte); font: 600 1rem var(--police-titre); cursor: pointer; }
+  .onglets-puce .puce-coche { display: none; }
+  .onglets-puce[aria-pressed='true'] { background: var(--accent-pale); border: 2px solid var(--accent); color: var(--accent); }
+  .onglets-puce[aria-pressed='true'] .puce-coche { display: block; }
+  .onglets-puce:hover { border-color: var(--accent); }
+  .onglets-panneaux > :global([data-onglet] + [data-onglet]:not([hidden])) { border-top: 1px dashed var(--trait); margin-top: .5rem; }
 </style>
 <script>
-  type Fn = (v: string) => void;
+  import { appareilsAffiches, basculerAppareil } from '../../scripts/appareils';
   document.querySelectorAll<HTMLElement>('[data-onglets]').forEach((bloc) => {
-    const uid = bloc.dataset.uid!;
-    const liste = bloc.querySelector<HTMLElement>('[role=tablist]')!;
-    const tabs = Array.from(liste.querySelectorAll<HTMLButtonElement>('[role=tab]'));
+    const propres = bloc.dataset.appareilsBloc!.split(',');
+    const choix = bloc.querySelector<HTMLElement>('.onglets-choix')!;
+    const puces = Array.from(choix.querySelectorAll<HTMLButtonElement>('[data-appareil]'));
     const panneaux = Array.from(bloc.querySelectorAll<HTMLElement>(':scope > .onglets-panneaux > [data-onglet]'));
-    panneaux.forEach((p) => {
-      p.id = `${uid}-${p.dataset.onglet}`;
-      p.setAttribute('role', 'tabpanel');
-      p.setAttribute('aria-labelledby', `${uid}-tab-${p.dataset.onglet}`);
-      p.tabIndex = 0;
-      p.querySelector('.onglet-titre')?.classList.add('visually-hidden');
-    });
-    liste.hidden = false;
-    function activer(a: string, focus = false) {
-      if (!tabs.some((t) => t.dataset.appareil === a)) return false;
-      tabs.forEach((t) => { const ok = t.dataset.appareil === a; t.setAttribute('aria-selected', String(ok)); t.tabIndex = ok ? 0 : -1; if (ok && focus) t.focus(); });
-      panneaux.forEach((p) => (p.hidden = p.dataset.onglet !== a));
-      return true;
+    if (propres.length > 1) choix.hidden = false;
+    function maj() {
+      const montres = appareilsAffiches(propres);
+      panneaux.forEach((p) => (p.hidden = !montres.includes(p.dataset.onglet!)));
+      puces.forEach((b) => b.setAttribute('aria-pressed', String(montres.includes(b.dataset.appareil!))));
     }
-    activer(document.documentElement.getAttribute('data-appareil') ?? '') || activer(tabs[0].dataset.appareil!);
-    tabs.forEach((t, i) => {
-      t.addEventListener('click', () => {
-        const choisir = (window as unknown as { desclicsChoisirAppareil?: Fn }).desclicsChoisirAppareil;
-        if (choisir) choisir(t.dataset.appareil!); else activer(t.dataset.appareil!);
-      });
-      t.addEventListener('keydown', (e) => {
-        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-        if (e.key === 'Home' || e.key === 'End' || d) {
-          e.preventDefault();
-          const j = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + d + tabs.length) % tabs.length;
-          activer(tabs[j].dataset.appareil!, true);
-        }
-      });
-    });
-    document.addEventListener('desclics:appareil', (e) => activer((e as CustomEvent<string>).detail));
+    puces.forEach((b) => b.addEventListener('click', () => {
+      const montres = appareilsAffiches(propres);
+      const a = b.dataset.appareil!;
+      if (montres.length === 1 && montres[0] === a) return; // garder au moins une version
+      basculerAppareil(a, montres);
+    }));
+    maj();
+    document.addEventListener('desclics:appareils', maj);
   });
 </script>

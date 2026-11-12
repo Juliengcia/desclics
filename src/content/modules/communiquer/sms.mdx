@@ -1,0 +1,89 @@
+---
+identifiant: sms
+titre: SMS et MMS
+rubrique: communiquer
+resume: Envoyer un SMS, joindre une photo, écrire à plusieurs, et comprendre les bulles bleues et vertes (iMessage, RCS, SMS).
+duree: 5
+niveau: Premiers pas
+objectifs:
+  - envoyer et répondre à un SMS ;
+  - envoyer une photo par message ;
+  - créer une conversation de groupe ;
+  - comprendre iMessage, RCS et SMS.
+motsCles: [SMS, MMS, texto, message, envoyer une photo, conversation de groupe, iMessage, RCS, bulles bleues, bulles vertes]
+titreSeo: "Envoyer un SMS ou une photo par message, bulles bleues"
+metaDescription: "Comment envoyer un SMS, une photo par message, écrire à plusieurs, et pourquoi les bulles sont bleues ou vertes (iMessage, RCS, SMS) sur iPhone et Android."
+bristol:
+  - "Appli Messages : nouveau message → destinataire → texte → envoyer"
+  - "Photo : icône + ou appareil photo à gauche du champ de texte"
+  - "Bulles bleues = iMessage (entre appareils Apple) · vertes = SMS ou RCS"
+  - "Groupe : ajouter plusieurs destinataires dans le même nouveau message"
+sources:
+  - titre: Quelle est la différence entre un iMessage, un RCS et un SMS/MMS ?
+    url: https://support.apple.com/fr-fr/104972
+    editeur: Apple
+  - titre: Questions fréquentes sur les chats RCS
+    url: https://support.google.com/messages/answer/9487020?hl=fr
+    editeur: Google
+  - titre: Envoyer et répondre à des messages sur l'iPhone
+    url: https://support.apple.com/fr-fr/guide/iphone/iph82fb73ba3/ios
+    editeur: Apple
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Sur Samsung, deux applis peuvent coexister (Messages de Samsung et Google Messages) : repérez celle qui est utilisée par défaut."
+liesA: [communiquer/whatsapp, securite/arnaques, smartphone/appels-contacts]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment envoyer un SMS ? \{#envoyer\}
+
+<Etapes>
+1. Ouvrez l'appli **Messages** (bulle de dialogue).
+2. Touchez **Nouveau message** (crayon ou bulle avec un +).
+3. Dans **À**, tapez le nom d'un contact ou un numéro.
+4. Touchez le champ de texte en bas, écrivez votre message.
+5. Touchez la **flèche** d'envoi.
+</Etapes>
+
+<Astuce>
+Pour dicter au lieu de taper, touchez le **micro** du clavier et parlez : le texte s'écrit tout seul.
+</Astuce>
+
+## Comment envoyer une photo ? \{#photo\}
+
+Dans la conversation, touchez **+** ou l'icône d'**appareil photo**, à gauche du champ de texte, puis choisissez une photo de la galerie ou prenez-en une. Un SMS avec photo s'appelle un **MMS**.
+
+## Comment écrire à plusieurs ? \{#groupe\}
+
+Dans un nouveau message, ajoutez **plusieurs destinataires** dans le champ « À ». Tout le monde verra les réponses de tous. Pour quitter un groupe ou le mettre en silencieux, touchez le nom du groupe en haut de la conversation.
+
+## Pourquoi des bulles bleues ou vertes ? \{#bulles\}
+
+<TableauComparatif
+  legende="Les trois types de messages"
+  colonnes={['Type', 'Couleur sur iPhone', 'Comment ça passe', 'Avantages']}
+  lignes={[
+    ['iMessage', 'Bleue', 'Internet, entre appareils Apple', 'Photos de qualité, accusés de lecture, chiffré'],
+    ['RCS', 'Verte', 'Internet, via l’opérateur', 'Photos de qualité, « en train d’écrire », lecture'],
+    ['SMS / MMS', 'Verte', 'Réseau téléphonique', 'Marche partout, même sans Internet'],
+  ]}
+/>
+
+Le <Terme id="rcs">RCS</Terme> est la version moderne du SMS ; il fonctionne entre Android et iPhone récents, si l'opérateur le permet. <Terme id="imessage">iMessage</Terme> ne fonctionne qu'entre appareils Apple.
+
+<Attention>
+Un SMS qui vous demande de cliquer sur un lien pour un colis, une amende ou un remboursement est très souvent une arnaque. Transférez-le au **33700**, puis supprimez-le.
+</Attention>

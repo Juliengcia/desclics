@@ -1,0 +1,80 @@
+---
+identifiant: mot-de-passe-oublie
+titre: "J'ai oublié un mot de passe"
+rubrique: depannage
+resume: Mot de passe oublié pour un site, une messagerie, un compte Google ou Apple, le code du téléphone ou de la banque - que faire selon le cas, et comment éviter que ça recommence.
+duree: 5
+niveau: Premiers pas
+objectifs:
+  - réinitialiser le mot de passe d'un site ;
+  - récupérer un compte Google ou Apple ;
+  - savoir quoi faire pour le code du téléphone ou de la carte bancaire ;
+  - éviter de nouveaux oublis.
+motsCles: [mot de passe oublié, réinitialiser, récupérer compte, compte Google, compte Apple, code téléphone oublié, code carte bancaire oublié]
+titreSeo: "Mot de passe oublié : que faire selon le compte ?"
+metaDescription: "Mot de passe oublié pour un site, votre messagerie, votre compte Google ou Apple, ou code du téléphone ou de la carte bancaire : que faire selon le cas."
+bristol:
+  - "Site : « Mot de passe oublié » sur la page de connexion"
+  - "Google : g.co/recover · Apple : iforgot.apple.com"
+  - "Code du téléphone : récupération via le compte Google ou Apple, ou boutique / SAV (données perdues possibles)"
+  - "Code de carte bancaire : le demander à sa banque (appli ou agence)"
+  - "Ensuite : un gestionnaire de mots de passe"
+sources:
+  - titre: Si vous avez oublié le mot de passe de votre compte Apple
+    url: https://support.apple.com/fr-fr/102656
+    editeur: Apple
+  - titre: Récupérer votre compte Google
+    url: https://support.google.com/accounts/answer/7682439?hl=fr
+    editeur: Google
+  - titre: Pourquoi et comment bien gérer ses mots de passe ?
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/mots-de-passe
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+pourAidant:
+  - "Avant tout, vérifiez la touche Verr. Maj et la langue du clavier : beaucoup de « mots de passe oubliés » sont mal tapés."
+liesA: [securite/mots-de-passe, securite/gestionnaire-mots-de-passe, smartphone/compte-google-apple]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## 1. Le mot de passe est-il vraiment oublié ? \{#verifier\}
+
+Vérifiez que **Verr. Maj** n'est pas activé, que vous tapez la bonne **adresse e-mail**, et touchez l'**œil** à côté du champ pour voir ce que vous tapez.
+
+## 2. Pour un site ou une messagerie \{#site\}
+
+<Etapes>
+1. Sur la page de connexion, touchez **Mot de passe oublié**.
+2. Saisissez l'adresse e-mail ou le numéro du compte.
+3. Ouvrez le message reçu (regardez dans **Spam**) et suivez le lien, ou tapez le code.
+4. Choisissez un nouveau mot de passe, et enregistrez-le dans un gestionnaire.
+</Etapes>
+
+## 3. Pour le compte Google ou Apple \{#google-apple\}
+
+Depuis un autre appareil, tapez vous-même **g.co/recover** (Google) ou **iforgot.apple.com** (Apple), puis suivez les étapes : code par SMS, validation sur un appareil déjà connecté, ou questions de récupération.
+
+## 4. Pour le code du téléphone \{#code-telephone\}
+
+<Attention>
+Après trop d'essais, le téléphone se bloque. Sur iPhone et Android récents, retrouver l'accès passe souvent par une **réinitialisation**, qui efface le téléphone : vos données ne seront récupérables que si elles sont **sauvegardées** dans votre compte Google ou Apple. Faites-vous aider en boutique ou par le service après-vente avec une preuve d'achat.
+</Attention>
+
+## 5. Pour le code de la carte bancaire \{#code-carte\}
+
+Demandez-le à votre banque : beaucoup d'applis bancaires permettent de **revoir son code** après validation. Sinon, l'agence peut vous le renvoyer par courrier. Après trois essais faux, la carte se bloque au distributeur.
+
+<ARetenir>
+Pour ne plus oublier : un **gestionnaire de mots de passe** retient tout, et un papier rangé à la maison garde les codes essentiels (téléphone, mot de passe maître).
+</ARetenir>

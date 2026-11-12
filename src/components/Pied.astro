@@ -8,7 +8,7 @@ import { site } from '../data/site';
   <div class="conteneur pied-grille">
     <div class="pied-marque">
       <a href={lien()} class="pied-logo"><Logo taille={30} /> <span>{site.nom}</span></a>
-      <p>{site.accroche} Gratuit, sans compte, sans publicité, sans traceur.</p>
+      <p>{site.accroche}</p>
     </div>
     <nav aria-label="Rubriques (pied de page)">
       <h2 class="pied-titre">Rubriques</h2>
@@ -19,8 +19,12 @@ import { site } from '../data/site';
     <nav aria-label="Informations">
       <h2 class="pied-titre">Le site</h2>
       <ul>
+        <li><a href={lien('parcours')}>Parcours « Je viens de… »</a></li>
+        <li><a href={lien('aide-pres-de-chez-vous')}>Se faire aider près de chez vous</a></li>
+        <li><a href={lien('fiches')}>Fiches Bristol à imprimer</a></li>
         <li><a href={lien('glossaire')}>Glossaire</a></li>
         <li><a href={lien('glossaire/traducteur')}>Traducteur de jargon</a></li>
+        <li><a href={lien('nouveautes')}>Quoi de neuf ?</a></li>
         <li><a href={lien('plan-du-site')}>Plan du site</a></li>
         <li><a href={lien('accessibilite')}>Accessibilité : non conforme (audit à venir)</a></li>
         <li><a href={lien('mentions-legales')}>Mentions légales</a></li>

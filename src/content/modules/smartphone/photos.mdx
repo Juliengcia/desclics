@@ -1,0 +1,131 @@
+---
+identifiant: photos
+titre: Ranger, sauvegarder et transférer ses photos
+rubrique: smartphone
+resume: Retrouver ses photos, les classer en albums, les sauvegarder automatiquement dans le cloud, les copier sur un ordinateur et les envoyer.
+duree: 8
+niveau: Intermédiaire
+objectifs:
+  - retrouver et classer ses photos en albums ;
+  - activer la sauvegarde automatique ;
+  - copier ses photos sur un ordinateur ;
+  - envoyer une photo à un proche ;
+  - libérer de la place sans perdre ses souvenirs.
+motsCles: [photos, galerie, album, sauvegarde, Google Photos, iCloud Photos, transférer photos ordinateur, câble USB, libérer de la place]
+titreSeo: "Sauvegarder et transférer ses photos du téléphone"
+metaDescription: "Comment ranger ses photos en albums, les sauvegarder automatiquement (Google Photos, iCloud), les copier sur l'ordinateur et libérer de la place sans rien perdre."
+bristol:
+  - "Photos : appli Galerie (Samsung) ou Photos (iPhone)"
+  - "Sauvegarde auto : Google Photos (Android) · Photos iCloud (iPhone)"
+  - "Vérifier que la sauvegarde est faite AVANT de supprimer quoi que ce soit"
+  - "Vers l'ordinateur : câble USB, puis autoriser l'accès sur le téléphone"
+  - "Les photos supprimées restent environ 30 jours dans « Corbeille » ou « Supprimés récemment »"
+sources:
+  - titre: Sauvegarder des photos et des vidéos (Google Photos)
+    url: https://support.google.com/photos/answer/6193313?hl=fr
+    editeur: Google
+  - titre: Configurer et utiliser Photos iCloud
+    url: https://support.apple.com/fr-fr/108782
+    editeur: Apple
+  - titre: Transférer des photos et des vidéos de votre iPhone vers votre Mac ou PC
+    url: https://support.apple.com/fr-fr/120267
+    editeur: Apple
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Avec la sauvegarde activée, supprimer une photo du téléphone peut la supprimer aussi du cloud : faites vérifier le réglage avant un grand ménage."
+  - "L'espace gratuit est limité (15 Go chez Google, 5 Go chez Apple, au moment de la vérification) : prévenez avant le message « stockage plein »."
+liesA: [smartphone/appareil-photo, internet/cloud, smartphone/changer-telephone]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Où sont mes photos ? \{#galerie\}
+
+Les photos sont dans l'appli **Galerie** (Samsung) ou **Photos** (iPhone). Les plus récentes sont en bas : faites défiler vers le haut pour remonter le temps.
+
+<Astuce>
+Une photo supprimée par erreur ? Ouvrez **Corbeille** (Galerie) ou **Supprimés récemment** (Photos, dans les albums) : elle y reste environ 30 jours.
+</Astuce>
+
+## Comment ranger ses photos en albums ? \{#albums\}
+
+<Etapes titre="Créer un album">
+1. Dans Galerie ou Photos, ouvrez l'onglet **Albums**.
+2. Touchez **+**, puis **Album** (ou **Nouvel album**). Donnez-lui un nom (« Mariage Léa »).
+3. Cochez les photos à y mettre, puis touchez **Terminé** ou **Ajouter**.
+</Etapes>
+
+Une photo dans un album n'est pas copiée : elle est simplement rangée là, sans prendre plus de place.
+
+## Comment sauvegarder ses photos automatiquement ? \{#sauvegarde\}
+
+<Definition terme="sauvegarde">
+Une <Terme id="sauvegarde">sauvegarde</Terme> garde une copie de vos photos dans le <Terme id="cloud">cloud</Terme>. Si le téléphone est perdu ou cassé, vos photos sont à l'abri.
+</Definition>
+
+<Onglets appareils={['android', 'iphone']}>
+<Onglet appareil="android">
+
+<Etapes titre="Activer la sauvegarde Google Photos">
+1. Installez et ouvrez l'appli **Google Photos**.
+2. Touchez votre photo de profil, en haut à droite.
+3. Touchez **Activer la sauvegarde** (ou **Paramètres Photos → Sauvegarde**), puis activez-la.
+4. Laissez le téléphone en Wi-Fi : la première sauvegarde peut durer des heures.
+</Etapes>
+
+</Onglet>
+<Onglet appareil="iphone">
+
+<Etapes titre="Activer Photos iCloud">
+1. Ouvrez **Réglages**, touchez votre nom en haut.
+2. Touchez **iCloud**, puis **Photos**.
+3. Activez **Synchroniser cet iPhone** (ou **Photos iCloud**).
+4. Laissez l'iPhone en Wi-Fi et en charge pour la première sauvegarde.
+</Etapes>
+
+</Onglet>
+</Onglets>
+
+<Attention>
+L'espace gratuit est limité : 15 Go chez Google (partagés avec Gmail), 5 Go chez Apple. Au-delà, il faut payer un abonnement ou faire de la place.
+</Attention>
+
+## Comment copier ses photos sur un ordinateur ? \{#ordinateur\}
+
+<Etapes titre="Avec un câble">
+1. Branchez le téléphone à l'ordinateur avec son câble USB.
+2. Déverrouillez le téléphone. Sur iPhone, touchez **Autoriser** ; sur Android, choisissez **Transfert de fichiers** dans la notification USB.
+3. Sur l'ordinateur, ouvrez l'Explorateur de fichiers (Windows) : le téléphone apparaît. Ouvrez le dossier **DCIM**, où sont les photos.
+4. Copiez-collez les photos dans un dossier de l'ordinateur, par exemple Images.
+</Etapes>
+
+<Astuce>
+Sur Mac, l'appli **Photos** propose directement d'importer les photos de l'iPhone branché.
+</Astuce>
+
+## Comment envoyer une photo ? \{#envoyer\}
+
+1. Ouvrez la photo.
+2. Touchez **Partager** (trois points reliés sur Android, carré avec une flèche vers le haut sur iPhone).
+3. Choisissez l'appli : Messages, WhatsApp, e-mail…, puis le destinataire.
+
+## Comment libérer de la place sans tout perdre ? \{#place\}
+
+<Etapes>
+1. Vérifiez d'abord que la sauvegarde est **terminée** (Google Photos ou iCloud indique « Sauvegarde terminée » ou « À jour »).
+2. Supprimez les doublons, les photos floues et les captures d'écran inutiles.
+3. Google Photos propose **Libérer de l'espace** : il retire du téléphone les photos déjà sauvegardées.
+4. Videz la corbeille de la galerie pour récupérer réellement la place.
+</Etapes>

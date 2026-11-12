@@ -2,16 +2,22 @@
 /** Fiche Bristol : récapitulatif imprimable au format A5. Générée depuis les métadonnées du module. */
 import Icone from '../Icone.astro';
 import { site } from '../../data/site';
-interface Props { titre: string; lignes: string[]; adresse: string; seule?: boolean }
-const { titre, lignes, adresse, seule = true } = Astro.props;
+interface Props { titre: string; lignes: string[]; adresse: string; seule?: boolean; ident?: string; niveauTitre?: 2 | 3; pdf?: string }
+const { titre, lignes, adresse, seule = true, ident = 'fiche-bristol', niveauTitre = 2, pdf } = Astro.props;
+const Titre = `h${niveauTitre}`;
 ---
-<section class="fiche-bristol" aria-labelledby="fiche-titre" id="fiche-bristol">
+<section class="fiche-bristol" aria-labelledby={`${ident}-titre`} id={ident}>
   <div class="fiche-entete">
-    <h2 id="fiche-titre"><span class="fiche-type">Fiche Bristol</span> {titre}</h2>
-    {seule && <button type="button" class="bouton bouton--secondaire ne-pas-imprimer" data-imprimer-fiche><Icone nom="imprimer" /> Imprimer la fiche</button>}
+    <Titre id={`${ident}-titre`} class="fiche-h"><span class="fiche-type">Fiche Bristol</span> {titre}</Titre>
+    {(seule || pdf) && (
+      <div class="fiche-actions ne-pas-imprimer">
+        {pdf && <a class="bouton" href={pdf} download data-infobulle="Fiche au format A5, à garder ou à imprimer"><Icone nom="telecharger" /> Télécharger en PDF<span class="visually-hidden"> : fiche « {titre} »</span></a>}
+        {seule && <button type="button" class="bouton bouton--secondaire" data-imprimer-fiche><Icone nom="imprimer" /> Imprimer</button>}
+      </div>
+    )}
   </div>
   <ul>{lignes.map((l) => <li set:html={l} />)}</ul>
-  <p class="fiche-source">{site.nom} · {adresse}</p>
+  <p class="fiche-source">{site.nom} · {adresse}</p>{/* visible seulement à l'impression */}
 </section>
 <style>
   .fiche-bristol { margin: 2.5rem 0; padding: 1.5rem 1.5rem 1rem; border-radius: 8px; background: #FFFDF6; color: #16181D; border: 1px solid #D9CFB4;
@@ -20,14 +26,16 @@ const { titre, lignes, adresse, seule = true } = Astro.props;
   :global(:root[data-theme-effectif='dark']) .fiche-bristol { background-color: #1D1F24; color: #ECEDEF; border-color: #3A3F4A;
     background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(2.2rem - 1px), #2A3550 calc(2.2rem - 1px), #2A3550 2.2rem); }
   .fiche-entete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: .75rem; }
-  h2 { font-size: 1.5rem; margin: 0 0 .75rem; }
+  .fiche-h { font-size: 1.5rem; margin: 0 0 .75rem; }
   .fiche-type { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: #B4430B; }
   :global(:root[data-theme-effectif='dark']) .fiche-type { color: #FFA06B; }
   ul { margin: 0; padding-left: 1.2rem; line-height: 2.2rem; }
-  .fiche-source { margin: .75rem 0 0; font-size: .85rem; opacity: .8; }
+  .fiche-source { display: none; margin: .75rem 0 0; font-size: .85rem; opacity: .8; }
+  .fiche-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
   .fiche-bristol :global(kbd) { background: transparent; }
   @media print {
     .fiche-bristol { box-shadow: none; border: 1px solid #000; break-inside: avoid; background-image: none; }
+    .fiche-source { display: block; }
   }
 </style>
 <script>

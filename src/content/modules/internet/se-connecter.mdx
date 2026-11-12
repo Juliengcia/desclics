@@ -1,0 +1,115 @@
+---
+identifiant: se-connecter
+titre: "Se connecter : Wi-Fi, 4G, 5G, Bluetooth"
+rubrique: internet
+resume: Se connecter au Wi-Fi de sa box, choisir entre 2,4 et 5 GHz, utiliser les données mobiles 4G ou 5G, partager sa connexion et brancher un appareil en Bluetooth.
+duree: 8
+niveau: Premiers pas
+objectifs:
+  - se connecter au Wi-Fi de la box ;
+  - choisir la bonne bande Wi-Fi ;
+  - utiliser et surveiller les données mobiles ;
+  - partager sa connexion ;
+  - connecter un appareil en Bluetooth.
+motsCles: [Wi-Fi, se connecter au Wi-Fi, mot de passe Wi-Fi, clé WPA, "2,4 GHz", 5 GHz, 4G, 5G, données mobiles, partage de connexion, Bluetooth, Wi-Fi public]
+titreSeo: "Se connecter au Wi-Fi, 4G/5G et Bluetooth : le guide"
+metaDescription: "Se connecter au Wi-Fi de sa box, choisir 2,4 ou 5 GHz, utiliser la 4G ou la 5G, partager sa connexion et connecter des écouteurs en Bluetooth, pas à pas."
+bristol:
+  - "Mot de passe Wi-Fi (clé WPA) : étiquette sous ou derrière la box"
+  - "2,4 GHz : porte loin, plus lent · 5 GHz : rapide, porte moins loin"
+  - "Données mobiles : réglages rapides → icône des flèches (Android) ou antenne (iPhone)"
+  - "Partage de connexion : Point d'accès mobile (Android) · Partage de connexion (iPhone)"
+  - "Wi-Fi public : pas de banque ni de démarche sensible"
+sources:
+  - titre: Mon réseau mobile (cartes de couverture)
+    url: https://monreseaumobile.arcep.fr/
+    editeur: Arcep
+  - titre: La couverture mobile en métropole
+    url: https://www.arcep.fr/la-regulation/grands-dossiers-reseaux-mobiles/la-couverture-mobile-en-metropole.html
+    editeur: Arcep
+  - titre: Protéger ses appareils mobiles
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+appareils: [android, iphone]
+pourAidant:
+  - "Le mot de passe Wi-Fi est long et mélange O et 0, l et 1 : faites-le recopier lentement, ou utilisez le QR code proposé par certaines box."
+liesA: [internet/fonctionnement, argent/forfait-operateur, depannage/plus-internet]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment se connecter au Wi-Fi de sa box ? \{#wi-fi\}
+
+<Etapes>
+1. Repérez le **nom du réseau** et le **mot de passe** (ou clé WPA) sur l'étiquette sous ou derrière la box.
+2. Sur le téléphone, ouvrez **Paramètres → Connexions → Wi-Fi** (Android) ou **Réglages → Wi-Fi** (iPhone). Sur l'ordinateur, cliquez sur l'icône Wi-Fi en bas à droite (Windows) ou en haut (Mac).
+3. Touchez le nom de votre réseau.
+4. Tapez le mot de passe en respectant majuscules et chiffres, puis **Se connecter**.
+5. L'appareil s'en souviendra : la connexion sera automatique ensuite.
+</Etapes>
+
+## 2,4 GHz ou 5 GHz : lequel choisir ? \{#bandes\}
+
+Beaucoup de box diffusent deux ou trois réseaux, parfois avec le même nom :
+
+<TableauComparatif
+  legende="Les bandes Wi-Fi"
+  colonnes={['Bande', 'Avantage', 'Limite']}
+  lignes={[
+    ['2,4 GHz', 'Traverse mieux les murs, porte plus loin', 'Plus lent, plus encombré'],
+    ['5 GHz', 'Rapide, idéal pour les vidéos', 'Porte moins loin'],
+    ['6 GHz (box récentes, Wi-Fi 6E et 7)', 'Très rapide', 'Seulement près de la box, appareils récents'],
+  ]}
+/>
+
+<Astuce>
+Si le Wi-Fi est faible dans une pièce éloignée, essayez le réseau 2,4 GHz, ou rapprochez-vous de la box.
+</Astuce>
+
+## Comment utiliser les données mobiles ? \{#donnees-mobiles\}
+
+Hors de chez vous, le téléphone utilise le réseau <Terme id="4g-5g">4G ou 5G</Terme> de votre forfait. Le volume est limité par le forfait (en Go).
+
+- **Activer ou couper** : réglages rapides → icône des **données mobiles**.
+- **Surveiller sa consommation** : Paramètres → Connexions → Utilisation des données (Android) ; Réglages → Données cellulaires (iPhone).
+- **Couverture** : la carte officielle de l'Arcep, **monreseaumobile.arcep.fr**, montre la couverture de chaque opérateur.
+
+## Comment partager sa connexion ? \{#partage\}
+
+Le téléphone peut servir de box pour un ordinateur ou une tablette :
+
+- **Android** : Paramètres → Connexions → **Point d'accès mobile et modem** → activez **Point d'accès mobile**.
+- **iPhone** : Réglages → **Partage de connexion** → activez **Autoriser d'autres utilisateurs**.
+
+Connectez ensuite l'ordinateur à ce réseau Wi-Fi comme à une box. Le partage consomme les données de votre forfait.
+
+## Le Wi-Fi public est-il sûr ? \{#wi-fi-public\}
+
+<Attention>
+Sur un Wi-Fi public (gare, café, hôtel), évitez la banque, les achats et les démarches sensibles. Préférez vos données mobiles pour ces usages.
+</Attention>
+
+## Comment connecter un appareil en Bluetooth ? \{#bluetooth\}
+
+<Definition terme="Bluetooth">
+Le <Terme id="bluetooth">Bluetooth</Terme> relie sans fil deux appareils proches : écouteurs, enceinte, voiture, montre.
+</Definition>
+
+<Etapes>
+1. Mettez l'appareil (écouteurs, enceinte) en **mode appairage** : souvent un bouton maintenu jusqu'à ce qu'un voyant clignote.
+2. Sur le téléphone, ouvrez **Bluetooth** dans les paramètres et activez-le.
+3. Touchez le nom de l'appareil quand il apparaît.
+4. La prochaine fois, la connexion se fera automatiquement.
+</Etapes>

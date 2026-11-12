@@ -1,0 +1,102 @@
+---
+identifiant: voiture
+titre: "Se déplacer en voiture : GPS et stationnement"
+rubrique: vie-pratique
+resume: Utiliser une appli de navigation (Google Maps, Waze, Plans), préparer un trajet, relier le téléphone à la voiture avec CarPlay ou Android Auto, et payer son stationnement depuis le téléphone.
+duree: 7
+niveau: Premiers pas
+objectifs:
+  - choisir une appli de navigation ;
+  - préparer et suivre un itinéraire ;
+  - connecter le téléphone à la voiture ;
+  - payer son stationnement avec une appli.
+motsCles: [GPS, Google Maps, Waze, Plans, itinéraire, CarPlay, Android Auto, stationnement, payer parking téléphone, EasyPark, PayByPhone]
+titreSeo: "GPS sur téléphone et stationnement : Maps, Waze, CarPlay"
+metaDescription: "Utiliser Google Maps, Waze ou Plans comme GPS, préparer un trajet, connecter le téléphone à la voiture (CarPlay, Android Auto) et payer son stationnement."
+bristol:
+  - "Taper l'adresse d'arrivée → Itinéraire → Démarrer"
+  - "Préparer le trajet avant de partir, jamais en conduisant"
+  - "CarPlay (iPhone) · Android Auto : brancher le câble ou se connecter sans fil"
+  - "Stationnement : appli officielle indiquée sur l'horodateur ou le panneau"
+  - "Méfiance : QR code collé sur un horodateur"
+sources:
+  - titre: Aide Google Maps
+    url: https://support.google.com/maps/?hl=fr
+    editeur: Google
+  - titre: Utiliser CarPlay avec votre iPhone
+    url: https://support.apple.com/fr-fr/121653
+    editeur: Apple
+  - titre: Aide Android Auto
+    url: https://support.google.com/androidauto/?hl=fr
+    editeur: Google
+  - titre: "Le « quishing » : l'hameçonnage par QR code"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/quishing-hameconnage-qr-code
+    editeur: Cybermalveillance.gouv.fr
+verifieLe: 2026-11-09
+appareils: [android, iphone]
+pourAidant:
+  - "Faites préparer un trajet connu (aller chez soi) pour découvrir l'appli sans stress."
+liesA: [vie-pratique/transports, smartphone/qr-code, internet/se-connecter]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Quelle appli de navigation choisir ? \{#applis\}
+
+<TableauComparatif
+  legende="Applis de navigation (exemples)"
+  colonnes={['Appli', 'Atout']}
+  lignes={[
+    ['Google Maps', 'Complète : voiture, transports, marche, vélo'],
+    ['Waze', 'Signalements des autres conducteurs (bouchons, travaux)'],
+    ['Plans', 'Installée sur iPhone'],
+  ]}
+/>
+
+## Comment préparer un trajet ? \{#itineraire\}
+
+<Etapes>
+1. Ouvrez l'appli, touchez la barre de recherche et tapez l'**adresse d'arrivée**.
+2. Touchez **Itinéraire** : l'appli propose un ou plusieurs trajets, avec la durée.
+3. Choisissez le trajet, puis **Démarrer**.
+4. Posez le téléphone sur un support, à portée de vue. La voix vous guide.
+</Etapes>
+
+<Attention>
+Préparez le trajet avant de démarrer. Manipuler le téléphone en conduisant est interdit et dangereux.
+</Attention>
+
+## Comment connecter le téléphone à la voiture ? \{#carplay\}
+
+Sur de nombreuses voitures récentes, **CarPlay** (iPhone) ou **Android Auto** affichent le GPS, la musique et les appels sur l'écran de la voiture.
+
+<Etapes>
+1. Branchez le téléphone avec un câble USB à la prise indiquée (souvent marquée d'un logo de téléphone), ou suivez l'association sans fil proposée par la voiture.
+2. Acceptez les demandes d'autorisation sur le téléphone.
+3. Utilisez ensuite l'écran de la voiture ou les commandes vocales.
+</Etapes>
+
+## Comment payer son stationnement avec le téléphone ? \{#stationnement\}
+
+Dans beaucoup de villes, on paie depuis une appli (EasyPark, PayByPhone, Flowbird…). La ville choisit l'appli acceptée.
+
+<Etapes>
+1. Repérez sur l'horodateur ou le panneau le **nom de l'appli** et le **numéro de zone**.
+2. Installez cette appli depuis le magasin officiel, créez un compte avec votre plaque d'immatriculation.
+3. Indiquez la zone et la durée, puis validez. Vous pouvez souvent prolonger à distance.
+</Etapes>
+
+<Attention>
+Des escrocs collent de faux QR codes sur les horodateurs pour voler vos coordonnées bancaires. Passez par l'appli installée depuis le magasin officiel, pas par un QR code.
+</Attention>

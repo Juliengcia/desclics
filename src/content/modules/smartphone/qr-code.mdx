@@ -1,0 +1,88 @@
+---
+identifiant: qr-code
+titre: Scanner un QR code (et repérer les faux)
+rubrique: smartphone
+resume: Ce qu'est un QR code, comment le lire avec l'appareil photo du téléphone, où on en trouve, et comment éviter les faux QR codes des arnaqueurs.
+duree: 5
+niveau: Premiers pas
+objectifs:
+  - comprendre ce qu'est un QR code ;
+  - le scanner avec l'appareil photo ;
+  - vérifier l'adresse avant de l'ouvrir ;
+  - reconnaître un faux QR code.
+motsCles: [QR code, scanner, flasher, appareil photo, quishing, faux QR code, parcmètre, arnaque]
+titreSeo: "Scanner un QR code et éviter les faux QR codes"
+metaDescription: "Comment scanner un QR code avec son téléphone, vérifier l'adresse qui s'affiche et repérer un faux QR code collé sur un parcmètre ou reçu par courrier."
+bristol:
+  - "Scanner : ouvrir l'appareil photo, viser le QR code, toucher le lien qui s'affiche"
+  - "Lire l'adresse avant d'ouvrir : elle doit correspondre au service attendu"
+  - "Autocollant collé par-dessus un autre ? Ne pas scanner"
+  - "Jamais de code bancaire sur un site ouvert par QR code inattendu"
+  - "Arnaque : Info Escroqueries 0 805 805 817 (gratuit)"
+sources:
+  - titre: "Le « quishing » : l'hameçonnage par QR code"
+    url: https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/quishing-hameconnage-qr-code
+    editeur: Cybermalveillance.gouv.fr
+  - titre: "Arnaque au QR code ou quishing : comment la reconnaître et que faire ?"
+    url: https://www.economie.gouv.fr/particuliers/numerique-et-cybersecurite/arnaque-au-qr-code-ou-quishing-comment-la-reconnaitre-et-que-faire
+    editeur: Ministère de l'Économie
+verifieLe: 2026-11-05
+appareils: [android, iphone]
+pourAidant:
+  - "Beaucoup cherchent une appli spéciale : l'appareil photo suffit sur les téléphones récents."
+  - "Faites lire l'adresse à voix haute avant d'ouvrir : c'est le meilleur réflexe anti-arnaque."
+liesA: [smartphone/appareil-photo, securite/arnaques, internet/adresse-web]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Qu'est-ce qu'un QR code ? \{#definition\}
+
+<Definition terme="QR code">
+Un <Terme id="qr-code">QR code</Terme> est un carré de petits motifs noirs et blancs. Le téléphone le lit avec l'appareil photo et ouvre une adresse web ou affiche une information.
+</Definition>
+
+**À quoi ça sert.** Ouvrir un menu de restaurant, payer un stationnement, suivre un colis, rejoindre un réseau Wi-Fi, accéder à une démarche.
+
+## Comment scanner un QR code ? \{#scanner\}
+
+<Etapes>
+1. Ouvrez l'**appareil photo** du téléphone.
+2. Visez le QR code, à 15–20 cm, sans appuyer sur le déclencheur.
+3. Un lien ou une bulle apparaît à l'écran : **lisez l'adresse affichée**.
+4. Si elle correspond au service attendu, touchez-la pour l'ouvrir.
+</Etapes>
+
+<Astuce>
+Si rien ne s'affiche, essayez **Google Lens** (Android) ou le **Scanner de code** dans le centre de contrôle (iPhone).
+</Astuce>
+
+## Où trouve-t-on des QR codes ? \{#ou\}
+
+Restaurants, parcmètres et bornes de recharge, affiches, courriers officiels, billets de train, avis de passage, boîtes de médicaments, cartes d'embarquement.
+
+## Comment repérer un faux QR code ? \{#faux\}
+
+Des escrocs collent leurs propres QR codes, ou les envoient par courrier, pour vous mener vers un faux site qui vole vos coordonnées bancaires. On appelle cela le **quishing**.
+
+<Etapes titre="Les réflexes avant et après le scan">
+1. Regardez le QR code de près : un **autocollant collé par-dessus** un autre doit vous alerter.
+2. Après le scan, **lisez l'adresse** : elle doit correspondre au service (la ville, l'opérateur de stationnement).
+3. Méfiez-vous d'un site qui demande vos **coordonnées bancaires** ou des informations personnelles sans raison.
+4. Pour payer, préférez l'**appli officielle** du service ou l'adresse que vous tapez vous-même.
+</Etapes>
+
+<Attention>
+Ne saisissez jamais vos codes bancaires sur un site ouvert depuis un QR code inattendu (amende, colis, remboursement). Si vous l'avez fait : appelez votre banque pour faire opposition, puis le service gratuit **Info Escroqueries au 0 805 805 817**.
+</Attention>

@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import Icone from '../../components/Icone.astro';
+import { rubriques } from '../../data/rubriques';
+import { modulesPublies } from '../../lib/navigation';
+import { lien } from '../../lib/chemins';
+const publies = await modulesPublies();
+const nb = (slug: string) => publies.filter((m) => m.rubrique.slug === slug).length;
+---
+<Base titre="Fiches Bristol à imprimer" description="Toutes les fiches récapitulatives de Desclics, rangées par rubrique, à imprimer d'un coup au format A5 pour les garder près de l'ordinateur ou du téléphone.">
+  <div class="conteneur">
+    <FilAriane miettes={[{ titre: 'Fiches Bristol' }]} />
+    <header class="entete-page">
+      <p class="etiquette">À imprimer</p>
+      <h1>Fiches Bristol <span class="ton-doux">par rubrique.</span></h1>
+      <p class="chapo">Chaque module se termine par une fiche qui résume l'essentiel. Ici, vous les retrouvez toutes, rubrique par rubrique, pour les imprimer d'un coup.</p>
+    </header>
+    <ul class="grille grille--3 liste-fiches">
+      {rubriques.filter((r) => nb(r.slug) > 0).map((r) => (
+        <li class:list={['carte carte-lien', `pastel-${r.pastel}`]}>
+          <span class="pastille"><Icone nom={r.icone} /></span>
+          <h2><a href={lien(`fiches/${r.slug}`)}>{r.titre}</a></h2>
+          <p>{nb(r.slug)} fiche{nb(r.slug) > 1 ? 's' : ''}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="carte carte--blanche conseil">
+      <h2>Bien imprimer</h2>
+      <ol>
+        <li>Ouvrez la rubrique voulue, puis appuyez sur « Imprimer toutes les fiches ».</li>
+        <li>Choisissez le format <strong>A5</strong> si votre imprimante le propose. Sinon, choisissez « 2 pages par feuille » sur du A4.</li>
+        <li>Rangez les fiches près de l'appareil concerné.</li>
+      </ol>
+    </div>
+  </div>
+</Base>
+<style>
+  .entete-page { max-width: 52rem; margin-bottom: 2rem; }
+  .entete-page h1 { margin-top: 1rem; }
+  .liste-fiches { list-style: none; padding: 0; margin: 0 0 2.5rem; }
+  .liste-fiches h2 { font-size: 1.3rem; margin: 2rem 0 .3rem; }
+  .liste-fiches h2 a { color: var(--texte); text-decoration: none; }
+  .liste-fiches li:hover h2 a { text-decoration: underline; }
+  .liste-fiches p { margin: 0; font: 600 .95rem var(--police-titre); }
+  .conseil { max-width: 52rem; }
+  .conseil h2 { font-size: 1.3rem; margin-top: 0; }
+  .conseil ol { padding-left: 1.4rem; margin: 0; }
+</style>

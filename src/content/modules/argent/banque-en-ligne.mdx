@@ -1,0 +1,102 @@
+---
+identifiant: banque-en-ligne
+titre: Gérer ses comptes en ligne
+rubrique: argent
+resume: Utiliser l'appli de sa banque, consulter ses comptes, trouver son RIB, ajouter un bénéficiaire, faire un virement et valider une opération en toute sécurité.
+duree: 8
+niveau: Intermédiaire
+objectifs:
+  - installer et ouvrir l'appli de sa banque ;
+  - consulter ses comptes et trouver son RIB ;
+  - ajouter un bénéficiaire ;
+  - faire un virement, y compris instantané ;
+  - valider une opération sans se faire piéger.
+motsCles: [banque en ligne, appli bancaire, RIB, IBAN, virement, virement instantané, ajouter un bénéficiaire, vérification du bénéficiaire, valider une opération]
+titreSeo: "Banque en ligne : RIB, bénéficiaire et virement pas à pas"
+metaDescription: "Utiliser l'appli de sa banque : consulter ses comptes, trouver son RIB, ajouter un bénéficiaire, faire un virement instantané et valider une opération sans risque."
+bristol:
+  - "Installer l'appli officielle depuis le site de la banque ou le magasin d'applis"
+  - "RIB : rubrique « RIB » ou « Mes comptes » → Partager le RIB"
+  - "Virement : ajouter le bénéficiaire (IBAN), vérifier le nom affiché, puis valider"
+  - "Virement instantané : même prix qu'un virement classique (souvent gratuit), irrévocable"
+  - "Ne valider dans l'appli QUE ce que vous avez fait vous-même"
+sources:
+  - titre: Le virement SEPA instantané
+    url: https://www.banque-france.fr/fr/a-votre-service/particuliers/mieux-connaitre-moyens-paiement/le-virement-sepa-instantane
+    editeur: Banque de France
+  - titre: Guide d'utilisation de la vérification du bénéficiaire
+    url: https://www.banque-france.fr/system/files/2025-09/CNMP_Guide-d-utilisation-Verification-du-beneficiaire.pdf
+    editeur: Banque de France (CNMP)
+  - titre: "Opérations bancaires à distance : comment vous protéger des fraudes ?"
+    url: https://www.economie.gouv.fr/particuliers/mes-droits-conso/eviter-les-arnaques/operations-bancaires-distance-comment-vous-proteger-des-fraudes
+    editeur: Ministère de l'Économie
+verifieLe: 2026-11-09
+falc: true
+pourAidant:
+  - "Le message de vérification du bénéficiaire (« le nom ne correspond pas ») est une protection précieuse : expliquez qu'il faut s'arrêter et vérifier, pas l'ignorer."
+liesA: [argent/payer-en-ligne, securite/arnaques, securite/victime]
+---
+import Definition from '../../../components/module/Definition.astro';
+import Etapes from '../../../components/module/Etapes.astro';
+import Attention from '../../../components/module/Attention.astro';
+import Astuce from '../../../components/module/Astuce.astro';
+import ARetenir from '../../../components/module/ARetenir.astro';
+import Touches from '../../../components/module/Touches.astro';
+import Terme from '../../../components/module/Terme.astro';
+import Figure from '../../../components/module/Figure.astro';
+import Frise from '../../../components/module/Frise.astro';
+import TableauComparatif from '../../../components/module/TableauComparatif.astro';
+import Onglets from '../../../components/module/Onglets.astro';
+import Onglet from '../../../components/module/Onglet.astro';
+import Quiz from '../../../components/module/Quiz.astro';
+
+## Comment accéder à ses comptes ? \{#appli\}
+
+<Etapes>
+1. Installez l'**appli officielle** de votre banque : depuis le magasin d'applications, en vérifiant l'éditeur, ou via le lien du site officiel de la banque.
+2. Connectez-vous avec votre **identifiant** (souvent sur le contrat ou la carte) et votre **code**.
+3. Activez la connexion par empreinte ou visage si vous le souhaitez.
+4. L'écran d'accueil affiche le **solde** et les dernières opérations.
+</Etapes>
+
+## Où trouver son RIB ? \{#rib\}
+
+<Definition terme="RIB et IBAN">
+Le <Terme id="rib">RIB</Terme> donne les coordonnées de votre compte. L'**IBAN**, qui commence par **FR76**, est le numéro à donner pour recevoir un virement (salaire, retraite, remboursement).
+</Definition>
+
+Dans l'appli, cherchez **RIB** ou ouvrez votre compte puis **Partager le RIB** : vous pouvez l'envoyer par e-mail ou l'enregistrer en PDF.
+
+## Comment ajouter un bénéficiaire ? \{#beneficiaire\}
+
+<Etapes>
+1. Ouvrez **Virements**, puis **Ajouter un bénéficiaire**.
+2. Saisissez son **nom** et son **IBAN** (sur le RIB qu'il vous a donné).
+3. La banque **vérifie** que le nom correspond à l'IBAN et affiche le résultat : correspond, correspond presque, ne correspond pas.
+4. Validez l'ajout dans l'appli (empreinte, code).
+</Etapes>
+
+<Attention>
+Si la banque indique que le nom **ne correspond pas**, arrêtez-vous. Contactez le bénéficiaire par un moyen que vous connaissez (son numéro habituel) pour vérifier l'IBAN. C'est souvent le signe d'une fraude.
+</Attention>
+
+## Comment faire un virement ? \{#virement\}
+
+<Etapes>
+1. Ouvrez **Virements**, choisissez le compte à débiter et le bénéficiaire.
+2. Indiquez le **montant** et un **motif** (« loyer novembre »).
+3. Choisissez **virement instantané** (arrive en quelques secondes) ou classique (un à deux jours ouvrés).
+4. Vérifiez le récapitulatif, puis **validez** dans l'appli.
+</Etapes>
+
+<ARetenir>
+Depuis octobre 2025, un <Terme id="virement">virement</Terme> instantané coûte le même prix qu'un virement classique, souvent gratuit. Mais il est **immédiat et irréversible** : vérifiez bien avant de valider.
+</ARetenir>
+
+## Comment valider une opération sans se faire piéger ? \{#valider\}
+
+L'appli vous demande de valider les opérations sensibles : nouveau bénéficiaire, virement, paiement en ligne.
+
+<Attention>
+Ne validez que ce que **vous** êtes en train de faire. Si quelqu'un vous appelle et vous demande de valider une opération pour « l'annuler » ou « sécuriser votre compte », c'est une arnaque : raccrochez et appelez votre banque au numéro habituel.
+</Attention>

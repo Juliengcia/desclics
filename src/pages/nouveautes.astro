@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import { nouveautes } from '../data/nouveautes';
+import { lien } from '../lib/chemins';
+import { modulesPublies } from '../lib/navigation';
+
+const publies = await modulesPublies();
+const ordre = new Map(publies.map((m, i) => [m.chemin, i]));
+const recents = [...publies]
+  .sort((a, b) => (b.entree!.data.verifieLe.getTime() - a.entree!.data.verifieLe.getTime()) || (ordre.get(b.chemin)! - ordre.get(a.chemin)!))
+  .slice(0, 12);
+
+const dateFr = (d: string | Date) => new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+// Regroupement par date, dans l'ordre du fichier (le plus récent en haut).
+const parDate = nouveautes.reduce<{ date: string; items: typeof nouveautes }[]>((acc, n) => {
+  const g = acc.find((x) => x.date === n.date);
+  if (g) g.items.push(n); else acc.push({ date: n.date, items: [n] });
+  return acc;
+}, []);
+---
+<Base titre="Quoi de neuf sur Desclics ?" description="Les nouveaux modules, pages et outils de Desclics, du plus récent au plus ancien.">
+  <div class="conteneur page-nouveautes">
+    <FilAriane miettes={[{ titre: 'Quoi de neuf ?' }]} />
+    <p class="etiquette">Journal du site</p>
+    <h1>Quoi de neuf ?</h1>
+    <p class="chapo">Les nouveaux modules, pages et outils, du plus récent au plus ancien.</p>
+    <section aria-labelledby="titre-recents">
+      <h2 id="titre-recents">Modules ajoutés ou mis à jour récemment</h2>
+      <ul class="recents">
+        {recents.map((m) => (
+          <li><time datetime={m.entree!.data.verifieLe.toISOString().slice(0, 10)}>{dateFr(m.entree!.data.verifieLe)} · {m.rubrique.titre}</time>
+            <a href={lien(m.chemin)}>{m.titre}</a></li>
+        ))}
+      </ul>
+    </section>
+    <h2>Journal du site</h2>
+    <ol class="frise-nouveautes">
+      {parDate.map((g) => (
+        <li>
+          <h3><time datetime={g.date}>{dateFr(g.date)}</time></h3>
+          <ul>
+            {g.items.map((n) => <li>{n.lien ? <a href={lien(n.lien)}>{n.texte}</a> : n.texte}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+<style>
+  .page-nouveautes { max-width: calc(var(--largeur-texte) + 2 * var(--gouttiere)); }
+  .page-nouveautes h1 { margin-top: 1rem; }
+  .frise-nouveautes { list-style: none; padding: 0 0 0 1.5rem; margin: 2rem 0 0; border-left: 2px solid var(--trait); }
+  .frise-nouveautes > li { position: relative; padding-bottom: 1.5rem; }
+  .frise-nouveautes > li::before { content: ''; position: absolute; left: calc(-1.5rem - 7px); top: .55rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .recents { list-style: none; padding: 0; margin: 1rem 0 2.5rem; }
+  .recents li { display: grid; padding: .6rem 0; border-top: 1px solid var(--trait); }
+  .recents time { font: 500 .9rem var(--police-titre); color: var(--texte-doux); }
+  .recents a { font: 650 1.1rem var(--police-titre); }
+  .frise-nouveautes h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
+  .frise-nouveautes ul { margin: 0; padding-left: 1.2rem; }
+  .frise-nouveautes ul li { margin-bottom: .5rem; }
+</style>

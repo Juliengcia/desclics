@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import FilAriane from '../../components/FilAriane.astro';
+import Icone from '../../components/Icone.astro';
+import FicheBristol from '../../components/module/FicheBristol.astro';
+import { rubriques, type Rubrique } from '../../data/rubriques';
+import { modulesDeRubrique } from '../../lib/navigation';
+import { lien } from '../../lib/chemins';
+
+export async function getStaticPaths() {
+  const avecModules = [];
+  for (const r of rubriques) if ((await modulesDeRubrique(r.slug)).some((m) => m.publie)) avecModules.push(r);
+  return avecModules.map((r) => ({ params: { rubrique: r.slug }, props: { rubrique: r } }));
+}
+const { rubrique } = Astro.props as { rubrique: Rubrique };
+const modules = (await modulesDeRubrique(rubrique.slug)).filter((m) => m.publie);
+const adresse = (chemin: string) => new URL(lien(chemin), Astro.site).href.replace(/^https?:\/\//, '');
+---
+<Base titre={`Fiches Bristol : ${rubrique.titre}`} description={`Les ${modules.length} fiches récapitulatives de la rubrique « ${rubrique.titre} » sur une seule page, à imprimer au format A5.`}>
+  <div class="conteneur fiches-rubrique">
+    <FilAriane miettes={[{ titre: 'Fiches Bristol', chemin: 'fiches' }, { titre: rubrique.titre }]} />
+    <header class="entete-page ne-pas-imprimer">
+      <p class="etiquette">Fiches Bristol</p>
+      <h1>{rubrique.titre}</h1>
+      <p class="chapo">{modules.length} fiches, une par module. Une fiche par page à l'impression.</p>
+      <p class="actions">
+        <a class="bouton" href={lien(`fiches/pdf/${rubrique.slug}.pdf`).replace(/\/$/, '')} download><Icone nom="telecharger" /> Télécharger toutes les fiches (PDF)</a>
+        <button type="button" class="bouton bouton--secondaire" data-imprimer-tout><Icone nom="imprimer" /> Imprimer toutes les fiches</button>
+        <a class="bouton bouton--secondaire" href={lien(rubrique.slug)}>Voir les modules de la rubrique</a>
+      </p>
+    </header>
+    <div class="liste">
+      {modules.map((m) => (
+        <div class="fiche-bloc">
+          <FicheBristol titre={m.titre} lignes={m.entree!.data.bristol} adresse={adresse(m.chemin)} seule={false} ident={`fiche-${m.slug}`} niveauTitre={2} />
+          <p class="lien-module ne-pas-imprimer"><a href={lien(m.chemin)}>Lire le module « {m.titre} »</a></p>
+        </div>
+      ))}
+    </div>
+  </div>
+</Base>
+<style>
+  .entete-page { max-width: 52rem; }
+  .entete-page h1 { margin-top: 1rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .liste { max-width: var(--largeur-texte); }
+  .lien-module { margin: -1.75rem 0 2.5rem; font-size: 1rem; }
+  @media print {
+    .fiche-bloc { break-after: page; }
+    .fiche-bloc:last-child { break-after: auto; }
+    .fiches-rubrique :global(.fil-ariane) { display: none; }
+    .fiches-rubrique :global(.fiche-bristol) { margin: 0; }
+  }
+</style>
+<script>
+  document.querySelector('[data-imprimer-tout]')?.addEventListener('click', () => window.print());
+</script>
